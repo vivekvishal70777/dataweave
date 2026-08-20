@@ -9,7 +9,7 @@ Teach **Mule 4 / DataWeave 2.x** as a linear online course: concept videos, then
 | `student/` | Learners (Udemy downloadable resources) | Starter labs, quizzes (no answers), getting-started guide |
 | `instructor/` | You, while recording | Solutions, quiz keys, curriculum, recording notes |
 | `sections/` | You + optional article lectures | One `LECTURE.md` per Udemy section (objectives, talking points, full Q&A to teach) |
-| `reference/` | Archive | Original 60 interview Q&A, 54 programming drills, extra PDF |
+| `reference/` | Archive | Original 60 + 20 production interview Q&A, 54 + 28 coding drills, extra PDF |
 
 **Do not zip `instructor/` into the student resource pack on Udemy.** Publish `student/` (and optionally `sections/` as reading). Keep solutions for after-try videos or a separate “solutions” lecture at the end of each section.
 
@@ -23,7 +23,8 @@ Teach **Mule 4 / DataWeave 2.x** as a linear online course: concept videos, then
 6. **Joins and Mule context** (`vars`, modules, no N+1 `lookup`).
 7. **Advanced recursion, namespaces, capstone invoice**.
 8. **Production / streaming / performance**.
-9. **Interview bootcamp** — 60 questions out loud + 6 whiteboard programs.
+9. **Production-level hard transformations** — Labs 55–82 (canonical APIs, CDC, scatter-gather, DLQ).
+10. **Interview bootcamp** — 80 questions out loud + whiteboard programs.
 
 Full recording order: [`instructor/CURRICULUM.md`](instructor/CURRICULUM.md).
 
@@ -50,6 +51,8 @@ python3 scripts/generate_udemy_lectures.py
 ## Source material
 
 - 60 theory questions: `reference/MuleSoft-DataWeave-Interview-Questions.md`
+- 20 production theory questions: `reference/DataWeave-Production-Interview-Questions.md`
 - 54 coding drills: `reference/DataWeave-Programming-Questions.md`
+- 28 production drills: `reference/DataWeave-Production-Transformations.md`
 
 Aligned with **DataWeave 2.x / Mule 4** (`update` and some `dw::core::Arrays` helpers need **Mule 4.3+**).

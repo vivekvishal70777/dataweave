@@ -7,6 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "reference" / "MuleSoft-DataWeave-Interview-Questions.md"
+PROD_SRC = ROOT / "reference" / "DataWeave-Production-Interview-Questions.md"
 
 # Udemy section -> inclusive question numbers + student lab numbers
 SECTIONS = [
@@ -176,6 +177,22 @@ SECTIONS = [
         ],
     },
     {
+        "id": "13-production-hard-transforms",
+        "title": "Production-level hard transformations",
+        "qs": list(range(61, 81)),
+        "labs": [55, 56, 63, 70, 73, 75, 82],
+        "objectives": [
+            "Ship partial-success canonical APIs with `errors[]`.",
+            "Merge golden records, CDC, FX, overlays, and merge-patch with explicit rules.",
+            "Wrap ops concerns: scatter-gather, DLQ, redaction, injected clocks.",
+        ],
+        "talking": [
+            "Open with Lab 55 (canonical order + bad line) — this is the production default.",
+            "Whiteboard Lab 56 precedence vs `++`, then Lab 73 cycle guard.",
+            "Close with scatter-gather (75) and payment `match` (82).",
+        ],
+    },
+    {
         "id": "12-interview-bootcamp",
         "title": "Interview bootcamp",
         "qs": list(range(1, 61)),
@@ -287,10 +304,11 @@ def write_curriculum(questions: dict[int, tuple[str, str]]) -> None:
         "| Dates / match / try | 3 | 1 | 1 |",
         "| Joins / Mule | 4 | 1 | 1 |",
         "| Advanced | 6 | 1 | 1 |",
-        "| Production | 3 | 1 | 1 |",
+        "| Streaming / pitfalls | 3 | 1 | 1 |",
+        "| Production hard transforms | 6 | 1 | 1 |",
         "| Interview bootcamp | 4 | 1 | 1 (practice test) |",
         "",
-        "Target: **~46 published lectures** plus **54 downloadable labs** and **section quizzes**.",
+        "Target: **~55 published lectures** plus **82 downloadable labs** and **section quizzes**.",
         "",
         "## After each section",
         "",
@@ -303,10 +321,10 @@ def write_curriculum(questions: dict[int, tuple[str, str]]) -> None:
 
 
 def main() -> None:
-    text = SRC.read_text(encoding="utf-8")
-    questions = parse_questions(text)
-    if len(questions) != 60:
-        raise SystemExit(f"Expected 60 questions, parsed {len(questions)}")
+    questions = parse_questions(SRC.read_text(encoding="utf-8"))
+    questions.update(parse_questions(PROD_SRC.read_text(encoding="utf-8")))
+    if len(questions) != 80:
+        raise SystemExit(f"Expected 80 questions, parsed {len(questions)}")
     for sec in SECTIONS:
         write_section(sec, questions)
     write_curriculum(questions)

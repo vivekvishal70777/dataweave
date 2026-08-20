@@ -36,6 +36,6 @@ Cover the expected output with a sticky note if you are tempted to skip the atte
 
 ## Course order
 
-Follow the section numbers in the Udemy curriculum. Do not jump to advanced recursion labs until you can `map` / `filter` / `groupBy` without notes.
+Follow the section numbers in the Udemy curriculum. Do not jump to advanced recursion or **production** labs (55–82) until you can `map` / `filter` / `groupBy` without notes.
 
 Next: [Lab index](labs/README.md).

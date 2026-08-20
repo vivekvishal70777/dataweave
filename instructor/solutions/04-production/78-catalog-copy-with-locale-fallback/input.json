@@ -1,0 +1,8 @@
+{
+  "locale": "de",
+  "fallback": "en",
+  "copy": {
+    "en": { "hi": "Hello", "bye": "Bye" },
+    "fr": { "hi": "Bonjour" }
+  }
+}

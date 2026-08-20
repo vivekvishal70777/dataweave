@@ -1,0 +1,7 @@
+{
+  "need": 7,
+  "warehouses": [
+    { "id": "W2", "qty": 10, "priority": 2 },
+    { "id": "W1", "qty": 4, "priority": 1 }
+  ]
+}

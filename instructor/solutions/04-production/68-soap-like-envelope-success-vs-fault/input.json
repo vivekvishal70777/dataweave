@@ -1,0 +1,10 @@
+{
+  "Envelope": {
+    "Body": {
+      "Fault": {
+        "faultcode": "soap:Server",
+        "faultstring": "credit check failed"
+      }
+    }
+  }
+}

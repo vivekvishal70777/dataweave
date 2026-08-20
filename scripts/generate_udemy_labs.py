@@ -7,12 +7,17 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "reference" / "DataWeave-Programming-Questions.md"
+SRCS = [
+    ROOT / "reference" / "DataWeave-Programming-Questions.md",
+    ROOT / "reference" / "DataWeave-Production-Transformations.md",
+]
+EXPECTED_LABS = 82
 
 LAB_MAP = {
     range(1, 19): ("01-fundamentals", "easy"),
     range(19, 37): ("02-intermediate", "moderate"),
     range(37, 55): ("03-advanced", "hard"),
+    range(55, 83): ("04-production", "production"),
 }
 
 
@@ -200,10 +205,11 @@ def write_index(labs: list[dict], path: Path) -> None:
 
 
 def main() -> None:
-    text = SRC.read_text(encoding="utf-8")
-    labs = parse_labs(text)
-    if len(labs) != 54:
-        raise SystemExit(f"Expected 54 labs, parsed {len(labs)}")
+    labs = []
+    for src in SRCS:
+        labs.extend(parse_labs(src.read_text(encoding="utf-8")))
+    if len(labs) != EXPECTED_LABS:
+        raise SystemExit(f"Expected {EXPECTED_LABS} labs, parsed {len(labs)}")
     student = ROOT / "student" / "labs"
     instructor = ROOT / "instructor" / "solutions"
     if student.exists():

@@ -376,5 +376,201 @@
     "slug": "invoice-compute-line-totals-tax-and-grand-total",
     "section": "03-advanced",
     "level": "hard"
+  },
+  {
+    "num": 55,
+    "title": "Canonical order API with line errors",
+    "slug": "canonical-order-api-with-line-errors",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 56,
+    "title": "Customer 360 merge with field precedence",
+    "slug": "customer-360-merge-with-field-precedence",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 57,
+    "title": "CDC envelope to domain events",
+    "slug": "cdc-envelope-to-domain-events",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 58,
+    "title": "Multi-currency invoice with FX table",
+    "slug": "multi-currency-invoice-with-fx-table",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 59,
+    "title": "Bill of materials: explode one level",
+    "slug": "bill-of-materials-explode-one-level",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 60,
+    "title": "Bank statement rows plus trailer checksum",
+    "slug": "bank-statement-rows-plus-trailer-checksum",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 61,
+    "title": "Pagination envelope for a list API",
+    "slug": "pagination-envelope-for-a-list-api",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 62,
+    "title": "Idempotency key from a natural key",
+    "slug": "idempotency-key-from-a-natural-key",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 63,
+    "title": "FIFO stock allocation across warehouses",
+    "slug": "fifo-stock-allocation-across-warehouses",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 64,
+    "title": "Nested GraphQL-style order to line rows",
+    "slug": "nested-graphql-style-order-to-line-rows",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 65,
+    "title": "Wrap a domain payload as CloudEvents 1.0",
+    "slug": "wrap-a-domain-payload-as-cloudevents-1-0",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 66,
+    "title": "Tenant config overlay (defaults < tenant < request)",
+    "slug": "tenant-config-overlay-defaults-tenant-request",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 67,
+    "title": "Windowed totals by account and business date",
+    "slug": "windowed-totals-by-account-and-business-date",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 68,
+    "title": "SOAP-like envelope: success vs fault",
+    "slug": "soap-like-envelope-success-vs-fault",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 69,
+    "title": "Product variants cartesian-joined to a price book",
+    "slug": "product-variants-cartesian-joined-to-a-price-book",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 70,
+    "title": "JSON Merge Patch (RFC 7396) plus changelog",
+    "slug": "json-merge-patch-rfc-7396-plus-changelog",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 71,
+    "title": "Batch API chunks with per-batch checksum",
+    "slug": "batch-api-chunks-with-per-batch-checksum",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 72,
+    "title": "Store-local business date from UTC plus offset hours",
+    "slug": "store-local-business-date-from-utc-plus-offset-hours",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 73,
+    "title": "Recursive BOM explode with cycle guard",
+    "slug": "recursive-bom-explode-with-cycle-guard",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 74,
+    "title": "Flatten nested JSON to dotted paths",
+    "slug": "flatten-nested-json-to-dotted-paths",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 75,
+    "title": "Scatter-gather: merge three connector responses",
+    "slug": "scatter-gather-merge-three-connector-responses",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 76,
+    "title": "Salesforce-style composite upsert records",
+    "slug": "salesforce-style-composite-upsert-records",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 77,
+    "title": "Keep latest version per id (upsert projection)",
+    "slug": "keep-latest-version-per-id-upsert-projection",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 78,
+    "title": "Catalog copy with locale fallback",
+    "slug": "catalog-copy-with-locale-fallback",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 79,
+    "title": "Log-safe HTTP headers (redact secrets)",
+    "slug": "log-safe-http-headers-redact-secrets",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 80,
+    "title": "SLA overdue flags (injected clock)",
+    "slug": "sla-overdue-flags-injected-clock",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 81,
+    "title": "Dead-letter / replay envelope",
+    "slug": "dead-letter-replay-envelope",
+    "section": "04-production",
+    "level": "production"
+  },
+  {
+    "num": 82,
+    "title": "Heterogeneous payments to a canonical charge",
+    "slug": "heterogeneous-payments-to-a-canonical-charge",
+    "section": "04-production",
+    "level": "production"
   }
 ]

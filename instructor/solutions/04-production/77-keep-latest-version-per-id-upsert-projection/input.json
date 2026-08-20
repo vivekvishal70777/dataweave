@@ -1,0 +1,6 @@
+[
+  { "id": "A", "version": 1, "payload": { "name": "old" } },
+  { "id": "B", "version": 1, "payload": { "name": "b" } },
+  { "id": "A", "version": 3, "payload": { "name": "new" } },
+  { "id": "A", "version": 2, "payload": { "name": "mid" } }
+]

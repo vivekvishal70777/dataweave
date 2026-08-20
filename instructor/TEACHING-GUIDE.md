@@ -57,4 +57,6 @@ python3 scripts/generate_udemy_labs.py
 python3 scripts/generate_udemy_lectures.py
 ```
 
+Production-level labs live in `reference/DataWeave-Production-Transformations.md` (55–82) and theory in `reference/DataWeave-Production-Interview-Questions.md` (Q61–80).
+
 Re-zip student resources after regenerate. Section quizzes in `student/quizzes/` are hand-written — update those if you change a concept.

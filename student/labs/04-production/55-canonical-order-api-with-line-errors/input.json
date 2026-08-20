@@ -1,0 +1,10 @@
+{
+  "correlationId": "corr-9",
+  "customerId": null,
+  "taxRate": 0.18,
+  "lines": [
+    { "sku": "A", "qty": 2, "price": 50 },
+    { "sku": "B", "qty": "bad", "price": 100 },
+    { "sku": "C", "qty": 1, "price": 100 }
+  ]
+}

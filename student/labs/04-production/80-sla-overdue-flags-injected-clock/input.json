@@ -1,0 +1,8 @@
+{
+  "now": "2026-08-20T12:00:00Z",
+  "tickets": [
+    { "id": "T1", "status": "OPEN", "dueAt": "2026-08-20T11:00:00Z" },
+    { "id": "T2", "status": "OPEN", "dueAt": "2026-08-20T13:00:00Z" },
+    { "id": "T3", "status": "CLOSED", "dueAt": "2026-08-19T00:00:00Z" }
+  ]
+}

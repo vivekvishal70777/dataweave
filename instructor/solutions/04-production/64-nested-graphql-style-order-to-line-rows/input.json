@@ -1,0 +1,11 @@
+{
+  "order": {
+    "id": "O-1",
+    "customer": "Asha",
+    "lines": [
+      { "sku": "A", "qty": 2 },
+      { "sku": "B", "qty": 0 },
+      { "sku": "C", "qty": 5 }
+    ]
+  }
+}

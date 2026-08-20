@@ -1,0 +1,8 @@
+{
+  "orderId": "O-1",
+  "customer": { "name": "Asha", "addr": { "city": "Pune" } },
+  "lines": [
+    { "sku": "A", "qty": 2 },
+    { "sku": "B", "qty": 1 }
+  ]
+}

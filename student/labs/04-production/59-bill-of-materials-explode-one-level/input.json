@@ -1,0 +1,8 @@
+{
+  "catalog": [
+    { "sku": "P", "name": "Pump", "unitCost": 10, "components": ["G", "S"] },
+    { "sku": "G", "name": "Gasket", "unitCost": 2, "components": [] },
+    { "sku": "S", "name": "Screw", "unitCost": 1, "components": [] }
+  ],
+  "parentSku": "P"
+}
