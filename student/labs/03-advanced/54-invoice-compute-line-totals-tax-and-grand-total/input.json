@@ -1,0 +1,7 @@
+{
+  "taxRate": 0.18,
+  "lines": [
+    { "sku": "A", "qty": 2, "price": 50 },
+    { "sku": "B", "qty": 1, "price": 100 }
+  ]
+}

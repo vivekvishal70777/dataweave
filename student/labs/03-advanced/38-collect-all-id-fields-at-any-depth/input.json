@@ -1,0 +1,4 @@
+{
+  "id": "root",
+  "child": { "id": "c1", "items": [{ "id": "i1" }, { "sku": "x" }] }
+}
