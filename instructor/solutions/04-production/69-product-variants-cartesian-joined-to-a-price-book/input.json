@@ -1,0 +1,21 @@
+{
+  "products": [
+    {
+      "id": "TEE",
+      "active": true,
+      "colors": ["R", "G"],
+      "sizes": ["S", "M"]
+    },
+    {
+      "id": "HAT",
+      "active": false,
+      "colors": ["B"],
+      "sizes": ["L"]
+    }
+  ],
+  "prices": [
+    { "sku": "TEE-R-S", "price": 10 },
+    { "sku": "TEE-R-M", "price": 12 },
+    { "sku": "TEE-G-S", "price": 11 }
+  ]
+}

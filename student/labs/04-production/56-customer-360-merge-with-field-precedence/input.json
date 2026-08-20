@@ -1,0 +1,23 @@
+{
+  "erp": {
+    "id": "E-1",
+    "name": "Acme ERP",
+    "phone": "111",
+    "emails": ["ERP@X.com"],
+    "addresses": [{ "type": "BILL", "city": "Pune", "line": "Old" }]
+  },
+  "crm": {
+    "id": "C-1",
+    "name": "Acme CRM",
+    "phone": null,
+    "emails": ["crm@x.com"],
+    "addresses": [{ "type": "SHIP", "city": "Mumbai" }]
+  },
+  "mdm": {
+    "id": "M-1",
+    "name": null,
+    "phone": "999",
+    "emails": ["mdm@x.com"],
+    "addresses": [{ "type": "BILL", "city": "Pune", "line": "HQ" }]
+  }
+}

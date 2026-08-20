@@ -81,19 +81,30 @@ Create **sections** first (names match `UDEMY-LISTING.md`). Then add these lectu
 48. Capstone invoice (Lab 54) and org chart (Lab 53) — Video  
 49. Quiz: Advanced — Practice test  
 
-## Section 11 — Production
+## Section 11 — Streaming and production pitfalls
 
 50. Streaming: what breaks it — Video  
 51. Crypto, binary, reader/writer properties — Video  
 52. Reusable `.dwl` modules and performance pitfalls — Video  
-53. Quiz: Production — Practice test  
+53. Quiz: Streaming / pitfalls — Practice test  
 
-## Section 12 — Interview bootcamp
+## Section 12 — Production-level hard transformations
 
-54. How to run the 60-question bank — Article  
-55. Whiteboard mock interview (set of 6) — Video  
-56. Nested XML to canonical JSON (Q60 talk-through) — Video  
-57. Final practice test — Practice test  
-58. Next steps and solutions pack (optional download) — Video  
+54. Partial success and `errors[]` (Lab 55) — Video  
+55. Customer 360 and null-safe precedence (Lab 56) — Video  
+56. CDC, idempotency, FX tables — Video  
+57. Merge patch, overlays, business dates — Video  
+58. Scatter-gather, composite APIs, DLQ envelopes — Video  
+59. Recursive BOM + payment union types (Labs 73, 82) — Video  
+60. Quiz: Production hard transforms — Practice test  
 
-Attach `student/` zips on lab lectures. Attach solutions only on lecture 58 (or omit and keep solutions off Udemy).
+## Section 13 — Interview bootcamp
+
+61. How to run the 80-question bank — Article  
+62. Whiteboard mock interview (core six) — Video  
+63. Production whiteboard (Labs 55, 56, 73, 75) — Video  
+64. Nested XML to canonical JSON (Q60) + production design (Q80) — Video  
+65. Final practice test — Practice test  
+66. Next steps and solutions pack (optional download) — Video  
+
+Attach `student/` zips on lab lectures. Attach solutions only on lecture 66 (or omit and keep solutions off Udemy).

@@ -1,0 +1,9 @@
+{
+  "customerId": "C1",
+  "externalOrderId": "EXT-9",
+  "lines": [
+    { "sku": "B" },
+    { "sku": "A" },
+    { "sku": "B" }
+  ]
+}

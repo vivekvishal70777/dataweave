@@ -82,6 +82,17 @@ Do not ship this file in the student zip.
 4. A  
 5. B  
 
+## Quiz 12 — Production hard transforms
+
+1. B  
+2. B  
+3. C  
+4. B  
+5. B  
+6. B  
+7. B  
+8. B  
+
 ## Final practice test
 
 Score the spoken/written answers against `sections/12-interview-bootcamp/LECTURE.md` and labs 20, 23, 32, 39, 53, 54.

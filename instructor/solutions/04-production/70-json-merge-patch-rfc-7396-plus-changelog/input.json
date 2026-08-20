@@ -1,0 +1,4 @@
+{
+  "base": { "name": "Asha", "age": 30, "addr": { "city": "Pune", "zip": "411" } },
+  "patch": { "age": null, "addr": { "city": "Mumbai" }, "role": "eng" }
+}

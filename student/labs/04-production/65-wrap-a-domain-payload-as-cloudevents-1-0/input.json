@@ -1,0 +1,8 @@
+{
+  "eventId": "e-100",
+  "now": "2026-08-20T08:00:00Z",
+  "source": "urn:mule:orders",
+  "type": "com.acme.order.created",
+  "orderId": "O-1",
+  "amount": 99
+}

@@ -15,7 +15,8 @@ Take the quiz **after** the labs for that section. One attempt, no notes if you 
 | 7 | Dates, match, try | [07-dates-match-try.md](07-dates-match-try.md) |
 | 8 | Joins and Mule | [08-joins-mule.md](08-joins-mule.md) |
 | 9 | Advanced | [09-advanced.md](09-advanced.md) |
-| 10 | Production | [10-production.md](10-production.md) |
+| 10 | Streaming / pitfalls | [10-production.md](10-production.md) |
+| 12 | Production hard transforms | [12-production-hard.md](12-production-hard.md) |
 | Final | Interview bootcamp | [11-final-practice-test.md](11-final-practice-test.md) |
 
 On Udemy, recreate these as **Multiple choice** / **Multi-select** practice tests (Udemy does not import this Markdown automatically).

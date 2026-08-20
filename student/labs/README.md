@@ -58,6 +58,34 @@ Work **in order**. Each lab is one Udemy practice lecture or homework item.
 | 52 | hard | `03-advanced` | [Safe divide with `try`](03-advanced/52-safe-divide-with-try/README.md) |
 | 53 | hard | `03-advanced` | [Build a nested org chart from a flat list](03-advanced/53-build-a-nested-org-chart-from-a-flat-list/README.md) |
 | 54 | hard | `03-advanced` | [Invoice: compute line totals, tax, and grand total](03-advanced/54-invoice-compute-line-totals-tax-and-grand-total/README.md) |
+| 55 | production | `04-production` | [Canonical order API with line errors](04-production/55-canonical-order-api-with-line-errors/README.md) |
+| 56 | production | `04-production` | [Customer 360 merge with field precedence](04-production/56-customer-360-merge-with-field-precedence/README.md) |
+| 57 | production | `04-production` | [CDC envelope to domain events](04-production/57-cdc-envelope-to-domain-events/README.md) |
+| 58 | production | `04-production` | [Multi-currency invoice with FX table](04-production/58-multi-currency-invoice-with-fx-table/README.md) |
+| 59 | production | `04-production` | [Bill of materials: explode one level](04-production/59-bill-of-materials-explode-one-level/README.md) |
+| 60 | production | `04-production` | [Bank statement rows plus trailer checksum](04-production/60-bank-statement-rows-plus-trailer-checksum/README.md) |
+| 61 | production | `04-production` | [Pagination envelope for a list API](04-production/61-pagination-envelope-for-a-list-api/README.md) |
+| 62 | production | `04-production` | [Idempotency key from a natural key](04-production/62-idempotency-key-from-a-natural-key/README.md) |
+| 63 | production | `04-production` | [FIFO stock allocation across warehouses](04-production/63-fifo-stock-allocation-across-warehouses/README.md) |
+| 64 | production | `04-production` | [Nested GraphQL-style order to line rows](04-production/64-nested-graphql-style-order-to-line-rows/README.md) |
+| 65 | production | `04-production` | [Wrap a domain payload as CloudEvents 1.0](04-production/65-wrap-a-domain-payload-as-cloudevents-1-0/README.md) |
+| 66 | production | `04-production` | [Tenant config overlay (defaults < tenant < request)](04-production/66-tenant-config-overlay-defaults-tenant-request/README.md) |
+| 67 | production | `04-production` | [Windowed totals by account and business date](04-production/67-windowed-totals-by-account-and-business-date/README.md) |
+| 68 | production | `04-production` | [SOAP-like envelope: success vs fault](04-production/68-soap-like-envelope-success-vs-fault/README.md) |
+| 69 | production | `04-production` | [Product variants cartesian-joined to a price book](04-production/69-product-variants-cartesian-joined-to-a-price-book/README.md) |
+| 70 | production | `04-production` | [JSON Merge Patch (RFC 7396) plus changelog](04-production/70-json-merge-patch-rfc-7396-plus-changelog/README.md) |
+| 71 | production | `04-production` | [Batch API chunks with per-batch checksum](04-production/71-batch-api-chunks-with-per-batch-checksum/README.md) |
+| 72 | production | `04-production` | [Store-local business date from UTC plus offset hours](04-production/72-store-local-business-date-from-utc-plus-offset-hours/README.md) |
+| 73 | production | `04-production` | [Recursive BOM explode with cycle guard](04-production/73-recursive-bom-explode-with-cycle-guard/README.md) |
+| 74 | production | `04-production` | [Flatten nested JSON to dotted paths](04-production/74-flatten-nested-json-to-dotted-paths/README.md) |
+| 75 | production | `04-production` | [Scatter-gather: merge three connector responses](04-production/75-scatter-gather-merge-three-connector-responses/README.md) |
+| 76 | production | `04-production` | [Salesforce-style composite upsert records](04-production/76-salesforce-style-composite-upsert-records/README.md) |
+| 77 | production | `04-production` | [Keep latest version per id (upsert projection)](04-production/77-keep-latest-version-per-id-upsert-projection/README.md) |
+| 78 | production | `04-production` | [Catalog copy with locale fallback](04-production/78-catalog-copy-with-locale-fallback/README.md) |
+| 79 | production | `04-production` | [Log-safe HTTP headers (redact secrets)](04-production/79-log-safe-http-headers-redact-secrets/README.md) |
+| 80 | production | `04-production` | [SLA overdue flags (injected clock)](04-production/80-sla-overdue-flags-injected-clock/README.md) |
+| 81 | production | `04-production` | [Dead-letter / replay envelope](04-production/81-dead-letter-replay-envelope/README.md) |
+| 82 | production | `04-production` | [Heterogeneous payments to a canonical charge](04-production/82-heterogeneous-payments-to-a-canonical-charge/README.md) |
 
 ## How labs map to videos
 

@@ -1,0 +1,7 @@
+{
+  "accounts": [
+    { "sourceId": "E-1", "name": "Acme" },
+    { "sourceId": "E-2", "name": "" },
+    { "sourceId": "E-3", "name": "Globex" }
+  ]
+}

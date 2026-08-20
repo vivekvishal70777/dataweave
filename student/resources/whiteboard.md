@@ -23,3 +23,15 @@ Close solutions. Eight minutes each. Say the header out loud (`%dw 2.0`, `output
 2. Student voiceover optional: “Pause and try.”
 3. After 8 minutes, paste **only** the input, then type the solution from `instructor/solutions`.
 4. End with Q60 talk-through (namespaced XML → canonical JSON) from `sections/12-interview-bootcamp/LECTURE.md`.
+
+## Production whiteboard (after Labs 55–82)
+
+| # | Lab | Skill | Prompt in one sentence |
+| --- | --- | --- | --- |
+| 55 | `student/labs/04-production/55-canonical-order-api-with-line-errors/` | partial success | Canonical order; bad lines go to `errors[]`. |
+| 56 | `student/labs/04-production/56-customer-360-merge-with-field-precedence/` | golden record | MDM > CRM > ERP; nulls do not wipe. |
+| 63 | `student/labs/04-production/63-fifo-stock-allocation-across-warehouses/` | `reduce` remainder | Allocate by warehouse priority. |
+| 70 | `student/labs/04-production/70-json-merge-patch-rfc-7396-plus-changelog/` | merge patch | `null` deletes; return `changed` paths. |
+| 73 | `student/labs/04-production/73-recursive-bom-explode-with-cycle-guard/` | cycle guard | Explode BOM; stop on revisit. |
+| 75 | `student/labs/04-production/75-scatter-gather-merge-three-connector-responses/` | scatter-gather | 2xx in `ok`, failures in `errors[]`. |
+| 82 | `student/labs/04-production/82-heterogeneous-payments-to-a-canonical-charge/` | union `match` | card / upi / netbanking / other. |

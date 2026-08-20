@@ -1,0 +1,7 @@
+{
+  "responses": [
+    { "name": "crm", "status": 200, "body": { "id": "C1" } },
+    { "name": "erp", "status": 500, "body": { "error": "down" } },
+    { "name": "mdm", "status": 200, "body": { "id": "M1" } }
+  ]
+}

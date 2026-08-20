@@ -1,0 +1,8 @@
+{
+  "payments": [
+    { "method": "card", "last4": "4242", "authCode": "A1" },
+    { "method": "upi", "vpa": "asha@upi", "txnId": "U9" },
+    { "method": "netbanking", "bank": "HDFC", "refNo": "N3" },
+    { "method": "wallet", "id": "w1" }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "payments": [
+    { "accountId": "A1", "ts": "2026-08-20T10:00:00Z", "amount": 10 },
+    { "accountId": "A1", "ts": "2026-08-20T18:00:00Z", "amount": 5 },
+    { "accountId": "A2", "ts": "2026-08-21T01:00:00Z", "amount": 7 },
+    { "accountId": "A1", "ts": "2026-08-21T00:00:00Z", "amount": 1 }
+  ]
+}
