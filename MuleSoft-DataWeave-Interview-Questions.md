@@ -2,6 +2,8 @@
 
 A practical set of **60 DataWeave questions** for Mule 4 / DataWeave 2.x interviews, grouped by difficulty. Answers include short explanations and sample scripts you can discuss or write on a whiteboard.
 
+For hands-on coding drills (input → expected output → solution), see [DataWeave-Programming-Questions.md](DataWeave-Programming-Questions.md).
+
 ---
 
 ## Easy (Questions 1–20)
