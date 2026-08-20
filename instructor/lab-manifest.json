@@ -1,0 +1,380 @@
+[
+  {
+    "num": 1,
+    "title": "Map employee JSON to a shorter shape",
+    "slug": "map-employee-json-to-a-shorter-shape",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 2,
+    "title": "Filter paid orders",
+    "slug": "filter-paid-orders",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 3,
+    "title": "Sum array of numbers",
+    "slug": "sum-array-of-numbers",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 4,
+    "title": "Uppercase all string values in an object",
+    "slug": "uppercase-all-string-values-in-an-object",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 5,
+    "title": "Default missing email",
+    "slug": "default-missing-email",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 6,
+    "title": "Split a CSV line into fields",
+    "slug": "split-a-csv-line-into-fields",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 7,
+    "title": "Join array into a comma-separated string",
+    "slug": "join-array-into-a-comma-separated-string",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 8,
+    "title": "Add tax to price",
+    "slug": "add-tax-to-price",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 9,
+    "title": "Extract unique cities",
+    "slug": "extract-unique-cities",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 10,
+    "title": "Count items in an array",
+    "slug": "count-items-in-an-array",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 11,
+    "title": "Convert JSON array to XML with a root",
+    "slug": "convert-json-array-to-xml-with-a-root",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 12,
+    "title": "Read XML attributes",
+    "slug": "read-xml-attributes",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 13,
+    "title": "If/else grade from score",
+    "slug": "if-else-grade-from-score",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 14,
+    "title": "Index each element",
+    "slug": "index-each-element",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 15,
+    "title": "Flatten one level",
+    "slug": "flatten-one-level",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 16,
+    "title": "Object keys to array of `{ key, value }`",
+    "slug": "object-keys-to-array-of-key-value",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 17,
+    "title": "Boolean flag from string",
+    "slug": "boolean-flag-from-string",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 18,
+    "title": "First three characters of a code",
+    "slug": "first-three-characters-of-a-code",
+    "section": "01-fundamentals",
+    "level": "easy"
+  },
+  {
+    "num": 19,
+    "title": "Group orders by customer",
+    "slug": "group-orders-by-customer",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 20,
+    "title": "Total amount per customer",
+    "slug": "total-amount-per-customer",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 21,
+    "title": "Sort products by price descending",
+    "slug": "sort-products-by-price-descending",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 22,
+    "title": "Pivot array to object keyed by id",
+    "slug": "pivot-array-to-object-keyed-by-id",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 23,
+    "title": "Expand order lines (flatMap)",
+    "slug": "expand-order-lines-flatmap",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 24,
+    "title": "Remove password and ssn keys",
+    "slug": "remove-password-and-ssn-keys",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 25,
+    "title": "Merge two objects (right wins)",
+    "slug": "merge-two-objects-right-wins",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 26,
+    "title": "Update nested city to uppercase",
+    "slug": "update-nested-city-to-uppercase",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 27,
+    "title": "Parse mixed date formats",
+    "slug": "parse-mixed-date-formats",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 28,
+    "title": "Format `now()` as `dd-MMM-yyyy`",
+    "slug": "format-now-as-dd-mmm-yyyy",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 29,
+    "title": "CSV to JSON with number coercion",
+    "slug": "csv-to-json-with-number-coercion",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 30,
+    "title": "JSON to CSV",
+    "slug": "json-to-csv",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 31,
+    "title": "Left join orders to customers",
+    "slug": "left-join-orders-to-customers",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 32,
+    "title": "Join without `leftJoin` (groupBy lookup)",
+    "slug": "join-without-leftjoin-groupby-lookup",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 33,
+    "title": "Pattern match status codes",
+    "slug": "pattern-match-status-codes",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 34,
+    "title": "Window / paginate an array",
+    "slug": "window-paginate-an-array",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 35,
+    "title": "Deduplicate by email, keep last record",
+    "slug": "deduplicate-by-email-keep-last-record",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 36,
+    "title": "Dynamic object keys from an array of pairs",
+    "slug": "dynamic-object-keys-from-an-array-of-pairs",
+    "section": "02-intermediate",
+    "level": "moderate"
+  },
+  {
+    "num": 37,
+    "title": "Recursively flatten nested arrays",
+    "slug": "recursively-flatten-nested-arrays",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 38,
+    "title": "Collect all `id` fields at any depth",
+    "slug": "collect-all-id-fields-at-any-depth",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 39,
+    "title": "Deep mask PII keys (`ssn`, `password`, `email`)",
+    "slug": "deep-mask-pii-keys-ssn-password-email",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 40,
+    "title": "Recursively sum all numbers in a mixed tree",
+    "slug": "recursively-sum-all-numbers-in-a-mixed-tree",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 41,
+    "title": "XML namespaced order to canonical JSON",
+    "slug": "xml-namespaced-order-to-canonical-json",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 42,
+    "title": "Write XML with attributes and namespace",
+    "slug": "write-xml-with-attributes-and-namespace",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 43,
+    "title": "Diff two flat objects (changed keys)",
+    "slug": "diff-two-flat-objects-changed-keys",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 44,
+    "title": "Recursive nested diff",
+    "slug": "recursive-nested-diff",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 45,
+    "title": "Chunk array into batches of N (for bulk APIs)",
+    "slug": "chunk-array-into-batches-of-n-for-bulk-apis",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 46,
+    "title": "Running totals",
+    "slug": "running-totals",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 47,
+    "title": "Word frequency (case-insensitive)",
+    "slug": "word-frequency-case-insensitive",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 48,
+    "title": "Validate and partition good vs bad rows",
+    "slug": "validate-and-partition-good-vs-bad-rows",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 49,
+    "title": "Outer-join style merge of two lists by `id`",
+    "slug": "outer-join-style-merge-of-two-lists-by-id",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 50,
+    "title": "Tree map: apply `f` to every leaf string",
+    "slug": "tree-map-apply-f-to-every-leaf-string",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 51,
+    "title": "Combinations: cartesian product of two arrays",
+    "slug": "combinations-cartesian-product-of-two-arrays",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 52,
+    "title": "Safe divide with `try`",
+    "slug": "safe-divide-with-try",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 53,
+    "title": "Build a nested org chart from a flat list",
+    "slug": "build-a-nested-org-chart-from-a-flat-list",
+    "section": "03-advanced",
+    "level": "hard"
+  },
+  {
+    "num": 54,
+    "title": "Invoice: compute line totals, tax, and grand total",
+    "slug": "invoice-compute-line-totals-tax-and-grand-total",
+    "section": "03-advanced",
+    "level": "hard"
+  }
+]

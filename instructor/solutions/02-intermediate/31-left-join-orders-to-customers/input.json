@@ -1,0 +1,4 @@
+{
+  "orders": [{ "id": "O1", "customerId": "C1" }],
+  "customers": [{ "id": "C1", "name": "Asha" }]
+}

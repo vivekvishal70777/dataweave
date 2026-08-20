@@ -1,0 +1,5 @@
+[
+  { "id": "1", "name": "CEO", "managerId": null },
+  { "id": "2", "name": "Eng", "managerId": "1" },
+  { "id": "3", "name": "Dev", "managerId": "2" }
+]
