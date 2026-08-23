@@ -2,6 +2,8 @@
 
 Use this file as the **article lecture** and recording outline on Udemy.
 
+**Easy-word tutorials (one page per topic):** [`../../student/tutorials/13-industry-operators-and-mule-message/README.md`](../../student/tutorials/13-industry-operators-and-mule-message/README.md) (copies also in `tutorials/` next to this file).
+
 ## Learning objectives
 
 - Use Arrays helpers: maxBy, firstWith, zip, ranges.

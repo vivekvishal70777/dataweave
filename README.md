@@ -33,14 +33,17 @@ How to record, pause for practice, and package resources: [`instructor/TEACHING-
 
 Spoken scripts for every concept lecture and every lab video: [`instructor/transcripts/README.md`](instructor/transcripts/README.md).
 
+Easy-word tutorials (one file per topic, per section): [`student/tutorials/README.md`](student/tutorials/README.md).
+
 Copyright / Udemy rights (original labs vs third-party books): [`instructor/PUBLISHING-RIGHTS.md`](instructor/PUBLISHING-RIGHTS.md).
 
 ## Student quick start
 
 1. Read [`student/00-getting-started.md`](student/00-getting-started.md).
-2. Open [`student/labs/README.md`](student/labs/README.md).
-3. For each lab: paste `input.json` (or `input.txt`) into [DataWeave Playground](https://dataweave.mulesoft.com/learn/) or Transform Message, then complete `transform.dwl`.
-4. Take the section quiz under [`student/quizzes/`](student/quizzes/).
+2. Open [`student/tutorials/README.md`](student/tutorials/README.md) and read the easy concept pages for that section.
+3. Open [`student/labs/README.md`](student/labs/README.md).
+4. For each lab: paste `input.json` (or `input.txt`) into [DataWeave Playground](https://dataweave.mulesoft.com/learn/) or Transform Message, then complete `transform.dwl`.
+5. Take the section quiz under [`student/quizzes/`](student/quizzes/).
 
 ## Regenerating labs and lectures
 
@@ -49,6 +52,7 @@ If you edit the files in `reference/`, rebuild:
 ```bash
 python3 scripts/generate_udemy_labs.py
 python3 scripts/generate_udemy_lectures.py
+python3 scripts/generate_easy_tutorials.py
 ```
 
 ## Source material

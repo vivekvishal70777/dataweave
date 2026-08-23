@@ -2,6 +2,8 @@
 
 Use this file as the **article lecture** and recording outline on Udemy.
 
+**Easy-word tutorials (one page per topic):** [`../../student/tutorials/07-intermediate-transforms/README.md`](../../student/tutorials/07-intermediate-transforms/README.md) (copies also in `tutorials/` next to this file).
+
 ## Learning objectives
 
 - Use `groupBy`, `orderBy`, `distinctBy`, `reduce`, and `flatMap`.

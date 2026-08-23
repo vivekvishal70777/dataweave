@@ -2,6 +2,8 @@
 
 Use this file as the **article lecture** and recording outline on Udemy.
 
+**Easy-word tutorials (one page per topic):** [`../../student/tutorials/04-objects-nulls-and-selectors/README.md`](../../student/tutorials/04-objects-nulls-and-selectors/README.md) (copies also in `tutorials/` next to this file).
+
 ## Learning objectives
 
 - Choose `.` vs `[]` vs `.*` vs `..`.

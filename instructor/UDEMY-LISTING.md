@@ -56,7 +56,7 @@ Paste and adapt in the Udemy course form. Confirm runtime details against curren
 - 13 Udemy sections, ~50 lectures (videos + articles).
 - 58 starter labs with instructor solutions.
 - Section quizzes + final interview practice test.
-- Cheat sheet and whiteboard problem list.
+- Cheat sheet, easy-word tutorials (one page per topic), and whiteboard problem list.
 
 ## Section list (curriculum UI)
 

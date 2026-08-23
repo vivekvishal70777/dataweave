@@ -232,6 +232,8 @@ def write_section(sec: dict, questions: dict[int, tuple[str, str]]) -> None:
         "",
         "Use this file as the **article lecture** and recording outline on Udemy.",
         "",
+        f"**Easy-word tutorials (one page per topic):** [`../../student/tutorials/{sec['id']}/README.md`](../../student/tutorials/{sec['id']}/README.md) (copies also in `tutorials/` next to this file).",
+        "",
         "## Learning objectives",
         "",
     ]

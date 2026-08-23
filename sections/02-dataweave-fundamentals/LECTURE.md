@@ -2,6 +2,8 @@
 
 Use this file as the **article lecture** and recording outline on Udemy.
 
+**Easy-word tutorials (one page per topic):** [`../../student/tutorials/02-dataweave-fundamentals/README.md`](../../student/tutorials/02-dataweave-fundamentals/README.md) (copies also in `tutorials/` next to this file).
+
 ## Learning objectives
 
 - Describe DataWeave and the Mule 4 script header.

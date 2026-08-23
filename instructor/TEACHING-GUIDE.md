@@ -3,7 +3,7 @@
 ## Pedagogy (keep every section to this loop)
 
 1. **Hook (30–60s)** — a before/after payload (ugly input → clean API JSON).
-2. **Concept (3–7 min)** — one idea; use the Q&A in `sections/*/LECTURE.md`.
+2. **Concept (3–7 min)** — one idea; use the easy tutorial in `student/tutorials/<section>/` then the Q&A in `sections/*/LECTURE.md`.
 3. **Live demo (5–10 min)** — start from the **student starter**, not the finished script.
 4. **Pause card** — “Pause and try Lab NN. Resume when you have an attempt.”
 5. **Solution recap (3–6 min)** — open `instructor/solutions`, compare 1–2 student pitfalls.
@@ -20,7 +20,7 @@ Before you hit publish: you do **not** need a license from MuleSoft or a book au
 | Curriculum sections / lectures | `instructor/CURRICULUM.md` |
 | Landing page copy | `instructor/UDEMY-LISTING.md` |
 | Resources per section | Zip of `student/labs/<that-section>/` + `student/quizzes/` |
-| Article lectures | `sections/*/LECTURE.md` (optional; long Q&A is also interview revision) |
+| Article lectures | Easy tutorials: `student/tutorials/<section>/` (one page per topic). Longer Q&A: `sections/*/LECTURE.md` |
 | Captions / slides | Optional; cheat sheet `student/resources/cheat-sheet.md` |
 
 **Never** attach `instructor/solutions` or `ANSWER-KEY.md` as early-section resources. Options:

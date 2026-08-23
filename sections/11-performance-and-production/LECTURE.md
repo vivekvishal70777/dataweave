@@ -2,6 +2,8 @@
 
 Use this file as the **article lecture** and recording outline on Udemy.
 
+**Easy-word tutorials (one page per topic):** [`../../student/tutorials/11-performance-and-production/README.md`](../../student/tutorials/11-performance-and-production/README.md) (copies also in `tutorials/` next to this file).
+
 ## Learning objectives
 
 - Name what breaks DataWeave streaming.

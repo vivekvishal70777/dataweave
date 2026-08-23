@@ -2,6 +2,8 @@
 
 Use this file as the **article lecture** and recording outline on Udemy.
 
+**Easy-word tutorials (one page per topic):** [`../../student/tutorials/08-dates-match-and-errors/README.md`](../../student/tutorials/08-dates-match-and-errors/README.md) (copies also in `tutorials/` next to this file).
+
 ## Learning objectives
 
 - Parse and format dates; use period literals.
