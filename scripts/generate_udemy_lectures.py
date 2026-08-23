@@ -82,7 +82,7 @@ SECTIONS = [
         ],
         "talking": [
             "Trap: `+` on strings. Demo the error, then fix with `++`.",
-            "Lab 13 grades as the if/else pattern students will reuse.",
+            "Lab 13 HTTP retry class is the if/else pattern. Mention `write`/`read` (Q19) as a production follow-up.",
         ],
     },
     {
@@ -96,7 +96,7 @@ SECTIONS = [
             "Round-trip CSV with headers and number coercion.",
         ],
         "talking": [
-            "Same payload, three outputs: JSON, XML, CSV — three short clips.",
+            "JSON to XML (single root). SOAP/namespaces wait until the advanced section.",
             "Stress: XML needs one root; CSV keys become headers.",
         ],
     },
@@ -111,7 +111,7 @@ SECTIONS = [
             "Scope locals with `do`.",
         ],
         "talking": [
-            "Hero demo: Lab 20 totals per customer, then Lab 23 flatMap lines.",
+            "Hero demo: Lab 20 totals per customer (coerce string amounts), then Lab 23 flatMap lines.",
             "Show `update` and mention Mule 4.3+ (Q26).",
         ],
     },
@@ -156,7 +156,7 @@ SECTIONS = [
             "Build diffs, org charts, and invoice totals.",
         ],
         "talking": [
-            "Split into 4–5 videos: recursion, XML ns, dynamic keys, capstone invoice (Lab 54).",
+            "Split into 4–5 videos: recursion, SOAP ns (Lab 41), dynamic keys, capstone invoice (Lab 54).",
             "Lab 39 PII mask as a production story.",
         ],
     },
@@ -179,7 +179,7 @@ SECTIONS = [
         "id": "12-interview-bootcamp",
         "title": "Interview bootcamp",
         "qs": list(range(1, 61)),
-        "labs": [20, 23, 32, 39, 53, 54],
+        "labs": [20, 23, 32, 39, 41, 53, 54],
         "objectives": [
             "Answer the 60-question bank out loud.",
             "Whiteboard the six signature programs.",

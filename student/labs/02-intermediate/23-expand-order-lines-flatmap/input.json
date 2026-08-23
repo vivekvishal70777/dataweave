@@ -1,6 +1,9 @@
 [
   {
-    "orderId": "O1",
-    "items": [{ "sku": "A" }, { "sku": "B" }]
+    "orderId": "O-1001",
+    "items": [
+      { "sku": "SKU-A", "qty": 2 },
+      { "sku": "SKU-B", "qty": 1 }
+    ]
   }
 ]

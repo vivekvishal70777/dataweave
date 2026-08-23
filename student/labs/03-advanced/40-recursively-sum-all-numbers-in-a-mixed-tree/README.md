@@ -12,7 +12,15 @@
 
 ## Problem
 
-**Input:** `{ "a": 1, "b": [2, { "c": 3 }], "d": "skip" }` → `6`
+**Problem:** Sum numeric leaves in a mixed JSON document; ignore strings.
+
+**Input:**
+
+```json
+{ "a": 1, "b": [2, { "c": 3.5 }], "d": "skip" }
+```
+
+**Expected:** `6.5`
 
 **Solution:** Hidden until you try it. See `instructor/solutions`.
 

@@ -16,18 +16,18 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 29. CSV to JSON with number coercion. Incoming CSV (header row): `Name,Amount` / `Asha,10.5`
+This is Lab 29. CSV to JSON with number coercion. Incoming CSV with header. Coerce `Amount` to Number. MIME `application/csv`.
 
-CSV reads as an array of objects when header is true. Coerce amount as Number.
+CSV with header becomes an array of objects. Coerce Amount as Number.
 
 ## Part 2 — Input
 
 **SAY:** Paste this payload. Set the MIME type to match the sample.
 
-```text
-Name,Amount
-Asha,10.5
-Ben,3
+```csv
+Name,Amount,City
+Asha,10.5,Pune
+Ben,3,Mumbai
 ```
 
 ## PAUSE CARD (hold 3–5 seconds)
@@ -57,19 +57,25 @@ output application/json
 ---
 payload map {
   name: $.Name,
-  amount: $.Amount as Number
+  amount: $.Amount as Number,
+  city: $.City
 }
 ```
 
 **SAY:** That should match Expected:
 
-_No expected block in the reference drill; run the solution on camera and show the preview._
+```
+[
+  { "name": "Asha", "amount": 10.5, "city": "Pune" },
+  { "name": "Ben", "amount": 3, "city": "Mumbai" }
+]
+```
 
 ## Part 4 — Interview phrase and close
 
 **SAY:**
 
-CSV reads as an array of objects when header is true. Coerce amount as Number.
+CSV with header becomes an array of objects. Coerce Amount as Number.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 
@@ -80,6 +86,15 @@ Stop. Do not start Lab 30 in this file.
 # Instructor solution — Lab 29
 
 CSV to JSON with number coercion
+
+## Expected
+
+```
+[
+  { "name": "Asha", "amount": 10.5, "city": "Pune" },
+  { "name": "Ben", "amount": 3, "city": "Mumbai" }
+]
+```
 
 ## Teaching tip
 

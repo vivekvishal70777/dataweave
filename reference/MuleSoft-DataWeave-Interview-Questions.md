@@ -1,6 +1,6 @@
 # MuleSoft DataWeave Interview Questions and Answers
 
-A practical set of **60 DataWeave questions** for Mule 4 / DataWeave 2.x interviews, grouped by difficulty. Answers include short explanations and sample scripts you can discuss or write on a whiteboard.
+A practical set of **60 DataWeave questions** for **Mule 4 / DataWeave 2.x production interviews**. Answers include the syntax plus what a senior interviewer expects next (streaming, N+1, money rounding, namespaces). Pair with the industry-shaped drills in [DataWeave-Programming-Questions.md](DataWeave-Programming-Questions.md).
 
 For hands-on coding drills (input → expected output → solution), see [DataWeave-Programming-Questions.md](DataWeave-Programming-Questions.md).
 
@@ -57,7 +57,7 @@ var taxRate = 0.18
 }
 ```
 
-Variables are immutable.
+Variables are immutable. Comments: `//` and `/* */` in header or body.
 
 ### 5. How do you define a custom function?
 
@@ -239,17 +239,21 @@ In Transform Message you can also map from the **input graph** (`payload`, `vars
 
 Both use DataWeave 2 in Mule 4.
 
-### 19. How do you add comments in DataWeave?
+### 19. How do you `write` and `read` data inside a script?
 
-**Answer:**
+**Answer:** Use `write(value, mimeType, properties)` to serialize a value to String/Binary without changing the Transform **output** MIME, and `read(binaryOrString, mimeType)` to parse. Typical interview case: log a JSON snapshot, or parse a JSON **string field** inside XML/CSV.
 
 ```dataweave
-// single line
-/* multi
-   line */
+%dw 2.0
+output application/json
+---
+{
+  asText: write(payload.order, "application/json", { indent: false }),
+  nested: read(payload.jsonBlob, "application/json")
+}
 ```
 
-Comments can appear in header and body.
+This is **not** the same as `output application/json` on the script (that sets the Mule payload writer). Follow-up: huge `write(payload)` can break streaming.
 
 ### 20. What does `output application/json skipNullOn="everywhere"` do?
 
@@ -877,7 +881,10 @@ Mention `dw::util::Values::mask` / `update` with cases for known paths. Hard fol
 7. Recursive functions without considering depth  
 8. Converting entire files to Java `HashMap` unnecessarily  
 
-Fix pattern: index the right-hand collection once (`groupBy` id), then `map` the left side with O(1)/O(k) lookups.
+9. Money as floating `Number` without a `format` round-trip (prefer `fun money`)  
+10. Putting connector I/O (`lookup`, HTTP) inside Transform Message instead of before/after the map  
+
+Fix pattern: index the right-hand collection once (`groupBy` id), then `map` the left side with O(1)/O(k) lookups. Coerce dirty strings once. Mask PII before `log`.
 
 ### 59. How do you write an infix-friendly custom function and use lambdas as arguments (higher-order functions)?
 
@@ -901,14 +908,14 @@ Many core functions (`map`, `filter`, `reduce`) are higher-order. Interviewers m
 
 **Answer:** A strong verbal solution covers:
 
-1. **Reader:** XML with namespaces; use `ns` and `.*lineItem`.  
-2. **Normalize:** attributes `@sku` → fields; dates with `as DateTime {format:...}`.  
-3. **Enrich:** tax/total via `do` / `fun` (`line = qty * price`, `orderTotal = sum`).  
-4. **Join:** customer from `vars.customer` (already fetched—not `lookup` per line).  
-5. **Shape:** canonical keys (`orderId`, `currency`, `lines[]`).  
+1. **Reader:** SOAP or namespaced XML; declare each `ns`; `Envelope/Body` then `.*Line`.  
+2. **Normalize:** attributes `@sku` → fields; dirty money `as Number`; dates with explicit `{format:...}`.  
+3. **Enrich:** tax/total via `do` / `fun money` (`line = qty * price * (1 - discount)`).  
+4. **Join:** customer from `vars.customer` already fetched — **not** `lookup` per line.  
+5. **Shape:** canonical keys (`orderId`, `currency`, `lines[]`); drop zero-qty lines.  
 6. **Writer:** `application/json skipNullOn="everywhere"`.  
-7. **Errors:** invalid price `try` → route to dead-letter field `errors[]`.  
-8. **Scale:** one-pass `map` on line items; no `orderBy` unless required.
+7. **Errors:** invalid price `try` → `errors[]`, do not fail the whole batch unless the SLA says so.  
+8. **Scale:** one-pass `map` on line items; no `orderBy` unless the API contract requires sorted lines.
 
 Sketch:
 

@@ -16,9 +16,9 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 23. Expand order lines (flatMap). One row per line item with `orderId` and `sku`.
+This is Lab 23. Expand order lines (flatMap). One canonical row per line: `orderId`, `sku`, `qty`. Nested `items` must not remain nested arrays.
 
-flatMap is map then flatten. One output row per line item, carrying orderId.
+flatMap expands 1-to-many. Default empty items so missing arrays do not fail.
 
 ## Part 2 — Input
 
@@ -27,8 +27,11 @@ flatMap is map then flatten. One output row per line item, carrying orderId.
 ```json
 [
   {
-    "orderId": "O1",
-    "items": [{ "sku": "A" }, { "sku": "B" }]
+    "orderId": "O-1001",
+    "items": [
+      { "sku": "SKU-A", "qty": 2 },
+      { "sku": "SKU-B", "qty": 1 }
+    ]
   }
 ]
 ```
@@ -59,22 +62,28 @@ _End recording part 1 here if you split files. Start part 2 as `LAB-23-expand-or
 output application/json
 ---
 payload flatMap ((order) ->
-  order.items map (item) -> {
+  (order.items default []) map (item) -> {
     orderId: order.orderId,
-    sku: item.sku
+    sku: item.sku,
+    qty: item.qty as Number
   }
 )
 ```
 
 **SAY:** That should match Expected:
 
-`[{ "orderId": "O1", "sku": "A" }, { "orderId": "O1", "sku": "B" }]`
+```
+[
+  { "orderId": "O-1001", "sku": "SKU-A", "qty": 2 },
+  { "orderId": "O-1001", "sku": "SKU-B", "qty": 1 }
+]
+```
 
 ## Part 4 — Interview phrase and close
 
 **SAY:**
 
-flatMap is map then flatten. One output row per line item, carrying orderId.
+flatMap expands 1-to-many. Default empty items so missing arrays do not fail.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 
@@ -86,9 +95,14 @@ Stop. Do not start Lab 24 in this file.
 
 Expand order lines (flatMap)
 
-## Expected (note)
+## Expected
 
-`[{ "orderId": "O1", "sku": "A" }, { "orderId": "O1", "sku": "B" }]`
+```
+[
+  { "orderId": "O-1001", "sku": "SKU-A", "qty": 2 },
+  { "orderId": "O-1001", "sku": "SKU-B", "qty": 1 }
+]
+```
 
 ## Teaching tip
 

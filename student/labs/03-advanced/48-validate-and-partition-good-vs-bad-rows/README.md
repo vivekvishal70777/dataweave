@@ -12,7 +12,19 @@
 
 ## Problem
 
-**Problem:** A row is valid if `email` contains `"@"` and `age` is a Number `>= 18`. Return `{ valid, invalid }`.
+**Problem:** Valid if `email` contains `"@"` and `age` as Number `>= 18`. Return `{ valid, invalid }`. Coercion failures are invalid (`try`).
+
+**Input:**
+
+```json
+[
+  { "email": "a@acme.com", "age": 20 },
+  { "email": "bad", "age": 17 },
+  { "email": "b@acme.com", "age": "x" }
+]
+```
+
+**Expected:** one valid, two invalid.
 
 **Solution:** Hidden until you try it. See `instructor/solutions`.
 

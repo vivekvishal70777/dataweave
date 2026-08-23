@@ -10,7 +10,7 @@ Use this file as the **article lecture** and recording outline on Udemy.
 
 ## Suggested video breakdown
 
-- Hero demo: Lab 20 totals per customer, then Lab 23 flatMap lines.
+- Hero demo: Lab 20 totals per customer (coerce string amounts), then Lab 23 flatMap lines.
 - Show `update` and mention Mule 4.3+ (Q26).
 
 ## Labs in this section

@@ -16,16 +16,16 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 16. Object keys to array of `{ key, value }`. Convert `{ "a": 1, "b": 2 }` to entries.
+This is Lab 16. Object keys to array of `{ key, value }`. Convert a config object `{ "timeout": 30, "retries": 3 }` to entries for logging or CSV.
 
-pluck turns an object into an array of key-value pairs. mapObject would keep an object.
+pluck turns a config object into loggable key-value rows.
 
 ## Part 2 — Input
 
 **SAY:** Paste this payload. Set the MIME type to match the sample.
 
 ```json
-{ "a": 1, "b": 2 }
+{ "timeout": 30, "retries": 3 }
 ```
 
 ## PAUSE CARD (hold 3–5 seconds)
@@ -53,18 +53,20 @@ _End recording part 1 here if you split files. Start part 2 as `LAB-16-object-ke
 %dw 2.0
 output application/json
 ---
-payload pluck ((v, k) -> { key: k, value: v })
+payload pluck ((v, k) -> { key: k as String, value: v })
 ```
 
 **SAY:** That should match Expected:
 
-_No expected block in the reference drill; run the solution on camera and show the preview._
+```
+[{ "key": "timeout", "value": 30 }, { "key": "retries", "value": 3 }]
+```
 
 ## Part 4 — Interview phrase and close
 
 **SAY:**
 
-pluck turns an object into an array of key-value pairs. mapObject would keep an object.
+pluck turns a config object into loggable key-value rows.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 
@@ -75,6 +77,12 @@ Stop. Do not start Lab 17 in this file.
 # Instructor solution — Lab 16
 
 Object keys to array of `{ key, value }`
+
+## Expected
+
+```
+[{ "key": "timeout", "value": 30 }, { "key": "retries", "value": 3 }]
+```
 
 ## Teaching tip
 

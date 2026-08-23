@@ -12,7 +12,24 @@
 
 ## Problem
 
-**Problem:** Incoming CSV (header row): `Name,Amount` / `Asha,10.5`
+**Problem:** Incoming CSV with header. Coerce `Amount` to Number. MIME `application/csv`.
+
+**Input:**
+
+```csv
+Name,Amount,City
+Asha,10.5,Pune
+Ben,3,Mumbai
+```
+
+**Expected:**
+
+```json
+[
+  { "name": "Asha", "amount": 10.5, "city": "Pune" },
+  { "name": "Ben", "amount": 3, "city": "Mumbai" }
+]
+```
 
 **Solution:** Hidden until you try it. See `instructor/solutions`.
 

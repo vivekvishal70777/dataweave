@@ -12,7 +12,15 @@
 
 ## Problem
 
-**Problem:** Uppercase every string leaf; leave numbers as-is.
+**Problem:** Uppercase every string leaf; leave numbers as-is. Same recursion skeleton as PII mask.
+
+**Input:**
+
+```json
+{ "a": "ok", "b": 2, "c": ["wait", 3] }
+```
+
+**Expected:** `{ "a": "OK", "b": 2, "c": ["WAIT", 3] }`
 
 **Solution:** Hidden until you try it. See `instructor/solutions`.
 

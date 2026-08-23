@@ -12,7 +12,13 @@
 
 ## Problem
 
-**Input:** `[1, [2, [3, 4], 5], 6]`
+**Problem:** Deep-flatten mixed arrays to a single list of leaves. One `flatten` is **not** enough.
+
+**Input:**
+
+```json
+[1, [2, [3, 4], 5], 6]
+```
 
 **Expected:** `[1, 2, 3, 4, 5, 6]`
 

@@ -707,12 +707,11 @@ def format_input(lab_src: dict) -> str:
     n = lab_src.get("num")
     raw = lab_src.get("input_json")
     if raw:
-        if lab_src.get("input_is_raw"):
-            return f"```text\n{raw}\n```"
-        stripped = raw.strip()
-        if stripped.startswith("<"):
-            return f"```xml\n{raw}\n```"
-        return f"```json\n{raw}\n```"
+        lang = lab_src.get("input_lang") or (
+            "text" if lab_src.get("input_is_raw") else "json"
+        )
+        fence = {"json": "json", "xml": "xml", "csv": "csv", "text": "text"}.get(lang, "text")
+        return f"```{fence}\n{raw}\n```"
     if n in DEMO_PAYLOADS:
         kind, sample = DEMO_PAYLOADS[n]
         if "Set vars" in sample or "Also set" in sample or "now() ignores" in sample:

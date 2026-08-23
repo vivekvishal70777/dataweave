@@ -1,4 +1,4 @@
-# Lab 22 — Pivot array to object keyed by id
+# Lab 22 — Pivot array to object keyed by Id
 
 **Level:** moderate  
 **Section folder:** `02-intermediate`
@@ -12,7 +12,22 @@
 
 ## Problem
 
-**Problem:** `[{ "id": "u1", "name": "Asha" }]` → `{ "u1": "Asha" }`
+**Problem:** `[{ "Id": "001xxA", "Name": "Acme" }]` → `{ "001xxA": "Acme" }` for O(1) lookup. Dynamic key **must** use parentheses.
+
+**Input:**
+
+```json
+[
+  { "Id": "001xxA", "Name": "Acme Corp" },
+  { "Id": "001xxB", "Name": "Globex" }
+]
+```
+
+**Expected:**
+
+```json
+{ "001xxA": "Acme Corp", "001xxB": "Globex" }
+```
 
 **Solution:** Hidden until you try it. See `instructor/solutions`.
 

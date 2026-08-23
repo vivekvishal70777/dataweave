@@ -1,6 +1,12 @@
 # Instructor solution — Lab 22
 
-Pivot array to object keyed by id
+Pivot array to object keyed by Id
+
+## Expected
+
+```
+{ "001xxA": "Acme Corp", "001xxB": "Globex" }
+```
 
 ## Teaching tip
 

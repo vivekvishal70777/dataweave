@@ -73,8 +73,7 @@ Do not ship this file in the student zip.
 3. B  
 4. B  
 5. B  
-
-## Quiz 10 — Production
+6. B
 
 1. B  
 2. B  

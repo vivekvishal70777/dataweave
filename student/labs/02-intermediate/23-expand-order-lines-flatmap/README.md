@@ -12,20 +12,30 @@
 
 ## Problem
 
-**Problem:** One row per line item with `orderId` and `sku`.
+**Problem:** One canonical row per line: `orderId`, `sku`, `qty`. Nested `items` must not remain nested arrays.
 
 **Input:**
 
 ```json
 [
   {
-    "orderId": "O1",
-    "items": [{ "sku": "A" }, { "sku": "B" }]
+    "orderId": "O-1001",
+    "items": [
+      { "sku": "SKU-A", "qty": 2 },
+      { "sku": "SKU-B", "qty": 1 }
+    ]
   }
 ]
 ```
 
-**Expected:** `[{ "orderId": "O1", "sku": "A" }, { "orderId": "O1", "sku": "B" }]`
+**Expected:**
+
+```json
+[
+  { "orderId": "O-1001", "sku": "SKU-A", "qty": 2 },
+  { "orderId": "O-1001", "sku": "SKU-B", "qty": 1 }
+]
+```
 
 **Solution:** Hidden until you try it. See `instructor/solutions`.
 

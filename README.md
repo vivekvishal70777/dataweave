@@ -56,4 +56,4 @@ python3 scripts/generate_udemy_lectures.py
 - 60 theory questions: `reference/MuleSoft-DataWeave-Interview-Questions.md`
 - 54 coding drills: `reference/DataWeave-Programming-Questions.md`
 
-Aligned with **DataWeave 2.x / Mule 4** (`update` and some `dw::core::Arrays` helpers need **Mule 4.3+**).
+Aligned with **DataWeave 2.x / Mule 4** production interviews (`update`, `leftJoin`, `divideBy` need **Mule 4.3+**). Labs use Salesforce-shaped JSON, SOAP/XML, dirty CSV, and CDC diffs — not toy `{ "a": 1 }` examples.

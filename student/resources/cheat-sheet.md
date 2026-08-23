@@ -109,6 +109,8 @@ import leftJoin from dw::core::Arrays
 
 Interview default: index once with `groupBy`, then `map`. Avoid `lookup` inside `map`.
 
+Money: `fun money(n) = n as String {format: "0.00"} as Number`. Coerce CSV/ERP strings with `as Number` first.
+
 ## Streaming breaks when you…
 
 `sizeOf(payload)`, `orderBy`, `groupBy`, `distinctBy`, full `reduce`, touching payload twice, `payload as String`.

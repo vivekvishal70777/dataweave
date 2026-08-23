@@ -2,6 +2,10 @@
 
 Recursive nested diff
 
+## Expected (note)
+
+`{ "nested": { "y": { "from": 2, "to": 9 } } }` (shape may wrap `from`/`to`).
+
 ## Teaching tip
 
 Demo the failing starter (`payload` passthrough) first, then build the script live.

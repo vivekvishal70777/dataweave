@@ -16,16 +16,20 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 48. Validate and partition good vs bad rows. A row is valid if `email` contains `"@"` and `age` is a Number `>= 18`. Return `{ valid, invalid }`.
+This is Lab 48. Validate and partition good vs bad rows. Valid if `email` contains `"@"` and `age` as Number `>= 18`. Return `{ valid, invalid }`. Coercion failures are invalid (`try`).
 
-Partition with groupBy a boolean or two filters. Call out valid versus errors.
+Partition with try on age. Invalid coercion is invalid, not default.
 
 ## Part 2 — Input
 
 **SAY:** Paste this payload. Set the MIME type to match the sample.
 
 ```json
-[{ "email": "a@x.com", "age": 20 }, { "email": "bad", "age": 17 }, { "email": "b@x.com", "age": "x" }]
+[
+  { "email": "a@acme.com", "age": 20 },
+  { "email": "bad", "age": 17 },
+  { "email": "b@acme.com", "age": "x" }
+]
 ```
 
 ## PAUSE CARD (hold 3–5 seconds)
@@ -67,13 +71,13 @@ fun isValid(r) = do {
 
 **SAY:** That should match Expected:
 
-_No expected block in the reference drill; run the solution on camera and show the preview._
+one valid, two invalid.
 
 ## Part 4 — Interview phrase and close
 
 **SAY:**
 
-Partition with groupBy a boolean or two filters. Call out valid versus errors.
+Partition with try on age. Invalid coercion is invalid, not default.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 
@@ -84,6 +88,10 @@ Stop. Do not start Lab 49 in this file.
 # Instructor solution — Lab 48
 
 Validate and partition good vs bad rows
+
+## Expected (note)
+
+one valid, two invalid.
 
 ## Teaching tip
 

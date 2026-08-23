@@ -12,7 +12,7 @@ Optional: Mule runtime **4.3+** for the `update` operator and newer Array helper
 ## Lab ritual (use this every time)
 
 1. Open `student/labs/…/README.md` and read the problem.
-2. Copy the sample input. Set MIME type to `application/json` unless the lab says XML or CSV.
+2. Copy the sample (`input.json`, `input.xml`, `input.csv`, or `input.txt`). Set MIME type to match.
 3. Replace the `// TODO` body in `transform.dwl`. Leave the `%dw 2.0` / `output` header unless the lab needs XML/CSV output.
 4. Compare your result to **Expected**.
 5. Only then look at `instructor/solutions/…/solution.dwl` (if your instructor published solutions) or the solution video.

@@ -12,6 +12,8 @@
 
 ## Problem
 
+**Problem:** Return every `id` in a nested integration payload. Descendant `payload..id` is acceptable; be ready to recurse if the interviewer forbids `..`.
+
 **Input:**
 
 ```json
@@ -21,11 +23,9 @@
 }
 ```
 
-**Expected:** `["root", "c1", "i1"]` (order may follow tree walk)
+**Expected:** `["root", "c1", "i1"]` (walk order may vary)
 
 **Solution:** Hidden until you try it. See `instructor/solutions`.
-
-(Descendant selector. For a custom walk, recurse with `match` on Array/Object.)
 
 ## Files
 

@@ -1,6 +1,10 @@
 # Instructor solution — Lab 32
 
-Join without `leftJoin` (groupBy lookup)
+Join without leftJoin (groupBy lookup)
+
+## Expected (note)
+
+same as Lab 31.
 
 ## Teaching tip
 

@@ -1,0 +1,4 @@
+{
+  "base": { "timeout": 30, "retries": 2, "region": "us-east-1" },
+  "overlay": { "retries": 5, "region": "ap-south-1" }
+}

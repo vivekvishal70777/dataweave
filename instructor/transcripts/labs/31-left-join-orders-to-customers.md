@@ -16,9 +16,9 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 31. Left join orders to customers. `payload.orders` left-join `payload.customers` on `customerId` / `id`. Output `orderId`, `customerName` (`null` if missing).
+This is Lab 31. Left join orders to customers. `payload.orders` left-join `payload.customers` on `customerId` / `id`. Output `orderId`, `customerName` (`null` if missing). Include the unmatched order.
 
-leftJoin from dw::core::Arrays. Result has l and r. Null r means no customer.
+leftJoin result has l and r. Null r is the unmatched order — include it.
 
 ## Part 2 — Input
 
@@ -26,8 +26,11 @@ leftJoin from dw::core::Arrays. Result has l and r. Null r means no customer.
 
 ```json
 {
-  "orders": [{ "id": "O1", "customerId": "C1" }],
-  "customers": [{ "id": "C1", "name": "Asha" }]
+  "orders": [
+    { "id": "O1", "customerId": "C1" },
+    { "id": "O2", "customerId": "C9" }
+  ],
+  "customers": [{ "id": "C1", "name": "Asha Rao" }]
 }
 ```
 
@@ -66,13 +69,13 @@ leftJoin(payload.orders, payload.customers, (o) -> o.customerId, (c) -> c.id)
 
 **SAY:** That should match Expected:
 
-_No expected block in the reference drill; run the solution on camera and show the preview._
+O1 named, O2 `customerName` null.
 
 ## Part 4 — Interview phrase and close
 
 **SAY:**
 
-leftJoin from dw::core::Arrays. Result has l and r. Null r means no customer.
+leftJoin result has l and r. Null r is the unmatched order — include it.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 
@@ -83,6 +86,10 @@ Stop. Do not start Lab 32 in this file.
 # Instructor solution — Lab 31
 
 Left join orders to customers
+
+## Expected (note)
+
+O1 named, O2 `customerName` null.
 
 ## Teaching tip
 

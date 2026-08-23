@@ -12,7 +12,13 @@
 
 ## Problem
 
-**Problem:** Split `"Asha,IT,Pune"` on comma.
+**Problem:** Split a single inbound line `"Asha,IT,Pune"` on comma (no quoted commas). Output an array of fields.
+
+**Input:**
+
+```text
+Asha,IT,Pune
+```
 
 **Expected:** `["Asha", "IT", "Pune"]`
 

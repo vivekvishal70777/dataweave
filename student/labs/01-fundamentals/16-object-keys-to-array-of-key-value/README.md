@@ -12,7 +12,19 @@
 
 ## Problem
 
-**Problem:** Convert `{ "a": 1, "b": 2 }` to entries.
+**Problem:** Convert a config object `{ "timeout": 30, "retries": 3 }` to entries for logging or CSV.
+
+**Input:**
+
+```json
+{ "timeout": 30, "retries": 3 }
+```
+
+**Expected:**
+
+```json
+[{ "key": "timeout", "value": 30 }, { "key": "retries", "value": 3 }]
+```
 
 **Solution:** Hidden until you try it. See `instructor/solutions`.
 

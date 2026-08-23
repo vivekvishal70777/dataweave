@@ -4,11 +4,11 @@ Paste and adapt in the Udemy course form. Confirm runtime details against curren
 
 ## Title (≤ 60 characters recommended)
 
-`DataWeave 2.0 for Mule 4: Labs + Interview Prep`
+`DataWeave 2.0: Industry Labs + Hard Interview Prep`
 
 ## Subtitle
 
-`Learn DataWeave by transforming JSON, XML, and CSV — 54 coding labs and 60 interview questions.`
+`Mule 4 mappings — Salesforce-shaped JSON, SOAP/XML, CSV, CDC diffs, 54 labs and 60 interview questions.`
 
 ## Course image text (optional)
 
@@ -16,7 +16,7 @@ Paste and adapt in the Udemy course form. Confirm runtime details against curren
 
 ## Promotional video outline (60–90 seconds)
 
-1. Show a nested order JSON becoming a clean invoice (Lab 54).
+1. Show SOAP/namespaced XML becoming a canonical invoice JSON (Lab 41 + Lab 54).
 2. “You will write 54 scripts and answer 60 interview questions.”
 3. Flash the student lab folder (starter vs later solution).
 4. Who it is for: MuleSoft developers, integration engineers, interview candidates.
@@ -39,8 +39,9 @@ Paste and adapt in the Udemy course form. Confirm runtime details against curren
 - Map, filter, group, reduce, and flatten arrays and objects.
 - Convert JSON ↔ XML ↔ CSV, including XML attributes and namespaces.
 - Handle nulls, types, dates, `match`, and `try`.
-- Join data with `leftJoin` or a `groupBy` lookup.
-- Recursively mask PII, diff objects, and build an org chart.
+- Coerce dirty money strings, round with `fun money`, and skip zero-qty lines.
+- Join with `leftJoin` or a `groupBy` lookup (and say why not `lookup` inside `map`).
+- Recursively mask PII, diff CDC payloads, walk SOAP namespaces, and build an org chart.
 - Explain streaming, performance pitfalls, and when not to use `lookup` inside `map`.
 - Answer 60 interview questions with short scripts on a whiteboard.
 

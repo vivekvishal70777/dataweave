@@ -29,3 +29,9 @@
    - B) Objects with `mapObject` and arrays with `map`, matching secret key names
    - C) Only CSV
    - D) Only `vars`
+
+6. A SOAP purchase order inside `Envelope/Body` with prefix `ord` is typically selected with:
+   - A) `payload.ord.PurchaseOrder` only
+   - B) `ns` declarations plus `payload.soap#Envelope.soap#Body.ord#PurchaseOrder`
+   - C) `p("soap")`
+   - D) `lookup("soap")`

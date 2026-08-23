@@ -1,0 +1,9 @@
+{
+  "taxRate": 0.18,
+  "currency": "INR",
+  "lines": [
+    { "sku": "SKU-A", "qty": 2, "price": 50, "discountPct": 0.10 },
+    { "sku": "SKU-B", "qty": 1, "price": 100, "discountPct": 0 },
+    { "sku": "SKU-Z", "qty": 0, "price": 999, "discountPct": 0 }
+  ]
+}

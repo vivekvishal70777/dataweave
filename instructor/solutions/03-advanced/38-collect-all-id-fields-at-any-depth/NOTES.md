@@ -4,7 +4,7 @@ Collect all `id` fields at any depth
 
 ## Expected (note)
 
-`["root", "c1", "i1"]` (order may follow tree walk)
+`["root", "c1", "i1"]` (walk order may vary)
 
 ## Teaching tip
 

@@ -11,6 +11,8 @@ Use interview rules: no notes, 20 minutes.
 7. `distinctBy` keeps first or last?
 8. `default` vs `try` — one sentence each.
 9. Sketch `flatMap` for order → line items.
-10. Talk through XML namespace in → canonical JSON out (Q60): reader, types, totals, where I/O does **not** belong.
+10. Talk through SOAP/namespaced XML → canonical JSON (Q60 / Lab 41): reader `ns`, attributes, repeating lines, `fun money`, where I/O does **not** belong.
+11. Why is `now()` a poor choice inside a reusable pricing module?
+12. How do you round money to 2 decimals in DataWeave without Java `BigDecimal`?
 
 Compare afterward with `sections/12-interview-bootcamp/LECTURE.md` and the [whiteboard set](../resources/whiteboard.md).

@@ -16,16 +16,16 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 40. Recursively sum all numbers in a mixed tree. Recursively sum all numbers in a mixed tree
+This is Lab 40. Recursively sum all numbers in a mixed tree. Sum numeric leaves in a mixed JSON document; ignore strings.
 
-Match on Number, Array, Object. Sum leaves; do not stringify numbers.
+Match on Number, Array, Object. Sum leaves; skip strings.
 
 ## Part 2 — Input
 
 **SAY:** Paste this payload. Set the MIME type to match the sample.
 
 ```json
-{ "a": 1, "b": [2, { "c": 3 }], "d": "skip" }
+{ "a": 1, "b": [2, { "c": 3.5 }], "d": "skip" }
 ```
 
 ## PAUSE CARD (hold 3–5 seconds)
@@ -65,13 +65,13 @@ sumNums(payload)
 
 **SAY:** That should match Expected:
 
-_No expected block in the reference drill; run the solution on camera and show the preview._
+`6.5`
 
 ## Part 4 — Interview phrase and close
 
 **SAY:**
 
-Match on Number, Array, Object. Sum leaves; do not stringify numbers.
+Match on Number, Array, Object. Sum leaves; skip strings.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 
@@ -82,6 +82,10 @@ Stop. Do not start Lab 41 in this file.
 # Instructor solution — Lab 40
 
 Recursively sum all numbers in a mixed tree
+
+## Expected (note)
+
+`6.5`
 
 ## Teaching tip
 
