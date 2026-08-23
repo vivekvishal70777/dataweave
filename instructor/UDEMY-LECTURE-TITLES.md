@@ -124,12 +124,15 @@ Easy tutorials: `student/tutorials/13-industry-operators-and-mule-message/` (20 
 
 ## Section 13 — Interview bootcamp
 
+This section is **practice**, not a replay of Q1–80. Those questions were already taught in sections 2–12.
+
 Easy tutorials: `student/tutorials/12-interview-bootcamp/` (drill, whiteboard, Q60).
 
-54. How to run the 80-question bank — Article  
-55. Whiteboard mock interview (set of 6) — Video  
-56. Nested XML to canonical JSON (Q60 talk-through) — Video  
-57. Final practice test — Practice test  
-58. Next steps and solutions pack (optional download) — Video  
+54. How to drill the 80-question bank — Article (attach `reference/MuleSoft-DataWeave-Interview-Questions.md`)  
+55. Verbal mock interview (8 mixed questions, 60-second answers) — Video  
+56. Whiteboard mock interview (3 of the 6 signature labs) — Video  
+57. Nested XML to canonical JSON (Q60 design talk only) — Video  
+58. Final practice test — Practice test  
+59. Next steps and solutions pack (optional download) — Video  
 
 Attach `student/` zips on lab lectures. Attach solutions only on the last lecture (or omit and keep solutions off Udemy).

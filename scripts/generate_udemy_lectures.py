@@ -201,9 +201,10 @@ SECTIONS = [
             "Talk through the nested XML → JSON design (Q60).",
         ],
         "talking": [
-            "Do not re-teach; run timed drills. Students close solutions.",
-            "Record 2–3 mock interviews using the whiteboard set.",
+            "Do not re-teach Q1–80. Those answers were already taught in sections 2–12.",
+            "Record timed drills: verbal flashcards, then whiteboard labs, then Q60 as a design talk.",
         ],
+        "qa_mode": "drill",
     },
 ]
 
@@ -252,8 +253,45 @@ def write_section(sec: dict, questions: dict[int, tuple[str, str]]) -> None:
         ]
         for n in sec["labs"]:
             lines.append(f"- Lab {n:02d}")
-    if sec["qs"]:
-        lines += ["", "## Teach these interview questions", ""]
+    qa_mode = sec.get("qa_mode", "full" if sec["qs"] else "none")
+    if qa_mode == "drill":
+        lines += [
+            "",
+            "## This is not a second teaching pass",
+            "",
+            "Q1–80 already appear in **topic sections** (easy tutorial → concept video → demo → lab → quiz).",
+            "Do **not** record another 80 videos here. Students use the question bank as a **flashcard deck**.",
+            "",
+            "Full answers: [`../../reference/MuleSoft-DataWeave-Interview-Questions.md`](../../reference/MuleSoft-DataWeave-Interview-Questions.md).",
+            "",
+            "### What to publish in this section",
+            "",
+            "1. **Article** — how to drill: cover the answer, speak 45–90s, uncover. (`student/tutorials/12-interview-bootcamp/`)",
+            "2. **Video: verbal mock** — you ask 8 mixed questions (easy + hard). Pause card after each prompt. Then you give a model 60-second answer. Do not open Studio.",
+            "3. **Video: whiteboard** — timebox 8 minutes each on Labs 23, 20, 32, 39, 41, 53/54 (pick 3 on camera; assign the rest).",
+            "4. **Video: Q60 design talk** — eight beats only (reader, types, money, join, shape, writer, try, scale). They already coded Lab 41 + 54.",
+            "5. **Practice test** — final quiz, not a lecture.",
+            "",
+            "### Question checklist (titles only — do not read answers on camera)",
+            "",
+        ]
+        seen = set()
+        for n in sec["qs"]:
+            if n in seen or n not in questions:
+                continue
+            seen.add(n)
+            title, _body = questions[n]
+            lines.append(f"- Q{n}. {title}")
+        lines.append("")
+    elif sec["qs"]:
+        lines += [
+            "",
+            "## Interview talking points for this section",
+            "",
+            "Teach the **concept**, then demo, then lab. Use these Q&A as the phrases to say on camera —",
+            "not as a second lecture series. One 20–40s “if they ask this in an interview…” close per video is enough.",
+            "",
+        ]
         seen = set()
         for n in sec["qs"]:
             if n in seen or n not in questions:
@@ -309,6 +347,14 @@ def write_curriculum(questions: dict[int, tuple[str, str]]) -> None:
         "| Interview bootcamp | 4 | 1 | 1 (practice test) |",
         "",
         "Target: **~50 published lectures** plus **58 downloadable labs** and **section quizzes**.",
+        "",
+        "Plain-language concept pages (one file per topic): [`student/tutorials/README.md`](../student/tutorials/README.md). Same files are copied under `sections/<id>/tutorials/`.",
+        "",
+        "## Interview Q&A is not a second course",
+        "",
+        "Each topic section **teaches** its questions (concept + demo + lab + quiz).",
+        "The last section is **practice only**: timed verbal answers and whiteboard labs.",
+        "Do not re-record Q1–80 in the bootcamp. Details: [`TEACHING-GUIDE.md`](TEACHING-GUIDE.md).",
         "",
         "## After each section",
         "",

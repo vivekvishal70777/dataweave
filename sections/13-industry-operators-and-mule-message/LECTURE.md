@@ -24,7 +24,10 @@ Student starters live under `student/labs/`.
 - Lab 57
 - Lab 58
 
-## Teach these interview questions
+## Interview talking points for this section
+
+Teach the **concept**, then demo, then lab. Use these Q&A as the phrases to say on camera —
+not as a second lecture series. One 20–40s “if they ask this in an interview…” close per video is enough.
 
 ### Q61. What `dw::core::Arrays` helpers do interviewers expect besides map/filter?
 

@@ -47,9 +47,32 @@ Before you hit publish: you do **not** need a license from MuleSoft or a book au
 
 After each teaching section, assign **2 or 3 labs** not fully demoed. Next video: 5-minute recap of the one with most mistakes (`flatMap`, `groupBy`+`sum`, recursive mask).
 
-## Interview bootcamp section
+## Interview Q&A appears twice — record it once
 
-Students close the IDE solutions. You pick 5 from the whiteboard table in `student/resources/whiteboard.md`. Timebox 8 minutes per problem. Then walk the reference solution.
+The same 80 questions show up in **topic `LECTURE.md` files** and again as the **full bank** in `reference/MuleSoft-DataWeave-Interview-Questions.md`. That is a **study aid**, not two courses.
+
+| Place | Student job | You record |
+| --- | --- | --- |
+| Sections 2–12 (and industry) | Learn the idea, then code a lab | Concept → demo → pause → lab solution → quiz. Mention the interview phrasing in 20–40 seconds (“If they ask how `map` differs from `filter`…”). |
+| Easy tutorials | Read before the video | Optional Udemy **Articles**. Not a second video. |
+| Section quizzes | Check memory | Udemy practice tests. |
+| Interview bootcamp (last section) | Speak and whiteboard under time | **Do not teach Q1–80 again.** Drill + mock interview + Q60 design talk. |
+
+If you filmed every Q as its own bootcamp lecture you would duplicate ~80 videos and students would skip the real labs.
+
+### Topic-section close (say this, then stop)
+
+“That is also interview question N. In an interview, say: …” — one sentence from the Q&A — then the pause card for the lab.
+
+### Bootcamp recording order
+
+1. Article: how to drill the bank (cover / speak / uncover). Attach the full Q&A markdown as a resource.
+2. Video: you ask ~8 mixed questions; pause; model 60-second answers. No Playground.
+3. Video: 3 timed whiteboard labs (from `student/resources/whiteboard.md`). Pause before each solution.
+4. Video: Q60 as an 8-beat **design** talk (they already built Labs 41 and 54).
+5. Final practice test.
+
+Students close solutions. You are the interviewer, not a second teacher.
 
 ## Regenerating content
 
