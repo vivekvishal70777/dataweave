@@ -1,0 +1,4 @@
+{
+  "base": { "timeout": 30, "plugins": ["auth"], "theme": "light" },
+  "tenant": { "timeout": 10, "plugins": ["audit"], "region": "IN" }
+}

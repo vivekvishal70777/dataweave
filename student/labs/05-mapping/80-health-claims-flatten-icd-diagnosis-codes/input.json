@@ -1,0 +1,6 @@
+{
+  "claims": [
+    { "claimId": "CL-1", "member": "M9", "dx": ["E11.9", "I10"] },
+    { "claimId": "CL-2", "member": "M9", "dx": [""] }
+  ]
+}

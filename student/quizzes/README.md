@@ -17,6 +17,7 @@ Take the quiz **after** the labs for that section. One attempt, no notes if you 
 | 9 | Advanced | [09-advanced.md](09-advanced.md) |
 | 10 | Production | [10-production.md](10-production.md) |
 | 12 | Industry operators, message, MIME | [12-industry-message.md](12-industry-message.md) |
+| 13 | DataWeave Mapping | [13-dataweave-mapping.md](13-dataweave-mapping.md) |
 | Final | Interview bootcamp | [11-final-practice-test.md](11-final-practice-test.md) |
 
 On Udemy, recreate these as **Multiple choice** / **Multi-select** practice tests (Udemy does not import this Markdown automatically).

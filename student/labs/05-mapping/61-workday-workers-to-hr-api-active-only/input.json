@@ -1,0 +1,7 @@
+{
+  "Report_Entry": [
+    { "wid": "W1", "Legal_First": "Ira", "Legal_Last": "Shah", "Status": "Active", "FTE": "1.0", "manager": { "wid": "W9" } },
+    { "wid": "W2", "Legal_First": "Jon", "Legal_Last": "Lee", "Status": "Terminated", "FTE": "1", "manager": {} },
+    { "wid": "W3", "Legal_First": "Mia", "Legal_Last": "Das", "Status": "active", "FTE": 0.5 }
+  ]
+}

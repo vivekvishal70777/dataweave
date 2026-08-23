@@ -1,0 +1,9 @@
+{
+  "base": "TEE",
+  "colors": [
+    { "code": "BLK", "discontinued": false },
+    { "code": "RED", "discontinued": true },
+    { "code": "WHT", "discontinued": false }
+  ],
+  "sizes": ["S", "M"]
+}

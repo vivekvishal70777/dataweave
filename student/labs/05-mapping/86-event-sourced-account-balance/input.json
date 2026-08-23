@@ -1,0 +1,7 @@
+{
+  "events": [
+    { "id": "e1", "type": "credit", "amt": "100" },
+    { "id": "e2", "type": "debit", "amt": "30" },
+    { "id": "e3", "type": "hold", "amt": "10.5" }
+  ]
+}

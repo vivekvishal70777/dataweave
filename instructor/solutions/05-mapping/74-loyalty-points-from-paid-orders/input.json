@@ -1,0 +1,5 @@
+[
+  { "customerId": "C1", "status": "paid", "amount": "199.9" },
+  { "customerId": "C1", "status": "NEW", "amount": "50" },
+  { "customerId": "C2", "status": "SETTLED", "amount": "10.1" }
+]

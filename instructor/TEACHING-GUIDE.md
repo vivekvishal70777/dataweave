@@ -79,10 +79,10 @@ Students close solutions. You are the interviewer, not a second teacher.
 Edit `reference/*.md`, then:
 
 ```bash
+python3 scripts/generate_mapping_questions.py
 python3 scripts/generate_udemy_labs.py
 python3 scripts/generate_udemy_lectures.py
 python3 scripts/generate_easy_tutorials.py
-python3 scripts/generate_bootcamp_set_b.py
 ```
 
 Re-zip student resources after regenerate. Section quizzes in `student/quizzes/` are hand-written — update those if you change a concept.

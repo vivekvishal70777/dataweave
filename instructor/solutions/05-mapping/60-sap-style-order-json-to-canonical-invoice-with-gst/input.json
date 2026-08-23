@@ -1,0 +1,11 @@
+{
+  "vbeln": "80001234",
+  "waerk": "INR",
+  "shipFromState": "MH",
+  "shipToState": "MH",
+  "lines": [
+    { "matnr": "MAT-1", "qty": "2", "netpr": "100.00", "disc": "0.10" },
+    { "matnr": "MAT-2", "qty": "0", "netpr": "50", "disc": "0" },
+    { "matnr": "MAT-3", "qty": 1, "netpr": "40.5", "disc": 0 }
+  ]
+}

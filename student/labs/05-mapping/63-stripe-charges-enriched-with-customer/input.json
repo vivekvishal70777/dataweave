@@ -1,0 +1,11 @@
+{
+  "customers": [
+    { "id": "cus_1", "email": "a@x.com" }
+  ],
+  "charges": {
+    "data": [
+      { "id": "ch_1", "customer": "cus_1", "amount": 1999, "paid": true },
+      { "id": "ch_2", "customer": "cus_missing", "amount": 500, "paid": false }
+    ]
+  }
+}

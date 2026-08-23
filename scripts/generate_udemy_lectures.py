@@ -195,6 +195,22 @@ SECTIONS = [
         ],
     },
     {
+        "id": "14-dataweave-mapping",
+        "title": "DataWeave Mapping",
+        "qs": [],
+        "labs": list(range(59, 89)),
+        "qa_mode": "mapping",
+        "objectives": [
+            "Map messy industry payloads to a canonical JSON API model.",
+            "Join lookup tables that already sit on the payload (no N+1 lookup).",
+            "Coerce money, skip zero-qty, and preserve XML namespaces where needed.",
+        ],
+        "talking": [
+            "This section is 30 interview-hard mapping labs, not new syntax.",
+            "Demo Lab 59 (Salesforce composite) and Lab 60 (GST invoice). Assign the rest as homework clusters.",
+        ],
+    },
+    {
         "id": "12-interview-bootcamp",
         "title": "Interview bootcamp",
         "qs": list(range(1, 81)),
@@ -258,7 +274,29 @@ def write_section(sec: dict, questions: dict[int, tuple[str, str]]) -> None:
         for n in sec["labs"]:
             lines.append(f"- Lab {n:02d}")
     qa_mode = sec.get("qa_mode", "full" if sec["qs"] else "none")
-    if qa_mode == "drill":
+    if qa_mode == "mapping":
+        lines += [
+            "",
+            "## This section is 30 mapping labs",
+            "",
+            "Syntax was taught in sections 2–12. Here students **map** Salesforce, SAP/GST, Shopify, Stripe,",
+            "ServiceNow, CDC, SOAP catalogs, FX, inventory, claims, recon — interview whiteboard sets.",
+            "",
+            "Student starters: `student/labs/05-mapping/`. Solutions: `instructor/solutions/05-mapping/`.",
+            "",
+            "### How to record",
+            "",
+            "1. Article — easy tutorials in `student/tutorials/14-dataweave-mapping/`.",
+            "2. Video cluster A — Labs 59–63 (CRM / commerce / payments). Pause before each solution.",
+            "3. Video cluster B — Labs 64–70 (ITSM, CDC, variants, FX, address, EDI, bank).",
+            "4. Video cluster C — Labs 71–80 (IAM, stock, GST, loyalty, slots, BOM, RMA, locale, XML, claims).",
+            "5. Video cluster D — Labs 81–88 (telco, listings, SCIM, recon, routing, events, config, GTIN).",
+            "6. Quiz — `student/quizzes/13-dataweave-mapping.md`.",
+            "",
+            "Do **not** attach solutions in the student zip.",
+            "",
+        ]
+    elif qa_mode == "drill":
         lines += [
             "",
             "## This is not a second teaching pass",
@@ -383,9 +421,10 @@ def write_curriculum(questions: dict[int, tuple[str, str]]) -> None:
         "| Advanced | 6 | 1 | 1 |",
         "| Production | 3 | 1 | 1 |",
         "| Industry operators / MIME | 4 | 1 | 1 |",
+        "| DataWeave Mapping | 4 | 1 | 1 |",
         "| Interview bootcamp | 4 | 1 | 1 (practice test) |",
         "",
-        "Target: **~50 published lectures** plus **58 downloadable labs** and **section quizzes**.",
+        "Target: **~55 published lectures** plus **88 downloadable labs** and **section quizzes**.",
         "",
         "Plain-language concept pages (one file per topic): [`student/tutorials/README.md`](../student/tutorials/README.md). Same files are copied under `sections/<id>/tutorials/`.",
         "",

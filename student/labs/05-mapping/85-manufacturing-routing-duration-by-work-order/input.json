@@ -1,0 +1,5 @@
+[
+  { "wo": "WO1", "seq": 20, "step": "PAINT", "min": "15" },
+  { "wo": "WO1", "seq": 10, "step": "CUT", "min": 30 },
+  { "wo": "WO2", "seq": 10, "step": "PACK", "min": 5 }
+]

@@ -17,7 +17,8 @@ Keep coding videos under ~12 minutes; split if a demo runs longer.
 | 10 | Advanced: recursion, namespaces, diffs | [sections/10-advanced-recursion-and-xml-ns/LECTURE.md](../sections/10-advanced-recursion-and-xml-ns/LECTURE.md) | 37, 38, 39, 40, 41, 42, 43, 44, 46, 47, 48, 49, 50, 51, 53, 54 |
 | 11 | Streaming, crypto, modules, and pitfalls | [sections/11-performance-and-production/LECTURE.md](../sections/11-performance-and-production/LECTURE.md) | 45 |
 | 12 | Industry operators, message, and MIME | [sections/13-industry-operators-and-mule-message/LECTURE.md](../sections/13-industry-operators-and-mule-message/LECTURE.md) | 55, 56, 57, 58 |
-| 13 | Interview bootcamp | [sections/12-interview-bootcamp/LECTURE.md](../sections/12-interview-bootcamp/LECTURE.md) | 20, 23, 32, 39, 41, 53, 54 |
+| 13 | DataWeave Mapping | [sections/14-dataweave-mapping/LECTURE.md](../sections/14-dataweave-mapping/LECTURE.md) | 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88 |
+| 14 | Interview bootcamp | [sections/12-interview-bootcamp/LECTURE.md](../sections/12-interview-bootcamp/LECTURE.md) | 20, 23, 32, 39, 41, 53, 54 |
 
 ## Lecture count (suggested)
 
@@ -35,9 +36,10 @@ Keep coding videos under ~12 minutes; split if a demo runs longer.
 | Advanced | 6 | 1 | 1 |
 | Production | 3 | 1 | 1 |
 | Industry operators / MIME | 4 | 1 | 1 |
+| DataWeave Mapping | 4 | 1 | 1 |
 | Interview bootcamp | 4 | 1 | 1 (practice test) |
 
-Target: **~50 published lectures** plus **58 downloadable labs** and **section quizzes**.
+Target: **~55 published lectures** plus **88 downloadable labs** and **section quizzes**.
 
 Plain-language concept pages (one file per topic): [`student/tutorials/README.md`](../student/tutorials/README.md). Same files are copied under `sections/<id>/tutorials/`.
 

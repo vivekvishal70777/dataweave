@@ -404,5 +404,215 @@
     "slug": "simulate-transform-message-payload-vars",
     "section": "04-industry",
     "level": "industry"
+  },
+  {
+    "num": 59,
+    "title": "Salesforce Account composite to nested customer API",
+    "slug": "salesforce-account-composite-to-nested-customer-api",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 60,
+    "title": "SAP-style order JSON to canonical invoice with GST",
+    "slug": "sap-style-order-json-to-canonical-invoice-with-gst",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 61,
+    "title": "Workday workers to HR API (active only)",
+    "slug": "workday-workers-to-hr-api-active-only",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 62,
+    "title": "Shopify order to ERP sales order",
+    "slug": "shopify-order-to-erp-sales-order",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 63,
+    "title": "Stripe charges enriched with customer",
+    "slug": "stripe-charges-enriched-with-customer",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 64,
+    "title": "ServiceNow incident plus CMDB lookup",
+    "slug": "servicenow-incident-plus-cmdb-lookup",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 65,
+    "title": "Debezium CDC envelope to flat upsert rows",
+    "slug": "debezium-cdc-envelope-to-flat-upsert-rows",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 66,
+    "title": "Product variants color times size SKUs",
+    "slug": "product-variants-color-times-size-skus",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 67,
+    "title": "Multi-currency lines to USD using FX table",
+    "slug": "multi-currency-lines-to-usd-using-fx-table",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 68,
+    "title": "Normalize IN vs US postal addresses",
+    "slug": "normalize-in-vs-us-postal-addresses",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 69,
+    "title": "EDI-like PO JSON to procurement canonical",
+    "slug": "edi-like-po-json-to-procurement-canonical",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 70,
+    "title": "Bank statement lines to signed running ledger",
+    "slug": "bank-statement-lines-to-signed-running-ledger",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 71,
+    "title": "IdP userinfo plus groups to application roles",
+    "slug": "idp-userinfo-plus-groups-to-application-roles",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 72,
+    "title": "Allocate warehouse stock to order lines FIFO",
+    "slug": "allocate-warehouse-stock-to-order-lines-fifo",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 73,
+    "title": "India GST split CGST SGST vs IGST by state",
+    "slug": "india-gst-split-cgst-sgst-vs-igst-by-state",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 74,
+    "title": "Loyalty points from paid orders",
+    "slug": "loyalty-points-from-paid-orders",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 75,
+    "title": "Appointment slots to IST display with duration",
+    "slug": "appointment-slots-to-ist-display-with-duration",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 76,
+    "title": "BOM explode one level to pick list",
+    "slug": "bom-explode-one-level-to-pick-list",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 77,
+    "title": "RMA restock vs refund split",
+    "slug": "rma-restock-vs-refund-split",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 78,
+    "title": "Catalog pick locale with English fallback",
+    "slug": "catalog-pick-locale-with-english-fallback",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 79,
+    "title": "Partner catalog XML to JSON products",
+    "slug": "partner-catalog-xml-to-json-products",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 80,
+    "title": "Health claims flatten ICD diagnosis codes",
+    "slug": "health-claims-flatten-icd-diagnosis-codes",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 81,
+    "title": "Telecom CDR aggregate minutes by MSISDN",
+    "slug": "telecom-cdr-aggregate-minutes-by-msisdn",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 82,
+    "title": "Listings filter amenities and map geo",
+    "slug": "listings-filter-amenities-and-map-geo",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 83,
+    "title": "SCIM-style patch merge on user",
+    "slug": "scim-style-patch-merge-on-user",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 84,
+    "title": "Payment recon: bank UTR vs gateway charges",
+    "slug": "payment-recon-bank-utr-vs-gateway-charges",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 85,
+    "title": "Manufacturing routing duration by work order",
+    "slug": "manufacturing-routing-duration-by-work-order",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 86,
+    "title": "Event-sourced account balance",
+    "slug": "event-sourced-account-balance",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 87,
+    "title": "Multi-tenant config overlay (deep-ish merge)",
+    "slug": "multi-tenant-config-overlay-deep-ish-merge",
+    "section": "05-mapping",
+    "level": "mapping"
+  },
+  {
+    "num": 88,
+    "title": "Canonical product GTIN and UoM conversion",
+    "slug": "canonical-product-gtin-and-uom-conversion",
+    "section": "05-mapping",
+    "level": "mapping"
   }
 ]

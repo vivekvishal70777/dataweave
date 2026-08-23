@@ -1,0 +1,8 @@
+{
+  "roleMap": [
+    { "group": "finance", "role": "FIN_READ" },
+    { "group": "admin", "role": "ADMIN" },
+    { "group": "admin", "role": "USER" }
+  ],
+  "user": { "sub": "u1", "email": "x@y.com", "groups": ["finance", "admin", "unknown"] }
+}

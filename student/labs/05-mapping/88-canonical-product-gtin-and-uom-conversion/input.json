@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "sku": "S1", "qty": 2, "uom": "CS", "packSize": 10, "barcodes": [{ "type": "UPC", "id": "x" }, { "type": "EAN13", "id": "8901234567890" }] },
+    { "sku": "S2", "qty": 3, "uom": "EA", "packSize": 1, "barcodes": [{ "type": "EAN13", "id": "8900000000001" }] },
+    { "sku": "S3", "qty": 1, "uom": "EA", "barcodes": [] }
+  ]
+}

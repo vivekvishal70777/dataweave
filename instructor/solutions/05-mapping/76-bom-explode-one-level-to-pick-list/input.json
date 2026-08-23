@@ -1,0 +1,10 @@
+{
+  "bom": [
+    { "parent": "BIKE", "component": "FRAME", "per": 1 },
+    { "parent": "BIKE", "component": "WHEEL", "per": 2 }
+  ],
+  "orders": [
+    { "sku": "BIKE", "qty": 3 },
+    { "sku": "UNK", "qty": 1 }
+  ]
+}

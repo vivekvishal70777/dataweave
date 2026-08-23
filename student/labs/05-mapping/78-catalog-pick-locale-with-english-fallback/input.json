@@ -1,0 +1,7 @@
+{
+  "locale": "hi",
+  "products": [
+    { "id": "P1", "name": { "en": "Shirt", "hi": "Kamiz" } },
+    { "id": "P2", "name": { "en": "Hat" } }
+  ]
+}

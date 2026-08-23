@@ -1,0 +1,5 @@
+[
+  { "nar": "SALARY", "dc": "CR", "amt": "1000.00" },
+  { "nar": "UPI", "dc": "DR", "amt": "250.5" },
+  { "nar": "REV", "dc": "CR", "amt": "50" }
+]

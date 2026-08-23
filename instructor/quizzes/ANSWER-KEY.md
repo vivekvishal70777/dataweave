@@ -89,6 +89,14 @@ Do not ship this file in the student zip.
 4. B  
 5. B  
 
+## Quiz 13 — DataWeave Mapping
+
+1. B  
+2. B  
+3. B  
+4. B  
+5. B  
+
 ## Final practice test
 
 Score the spoken/written answers against `sections/12-interview-bootcamp/LECTURE.md` and labs 20, 23, 32, 39, 53, 54.
