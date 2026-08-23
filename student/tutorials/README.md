@@ -18,6 +18,7 @@ On Udemy you can paste each file as an **Article** lecture, or attach the sectio
 | Advanced: recursion, namespaces, diffs | [10-advanced-recursion-and-xml-ns/README.md](10-advanced-recursion-and-xml-ns/README.md) (13 topics) |
 | Streaming, crypto, modules, and pitfalls | [11-performance-and-production/README.md](11-performance-and-production/README.md) (6 topics) |
 | Industry operators, message, and MIME | [13-industry-operators-and-mule-message/README.md](13-industry-operators-and-mule-message/README.md) (20 topics) |
+| DataWeave Mapping | [14-dataweave-mapping/README.md](14-dataweave-mapping/README.md) (5 topics) |
 | Interview bootcamp | [12-interview-bootcamp/README.md](12-interview-bootcamp/README.md) (3 topics) |
 
 Regenerate after editing `reference/easy-tutorials-source.md`:

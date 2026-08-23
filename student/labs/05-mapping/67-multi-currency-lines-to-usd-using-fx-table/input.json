@@ -1,0 +1,13 @@
+{
+  "fx": [
+    { "ccy": "USD", "perUsd": 1 },
+    { "ccy": "INR", "perUsd": 83 },
+    { "ccy": "EUR", "perUsd": 0.92 }
+  ],
+  "lines": [
+    { "id": "L1", "amount": "8300", "currency": "INR" },
+    { "id": "L2", "amount": "10", "currency": "USD" },
+    { "id": "L3", "amount": "9.2", "currency": "EUR" },
+    { "id": "L4", "amount": "1", "currency": "JPY" }
+  ]
+}

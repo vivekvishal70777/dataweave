@@ -1,0 +1,4 @@
+[
+  { "rma": "R1", "reason": "DAMAGED", "qty": "2", "unit": "10.00" },
+  { "rma": "R2", "reason": "SIZE", "qty": 1, "unit": "15.5" }
+]

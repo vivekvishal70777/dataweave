@@ -12,7 +12,7 @@ Exam paper vs answer key. If the key sits on the desk, you copy. Keep it in anot
 
 ## Remember
 
-- `student/labs` — starters, numbered 01–58, four folders (fundamentals, intermediate, advanced, industry).
+- `student/labs` — starters, numbered 01–88, five folders (fundamentals, intermediate, advanced, industry, mapping).
 - `student/tutorials` — these easy concept pages.
 - `student/quizzes` — no answers.
 - `instructor/solutions` — after your attempt, or on the solution video.

@@ -25,6 +25,7 @@ SECTIONS = [
     ("10-advanced-recursion-and-xml-ns", "Advanced: recursion, namespaces, diffs", [41, 42, 43, 44, 47, 48, 49, 50, 51, 54, 55, 56, 57]),
     ("11-performance-and-production", "Streaming, crypto, modules, and pitfalls", [41, 45, 46, 52, 53, 58]),
     ("13-industry-operators-and-mule-message", "Industry operators, message, and MIME", list(range(61, 81))),
+    ("14-dataweave-mapping", "DataWeave Mapping", []),
     ("12-interview-bootcamp", "Interview bootcamp", []),
 ]
 
@@ -209,7 +210,7 @@ Exam paper vs answer key. If the key sits on the desk, you copy. Keep it in anot
 
 ## Remember
 
-- `student/labs` — starters, numbered 01–58, four folders (fundamentals, intermediate, advanced, industry).
+- `student/labs` — starters, numbered 01–88, five folders (fundamentals, intermediate, advanced, industry, mapping).
 - `student/tutorials` — these easy concept pages.
 - `student/quizzes` — no answers.
 - `instructor/solutions` — after your attempt, or on the solution video.
@@ -299,6 +300,131 @@ Labs 41 and 54 are the typing version.
 ]
 
 
+MAPPING = [
+    (
+        "01-canonical-model",
+        "What a canonical mapping is",
+        """# What a canonical mapping is
+
+*Section: DataWeave Mapping · easy words*
+
+## In one sentence
+
+You copy the vendor’s ugly payload into **your** shop’s JSON names — `orderId`, `lines`, `money` — not SAP `vbeln`.
+
+## Like this in real life
+
+A warehouse relabels every box in the store language. The truck label can stay in German; the shelf cannot.
+
+## Remember
+
+- Header: `%dw 2.0`, `output application/json`, `---`.
+- Drop fields you do not own.
+- Lookups already on the payload — never `lookup` inside `map`.
+
+Then open Lab 59.
+""",
+    ),
+    (
+        "02-join-tables-on-the-payload",
+        "Join tables that arrived together",
+        """# Join tables that arrived together
+
+*Section: DataWeave Mapping · easy words*
+
+## In one sentence
+
+`groupBy` the small table by id, then `map` the big table. That is a hash join.
+
+## Like this in real life
+
+Index the customer list once. For each order, pick the card from the index. Do not phone HQ per order.
+
+## Tiny example
+
+```dataweave
+var byId = payload.customers groupBy $.id
+---
+payload.orders map (o) -> o ++ { email: (byId[o.customerId][0].email) default "unknown" }
+```
+
+## Remember
+
+Missing match → `default`. Outer merge is Lab 84 / Lab 49.
+
+Lab 59, 63, 64.
+""",
+    ),
+    (
+        "03-money-qty-tax",
+        "Money, zero qty, tax",
+        """# Money, zero qty, tax
+
+*Section: DataWeave Mapping · easy words*
+
+## In one sentence
+
+ERP amounts are strings. `as Number`, skip qty 0, `fun money` (`0.00` format), then tax.
+
+## Like this in real life
+
+A cashier does not add `"100.00"` as text. They tap the number keys, skip empty carts, then GST.
+
+## Remember
+
+- Intra-state GST: CGST+SGST. Inter-state: IGST.
+- `default` does not catch bad `as Number` — use `try`.
+
+Labs 60, 73, 88.
+""",
+    ),
+    (
+        "04-xml-and-cdc",
+        "XML namespaces and CDC envelopes",
+        """# XML namespaces and CDC envelopes
+
+*Section: DataWeave Mapping · easy words*
+
+## In one sentence
+
+XML: declare `ns`, walk `ns#Element`, attributes `@id`. CDC: `after` for upsert, `before` for delete.
+
+## Like this in real life
+
+SOAP is a sealed envelope. CDC is a form that says create, update, or strike-through.
+
+## Remember
+
+Prefix is yours; URI must match. Do not log PII.
+
+Labs 65, 79.
+""",
+    ),
+    (
+        "05-how-to-drill-mapping-labs",
+        "How to drill the 30 mapping labs",
+        """# How to drill the 30 mapping labs
+
+*Section: DataWeave Mapping · easy words*
+
+## In one sentence
+
+Read input and expected. Pause. Write the header out loud. Map. Then play the solution.
+
+## Like this in real life
+
+Interview whiteboard: eight to twelve minutes per mapping. Silence while typing looks like panic — narrate.
+
+## Remember
+
+Clusters: 59–63 CRM/commerce, 64–70 ops/CDC/FX, 71–80 identity/tax/catalog, 81–88 recon/events.
+
+Solutions stay in `instructor/solutions/05-mapping/`.
+""",
+    ),
+]
+
+
 def write_topic(dir_: Path, idx: int, filename: str, body: str) -> Path:
     dir_.mkdir(parents=True, exist_ok=True)
     path = dir_ / f"{idx:02d}-{filename}.md"
@@ -338,6 +464,13 @@ def main() -> None:
         n = 1
         if sid == "01-welcome-and-setup":
             for slug, t, body in WELCOME:
+                p = write_topic(sdir, n, slug, body)
+                shutil.copy(p, sec_dir / p.name)
+                names.append((p.name, t))
+                n += 1
+                total += 1
+        elif sid == "14-dataweave-mapping":
+            for slug, t, body in MAPPING:
                 p = write_topic(sdir, n, slug, body)
                 shutil.copy(p, sec_dir / p.name)
                 names.append((p.name, t))

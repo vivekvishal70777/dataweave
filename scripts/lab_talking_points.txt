@@ -56,3 +56,34 @@
 56|Shift UTC DateTime with >> Asia/Kolkata. Inject occurredAt. Do not call now.
 57|zip headers with values. Reduce into an object. Parentheses around the key.
 58|One script, two targets: canonical payload plus vars.correlationId. Playground cannot set Mule vars.
+59|groupBy contacts by AccountId. Map accounts. Empty array if no contacts. No lookup.
+60|Filter qty greater than zero. Discount then GST 18. fun money. Intra-state CGST_SGST vs IGST.
+61|Filter Active any case. manager.wid default null. FTE as Number.
+62|Skip GIFT sku. soldTo last then first. price as Number with fun money.
+63|Stripe cents divide 100. groupBy customer. Missing email unknown.
+64|CMDB groupBy sys_id. Priority 1-2 else sev 3. Missing CI UNASSIGNED.
+65|CDC: delete reads before. create and update read after. ts_ms on every row.
+66|flatMap colors times sizes. Skip discontinued. SKU base-color-size.
+67|FX: amount divided by perUsd. Skip unknown currency. Sum USD.
+68|IN uses pin. US zip first five chars. Upper city.
+69|EDI PO1 skip qty 0. Date yyyyMMdd to yyyy-MM-dd.
+70|CR plus, DR minus. reduce running balance. fun money.
+71|flatMap groups to roles. distinctBy then orderBy.
+72|Allocate min of remaining stock and qty. Reduce the on-hand map.
+73|Same state: CGST and SGST 9 each. Else IGST 18. fun money.
+74|Paid or settled only. floor of sum is loyalty points. groupBy customer.
+75|Shift both instants to IST. Duration is epoch millis difference over 60000.
+76|BOM groupBy parent. flatMap order times per. Skip unknown parent.
+77|DAMAGED means restock false. Refund qty times unit.
+78|name[locale] default name.en.
+79|Partner XML ns URI. Star Item. Attribute id. Price as Number.
+80|flatMap diagnoses. Skip empty ICD codes.
+81|OK calls only. floor sum seconds over 60 per msisdn.
+82|amenities map lower contains parking. Flatten geo.
+83|Reduce patch ops. replace email, add phone with plus-plus.
+84|Union of UTR keys. MATCHED only if both amounts equal.
+85|groupBy work order. orderBy seq. Sum minutes.
+86|reduce events credit add debit and hold subtract. Last event id.
+87|Shallow plus-plus then rebuild plugins with distinctBy concat.
+88|EAN13 barcode is GTIN. Case pack CS times packSize. Drop missing GTIN.
+

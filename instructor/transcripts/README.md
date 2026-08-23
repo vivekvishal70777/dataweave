@@ -1,6 +1,6 @@
 # Recording transcripts
 
-Spoken scripts for Vivek. **One video per concept lecture** and **one video per lab (01–58)**.
+Spoken scripts for Vivek. **One video per concept lecture** and **one video per lab (01–88)**.
 
 How to use: open the markdown, read **SAY**, follow **PAUSE CARD**, type the **TYPE** blocks. Target 6–10 minutes; cap 12. Split Lab 23, 39, 53, 54, and the whiteboard set if needed.
 
@@ -72,7 +72,7 @@ For each Udemy section: record the concept videos, then every lab video listed i
 | L56 | Nested XML to canonical JSON (Q60) | 8–12 min | [lectures/L56.md](lectures/L56.md) |
 | L58 | Next steps and solutions pack | 2–3 min | [lectures/L58.md](lectures/L58.md) |
 
-## Lab videos (58)
+## Lab videos (88)
 
 All files: [`labs/`](labs/).
 
@@ -136,6 +136,36 @@ All files: [`labs/`](labs/).
 | 56 Shift DateTime to IST for display | [labs/56-shift-datetime-to-ist-for-display.md](labs/56-shift-datetime-to-ist-for-display.md) |
 | 57 Zip headers with values into an object | [labs/57-zip-headers-with-values-into-an-object.md](labs/57-zip-headers-with-values-into-an-object.md) |
 | 58 Simulate Transform Message payload + vars | [labs/58-simulate-transform-message-payload-vars.md](labs/58-simulate-transform-message-payload-vars.md) |
+| 59 Salesforce Account composite to nested customer API | [labs/59-salesforce-account-composite-to-nested-customer-api.md](labs/59-salesforce-account-composite-to-nested-customer-api.md) |
+| 60 SAP-style order JSON to canonical invoice with GST | [labs/60-sap-style-order-json-to-canonical-invoice-with-gst.md](labs/60-sap-style-order-json-to-canonical-invoice-with-gst.md) |
+| 61 Workday workers to HR API (active only) | [labs/61-workday-workers-to-hr-api-active-only.md](labs/61-workday-workers-to-hr-api-active-only.md) |
+| 62 Shopify order to ERP sales order | [labs/62-shopify-order-to-erp-sales-order.md](labs/62-shopify-order-to-erp-sales-order.md) |
+| 63 Stripe charges enriched with customer | [labs/63-stripe-charges-enriched-with-customer.md](labs/63-stripe-charges-enriched-with-customer.md) |
+| 64 ServiceNow incident plus CMDB lookup | [labs/64-servicenow-incident-plus-cmdb-lookup.md](labs/64-servicenow-incident-plus-cmdb-lookup.md) |
+| 65 Debezium CDC envelope to flat upsert rows | [labs/65-debezium-cdc-envelope-to-flat-upsert-rows.md](labs/65-debezium-cdc-envelope-to-flat-upsert-rows.md) |
+| 66 Product variants color times size SKUs | [labs/66-product-variants-color-times-size-skus.md](labs/66-product-variants-color-times-size-skus.md) |
+| 67 Multi-currency lines to USD using FX table | [labs/67-multi-currency-lines-to-usd-using-fx-table.md](labs/67-multi-currency-lines-to-usd-using-fx-table.md) |
+| 68 Normalize IN vs US postal addresses | [labs/68-normalize-in-vs-us-postal-addresses.md](labs/68-normalize-in-vs-us-postal-addresses.md) |
+| 69 EDI-like PO JSON to procurement canonical | [labs/69-edi-like-po-json-to-procurement-canonical.md](labs/69-edi-like-po-json-to-procurement-canonical.md) |
+| 70 Bank statement lines to signed running ledger | [labs/70-bank-statement-lines-to-signed-running-ledger.md](labs/70-bank-statement-lines-to-signed-running-ledger.md) |
+| 71 IdP userinfo plus groups to application roles | [labs/71-idp-userinfo-plus-groups-to-application-roles.md](labs/71-idp-userinfo-plus-groups-to-application-roles.md) |
+| 72 Allocate warehouse stock to order lines FIFO | [labs/72-allocate-warehouse-stock-to-order-lines-fifo.md](labs/72-allocate-warehouse-stock-to-order-lines-fifo.md) |
+| 73 India GST split CGST SGST vs IGST by state | [labs/73-india-gst-split-cgst-sgst-vs-igst-by-state.md](labs/73-india-gst-split-cgst-sgst-vs-igst-by-state.md) |
+| 74 Loyalty points from paid orders | [labs/74-loyalty-points-from-paid-orders.md](labs/74-loyalty-points-from-paid-orders.md) |
+| 75 Appointment slots to IST display with duration | [labs/75-appointment-slots-to-ist-display-with-duration.md](labs/75-appointment-slots-to-ist-display-with-duration.md) |
+| 76 BOM explode one level to pick list | [labs/76-bom-explode-one-level-to-pick-list.md](labs/76-bom-explode-one-level-to-pick-list.md) |
+| 77 RMA restock vs refund split | [labs/77-rma-restock-vs-refund-split.md](labs/77-rma-restock-vs-refund-split.md) |
+| 78 Catalog pick locale with English fallback | [labs/78-catalog-pick-locale-with-english-fallback.md](labs/78-catalog-pick-locale-with-english-fallback.md) |
+| 79 Partner catalog XML to JSON products | [labs/79-partner-catalog-xml-to-json-products.md](labs/79-partner-catalog-xml-to-json-products.md) |
+| 80 Health claims flatten ICD diagnosis codes | [labs/80-health-claims-flatten-icd-diagnosis-codes.md](labs/80-health-claims-flatten-icd-diagnosis-codes.md) |
+| 81 Telecom CDR aggregate minutes by MSISDN | [labs/81-telecom-cdr-aggregate-minutes-by-msisdn.md](labs/81-telecom-cdr-aggregate-minutes-by-msisdn.md) |
+| 82 Listings filter amenities and map geo | [labs/82-listings-filter-amenities-and-map-geo.md](labs/82-listings-filter-amenities-and-map-geo.md) |
+| 83 SCIM-style patch merge on user | [labs/83-scim-style-patch-merge-on-user.md](labs/83-scim-style-patch-merge-on-user.md) |
+| 84 Payment recon: bank UTR vs gateway charges | [labs/84-payment-recon-bank-utr-vs-gateway-charges.md](labs/84-payment-recon-bank-utr-vs-gateway-charges.md) |
+| 85 Manufacturing routing duration by work order | [labs/85-manufacturing-routing-duration-by-work-order.md](labs/85-manufacturing-routing-duration-by-work-order.md) |
+| 86 Event-sourced account balance | [labs/86-event-sourced-account-balance.md](labs/86-event-sourced-account-balance.md) |
+| 87 Multi-tenant config overlay (deep-ish merge) | [labs/87-multi-tenant-config-overlay-deep-ish-merge.md](labs/87-multi-tenant-config-overlay-deep-ish-merge.md) |
+| 88 Canonical product GTIN and UoM conversion | [labs/88-canonical-product-gtin-and-uom-conversion.md](labs/88-canonical-product-gtin-and-uom-conversion.md) |
 
 ## Udemy mapping
 

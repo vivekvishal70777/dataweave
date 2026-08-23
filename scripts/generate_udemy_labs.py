@@ -14,6 +14,7 @@ LAB_MAP = {
     range(19, 37): ("02-intermediate", "moderate"),
     range(37, 55): ("03-advanced", "hard"),
     range(55, 59): ("04-industry", "industry"),
+    range(59, 89): ("05-mapping", "mapping"),
 }
 
 
@@ -211,9 +212,12 @@ def write_index(labs: list[dict], path: Path) -> None:
 
 def main() -> None:
     text = SRC.read_text(encoding="utf-8")
+    mapping = ROOT / "reference" / "DataWeave-Mapping-Questions.md"
+    if mapping.exists():
+        text = text + "\n" + mapping.read_text(encoding="utf-8")
     labs = parse_labs(text)
-    if len(labs) != 58:
-        raise SystemExit(f"Expected 58 labs, parsed {len(labs)}")
+    if len(labs) != 88:
+        raise SystemExit(f"Expected 88 labs, parsed {len(labs)}")
     student = ROOT / "student" / "labs"
     instructor = ROOT / "instructor" / "solutions"
     if student.exists():

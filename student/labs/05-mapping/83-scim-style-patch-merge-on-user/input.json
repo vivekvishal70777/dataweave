@@ -1,0 +1,7 @@
+{
+  "user": { "id": "U1", "email": "old@x.com", "phones": ["111"] },
+  "ops": [
+    { "op": "replace", "path": "email", "value": "new@x.com" },
+    { "op": "add", "path": "phones", "value": "222" }
+  ]
+}

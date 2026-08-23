@@ -1,0 +1,4 @@
+[
+  { "id": "L1", "geo": { "lat": 18.5, "lng": 73.8 }, "price": "90", "amenities": ["POOL", "Parking"] },
+  { "id": "L2", "geo": { "lat": 19.0, "lng": 72.8 }, "price": "70", "amenities": ["gym"] }
+]

@@ -62,6 +62,36 @@ Work **in order**. Each lab is one Udemy practice lecture or homework item.
 | 56 | industry | `04-industry` | [Shift DateTime to IST for display](04-industry/56-shift-datetime-to-ist-for-display/README.md) |
 | 57 | industry | `04-industry` | [Zip headers with values into an object](04-industry/57-zip-headers-with-values-into-an-object/README.md) |
 | 58 | industry | `04-industry` | [Simulate Transform Message payload + vars](04-industry/58-simulate-transform-message-payload-vars/README.md) |
+| 59 | mapping | `05-mapping` | [Salesforce Account composite to nested customer API](05-mapping/59-salesforce-account-composite-to-nested-customer-api/README.md) |
+| 60 | mapping | `05-mapping` | [SAP-style order JSON to canonical invoice with GST](05-mapping/60-sap-style-order-json-to-canonical-invoice-with-gst/README.md) |
+| 61 | mapping | `05-mapping` | [Workday workers to HR API (active only)](05-mapping/61-workday-workers-to-hr-api-active-only/README.md) |
+| 62 | mapping | `05-mapping` | [Shopify order to ERP sales order](05-mapping/62-shopify-order-to-erp-sales-order/README.md) |
+| 63 | mapping | `05-mapping` | [Stripe charges enriched with customer](05-mapping/63-stripe-charges-enriched-with-customer/README.md) |
+| 64 | mapping | `05-mapping` | [ServiceNow incident plus CMDB lookup](05-mapping/64-servicenow-incident-plus-cmdb-lookup/README.md) |
+| 65 | mapping | `05-mapping` | [Debezium CDC envelope to flat upsert rows](05-mapping/65-debezium-cdc-envelope-to-flat-upsert-rows/README.md) |
+| 66 | mapping | `05-mapping` | [Product variants color times size SKUs](05-mapping/66-product-variants-color-times-size-skus/README.md) |
+| 67 | mapping | `05-mapping` | [Multi-currency lines to USD using FX table](05-mapping/67-multi-currency-lines-to-usd-using-fx-table/README.md) |
+| 68 | mapping | `05-mapping` | [Normalize IN vs US postal addresses](05-mapping/68-normalize-in-vs-us-postal-addresses/README.md) |
+| 69 | mapping | `05-mapping` | [EDI-like PO JSON to procurement canonical](05-mapping/69-edi-like-po-json-to-procurement-canonical/README.md) |
+| 70 | mapping | `05-mapping` | [Bank statement lines to signed running ledger](05-mapping/70-bank-statement-lines-to-signed-running-ledger/README.md) |
+| 71 | mapping | `05-mapping` | [IdP userinfo plus groups to application roles](05-mapping/71-idp-userinfo-plus-groups-to-application-roles/README.md) |
+| 72 | mapping | `05-mapping` | [Allocate warehouse stock to order lines FIFO](05-mapping/72-allocate-warehouse-stock-to-order-lines-fifo/README.md) |
+| 73 | mapping | `05-mapping` | [India GST split CGST SGST vs IGST by state](05-mapping/73-india-gst-split-cgst-sgst-vs-igst-by-state/README.md) |
+| 74 | mapping | `05-mapping` | [Loyalty points from paid orders](05-mapping/74-loyalty-points-from-paid-orders/README.md) |
+| 75 | mapping | `05-mapping` | [Appointment slots to IST display with duration](05-mapping/75-appointment-slots-to-ist-display-with-duration/README.md) |
+| 76 | mapping | `05-mapping` | [BOM explode one level to pick list](05-mapping/76-bom-explode-one-level-to-pick-list/README.md) |
+| 77 | mapping | `05-mapping` | [RMA restock vs refund split](05-mapping/77-rma-restock-vs-refund-split/README.md) |
+| 78 | mapping | `05-mapping` | [Catalog pick locale with English fallback](05-mapping/78-catalog-pick-locale-with-english-fallback/README.md) |
+| 79 | mapping | `05-mapping` | [Partner catalog XML to JSON products](05-mapping/79-partner-catalog-xml-to-json-products/README.md) |
+| 80 | mapping | `05-mapping` | [Health claims flatten ICD diagnosis codes](05-mapping/80-health-claims-flatten-icd-diagnosis-codes/README.md) |
+| 81 | mapping | `05-mapping` | [Telecom CDR aggregate minutes by MSISDN](05-mapping/81-telecom-cdr-aggregate-minutes-by-msisdn/README.md) |
+| 82 | mapping | `05-mapping` | [Listings filter amenities and map geo](05-mapping/82-listings-filter-amenities-and-map-geo/README.md) |
+| 83 | mapping | `05-mapping` | [SCIM-style patch merge on user](05-mapping/83-scim-style-patch-merge-on-user/README.md) |
+| 84 | mapping | `05-mapping` | [Payment recon: bank UTR vs gateway charges](05-mapping/84-payment-recon-bank-utr-vs-gateway-charges/README.md) |
+| 85 | mapping | `05-mapping` | [Manufacturing routing duration by work order](05-mapping/85-manufacturing-routing-duration-by-work-order/README.md) |
+| 86 | mapping | `05-mapping` | [Event-sourced account balance](05-mapping/86-event-sourced-account-balance/README.md) |
+| 87 | mapping | `05-mapping` | [Multi-tenant config overlay (deep-ish merge)](05-mapping/87-multi-tenant-config-overlay-deep-ish-merge/README.md) |
+| 88 | mapping | `05-mapping` | [Canonical product GTIN and UoM conversion](05-mapping/88-canonical-product-gtin-and-uom-conversion/README.md) |
 
 ## How labs map to videos
 

@@ -1,0 +1,7 @@
+{
+  "changes": [
+    { "op": "c", "ts_ms": 100, "before": null, "after": { "id": "A1", "status": "NEW" } },
+    { "op": "u", "ts_ms": 101, "before": { "id": "A1", "status": "NEW" }, "after": { "id": "A1", "status": "PAID" } },
+    { "op": "d", "ts_ms": 102, "before": { "id": "B9", "status": "X" }, "after": null }
+  ]
+}

@@ -1,0 +1,5 @@
+[
+  { "msisdn": "91A", "durationSec": 90, "status": "OK" },
+  { "msisdn": "91A", "durationSec": 30, "status": "FAIL" },
+  { "msisdn": "91B", "durationSec": 120, "status": "ok" }
+]

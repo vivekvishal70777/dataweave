@@ -1,0 +1,4 @@
+<Catalog xmlns="http://partner.example/cat">
+  <Item id="I1"><Name>Bolt</Name><Price>2.5</Price></Item>
+  <Item id="I2"><Name>Nut</Name><Price>0.75</Price></Item>
+</Catalog>

@@ -122,7 +122,18 @@ Easy tutorials: `student/tutorials/13-industry-operators-and-mule-message/` (20 
 63. Labs 55–58 — Video (or four lab videos)  
 64. Quiz: Industry message / MIME — Practice test  
 
-## Section 13 — Interview bootcamp
+## Section 13 — DataWeave Mapping
+
+Easy tutorials: `student/tutorials/14-dataweave-mapping/`. Labs 59–88 in `student/labs/05-mapping/`.
+
+65. Canonical model and hash joins on the payload — Video  
+66. Mapping cluster: Labs 59–63 (CRM / commerce / payments) — Video  
+67. Mapping cluster: Labs 64–70 — Video  
+68. Mapping cluster: Labs 71–80 — Video  
+69. Mapping cluster: Labs 81–88 — Video  
+70. Quiz: DataWeave Mapping — Practice test  
+
+## Section 14 — Interview bootcamp
 
 This section is **practice**, not a replay of Q1–80. Those questions were already taught in sections 2–12.
 

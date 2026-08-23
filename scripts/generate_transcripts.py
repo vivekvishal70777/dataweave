@@ -174,7 +174,7 @@ IDE with `instructor/` hidden. Expand `student/labs/01-fundamentals/01-map-sales
 
 This is the student pack you download from Udemy. You will live in student, not instructor.
 
-student/labs has four folders: fundamentals, intermediate, advanced, industry. Labs are numbered 01 through 58. Each lab is a folder: README, input, and transform.dwl.
+student/labs has five folders: fundamentals, intermediate, advanced, industry, mapping. Labs are numbered 01 through 88. Each lab is a folder: README, input, and transform.dwl.
 
 I am opening Lab 01. README states the problem, the input, and the expected JSON. input.json is the payload. transform.dwl is the starter — it should just pass payload through, which is the wrong shape. That is on purpose.
 
@@ -646,7 +646,11 @@ def load_programming_labs() -> dict[int, dict]:
     mod = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
     spec.loader.exec_module(mod)
-    parsed = mod.parse_labs(mod.SRC.read_text(encoding="utf-8"))
+    text = mod.SRC.read_text(encoding="utf-8")
+    mapping = ROOT / "reference" / "DataWeave-Mapping-Questions.md"
+    if mapping.exists():
+        text = text + "\n" + mapping.read_text(encoding="utf-8")
+    parsed = mod.parse_labs(text)
     return {lab["num"]: lab for lab in parsed}
 
 
@@ -865,7 +869,7 @@ def write_index(lecture_files: list[tuple[str, str, str, str, str]]) -> None:
     lines = [
         "# Recording transcripts",
         "",
-        "Spoken scripts for Vivek. **One video per concept lecture** and **one video per lab (01–58)**.",
+        "Spoken scripts for Vivek. **One video per concept lecture** and **one video per lab (01–88)**.",
         "",
         "How to use: open the markdown, read **SAY**, follow **PAUSE CARD**, type the **TYPE** blocks. Target 6–10 minutes; cap 12. Split Lab 23, 39, 53, 54, and the whiteboard set if needed.",
         "",
@@ -895,7 +899,7 @@ def write_index(lecture_files: list[tuple[str, str, str, str, str]]) -> None:
         lines.append(f"| {code} | {title} | {mins} | [lectures/{code}.md](lectures/{code}.md) |")
     lines += [
         "",
-        "## Lab videos (58)",
+        "## Lab videos (88)",
         "",
         "All files: [`labs/`](labs/).",
         "",
@@ -923,8 +927,8 @@ def main() -> None:
     if len(questions) != 80:
         raise SystemExit(f"Expected 80 questions, parsed {len(questions)}")
     tips = load_tips()
-    if len(tips) != 58:
-        raise SystemExit(f"Expected 58 lab tips, got {len(tips)}")
+    if len(tips) != 88:
+        raise SystemExit(f"Expected 88 lab tips, got {len(tips)}")
 
     lect_dir = OUT / "lectures"
     lab_dir = OUT / "labs"

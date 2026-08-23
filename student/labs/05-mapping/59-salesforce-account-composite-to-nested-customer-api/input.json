@@ -1,0 +1,10 @@
+{
+  "accounts": [
+    { "Id": "001xxA", "Name": "Acme Pvt", "BillingCity": "Pune" },
+    { "Id": "001xxB", "Name": "Globex", "BillingCity": "Mumbai" }
+  ],
+  "contacts": [
+    { "AccountId": "001xxA", "FirstName": "Asha", "LastName": "Rao", "Email": "asha@acme.com" },
+    { "AccountId": "001xxA", "FirstName": "Ben", "LastName": "Cole", "Email": "ben@acme.com" }
+  ]
+}
