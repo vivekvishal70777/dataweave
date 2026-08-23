@@ -11,6 +11,8 @@
 
 Do not paste full solutions on screen before the pause. Udemy students binge; the pause card is the course.
 
+Before you hit publish: you do **not** need a license from MuleSoft or a book author for **your** DataWeave labs and Q&A. You **must not** upload anyone else’s book or PDF. Details: [`PUBLISHING-RIGHTS.md`](PUBLISHING-RIGHTS.md).
+
 ## What to upload on Udemy
 
 | Udemy field | File |
@@ -32,6 +34,7 @@ Do not paste full solutions on screen before the pause. Udemy students binge; th
 - Dual monitor: Playground on the right, `LECTURE.md` talking points on the left.
 - Name videos: `S02-L03-script-structure.mp4` matching curriculum order.
 - Coding videos: aim **under 12 minutes**. Split Lab 54 / Q60 if needed.
+- Read the spoken script from [`transcripts/README.md`](transcripts/README.md) — one file per concept lecture and one file per lab.
 
 ## Per-lab on-camera pattern
 
