@@ -2,6 +2,8 @@
 
 Use this file as the **article lecture** and recording outline on Udemy.
 
+**Easy-word tutorials (one page per topic):** [`../../student/tutorials/06-json-xml-csv/README.md`](../../student/tutorials/06-json-xml-csv/README.md) (copies also in `tutorials/` next to this file).
+
 ## Learning objectives
 
 - Change `output` MIME type and produce a single XML root.
@@ -22,7 +24,10 @@ Student starters live under `student/labs/`.
 - Lab 29
 - Lab 30
 
-## Teach these interview questions
+## Interview talking points for this section
+
+Teach the **concept**, then demo, then lab. Use these Q&A as the phrases to say on camera —
+not as a second lecture series. One 20–40s “if they ask this in an interview…” close per video is enough.
 
 ### Q14. How do you transform JSON to XML (and vice versa)?
 

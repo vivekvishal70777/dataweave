@@ -2,6 +2,8 @@
 
 Use this file as the **article lecture** and recording outline on Udemy.
 
+**Easy-word tutorials (one page per topic):** [`../../student/tutorials/10-advanced-recursion-and-xml-ns/README.md`](../../student/tutorials/10-advanced-recursion-and-xml-ns/README.md) (copies also in `tutorials/` next to this file).
+
 ## Learning objectives
 
 - Walk trees with `match` + recursion.
@@ -34,7 +36,10 @@ Student starters live under `student/labs/`.
 - Lab 53
 - Lab 54
 
-## Teach these interview questions
+## Interview talking points for this section
+
+Teach the **concept**, then demo, then lab. Use these Q&A as the phrases to say on camera —
+not as a second lecture series. One 20–40s “if they ask this in an interview…” close per video is enough.
 
 ### Q41. How does DataWeave streaming work? When does it break?
 

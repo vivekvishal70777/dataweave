@@ -1,0 +1,25 @@
+# flatten
+
+*Section: Arrays: map, filter, and indexes · Interview Q24 · easy words*
+
+## In one sentence
+
+flatten removes one level of nesting in arrays. [[1,2],[3]] becomes [1,2,3].
+
+## Like this in real life
+
+Opening inner boxes once. Boxes inside those inner boxes stay closed. That deeper job is recursion.
+
+## Tiny example
+
+Read this slowly. Header first, then the body.
+
+```dataweave
+flatten([[1, 2], [3], [4, 5]])     // [1, 2, 3, 4, 5]
+```
+
+## Remember
+
+One flatten is not a deep flatten.
+
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

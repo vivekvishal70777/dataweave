@@ -2,6 +2,8 @@
 
 Use this file as the **article lecture** and recording outline on Udemy.
 
+**Easy-word tutorials (one page per topic):** [`../../student/tutorials/01-welcome-and-setup/README.md`](../../student/tutorials/01-welcome-and-setup/README.md) (copies also in `tutorials/` next to this file).
+
 ## Learning objectives
 
 - Know how this course is sequenced (concept → demo → lab → quiz).

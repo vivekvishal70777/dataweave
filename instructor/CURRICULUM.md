@@ -39,6 +39,14 @@ Keep coding videos under ~12 minutes; split if a demo runs longer.
 
 Target: **~50 published lectures** plus **58 downloadable labs** and **section quizzes**.
 
+Plain-language concept pages (one file per topic): [`student/tutorials/README.md`](../student/tutorials/README.md). Same files are copied under `sections/<id>/tutorials/`.
+
+## Interview Q&A is not a second course
+
+Each topic section **teaches** its questions (concept + demo + lab + quiz).
+The last section is **practice only**: timed verbal answers and whiteboard labs.
+Attach `student/resources/bootcamp-prompts.md` (Set B, questions only). Instructor answers: `instructor/bootcamp/BOOTCAMP-QA.md`.
+
 ## After each section
 
 1. Students complete the listed labs (starters only).

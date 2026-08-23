@@ -11,7 +11,7 @@ Teach **Mule 4 / DataWeave 2.x** as a linear online course: concept videos, then
 | `sections/` | You + optional article lectures | One `LECTURE.md` per Udemy section (objectives, talking points, full Q&A to teach) |
 | `reference/` | Archive | Original 80 interview Q&A, 58 programming drills |
 
-**Do not zip `instructor/` into the student resource pack on Udemy.** Publish `student/` (and optionally `sections/` as reading). Keep solutions for after-try videos or a separate “solutions” lecture at the end of each section.
+**Do not zip `instructor/` or `reference/` into the student resource pack on Udemy.** The course Q&A and `instructor/bootcamp/BOOTCAMP-QA.md` are answer keys. Last section: students get `student/resources/bootcamp-prompts.md` (Set B, questions only).
 
 ## Suggested Udemy path
 
@@ -33,14 +33,17 @@ How to record, pause for practice, and package resources: [`instructor/TEACHING-
 
 Spoken scripts for every concept lecture and every lab video: [`instructor/transcripts/README.md`](instructor/transcripts/README.md).
 
+Easy-word tutorials (one file per topic, per section): [`student/tutorials/README.md`](student/tutorials/README.md).
+
 Copyright / Udemy rights (original labs vs third-party books): [`instructor/PUBLISHING-RIGHTS.md`](instructor/PUBLISHING-RIGHTS.md).
 
 ## Student quick start
 
 1. Read [`student/00-getting-started.md`](student/00-getting-started.md).
-2. Open [`student/labs/README.md`](student/labs/README.md).
-3. For each lab: paste `input.json` (or `input.txt`) into [DataWeave Playground](https://dataweave.mulesoft.com/learn/) or Transform Message, then complete `transform.dwl`.
-4. Take the section quiz under [`student/quizzes/`](student/quizzes/).
+2. Open [`student/tutorials/README.md`](student/tutorials/README.md) and read the easy concept pages for that section.
+3. Open [`student/labs/README.md`](student/labs/README.md).
+4. For each lab: paste `input.json` (or `input.txt`) into [DataWeave Playground](https://dataweave.mulesoft.com/learn/) or Transform Message, then complete `transform.dwl`.
+5. Take the section quiz under [`student/quizzes/`](student/quizzes/).
 
 ## Regenerating labs and lectures
 
@@ -49,6 +52,8 @@ If you edit the files in `reference/`, rebuild:
 ```bash
 python3 scripts/generate_udemy_labs.py
 python3 scripts/generate_udemy_lectures.py
+python3 scripts/generate_easy_tutorials.py
+python3 scripts/generate_bootcamp_set_b.py
 ```
 
 ## Source material

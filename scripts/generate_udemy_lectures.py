@@ -3,9 +3,13 @@
 from __future__ import annotations
 
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from bootcamp_set_b import ITEMS as SET_B
+
 SRC = ROOT / "reference" / "MuleSoft-DataWeave-Interview-Questions.md"
 
 # Udemy section -> inclusive question numbers + student lab numbers
@@ -201,9 +205,10 @@ SECTIONS = [
             "Talk through the nested XML → JSON design (Q60).",
         ],
         "talking": [
-            "Do not re-teach; run timed drills. Students close solutions.",
-            "Record 2–3 mock interviews using the whiteboard set.",
+            "Do not re-teach Q1–80. Those answers were already taught in sections 2–12.",
+            "Record timed drills: verbal flashcards, then whiteboard labs, then Q60 as a design talk.",
         ],
+        "qa_mode": "drill",
     },
 ]
 
@@ -232,6 +237,8 @@ def write_section(sec: dict, questions: dict[int, tuple[str, str]]) -> None:
         "",
         "Use this file as the **article lecture** and recording outline on Udemy.",
         "",
+        f"**Easy-word tutorials (one page per topic):** [`../../student/tutorials/{sec['id']}/README.md`](../../student/tutorials/{sec['id']}/README.md) (copies also in `tutorials/` next to this file).",
+        "",
         "## Learning objectives",
         "",
     ]
@@ -250,8 +257,43 @@ def write_section(sec: dict, questions: dict[int, tuple[str, str]]) -> None:
         ]
         for n in sec["labs"]:
             lines.append(f"- Lab {n:02d}")
-    if sec["qs"]:
-        lines += ["", "## Teach these interview questions", ""]
+    qa_mode = sec.get("qa_mode", "full" if sec["qs"] else "none")
+    if qa_mode == "drill":
+        lines += [
+            "",
+            "## This is not a second teaching pass",
+            "",
+            "Q1–80 already appear in **topic sections** (easy tutorial → concept video → demo → lab → quiz).",
+            "Do **not** record another 80 videos here. Students drill from **prompts only** (no answer key in the zip).",
+            "",
+            "Students drill **Set B**: `student/resources/bootcamp-prompts.md` (questions only).",
+            "Your answers while recording: `instructor/bootcamp/BOOTCAMP-QA.md`. Never zip that file.",
+            "",
+            "The course bank (`reference/MuleSoft-DataWeave-Interview-Questions.md`) was already taught in sections 2–12.",
+            "",
+            "### What to publish in this section",
+            "",
+            "1. **Article** — how to drill. Attach **`student/resources/bootcamp-prompts.md` only** (Set B, no answers).",
+            "2. **Video: verbal mock** — you ask 8 mixed questions (easy + hard). Pause card after each prompt. Then you give a model 60-second answer. Do not open Studio.",
+            "3. **Video: whiteboard** — timebox 8 minutes each on Labs 23, 20, 32, 39, 41, 53/54 (pick 3 on camera; assign the rest).",
+            "4. **Video: Q60 design talk** — eight beats only (reader, types, money, join, shape, writer, try, scale). They already coded Lab 41 + 54.",
+            "5. **Practice test** — final quiz, not a lecture.",
+            "",
+            "### Set B checklist (titles only — answers in instructor/bootcamp/BOOTCAMP-QA.md)",
+            "",
+        ]
+        for n, title, _ans in SET_B:
+            lines.append(f"- B{n}. {title}")
+        lines.append("")
+    elif sec["qs"]:
+        lines += [
+            "",
+            "## Interview talking points for this section",
+            "",
+            "Teach the **concept**, then demo, then lab. Use these Q&A as the phrases to say on camera —",
+            "not as a second lecture series. One 20–40s “if they ask this in an interview…” close per video is enough.",
+            "",
+        ]
         seen = set()
         for n in sec["qs"]:
             if n in seen or n not in questions:
@@ -269,6 +311,43 @@ def write_section(sec: dict, questions: dict[int, tuple[str, str]]) -> None:
             "",
         ]
     (d / "LECTURE.md").write_text("\n".join(lines), encoding="utf-8")
+
+
+def write_student_prompts(questions: dict[int, tuple[str, str]]) -> None:
+    """Questions only — safe to zip into the Udemy student pack."""
+    bands: list[tuple[str, range]] = [
+        ("Easy (Q1–20)", range(1, 21)),
+        ("Moderate (Q21–40)", range(21, 41)),
+        ("Hard (Q41–60)", range(41, 61)),
+        ("Industry / Mule message (Q61–80)", range(61, 81)),
+    ]
+    lines = [
+        "# Interview prompts (no answers)",
+        "",
+        "These are the **same 80 questions** you already learned in the course. This file is a **prompt list only**.",
+        "",
+        "**Answers are not here.** Speak first, then resume the mock-interview video for a model answer.",
+        "",
+        "How to drill:",
+        "",
+        "1. Read one prompt.",
+        "2. Pause the video (or close this file and look away).",
+        "3. Speak for 45–90 seconds (hard questions: up to 3 minutes, plus a tiny script).",
+        "4. Resume the video or replay the original concept lecture.",
+        "",
+        "If you download an “answer key” pack, that is only for **after** you attempt — same rule as lab solutions.",
+        "",
+    ]
+    for heading, nums in bands:
+        lines += [f"## {heading}", ""]
+        for n in nums:
+            if n not in questions:
+                continue
+            title, _body = questions[n]
+            lines += [f"### {n}. {title}", "", "_Speak, then check the video._", ""]
+    path = ROOT / "student" / "resources" / "interview-prompts.md"
+    path.write_text("\n".join(lines), encoding="utf-8")
+    print(f"Wrote {path.relative_to(ROOT)} ({len(questions)} prompts, no answers)")
 
 
 def write_curriculum(questions: dict[int, tuple[str, str]]) -> None:
@@ -308,6 +387,14 @@ def write_curriculum(questions: dict[int, tuple[str, str]]) -> None:
         "",
         "Target: **~50 published lectures** plus **58 downloadable labs** and **section quizzes**.",
         "",
+        "Plain-language concept pages (one file per topic): [`student/tutorials/README.md`](../student/tutorials/README.md). Same files are copied under `sections/<id>/tutorials/`.",
+        "",
+        "## Interview Q&A is not a second course",
+        "",
+        "Each topic section **teaches** its questions (concept + demo + lab + quiz).",
+        "The last section is **practice only**: timed verbal answers and whiteboard labs.",
+        "Attach `student/resources/bootcamp-prompts.md` (Set B, questions only). Instructor answers: `instructor/bootcamp/BOOTCAMP-QA.md`.",
+        "",
         "## After each section",
         "",
         "1. Students complete the listed labs (starters only).",
@@ -326,6 +413,7 @@ def main() -> None:
     for sec in SECTIONS:
         write_section(sec, questions)
     write_curriculum(questions)
+    write_student_prompts(questions)
     print(f"Wrote {len(SECTIONS)} section lectures from {len(questions)} questions")
 
 

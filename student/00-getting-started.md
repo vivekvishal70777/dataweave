@@ -38,4 +38,4 @@ Cover the expected output with a sticky note if you are tempted to skip the atte
 
 Follow the section numbers in the Udemy curriculum. Do not jump to advanced recursion labs until you can `map` / `filter` / `groupBy` without notes.
 
-Next: [Lab index](labs/README.md).
+Next: [Easy tutorials](tutorials/README.md), then [Lab index](labs/README.md). Last section: [bootcamp Set B prompts](resources/bootcamp-prompts.md) (questions only).
