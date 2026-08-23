@@ -1,0 +1,6 @@
+[
+  { "id": "ORD-1", "status": "paid", "amount": "100.00" },
+  { "id": "ORD-2", "status": "NEW", "amount": "50" },
+  { "id": "ORD-3", "status": "SETTLED", "amount": 75 },
+  { "id": "ORD-4", "status": "PAID", "amount": 0 }
+]

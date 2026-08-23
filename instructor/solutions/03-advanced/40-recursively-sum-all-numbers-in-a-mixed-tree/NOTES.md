@@ -2,6 +2,10 @@
 
 Recursively sum all numbers in a mixed tree
 
+## Expected (note)
+
+`6.5`
+
 ## Teaching tip
 
 Demo the failing starter (`payload` passthrough) first, then build the script live.

@@ -126,6 +126,9 @@ Reader properties are often set on the **MIME type of the incoming message**, no
 7. Recursive functions without considering depth  
 8. Converting entire files to Java `HashMap` unnecessarily  
 
-Fix pattern: index the right-hand collection once (`groupBy` id), then `map` the left side with O(1)/O(k) lookups.
+9. Money as floating `Number` without a `format` round-trip (prefer `fun money`)  
+10. Putting connector I/O (`lookup`, HTTP) inside Transform Message instead of before/after the map  
+
+Fix pattern: index the right-hand collection once (`groupBy` id), then `map` the left side with O(1)/O(k) lookups. Coerce dirty strings once. Mask PII before `log`.
 
 ---

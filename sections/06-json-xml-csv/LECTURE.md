@@ -10,7 +10,7 @@ Use this file as the **article lecture** and recording outline on Udemy.
 
 ## Suggested video breakdown
 
-- Same payload, three outputs: JSON, XML, CSV — three short clips.
+- JSON to XML (single root). SOAP/namespaces wait until the advanced section.
 - Stress: XML needs one root; CSV keys become headers.
 
 ## Labs in this section

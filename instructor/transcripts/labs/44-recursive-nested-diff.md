@@ -16,19 +16,20 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 44. Recursive nested diff. Return a nested object of only differences. Unchanged subtrees omitted.
+This is Lab 44. Recursive nested diff. Return a nested object of
 
-Recursive diff: match types, walk objects and arrays, collect paths.
+Recursive diff: omit unchanged subtrees. skipNullOn everywhere.
 
 ## Part 2 — Input
 
 **SAY:** Paste this payload. Set the MIME type to match the sample.
 
 ```json
-{ "a": 1, "nested": { "x": 1, "y": 2 } }
+{
+  "before": { "a": 1, "nested": { "x": 1, "y": 2 } },
+  "after": { "a": 1, "nested": { "x": 1, "y": 9 } }
+}
 ```
-
-**SAY (vars):** Set vars.old to `{ "a": 1, "nested": { "x": 1, "y": 9 } }`.
 
 ## PAUSE CARD (hold 3–5 seconds)
 
@@ -70,18 +71,18 @@ fun diff(a, b) =
     else -> { from: a, to: b }
   })
 ---
-diff(vars.old, payload)
+diff(payload.before, payload.after)
 ```
 
 **SAY:** That should match Expected:
 
-_No expected block in the reference drill; run the solution on camera and show the preview._
+`{ "nested": { "y": { "from": 2, "to": 9 } } }` (shape may wrap `from`/`to`).
 
 ## Part 4 — Interview phrase and close
 
 **SAY:**
 
-Recursive diff: match types, walk objects and arrays, collect paths.
+Recursive diff: omit unchanged subtrees. skipNullOn everywhere.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 
@@ -92,6 +93,10 @@ Stop. Do not start Lab 45 in this file.
 # Instructor solution — Lab 44
 
 Recursive nested diff
+
+## Expected (note)
+
+`{ "nested": { "y": { "from": 2, "to": 9 } } }` (shape may wrap `from`/`to`).
 
 ## Teaching tip
 

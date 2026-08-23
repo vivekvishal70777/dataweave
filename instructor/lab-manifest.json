@@ -1,36 +1,36 @@
 [
   {
     "num": 1,
-    "title": "Map employee JSON to a shorter shape",
-    "slug": "map-employee-json-to-a-shorter-shape",
+    "title": "Map Salesforce Contact to a shorter API shape",
+    "slug": "map-salesforce-contact-to-a-shorter-api-shape",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 2,
-    "title": "Filter paid orders",
-    "slug": "filter-paid-orders",
+    "title": "Filter settled commerce orders",
+    "slug": "filter-settled-commerce-orders",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 3,
-    "title": "Sum array of numbers",
-    "slug": "sum-array-of-numbers",
+    "title": "Sum invoice line amounts (string money)",
+    "slug": "sum-invoice-line-amounts-string-money",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 4,
-    "title": "Uppercase all string values in an object",
-    "slug": "uppercase-all-string-values-in-an-object",
+    "title": "Uppercase string fields on an address object",
+    "slug": "uppercase-string-fields-on-an-address-object",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 5,
-    "title": "Default missing email",
-    "slug": "default-missing-email",
+    "title": "Default missing email on an Account",
+    "slug": "default-missing-email-on-an-account",
     "section": "01-fundamentals",
     "level": "easy"
   },
@@ -43,64 +43,64 @@
   },
   {
     "num": 7,
-    "title": "Join array into a comma-separated string",
-    "slug": "join-array-into-a-comma-separated-string",
+    "title": "Join SKUs into a comma-separated string",
+    "slug": "join-skus-into-a-comma-separated-string",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 8,
-    "title": "Add tax to price",
-    "slug": "add-tax-to-price",
+    "title": "Add GST to a unit price (2 decimal money)",
+    "slug": "add-gst-to-a-unit-price-2-decimal-money",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 9,
-    "title": "Extract unique cities",
-    "slug": "extract-unique-cities",
+    "title": "Extract unique billing cities, sorted",
+    "slug": "extract-unique-billing-cities-sorted",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 10,
-    "title": "Count items in an array",
-    "slug": "count-items-in-an-array",
+    "title": "Count line items in a composite payload",
+    "slug": "count-line-items-in-a-composite-payload",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 11,
-    "title": "Convert JSON array to XML with a root",
-    "slug": "convert-json-array-to-xml-with-a-root",
+    "title": "Convert JSON array to XML with a single root",
+    "slug": "convert-json-array-to-xml-with-a-single-root",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 12,
-    "title": "Read XML attributes",
-    "slug": "read-xml-attributes",
+    "title": "Read XML attributes vs element text",
+    "slug": "read-xml-attributes-vs-element-text",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 13,
-    "title": "If/else grade from score",
-    "slug": "if-else-grade-from-score",
+    "title": "Classify an HTTP/integration status",
+    "slug": "classify-an-http-integration-status",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 14,
-    "title": "Index each element",
-    "slug": "index-each-element",
+    "title": "Index each batch row (1-based)",
+    "slug": "index-each-batch-row-1-based",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 15,
-    "title": "Flatten one level",
-    "slug": "flatten-one-level",
+    "title": "Flatten one level of nested arrays",
+    "slug": "flatten-one-level-of-nested-arrays",
     "section": "01-fundamentals",
     "level": "easy"
   },
@@ -113,42 +113,42 @@
   },
   {
     "num": 17,
-    "title": "Boolean flag from string",
-    "slug": "boolean-flag-from-string",
+    "title": "Boolean flag from dirty string",
+    "slug": "boolean-flag-from-dirty-string",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 18,
-    "title": "First three characters of a code",
-    "slug": "first-three-characters-of-a-code",
+    "title": "SKU prefix before hyphen",
+    "slug": "sku-prefix-before-hyphen",
     "section": "01-fundamentals",
     "level": "easy"
   },
   {
     "num": 19,
-    "title": "Group orders by customer",
-    "slug": "group-orders-by-customer",
+    "title": "Group orders by customerId",
+    "slug": "group-orders-by-customerid",
     "section": "02-intermediate",
     "level": "moderate"
   },
   {
     "num": 20,
-    "title": "Total amount per customer",
-    "slug": "total-amount-per-customer",
+    "title": "Total amount per customer (groupBy + sum)",
+    "slug": "total-amount-per-customer-groupby-sum",
     "section": "02-intermediate",
     "level": "moderate"
   },
   {
     "num": 21,
-    "title": "Sort products by price descending",
-    "slug": "sort-products-by-price-descending",
+    "title": "Sort products by unitPrice descending",
+    "slug": "sort-products-by-unitprice-descending",
     "section": "02-intermediate",
     "level": "moderate"
   },
   {
     "num": 22,
-    "title": "Pivot array to object keyed by id",
+    "title": "Pivot array to object keyed by Id",
     "slug": "pivot-array-to-object-keyed-by-id",
     "section": "02-intermediate",
     "level": "moderate"
@@ -162,36 +162,36 @@
   },
   {
     "num": 24,
-    "title": "Remove password and ssn keys",
-    "slug": "remove-password-and-ssn-keys",
+    "title": "Strip password, ssn, and accessToken keys",
+    "slug": "strip-password-ssn-and-accesstoken-keys",
     "section": "02-intermediate",
     "level": "moderate"
   },
   {
     "num": 25,
-    "title": "Merge two objects (right wins)",
-    "slug": "merge-two-objects-right-wins",
+    "title": "Merge config overlay (right wins)",
+    "slug": "merge-config-overlay-right-wins",
     "section": "02-intermediate",
     "level": "moderate"
   },
   {
     "num": 26,
-    "title": "Update nested city to uppercase",
-    "slug": "update-nested-city-to-uppercase",
+    "title": "Update nested city to uppercase (Mule 4.3+)",
+    "slug": "update-nested-city-to-uppercase-mule-4-3",
     "section": "02-intermediate",
     "level": "moderate"
   },
   {
     "num": 27,
-    "title": "Parse mixed date formats",
-    "slug": "parse-mixed-date-formats",
+    "title": "Parse mixed date formats (ISO or dd/MM/yyyy)",
+    "slug": "parse-mixed-date-formats-iso-or-dd-mm-yyyy",
     "section": "02-intermediate",
     "level": "moderate"
   },
   {
     "num": 28,
-    "title": "Format `now()` as `dd-MMM-yyyy`",
-    "slug": "format-now-as-dd-mmm-yyyy",
+    "title": "Format an event timestamp as `dd-MMM-yyyy`",
+    "slug": "format-an-event-timestamp-as-dd-mmm-yyyy",
     "section": "02-intermediate",
     "level": "moderate"
   },
@@ -204,8 +204,8 @@
   },
   {
     "num": 30,
-    "title": "JSON to CSV",
-    "slug": "json-to-csv",
+    "title": "JSON to CSV for finance export",
+    "slug": "json-to-csv-for-finance-export",
     "section": "02-intermediate",
     "level": "moderate"
   },
@@ -218,36 +218,36 @@
   },
   {
     "num": 32,
-    "title": "Join without `leftJoin` (groupBy lookup)",
+    "title": "Join without leftJoin (groupBy lookup)",
     "slug": "join-without-leftjoin-groupby-lookup",
     "section": "02-intermediate",
     "level": "moderate"
   },
   {
     "num": 33,
-    "title": "Pattern match status codes",
-    "slug": "pattern-match-status-codes",
+    "title": "Pattern match HTTP status class",
+    "slug": "pattern-match-http-status-class",
     "section": "02-intermediate",
     "level": "moderate"
   },
   {
     "num": 34,
-    "title": "Window / paginate an array",
-    "slug": "window-paginate-an-array",
+    "title": "Window / paginate a bulk array",
+    "slug": "window-paginate-a-bulk-array",
     "section": "02-intermediate",
     "level": "moderate"
   },
   {
     "num": 35,
-    "title": "Deduplicate by email, keep last record",
-    "slug": "deduplicate-by-email-keep-last-record",
+    "title": "Deduplicate by email, keep last record (CDC)",
+    "slug": "deduplicate-by-email-keep-last-record-cdc",
     "section": "02-intermediate",
     "level": "moderate"
   },
   {
     "num": 36,
-    "title": "Dynamic object keys from an array of pairs",
-    "slug": "dynamic-object-keys-from-an-array-of-pairs",
+    "title": "Dynamic object keys from header pairs",
+    "slug": "dynamic-object-keys-from-header-pairs",
     "section": "02-intermediate",
     "level": "moderate"
   },
@@ -267,8 +267,8 @@
   },
   {
     "num": 39,
-    "title": "Deep mask PII keys (`ssn`, `password`, `email`)",
-    "slug": "deep-mask-pii-keys-ssn-password-email",
+    "title": "Deep mask PII keys (`ssn`, `password`, `email`, `accessToken`)",
+    "slug": "deep-mask-pii-keys-ssn-password-email-accesstoken",
     "section": "03-advanced",
     "level": "hard"
   },
@@ -281,22 +281,22 @@
   },
   {
     "num": 41,
-    "title": "XML namespaced order to canonical JSON",
-    "slug": "xml-namespaced-order-to-canonical-json",
+    "title": "SOAP namespaced purchase order to canonical JSON",
+    "slug": "soap-namespaced-purchase-order-to-canonical-json",
     "section": "03-advanced",
     "level": "hard"
   },
   {
     "num": 42,
-    "title": "Write XML with attributes and namespace",
-    "slug": "write-xml-with-attributes-and-namespace",
+    "title": "Write namespaced XML from canonical JSON",
+    "slug": "write-namespaced-xml-from-canonical-json",
     "section": "03-advanced",
     "level": "hard"
   },
   {
     "num": 43,
-    "title": "Diff two flat objects (changed keys)",
-    "slug": "diff-two-flat-objects-changed-keys",
+    "title": "CDC flat diff (before vs after)",
+    "slug": "cdc-flat-diff-before-vs-after",
     "section": "03-advanced",
     "level": "hard"
   },
@@ -309,22 +309,22 @@
   },
   {
     "num": 45,
-    "title": "Chunk array into batches of N (for bulk APIs)",
-    "slug": "chunk-array-into-batches-of-n-for-bulk-apis",
+    "title": "Chunk array into batches of N (Salesforce Composite / bulk)",
+    "slug": "chunk-array-into-batches-of-n-salesforce-composite-bulk",
     "section": "03-advanced",
     "level": "hard"
   },
   {
     "num": 46,
-    "title": "Running totals",
-    "slug": "running-totals",
+    "title": "Running totals (ledger)",
+    "slug": "running-totals-ledger",
     "section": "03-advanced",
     "level": "hard"
   },
   {
     "num": 47,
-    "title": "Word frequency (case-insensitive)",
-    "slug": "word-frequency-case-insensitive",
+    "title": "Error-code frequency from log lines",
+    "slug": "error-code-frequency-from-log-lines",
     "section": "03-advanced",
     "level": "hard"
   },
@@ -351,30 +351,58 @@
   },
   {
     "num": 51,
-    "title": "Combinations: cartesian product of two arrays",
-    "slug": "combinations-cartesian-product-of-two-arrays",
+    "title": "Cartesian product of SKU options",
+    "slug": "cartesian-product-of-sku-options",
     "section": "03-advanced",
     "level": "hard"
   },
   {
     "num": 52,
-    "title": "Safe divide with `try`",
-    "slug": "safe-divide-with-try",
+    "title": "Safe unit price with `try`",
+    "slug": "safe-unit-price-with-try",
     "section": "03-advanced",
     "level": "hard"
   },
   {
     "num": 53,
-    "title": "Build a nested org chart from a flat list",
-    "slug": "build-a-nested-org-chart-from-a-flat-list",
+    "title": "Build a nested org chart from a flat HR list",
+    "slug": "build-a-nested-org-chart-from-a-flat-hr-list",
     "section": "03-advanced",
     "level": "hard"
   },
   {
     "num": 54,
-    "title": "Invoice: compute line totals, tax, and grand total",
-    "slug": "invoice-compute-line-totals-tax-and-grand-total",
+    "title": "Production invoice: discounts, tax, skip zero qty",
+    "slug": "production-invoice-discounts-tax-skip-zero-qty",
     "section": "03-advanced",
     "level": "hard"
+  },
+  {
+    "num": 55,
+    "title": "maxBy and firstWith on a work queue",
+    "slug": "maxby-and-firstwith-on-a-work-queue",
+    "section": "04-industry",
+    "level": "industry"
+  },
+  {
+    "num": 56,
+    "title": "Shift DateTime to IST for display",
+    "slug": "shift-datetime-to-ist-for-display",
+    "section": "04-industry",
+    "level": "industry"
+  },
+  {
+    "num": 57,
+    "title": "Zip headers with values into an object",
+    "slug": "zip-headers-with-values-into-an-object",
+    "section": "04-industry",
+    "level": "industry"
+  },
+  {
+    "num": 58,
+    "title": "Simulate Transform Message payload + vars",
+    "slug": "simulate-transform-message-payload-vars",
+    "section": "04-industry",
+    "level": "industry"
   }
 ]

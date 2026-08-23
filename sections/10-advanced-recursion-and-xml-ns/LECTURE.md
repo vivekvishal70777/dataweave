@@ -10,7 +10,7 @@ Use this file as the **article lecture** and recording outline on Udemy.
 
 ## Suggested video breakdown
 
-- Split into 4–5 videos: recursion, XML ns, dynamic keys, capstone invoice (Lab 54).
+- Split into 4–5 videos: recursion, SOAP ns (Lab 41), dynamic keys, capstone invoice (Lab 54).
 - Lab 39 PII mask as a production story.
 
 ## Labs in this section

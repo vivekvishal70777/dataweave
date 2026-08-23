@@ -12,7 +12,18 @@
 
 ## Problem
 
-**Problem:** Return a nested object of only differences. Unchanged subtrees omitted.
+**Problem:** Return a nested object of **only** differences. Unchanged subtrees omitted. Use `payload.before` / `payload.after`.
+
+**Input:**
+
+```json
+{
+  "before": { "a": 1, "nested": { "x": 1, "y": 2 } },
+  "after": { "a": 1, "nested": { "x": 1, "y": 9 } }
+}
+```
+
+**Expected:** `{ "nested": { "y": { "from": 2, "to": 9 } } }` (shape may wrap `from`/`to`).
 
 **Solution:** Hidden until you try it. See `instructor/solutions`.
 

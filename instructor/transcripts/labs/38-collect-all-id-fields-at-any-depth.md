@@ -16,9 +16,9 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 38. Collect all `id` fields at any depth. Collect all `id` fields at any depth
+This is Lab 38. Collect all `id` fields at any depth. Return every `id` in a nested integration payload. Descendant `payload..id` is acceptable; be ready to recurse if the interviewer forbids `..`.
 
-Descendant selector or a recursive collect. Named keys named id at any depth.
+Descendant selector payload..id, or recurse if they forbid two dots.
 
 ## Part 2 — Input
 
@@ -61,13 +61,13 @@ payload..id
 
 **SAY:** That should match Expected:
 
-`["root", "c1", "i1"]` (order may follow tree walk)
+`["root", "c1", "i1"]` (walk order may vary)
 
 ## Part 4 — Interview phrase and close
 
 **SAY:**
 
-Descendant selector or a recursive collect. Named keys named id at any depth.
+Descendant selector payload..id, or recurse if they forbid two dots.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 
@@ -81,7 +81,7 @@ Collect all `id` fields at any depth
 
 ## Expected (note)
 
-`["root", "c1", "i1"]` (order may follow tree walk)
+`["root", "c1", "i1"]` (walk order may vary)
 
 ## Teaching tip
 

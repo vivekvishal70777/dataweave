@@ -1,0 +1,5 @@
+[
+  { "sku": "SKU-A", "unitPrice": 30 },
+  { "sku": "SKU-B", "unitPrice": 90 },
+  { "sku": "SKU-C", "unitPrice": 90 }
+]

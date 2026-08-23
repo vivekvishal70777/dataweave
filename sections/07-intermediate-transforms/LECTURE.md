@@ -10,7 +10,7 @@ Use this file as the **article lecture** and recording outline on Udemy.
 
 ## Suggested video breakdown
 
-- Hero demo: Lab 20 totals per customer, then Lab 23 flatMap lines.
+- Hero demo: Lab 20 totals per customer (coerce string amounts), then Lab 23 flatMap lines.
 - Show `update` and mention Mule 4.3+ (Q26).
 
 ## Labs in this section
@@ -92,7 +92,7 @@ output application/json
 }
 ```
 
-`++` is a shallow merge (right key overwrites).
+`++` is a **shallow** merge (right key overwrites the whole nested object). `mergeWith` is the interview follow-up for **deep** merge of nested objects. Minus on objects (`payload - "password"`) drops keys. For arrays of objects, merge by `id` is Lab 49, not `++`.
 
 ---
 

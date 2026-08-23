@@ -12,7 +12,18 @@
 
 ## Problem
 
-**Problem:** Union by `id`; fields from left and right, right overwrites on conflict.
+**Problem:** Union by `id`; fields from left and right, **right overwrites** on conflict (master-data merge).
+
+**Input:**
+
+```json
+{
+  "left": [{ "id": "1", "a": 1, "name": "old" }],
+  "right": [{ "id": "1", "b": 2, "name": "new" }, { "id": "2", "b": 3 }]
+}
+```
+
+**Expected:** id `1` has `a`, `b`, `name=new`; id `2` from right only.
 
 **Solution:** Hidden until you try it. See `instructor/solutions`.
 

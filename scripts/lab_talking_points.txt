@@ -1,54 +1,58 @@
-1|Dollar is the current employee. Join first and last with plus-plus, then rename department to dept.
-2|Filter keeps rows where the predicate is true. Compare status to the string PAID, then keep only what you need.
-3|Sum walks the array of numbers. Say sum of payload, not a Java for-loop.
-4|mapObject walks keys and values and returns an object. Uppercase only string values; leave numbers alone.
+1|Named lambdas preferred. Coerce missing FirstName with default empty string before plus-plus.
+2|Filter on lowercased status in a set, and amount as Number greater than zero.
+3|ERP amounts are strings. Map as Number then sum.
+4|mapObject walks keys and values. Uppercase only string values; leave postal codes as numbers.
 5|default replaces null. It does not catch type errors — that is try.
 6|splitBy comma turns a CSV line into an array of fields.
-7|joinBy is the opposite of splitBy. Arrays use plus-plus; joinBy builds one string.
-8|Tax is price times rate. Coerce strings to Number before you multiply.
-9|distinctBy email or city keeps the first unique key. Mention last-wins as a later lab.
-10|sizeOf is length. Prefer isEmpty when you only care about empty versus not.
-11|XML needs one root. Change output to application/xml and wrap the array.
-12|Attributes use the at-sign. payload.order.at-id is the id attribute, not a child element.
-13|If/else is an expression. There is no Java question-mark colon ternary.
-14|Dollar-dollar is the index. Map to index and value so interviews hear both names.
-15|flatten is one level only. Nested arrays need another flatten or flatMap.
-16|pluck turns an object into an array of key-value pairs. mapObject would keep an object.
-17|Compare lowercased strings, or match true/false/yes/no. Do not use Java Boolean.parseBoolean as the only answer.
-18|take the first three characters with payload[0 to 2] or substring. Call out zero-based indexes.
-19|groupBy returns an object whose keys are group names and values are arrays.
-20|After groupBy, map the entries and sum amounts. This is the homework recap pattern.
-21|orderBy minus price or orderBy descending. Show the minus trick and the named lambda.
-22|reduce into an object keyed by id. Dynamic key needs parentheses around the expression.
-23|flatMap is map then flatten. One output row per line item, carrying orderId.
-24|filterObject drops password and ssn. Keys are compared as strings.
-25|plus-plus on objects is a shallow merge. Right-hand key wins.
+7|joinBy builds a query string of SKUs. Arrays use plus-plus; joinBy builds one string.
+8|Round tax with fun money: format 0.00 then as Number.
+9|distinctBy BillingCity then orderBy. First unique key wins.
+10|sizeOf on payload.records, not the wrapper object.
+11|XML needs one root. output application/xml and wrap the array.
+12|Attributes use the at-sign. Element text is a child, not at-id.
+13|Retry on 408, 429, and 5xx. if/else is an expression, not a school grade.
+14|Dollar-dollar is the 0-based index. Add one for rowNum in error reports.
+15|flatten is one level only. Nested arrays need recursion or repeated flatten.
+16|pluck turns a config object into loggable key-value rows.
+17|Legacy flags: y yes true 1. Do not rely on Java parseBoolean alone.
+18|Split SKU on hyphen and take the family prefix.
+19|groupBy returns an object of arrays. Say that out loud in interviews.
+20|groupBy then pluck. Coerce amounts. Add orderCount. No nested-filter per customer.
+21|orderBy minus unitPrice. Named lambda is clearer than dollar.
+22|reduce into an object keyed by Salesforce Id. Parentheses around the key.
+23|flatMap expands 1-to-many. Default empty items so missing arrays do not fail.
+24|filterObject drops password, ssn, and accessToken. Compare lowercased keys.
+25|plus-plus shallow merge. Overlay lives on payload so Playground works.
 26|update needs Mule 4.3 plus. Case path to city, then upper of dollar.
 27|try the first date format, orElseTry the next. default will not save a bad as-Date.
-28|now as String with format dd-MMM-yyyy. Periods use pipe literals like P7D.
-29|CSV reads as an array of objects when header is true. Coerce amount as Number.
+28|Inject occurredAt. Do not use now if you need a stable expected value.
+29|CSV with header becomes an array of objects. Coerce Amount as Number.
 30|output application/csv header true. Object keys become column names.
-31|leftJoin from dw::core::Arrays. Result has l and r. Null r means no customer.
-32|groupBy customers by id, then map orders with a lookup. Same result, no N-plus-one.
-33|match on status literals, then else. Mention type cases for interviews.
-34|drop then take, or slice. Page size from vars if you have them.
-35|distinctBy keeps first. Last-wins: reduce into an object keyed by email, then valuesOf.
-36|Parentheses around the key expression. Without them, the key is the literal field name.
-37|Recurse with match: array flatMaps, object walks values, else wrap the leaf.
-38|Descendant selector or a recursive collect. Named keys named id at any depth.
-39|Production story: mask ssn, password, email at every depth before you log.
-40|Match on Number, Array, Object. Sum leaves; do not stringify numbers.
-41|Declare ns. Repeating line items with star. Attributes with at-sign.
-42|Write ns hash Element and at-attribute. One root. Show xmlns if asked.
-43|Compare namesOf old and new. Output field, from, and to.
-44|Recursive diff: match types, walk objects and arrays, collect paths.
-45|divideBy n or chunk with recusion. Bulk APIs want arrays of arrays.
-46|reduce with accumulator carrying total so far. Do not mutate; build a new array.
-47|lower, split, groupBy word, then sizeOf each group.
-48|Partition with groupBy a boolean or two filters. Call out valid versus errors.
-49|Outer join: leftJoin plus the right-only rows. Or merge two maps by id.
-50|Tree map: same recursion as mask, but apply f to every string leaf.
-51|Nested map: for each a, map b, then flatten. That is the cartesian product.
-52|try divide, orElse null or zero. Contrast with default which only helps null.
-53|Index by id, then recursive children where managerId equals id. Watch cycles.
-54|var lines with lineTotal, subtotal, tax, grandTotal. Header vars keep the body clean.
+31|leftJoin result has l and r. Null r is the unmatched order — include it.
+32|Index customers with groupBy once. Hash join. Mention N-plus-one lookup.
+33|match on HTTP ranges, not only string literals.
+34|drop then take for bulk pages. Import dw::core::Arrays.
+35|distinctBy keeps first. Last-wins CDC: reduce keyed by email, then valuesOf.
+36|Parentheses around header names as keys. Without them the key is literal k.
+37|Recurse with match: array flatMaps, else wrap the leaf.
+38|Descendant selector payload..id, or recurse if they forbid two dots.
+39|Mask email, ssn, password, and accessToken at every depth before you log.
+40|Match on Number, Array, Object. Sum leaves; skip strings.
+41|Two ns prefixes. Envelope Body PurchaseOrder. Star Line. Attributes with at-sign.
+42|Write ns hash PurchaseOrder and Line attributes. One root.
+43|CDC before versus after on payload. List field, from, and to.
+44|Recursive diff: omit unchanged subtrees. skipNullOn everywhere.
+45|divideBy n for Salesforce Composite batch caps.
+46|Immutable running totals with reduce. Do not mutate a Java counter.
+47|Ops log histogram. lower, split, groupBy, sizeOf.
+48|Partition with try on age. Invalid coercion is invalid, not default.
+49|Outer merge by id. Right overwrites. Union of keys.
+50|Tree map: same recursion as mask, apply f to every string leaf.
+51|Cartesian SKU options: colors flatMap sizes.
+52|try divide, orElse null. default only helps null, not divide by zero.
+53|Index by managerId. Recurse children. Watch cycles if they ask.
+54|Filter qty greater than zero. Discount then tax. fun money on every currency field.
+55|maxBy returns the item. firstWith is the first PAID. Import Arrays. Coerce amount.
+56|Shift UTC DateTime with >> Asia/Kolkata. Inject occurredAt. Do not call now.
+57|zip headers with values. Reduce into an object. Parentheses around the key.
+58|One script, two targets: canonical payload plus vars.correlationId. Playground cannot set Mule vars.

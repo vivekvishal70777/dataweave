@@ -1,0 +1,5 @@
+[
+  { "email": "a@acme.com", "name": "Old" },
+  { "email": "b@acme.com", "name": "Bee" },
+  { "email": "a@acme.com", "name": "New" }
+]

@@ -24,8 +24,8 @@
    - C) An object
    - D) XML
 
-5. Comments in DataWeave:
-   - A) Are illegal
-   - B) Use `//` and `/* */`
-   - C) Use `#`
-   - D) Use `--` only
+5. `write(payload, "application/json")` inside a script:
+   - A) Changes the Transform Message output MIME type
+   - B) Serializes a value to String/Binary **without** changing the script `output` MIME
+   - C) Is the same as `output application/xml`
+   - D) Only works in DataWeave 1.0

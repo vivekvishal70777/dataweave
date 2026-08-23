@@ -16,9 +16,9 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 37. Recursively flatten nested arrays. Recursively flatten nested arrays
+This is Lab 37. Recursively flatten nested arrays. Deep-flatten mixed arrays to a single list of leaves. One `flatten` is
 
-Recurse with match: array flatMaps, object walks values, else wrap the leaf.
+Recurse with match: array flatMaps, else wrap the leaf.
 
 ## Part 2 — Input
 
@@ -69,7 +69,7 @@ deepFlatten(payload)
 
 **SAY:**
 
-Recurse with match: array flatMaps, object walks values, else wrap the leaf.
+Recurse with match: array flatMaps, else wrap the leaf.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 

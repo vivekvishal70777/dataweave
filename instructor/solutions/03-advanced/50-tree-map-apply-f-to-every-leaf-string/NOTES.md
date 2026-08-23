@@ -2,6 +2,10 @@
 
 Tree map: apply `f` to every leaf string
 
+## Expected (note)
+
+`{ "a": "OK", "b": 2, "c": ["WAIT", 3] }`
+
 ## Teaching tip
 
 Demo the failing starter (`payload` passthrough) first, then build the script live.

@@ -12,16 +12,21 @@
 
 ## Problem
 
-**Problem:** `payload.orders` left-join `payload.customers` on `customerId` / `id`. Output `orderId`, `customerName` (`null` if missing).
+**Problem:** `payload.orders` left-join `payload.customers` on `customerId` / `id`. Output `orderId`, `customerName` (`null` if missing). Include the unmatched order.
 
 **Input:**
 
 ```json
 {
-  "orders": [{ "id": "O1", "customerId": "C1" }],
-  "customers": [{ "id": "C1", "name": "Asha" }]
+  "orders": [
+    { "id": "O1", "customerId": "C1" },
+    { "id": "O2", "customerId": "C9" }
+  ],
+  "customers": [{ "id": "C1", "name": "Asha Rao" }]
 }
 ```
+
+**Expected:** O1 named, O2 `customerName` null.
 
 **Solution:** Hidden until you try it. See `instructor/solutions`.
 

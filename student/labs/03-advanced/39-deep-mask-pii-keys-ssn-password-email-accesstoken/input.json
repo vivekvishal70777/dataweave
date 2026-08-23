@@ -1,0 +1,6 @@
+{
+  "name": "Asha Rao",
+  "email": "asha@acme.com",
+  "address": { "ssn": "AAAAA1234A", "city": "Pune" },
+  "auth": { "accessToken": "00Dxx...", "password": "x" }
+}

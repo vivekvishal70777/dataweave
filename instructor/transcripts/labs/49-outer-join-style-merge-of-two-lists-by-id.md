@@ -16,16 +16,19 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 49. Outer-join style merge of two lists by `id`. Union by `id`; fields from left and right, right overwrites on conflict.
+This is Lab 49. Outer-join style merge of two lists by `id`. Union by `id`; fields from left and right,
 
-Outer join: leftJoin plus the right-only rows. Or merge two maps by id.
+Outer merge by id. Right overwrites. Union of keys.
 
 ## Part 2 — Input
 
 **SAY:** Paste this payload. Set the MIME type to match the sample.
 
 ```json
-{ "left": [{ "id": "1", "a": 1 }], "right": [{ "id": "1", "b": 2 }, { "id": "2", "b": 3 }] }
+{
+  "left": [{ "id": "1", "a": 1, "name": "old" }],
+  "right": [{ "id": "1", "b": 2, "name": "new" }, { "id": "2", "b": 3 }]
+}
 ```
 
 ## PAUSE CARD (hold 3–5 seconds)
@@ -61,13 +64,13 @@ ids map (id) -> (left[id][0] default {}) ++ (right[id][0] default {})
 
 **SAY:** That should match Expected:
 
-_No expected block in the reference drill; run the solution on camera and show the preview._
+id `1` has `a`, `b`, `name=new`; id `2` from right only.
 
 ## Part 4 — Interview phrase and close
 
 **SAY:**
 
-Outer join: leftJoin plus the right-only rows. Or merge two maps by id.
+Outer merge by id. Right overwrites. Union of keys.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 
@@ -78,6 +81,10 @@ Stop. Do not start Lab 50 in this file.
 # Instructor solution — Lab 49
 
 Outer-join style merge of two lists by `id`
+
+## Expected (note)
+
+id `1` has `a`, `b`, `name=new`; id `2` from right only.
 
 ## Teaching tip
 

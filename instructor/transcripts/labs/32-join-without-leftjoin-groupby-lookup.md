@@ -1,4 +1,4 @@
-# LAB 32 — Join without `leftJoin` (groupBy lookup)
+# LAB 32 — Join without leftJoin (groupBy lookup)
 
 | Field | Value |
 | --- | --- |
@@ -16,9 +16,9 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 32. Join without `leftJoin` (groupBy lookup). Join without `leftJoin` (groupBy lookup)
+This is Lab 32. Join without leftJoin (groupBy lookup). Same result as 31,
 
-groupBy customers by id, then map orders with a lookup. Same result, no N-plus-one.
+Index customers with groupBy once. Hash join. Mention N-plus-one lookup.
 
 ## Part 2 — Input
 
@@ -26,8 +26,11 @@ groupBy customers by id, then map orders with a lookup. Same result, no N-plus-o
 
 ```json
 {
-  "orders": [{ "id": "O1", "customerId": "C1" }],
-  "customers": [{ "id": "C1", "name": "Asha" }]
+  "orders": [
+    { "id": "O1", "customerId": "C1" },
+    { "id": "O2", "customerId": "C9" }
+  ],
+  "customers": [{ "id": "C1", "name": "Asha Rao" }]
 }
 ```
 
@@ -36,7 +39,7 @@ groupBy customers by id, then map orders with a lookup. Same result, no N-plus-o
 **ON SCREEN:**
 
 > Pause the video
-> Try **Lab 32 — Join without `leftJoin` (groupBy lookup)**
+> Try **Lab 32 — Join without leftJoin (groupBy lookup)**
 > Folder: `student/labs/02-intermediate/32-join-without-leftjoin-groupby-lookup/`
 > Resume when you have an attempt
 
@@ -65,13 +68,13 @@ payload.orders map (o) -> {
 
 **SAY:** That should match Expected:
 
-_No expected block in the reference drill; run the solution on camera and show the preview._
+same as Lab 31.
 
 ## Part 4 — Interview phrase and close
 
 **SAY:**
 
-groupBy customers by id, then map orders with a lookup. Same result, no N-plus-one.
+Index customers with groupBy once. Hash join. Mention N-plus-one lookup.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 
@@ -81,7 +84,11 @@ Stop. Do not start Lab 33 in this file.
 
 # Instructor solution — Lab 32
 
-Join without `leftJoin` (groupBy lookup)
+Join without leftJoin (groupBy lookup)
+
+## Expected (note)
+
+same as Lab 31.
 
 ## Teaching tip
 

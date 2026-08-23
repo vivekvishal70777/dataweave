@@ -16,7 +16,7 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 06. Split a CSV line into fields. Split `"Asha,IT,Pune"` on comma.
+This is Lab 06. Split a CSV line into fields. Split a single inbound line `"Asha,IT,Pune"` on comma (no quoted commas). Output an array of fields.
 
 splitBy comma turns a CSV line into an array of fields.
 

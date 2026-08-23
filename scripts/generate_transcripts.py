@@ -168,13 +168,13 @@ Next video: I will click through the student folder so you know exactly which fi
 
 CUSTOM["L04"] = """
 ## ON CAMERA
-IDE with `instructor/` hidden. Expand `student/labs/01-fundamentals/01-map-employee-json-to-a-shorter-shape/`.
+IDE with `instructor/` hidden. Expand `student/labs/01-fundamentals/01-map-salesforce-contact-to-a-shorter-api-shape/`.
 
 ## SAY
 
 This is the student pack you download from Udemy. You will live in student, not instructor.
 
-student/labs has three folders: fundamentals, intermediate, advanced. Labs are numbered 01 through 54. Each lab is a folder: README, input, and transform.dwl.
+student/labs has four folders: fundamentals, intermediate, advanced, industry. Labs are numbered 01 through 58. Each lab is a folder: README, input, and transform.dwl.
 
 I am opening Lab 01. README states the problem, the input, and the expected JSON. input.json is the payload. transform.dwl is the starter — it should just pass payload through, which is the wrong shape. That is on purpose.
 
@@ -551,11 +551,35 @@ def build_q_lectures(questions: dict[int, tuple[str, str]]) -> dict[str, str]:
             [46, 58, 59],
             o,
         ),
+        "L70": q_lecture(
+            questions,
+            "Industry Arrays helpers. maxBy returns the item. firstWith is first match. zip pairs columns.",
+            [61, 62, 63],
+            o,
+        ),
+        "L71": q_lecture(
+            questions,
+            "Types, money helpers, timezones. Inject time. Shift with >> Asia/Kolkata.",
+            [64, 65, 66, 67],
+            o,
+        ),
+        "L72": q_lecture(
+            questions,
+            "Strings regex, Transform Message multiple targets, Java MIME, readUrl, log, try vs On Error, HTTP attributes.",
+            [68, 69, 70, 71, 72, 73, 74],
+            o,
+        ),
+        "L73": q_lecture(
+            questions,
+            "Default XML ns, YAML/Excel/flat file, Values mask, boolean precedence, two-field sort, DW vs For Each vs Batch.",
+            [75, 76, 77, 78, 79, 80],
+            o,
+        ),
         "L54a": q_lecture(
             questions,
-            "Article voiceover optional. How to drill the sixty-question bank: cover answers, speak out loud, then uncover.",
+            "Article voiceover optional. How to drill the eighty-question bank: cover answers, speak out loud, then uncover.",
             [57, 56],
-            "Point students at sections-slash-12 lecture markdown and the reference file. Do not read all sixty on camera.",
+            "Point students at sections-slash-12 lecture markdown and the reference file. Do not read all eighty on camera.",
         ),
     }
 
@@ -604,7 +628,11 @@ LECTURE_META = [
     ("L50", "Streaming: what breaks it", "6–9 min", "S11-L50-streaming.mp4", "Video"),
     ("L51", "Crypto, binary, reader/writer properties", "8–12 min", "S11-L51-crypto-binary.mp4", "Video"),
     ("L52", "Reusable modules and performance pitfalls", "8–12 min", "S11-L52-modules-perf.mp4", "Video"),
-    ("L54a", "How to run the 60-question bank", "4–6 min", "S12-L54-question-bank.mp4", "Article or voiceover"),
+    ("L70", "Arrays helpers: maxBy, firstWith, zip, ranges", "8–12 min", "S13-L70-arrays-helpers.mp4", "Video"),
+    ("L71", "Types, money, timezones, Dates module", "8–12 min", "S13-L71-timezones-numbers.mp4", "Video"),
+    ("L72", "TM targets, Java MIME, readUrl, log, HTTP attributes", "8–12 min", "S13-L72-message-and-mime.mp4", "Video"),
+    ("L73", "XML ns extras, Excel/YAML, DW vs Batch", "8–12 min", "S13-L73-mime-and-architecture.mp4", "Video"),
+    ("L54a", "How to run the 80-question bank", "4–6 min", "S12-L54-question-bank.mp4", "Article or voiceover"),
     ("L55", "Whiteboard mock interview (set of 6)", "split into 6×~10 min or one section", "S12-L55-whiteboard.mp4", "Video"),
     ("L56", "Nested XML to canonical JSON (Q60)", "8–12 min", "S12-L56-q60-design.mp4", "Video"),
     ("L58", "Next steps and solutions pack", "2–3 min", "S12-L58-next-steps.mp4", "Video"),
@@ -707,12 +735,11 @@ def format_input(lab_src: dict) -> str:
     n = lab_src.get("num")
     raw = lab_src.get("input_json")
     if raw:
-        if lab_src.get("input_is_raw"):
-            return f"```text\n{raw}\n```"
-        stripped = raw.strip()
-        if stripped.startswith("<"):
-            return f"```xml\n{raw}\n```"
-        return f"```json\n{raw}\n```"
+        lang = lab_src.get("input_lang") or (
+            "text" if lab_src.get("input_is_raw") else "json"
+        )
+        fence = {"json": "json", "xml": "xml", "csv": "csv", "text": "text"}.get(lang, "text")
+        return f"```{fence}\n{raw}\n```"
     if n in DEMO_PAYLOADS:
         kind, sample = DEMO_PAYLOADS[n]
         if "Set vars" in sample or "Also set" in sample or "now() ignores" in sample:
@@ -838,7 +865,7 @@ def write_index(lecture_files: list[tuple[str, str, str, str, str]]) -> None:
     lines = [
         "# Recording transcripts",
         "",
-        "Spoken scripts for Vivek. **One video per concept lecture** and **one video per lab (01–54)**.",
+        "Spoken scripts for Vivek. **One video per concept lecture** and **one video per lab (01–58)**.",
         "",
         "How to use: open the markdown, read **SAY**, follow **PAUSE CARD**, type the **TYPE** blocks. Target 6–10 minutes; cap 12. Split Lab 23, 39, 53, 54, and the whiteboard set if needed.",
         "",
@@ -868,7 +895,7 @@ def write_index(lecture_files: list[tuple[str, str, str, str, str]]) -> None:
         lines.append(f"| {code} | {title} | {mins} | [lectures/{code}.md](lectures/{code}.md) |")
     lines += [
         "",
-        "## Lab videos (54)",
+        "## Lab videos (58)",
         "",
         "All files: [`labs/`](labs/).",
         "",
@@ -893,11 +920,11 @@ def write_index(lecture_files: list[tuple[str, str, str, str, str]]) -> None:
 
 def main() -> None:
     questions = parse_questions(QA.read_text(encoding="utf-8"))
-    if len(questions) != 60:
-        raise SystemExit(f"Expected 60 questions, parsed {len(questions)}")
+    if len(questions) != 80:
+        raise SystemExit(f"Expected 80 questions, parsed {len(questions)}")
     tips = load_tips()
-    if len(tips) != 54:
-        raise SystemExit(f"Expected 54 lab tips, got {len(tips)}")
+    if len(tips) != 58:
+        raise SystemExit(f"Expected 58 lab tips, got {len(tips)}")
 
     lect_dir = OUT / "lectures"
     lab_dir = OUT / "labs"

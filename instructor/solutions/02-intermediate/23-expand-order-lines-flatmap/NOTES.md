@@ -2,9 +2,14 @@
 
 Expand order lines (flatMap)
 
-## Expected (note)
+## Expected
 
-`[{ "orderId": "O1", "sku": "A" }, { "orderId": "O1", "sku": "B" }]`
+```
+[
+  { "orderId": "O-1001", "sku": "SKU-A", "qty": 2 },
+  { "orderId": "O-1001", "sku": "SKU-B", "qty": 1 }
+]
+```
 
 ## Teaching tip
 

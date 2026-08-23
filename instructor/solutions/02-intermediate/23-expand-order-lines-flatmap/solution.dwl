@@ -2,8 +2,9 @@
 output application/json
 ---
 payload flatMap ((order) ->
-  order.items map (item) -> {
+  (order.items default []) map (item) -> {
     orderId: order.orderId,
-    sku: item.sku
+    sku: item.sku,
+    qty: item.qty as Number
   }
 )

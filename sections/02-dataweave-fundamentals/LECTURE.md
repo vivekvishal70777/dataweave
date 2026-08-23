@@ -79,7 +79,7 @@ var taxRate = 0.18
 }
 ```
 
-Variables are immutable.
+Variables are immutable. Comments: `//` and `/* */` in header or body.
 
 ---
 

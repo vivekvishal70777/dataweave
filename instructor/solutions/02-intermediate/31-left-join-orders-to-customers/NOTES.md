@@ -2,6 +2,10 @@
 
 Left join orders to customers
 
+## Expected (note)
+
+O1 named, O2 `customerName` null.
+
 ## Teaching tip
 
 Demo the failing starter (`payload` passthrough) first, then build the script live.

@@ -1,4 +1,4 @@
-# LAB 22 — Pivot array to object keyed by id
+# LAB 22 — Pivot array to object keyed by Id
 
 | Field | Value |
 | --- | --- |
@@ -16,16 +16,19 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 22. Pivot array to object keyed by id. `[{ "id": "u1", "name": "Asha" }]` → `{ "u1": "Asha" }`
+This is Lab 22. Pivot array to object keyed by Id. `[{ "Id": "001xxA", "Name": "Acme" }]` → `{ "001xxA": "Acme" }` for O(1) lookup. Dynamic key
 
-reduce into an object keyed by id. Dynamic key needs parentheses around the expression.
+reduce into an object keyed by Salesforce Id. Parentheses around the key.
 
 ## Part 2 — Input
 
 **SAY:** Paste this payload. Set the MIME type to match the sample.
 
 ```json
-[{ "id": "p1", "name": "A" }, { "id": "p2", "name": "B" }]
+[
+  { "Id": "001xxA", "Name": "Acme Corp" },
+  { "Id": "001xxB", "Name": "Globex" }
+]
 ```
 
 ## PAUSE CARD (hold 3–5 seconds)
@@ -33,7 +36,7 @@ reduce into an object keyed by id. Dynamic key needs parentheses around the expr
 **ON SCREEN:**
 
 > Pause the video
-> Try **Lab 22 — Pivot array to object keyed by id**
+> Try **Lab 22 — Pivot array to object keyed by Id**
 > Folder: `student/labs/02-intermediate/22-pivot-array-to-object-keyed-by-id/`
 > Resume when you have an attempt
 
@@ -53,18 +56,20 @@ _End recording part 1 here if you split files. Start part 2 as `LAB-22-pivot-arr
 %dw 2.0
 output application/json
 ---
-payload reduce ((item, acc = {}) -> acc ++ { (item.id): item.name })
+payload reduce ((item, acc = {}) -> acc ++ { (item.Id): item.Name })
 ```
 
 **SAY:** That should match Expected:
 
-_No expected block in the reference drill; run the solution on camera and show the preview._
+```
+{ "001xxA": "Acme Corp", "001xxB": "Globex" }
+```
 
 ## Part 4 — Interview phrase and close
 
 **SAY:**
 
-reduce into an object keyed by id. Dynamic key needs parentheses around the expression.
+reduce into an object keyed by Salesforce Id. Parentheses around the key.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 
@@ -74,7 +79,13 @@ Stop. Do not start Lab 23 in this file.
 
 # Instructor solution — Lab 22
 
-Pivot array to object keyed by id
+Pivot array to object keyed by Id
+
+## Expected
+
+```
+{ "001xxA": "Acme Corp", "001xxB": "Globex" }
+```
 
 ## Teaching tip
 

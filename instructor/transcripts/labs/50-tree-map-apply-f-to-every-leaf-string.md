@@ -16,16 +16,16 @@ Do not show `solution.dwl` until after the pause card.
 
 **SAY:**
 
-This is Lab 50. Tree map: apply `f` to every leaf string. Uppercase every string leaf; leave numbers as-is.
+This is Lab 50. Tree map: apply `f` to every leaf string. Uppercase every string leaf; leave numbers as-is. Same recursion skeleton as PII mask.
 
-Tree map: same recursion as mask, but apply f to every string leaf.
+Tree map: same recursion as mask, apply f to every string leaf.
 
 ## Part 2 — Input
 
 **SAY:** Paste this payload. Set the MIME type to match the sample.
 
 ```json
-{ "a": "hi", "b": 2, "c": ["ok", 3] }
+{ "a": "ok", "b": 2, "c": ["wait", 3] }
 ```
 
 ## PAUSE CARD (hold 3–5 seconds)
@@ -65,13 +65,13 @@ mapLeaves(payload)
 
 **SAY:** That should match Expected:
 
-_No expected block in the reference drill; run the solution on camera and show the preview._
+`{ "a": "OK", "b": 2, "c": ["WAIT", 3] }`
 
 ## Part 4 — Interview phrase and close
 
 **SAY:**
 
-Tree map: same recursion as mask, but apply f to every string leaf.
+Tree map: same recursion as mask, apply f to every string leaf.
 
 If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.
 
@@ -82,6 +82,10 @@ Stop. Do not start Lab 51 in this file.
 # Instructor solution — Lab 50
 
 Tree map: apply `f` to every leaf string
+
+## Expected (note)
+
+`{ "a": "OK", "b": 2, "c": ["WAIT", 3] }`
 
 ## Teaching tip
 

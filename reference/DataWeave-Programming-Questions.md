@@ -1,23 +1,25 @@
-# DataWeave Programming Questions
+# DataWeave Programming Questions (industry / interview)
 
-Hands-on **DataWeave 2.0** coding problems for interviews and practice. Each item has a problem, sample `payload`, expected output, and a solution. Try the problem before reading the answer.
+Hands-on **DataWeave 2.0** problems shaped like **Mule 4 production mappings**: Salesforce-style records, commerce orders, SOAP/XML, dirty CSV, CDC diffs, and bulk APIs. Each item has a problem, sample payload, expected output, and a solution.
 
-Levels: **Easy (1–18)** · **Moderate (19–36)** · **Hard (37–54)** — **54 programs**.
+Levels: **Easy (1–18)** still teach one operator each, but on **real-shaped JSON**. **Moderate (19–36)** are integration patterns. **Hard (37–54)** are **interview-hard** whiteboard programs. **Industry extras (55–58)** cover Arrays helpers, timezones, `zip`, and Transform-style multi-target output.
+
+Try the problem before reading the answer. Playground MIME type must match the sample (`application/json`, `application/xml`, or `application/csv`).
 
 ---
 
 ## Easy (1–18)
 
-### 1. Map employee JSON to a shorter shape
+### 1. Map Salesforce Contact to a shorter API shape
 
-**Problem:** From each employee, output `fullName` (first + last) and `dept`.
+**Problem:** From each Contact, output `fullName` (FirstName + LastName, single space) and `dept` from `Department`. Skip building Java-style loops.
 
 **Input:**
 
 ```json
 [
-  { "firstName": "Asha", "lastName": "Rao", "department": "IT" },
-  { "firstName": "Ben", "lastName": "Cole", "department": "HR" }
+  { "Id": "003xx000001", "FirstName": "Asha", "LastName": "Rao", "Department": "IT", "Email": "asha@acme.com" },
+  { "Id": "003xx000002", "FirstName": "Ben", "LastName": "Cole", "Department": "Finance", "Email": "ben@acme.com" }
 ]
 ```
 
@@ -26,7 +28,7 @@ Levels: **Easy (1–18)** · **Moderate (19–36)** · **Hard (37–54)** — **
 ```json
 [
   { "fullName": "Asha Rao", "dept": "IT" },
-  { "fullName": "Ben Cole", "dept": "HR" }
+  { "fullName": "Ben Cole", "dept": "Finance" }
 ]
 ```
 
@@ -37,28 +39,36 @@ Levels: **Easy (1–18)** · **Moderate (19–36)** · **Hard (37–54)** — **
 output application/json
 ---
 payload map {
-  fullName: $.firstName ++ " " ++ $.lastName,
-  dept: $.department
+  fullName: ($.FirstName default "") ++ " " ++ ($.LastName default ""),
+  dept: $.Department
 }
 ```
 
 ---
 
-### 2. Filter paid orders
+### 2. Filter settled commerce orders
 
-**Problem:** Keep only orders with `status == "PAID"`.
+**Problem:** Keep orders where status is `PAID` or `SETTLED` (any case) **and** `amount` as Number is greater than 0. Drop cancelled/zero-value noise.
 
 **Input:**
 
 ```json
 [
-  { "id": 1, "status": "PAID", "amount": 100 },
-  { "id": 2, "status": "NEW", "amount": 50 },
-  { "id": 3, "status": "PAID", "amount": 75 }
+  { "id": "ORD-1", "status": "paid", "amount": "100.00" },
+  { "id": "ORD-2", "status": "NEW", "amount": "50" },
+  { "id": "ORD-3", "status": "SETTLED", "amount": 75 },
+  { "id": "ORD-4", "status": "PAID", "amount": 0 }
 ]
 ```
 
-**Expected:** orders `1` and `3` only.
+**Expected:**
+
+```json
+[
+  { "id": "ORD-1", "status": "paid", "amount": "100.00" },
+  { "id": "ORD-3", "status": "SETTLED", "amount": 75 }
+]
+```
 
 **Solution:**
 
@@ -66,18 +76,29 @@ payload map {
 %dw 2.0
 output application/json
 ---
-payload filter ((o) -> o.status == "PAID")
+payload filter ((o) ->
+  (["paid", "settled"] contains lower(o.status as String))
+  and ((o.amount as Number) > 0)
+)
 ```
 
 ---
 
-### 3. Sum array of numbers
+### 3. Sum invoice line amounts (string money)
 
-**Problem:** Return the total of `payload`.
+**Problem:** Return the numeric total of `amount` on each line. Incoming amounts are **strings** (typical ERP/CSV). Coerce, then `sum`.
 
-**Input:** `[10, 20, 30, 40]`
+**Input:**
 
-**Expected:** `100`
+```json
+[
+  { "sku": "SKU-A", "amount": "10.50" },
+  { "sku": "SKU-B", "amount": "20" },
+  { "sku": "SKU-C", "amount": "30.25" }
+]
+```
+
+**Expected:** `60.75`
 
 **Solution:**
 
@@ -85,18 +106,26 @@ payload filter ((o) -> o.status == "PAID")
 %dw 2.0
 output application/json
 ---
-sum(payload)
+sum(payload.amount map ($ as Number))
 ```
 
 ---
 
-### 4. Uppercase all string values in an object
+### 4. Uppercase string fields on an address object
 
-**Problem:** Convert every value to upper case; keep the same keys.
+**Problem:** Uppercase every **string** value; leave numbers as-is. Production addresses mix `city` and `postalCode`.
 
-**Input:** `{ "city": "pune", "country": "india" }`
+**Input:**
 
-**Expected:** `{ "city": "PUNE", "country": "INDIA" }`
+```json
+{ "city": "pune", "country": "india", "postalCode": 411001 }
+```
+
+**Expected:**
+
+```json
+{ "city": "PUNE", "country": "INDIA", "postalCode": 411001 }
+```
 
 **Solution:**
 
@@ -104,18 +133,31 @@ sum(payload)
 %dw 2.0
 output application/json
 ---
-payload mapObject ((v, k) -> { (k): upper(v as String) })
+payload mapObject ((v, k) -> {
+  (k): v match {
+    case s is String -> upper(s)
+    else -> v
+  }
+})
 ```
 
 ---
 
-### 5. Default missing email
+### 5. Default missing email on an Account
 
-**Problem:** If `email` is null or missing, use `"na@example.com"`.
+**Problem:** If `Email` is null or missing, use `"noreply@acme.invalid"`. Keep `Name`.
 
-**Input:** `{ "name": "Sam" }`
+**Input:**
 
-**Expected:** `{ "name": "Sam", "email": "na@example.com" }`
+```json
+{ "Name": "Sam Logistics" }
+```
+
+**Expected:**
+
+```json
+{ "Name": "Sam Logistics", "Email": "noreply@acme.invalid" }
+```
 
 **Solution:**
 
@@ -124,8 +166,8 @@ payload mapObject ((v, k) -> { (k): upper(v as String) })
 output application/json
 ---
 {
-  name: payload.name,
-  email: payload.email default "na@example.com"
+  Name: payload.Name,
+  Email: payload.Email default "noreply@acme.invalid"
 }
 ```
 
@@ -133,7 +175,13 @@ output application/json
 
 ### 6. Split a CSV line into fields
 
-**Problem:** Split `"Asha,IT,Pune"` on comma.
+**Problem:** Split a single inbound line `"Asha,IT,Pune"` on comma (no quoted commas). Output an array of fields.
+
+**Input:**
+
+```text
+Asha,IT,Pune
+```
 
 **Expected:** `["Asha", "IT", "Pune"]`
 
@@ -148,11 +196,17 @@ payload splitBy ","
 
 ---
 
-### 7. Join array into a comma-separated string
+### 7. Join SKUs into a comma-separated string
 
-**Problem:** Join `["red", "green", "blue"]` with `","`.
+**Problem:** Join `["SKU-A", "SKU-B", "SKU-C"]` with `","` for a query parameter or header.
 
-**Expected:** `"red,green,blue"`
+**Input:**
+
+```json
+["SKU-A", "SKU-B", "SKU-C"]
+```
+
+**Expected:** `"SKU-A,SKU-B,SKU-C"`
 
 **Solution:**
 
@@ -165,13 +219,21 @@ payload joinBy ","
 
 ---
 
-### 8. Add tax to price
+### 8. Add GST to a unit price (2 decimal money)
 
-**Problem:** Add 18% tax. Return `{ price, tax, total }` with 2 decimal places as numbers.
+**Problem:** GST 18%. Return `{ price, tax, total }` as numbers with **2 decimal places** (writer-style rounding via `format`).
 
-**Input:** `{ "price": 100 }`
+**Input:**
 
-**Expected:** `{ "price": 100, "tax": 18, "total": 118 }`
+```json
+{ "price": 99.99 }
+```
+
+**Expected:**
+
+```json
+{ "price": 99.99, "tax": 18.00, "total": 117.99 }
+```
 
 **Solution:**
 
@@ -179,31 +241,33 @@ payload joinBy ","
 %dw 2.0
 output application/json
 var rate = 0.18
+fun money(n: Number) = n as String {format: "0.00"} as Number
 ---
 {
-  price: payload.price,
-  tax: payload.price * rate,
-  total: payload.price * (1 + rate)
+  price: money(payload.price),
+  tax: money(payload.price * rate),
+  total: money(payload.price * (1 + rate))
 }
 ```
 
 ---
 
-### 9. Extract unique cities
+### 9. Extract unique billing cities, sorted
 
-**Problem:** Unique `city` values, sorted.
+**Problem:** Unique `BillingCity` values, case-preserving first seen, then sorted A–Z. Typical Salesforce Account list.
 
 **Input:**
 
 ```json
 [
-  { "city": "Pune" },
-  { "city": "Mumbai" },
-  { "city": "Pune" }
+  { "BillingCity": "Pune" },
+  { "BillingCity": "Mumbai" },
+  { "BillingCity": "Pune" },
+  { "BillingCity": "Bengaluru" }
 ]
 ```
 
-**Expected:** `["Mumbai", "Pune"]`
+**Expected:** `["Bengaluru", "Mumbai", "Pune"]`
 
 **Solution:**
 
@@ -211,16 +275,27 @@ var rate = 0.18
 %dw 2.0
 output application/json
 ---
-payload.city distinctBy $ orderBy $
+payload.BillingCity distinctBy $ orderBy $
 ```
 
 ---
 
-### 10. Count items in an array
+### 10. Count line items in a composite payload
 
-**Problem:** Return how many products are in `payload`.
+**Problem:** Return how many records are in `payload.records` (Salesforce Composite / bulk query shape).
 
-**Input:** `[{ "sku": "A" }, { "sku": "B" }, { "sku": "C" }]`
+**Input:**
+
+```json
+{
+  "done": true,
+  "records": [
+    { "Id": "a1" },
+    { "Id": "a2" },
+    { "Id": "a3" }
+  ]
+}
+```
 
 **Expected:** `3`
 
@@ -230,16 +305,35 @@ payload.city distinctBy $ orderBy $
 %dw 2.0
 output application/json
 ---
-sizeOf(payload)
+sizeOf(payload.records)
 ```
 
 ---
 
-### 11. Convert JSON array to XML with a root
+### 11. Convert JSON array to XML with a single root
 
-**Problem:** Wrap users as XML `users/user`.
+**Problem:** Wrap users as XML `users/user`. XML **must** have one root. Set MIME `application/xml`.
 
-**Input:** `[{ "id": 1, "name": "Asha" }, { "id": 2, "name": "Ben" }]`
+**Input:**
+
+```json
+[{ "id": "U-1", "name": "Asha Rao" }, { "id": "U-2", "name": "Ben Cole" }]
+```
+
+**Expected:**
+
+```xml
+<users>
+  <user>
+    <id>U-1</id>
+    <name>Asha Rao</name>
+  </user>
+  <user>
+    <id>U-2</id>
+    <name>Ben Cole</name>
+  </user>
+</users>
+```
 
 **Solution:**
 
@@ -255,20 +349,23 @@ users: {
 }
 ```
 
-**Expected (shape):**
-
-```xml
-<users>
-  <user><id>1</id><name>Asha</name></user>
-  <user><id>2</id><name>Ben</name></user>
-</users>
-```
-
 ---
 
-### 12. Read XML attributes
+### 12. Read XML attributes vs element text
 
-**Problem:** From `<order id="O-9"><amount>50</amount></order>`, output JSON `{ "id", "amount" }`.
+**Problem:** From an order XML with `id` **attribute** and `amount` **element**, output JSON `{ "id", "amount" }` with amount as Number.
+
+**Input:**
+
+```xml
+<order id="O-9"><amount>50.00</amount></order>
+```
+
+**Expected:**
+
+```json
+{ "id": "O-9", "amount": 50.00 }
+```
 
 **Solution:**
 
@@ -284,33 +381,49 @@ output application/json
 
 ---
 
-### 13. If/else grade from score
+### 13. Classify an HTTP/integration status
 
-**Problem:** `>=90` A, `>=75` B, `>=50` C, else F.
+**Problem:** From `{ "httpStatus": 503 }`, return `"retry"` for 408/429/5xx, `"client"` for 4xx, `"ok"` for 2xx, else `"other"`. No Java ternary.
 
-**Input:** `{ "score": 76 }` → `"B"`
+**Input:**
+
+```json
+{ "httpStatus": 503 }
+```
+
+**Expected:** `"retry"`
 
 **Solution:**
 
 ```dataweave
 %dw 2.0
 output application/json
+var s = payload.httpStatus as Number
 ---
-if (payload.score >= 90) "A"
-else if (payload.score >= 75) "B"
-else if (payload.score >= 50) "C"
-else "F"
+if ([408, 429] contains s) "retry"
+else if (s >= 500 and s < 600) "retry"
+else if (s >= 200 and s < 300) "ok"
+else if (s >= 400 and s < 500) "client"
+else "other"
 ```
 
 ---
 
-### 14. Index each element
+### 14. Index each batch row (1-based)
 
-**Problem:** Add a 1-based `index` field.
+**Problem:** Add a 1-based `rowNum` for error reports. `$` is value, `$$` is 0-based index.
 
-**Input:** `["a", "b"]`
+**Input:**
 
-**Expected:** `[{ "index": 1, "value": "a" }, { "index": 2, "value": "b" }]`
+```json
+["alpha", "beta"]
+```
+
+**Expected:**
+
+```json
+[{ "rowNum": 1, "value": "alpha" }, { "rowNum": 2, "value": "beta" }]
+```
 
 **Solution:**
 
@@ -319,16 +432,24 @@ else "F"
 output application/json
 ---
 payload map {
-  index: $$ + 1,
+  rowNum: $$ + 1,
   value: $
 }
 ```
 
 ---
 
-### 15. Flatten one level
+### 15. Flatten one level of nested arrays
 
-**Problem:** Flatten `[[1, 2], [3], [4, 5]]` → `[1, 2, 3, 4, 5]`
+**Problem:** Flatten one level only: `[[1, 2], [3], [4, 5]]` → `[1, 2, 3, 4, 5]`. Deeper trees are a later lab.
+
+**Input:**
+
+```json
+[[1, 2], [3], [4, 5]]
+```
+
+**Expected:** `[1, 2, 3, 4, 5]`
 
 **Solution:**
 
@@ -343,7 +464,19 @@ flatten(payload)
 
 ### 16. Object keys to array of `{ key, value }`
 
-**Problem:** Convert `{ "a": 1, "b": 2 }` to entries.
+**Problem:** Convert a config object `{ "timeout": 30, "retries": 3 }` to entries for logging or CSV.
+
+**Input:**
+
+```json
+{ "timeout": 30, "retries": 3 }
+```
+
+**Expected:**
+
+```json
+[{ "key": "timeout", "value": 30 }, { "key": "retries", "value": 3 }]
+```
 
 **Solution:**
 
@@ -351,16 +484,26 @@ flatten(payload)
 %dw 2.0
 output application/json
 ---
-payload pluck ((v, k) -> { key: k, value: v })
+payload pluck ((v, k) -> { key: k as String, value: v })
 ```
 
 ---
 
-### 17. Boolean flag from string
+### 17. Boolean flag from dirty string
 
-**Problem:** `"Y"` / `"yes"` / `"true"` (any case) → `true`, else `false`.
+**Problem:** `"Y"` / `"yes"` / `"true"` / `"1"` (any case) → `true`, else `false`. Common in SAP/legacy flags.
 
-**Input:** `{ "active": "Yes" }` → `{ "active": true }`
+**Input:**
+
+```json
+{ "active": "Yes" }
+```
+
+**Expected:**
+
+```json
+{ "active": true }
+```
 
 **Solution:**
 
@@ -369,15 +512,23 @@ payload pluck ((v, k) -> { key: k, value: v })
 output application/json
 ---
 {
-  active: ["y", "yes", "true"] contains lower(payload.active)
+  active: ["y", "yes", "true", "1"] contains lower(payload.active as String)
 }
 ```
 
 ---
 
-### 18. First three characters of a code
+### 18. SKU prefix before hyphen
 
-**Problem:** From `"MULE-12345"` take `"MULE"` (split on `-`, take first part) or first 4 chars.
+**Problem:** From `"MULE-12345"` take the product family `"MULE"` (split on `-`, first segment).
+
+**Input:**
+
+```text
+MULE-12345
+```
+
+**Expected:** `"MULE"`
 
 **Solution:**
 
@@ -392,18 +543,32 @@ output application/json
 
 ## Moderate (19–36)
 
-### 19. Group orders by customer
+### 19. Group orders by customerId
 
-**Problem:** Group the array by `customerId`.
+**Problem:** Group the commerce array by `customerId`. `groupBy` returns an **object** of arrays — say that in interviews.
 
 **Input:**
 
 ```json
 [
-  { "id": 1, "customerId": "C1", "amount": 10 },
-  { "id": 2, "customerId": "C2", "amount": 20 },
-  { "id": 3, "customerId": "C1", "amount": 15 }
+  { "id": "ORD-1", "customerId": "C1", "amount": 10 },
+  { "id": "ORD-2", "customerId": "C2", "amount": 20 },
+  { "id": "ORD-3", "customerId": "C1", "amount": 15 }
 ]
+```
+
+**Expected:**
+
+```json
+{
+  "C1": [
+    { "id": "ORD-1", "customerId": "C1", "amount": 10 },
+    { "id": "ORD-3", "customerId": "C1", "amount": 15 }
+  ],
+  "C2": [
+    { "id": "ORD-2", "customerId": "C2", "amount": 20 }
+  ]
+}
 ```
 
 **Solution:**
@@ -415,13 +580,30 @@ output application/json
 payload groupBy ((o) -> o.customerId)
 ```
 
-**Expected keys:** `C1` → orders 1 and 3; `C2` → order 2.
-
 ---
 
-### 20. Total amount per customer
+### 20. Total amount per customer (groupBy + sum)
 
-**Problem:** Return `{ customerId, total }` for each customer.
+**Problem:** Return `{ customerId, orderCount, total }` per customer. Coerce amounts. This is the standard interview follow-up to `groupBy`.
+
+**Input:**
+
+```json
+[
+  { "id": "ORD-1", "customerId": "C1", "amount": "10.00" },
+  { "id": "ORD-2", "customerId": "C2", "amount": "20" },
+  { "id": "ORD-3", "customerId": "C1", "amount": 15 }
+]
+```
+
+**Expected:**
+
+```json
+[
+  { "customerId": "C1", "orderCount": 2, "total": 25.00 },
+  { "customerId": "C2", "orderCount": 1, "total": 20 }
+]
+```
 
 **Solution:**
 
@@ -432,15 +614,28 @@ output application/json
 payload groupBy ((o) -> o.customerId)
   pluck ((orders, customerId) -> {
     customerId: customerId,
-    total: sum(orders.amount)
+    orderCount: sizeOf(orders),
+    total: sum(orders.amount map ($ as Number))
   })
 ```
 
 ---
 
-### 21. Sort products by price descending
+### 21. Sort products by unitPrice descending
 
-**Input:** `[{ "name": "A", "price": 30 }, { "name": "B", "price": 90 }]`
+**Problem:** Highest price first (catalog / pricing API).
+
+**Input:**
+
+```json
+[
+  { "sku": "SKU-A", "unitPrice": 30 },
+  { "sku": "SKU-B", "unitPrice": 90 },
+  { "sku": "SKU-C", "unitPrice": 90 }
+]
+```
+
+**Expected:** SKU-B and SKU-C before SKU-A (equal prices keep relative order).
 
 **Solution:**
 
@@ -448,14 +643,29 @@ payload groupBy ((o) -> o.customerId)
 %dw 2.0
 output application/json
 ---
-payload orderBy ((p) -> -p.price)
+payload orderBy ((p) -> -p.unitPrice)
 ```
 
 ---
 
-### 22. Pivot array to object keyed by id
+### 22. Pivot array to object keyed by Id
 
-**Problem:** `[{ "id": "u1", "name": "Asha" }]` → `{ "u1": "Asha" }`
+**Problem:** `[{ "Id": "001xxA", "Name": "Acme" }]` → `{ "001xxA": "Acme" }` for O(1) lookup. Dynamic key **must** use parentheses.
+
+**Input:**
+
+```json
+[
+  { "Id": "001xxA", "Name": "Acme Corp" },
+  { "Id": "001xxB", "Name": "Globex" }
+]
+```
+
+**Expected:**
+
+```json
+{ "001xxA": "Acme Corp", "001xxB": "Globex" }
+```
 
 **Solution:**
 
@@ -463,27 +673,37 @@ payload orderBy ((p) -> -p.price)
 %dw 2.0
 output application/json
 ---
-payload reduce ((item, acc = {}) -> acc ++ { (item.id): item.name })
+payload reduce ((item, acc = {}) -> acc ++ { (item.Id): item.Name })
 ```
 
 ---
 
 ### 23. Expand order lines (flatMap)
 
-**Problem:** One row per line item with `orderId` and `sku`.
+**Problem:** One canonical row per line: `orderId`, `sku`, `qty`. Nested `items` must not remain nested arrays.
 
 **Input:**
 
 ```json
 [
   {
-    "orderId": "O1",
-    "items": [{ "sku": "A" }, { "sku": "B" }]
+    "orderId": "O-1001",
+    "items": [
+      { "sku": "SKU-A", "qty": 2 },
+      { "sku": "SKU-B", "qty": 1 }
+    ]
   }
 ]
 ```
 
-**Expected:** `[{ "orderId": "O1", "sku": "A" }, { "orderId": "O1", "sku": "B" }]`
+**Expected:**
+
+```json
+[
+  { "orderId": "O-1001", "sku": "SKU-A", "qty": 2 },
+  { "orderId": "O-1001", "sku": "SKU-B", "qty": 1 }
+]
+```
 
 **Solution:**
 
@@ -492,20 +712,68 @@ payload reduce ((item, acc = {}) -> acc ++ { (item.id): item.name })
 output application/json
 ---
 payload flatMap ((order) ->
-  order.items map (item) -> {
+  (order.items default []) map (item) -> {
     orderId: order.orderId,
-    sku: item.sku
+    sku: item.sku,
+    qty: item.qty as Number
   }
 )
 ```
 
 ---
 
-### 24. Remove password and ssn keys
+### 24. Strip password, ssn, and accessToken keys
 
-**Input:** `{ "name": "Asha", "password": "secret", "ssn": "123", "city": "Pune" }`
+**Problem:** Drop secret keys from a flat object before logging. Keys compared as strings.
 
-**Expected:** `{ "name": "Asha", "city": "Pune" }`
+**Input:**
+
+```json
+{
+  "name": "Asha Rao",
+  "password": "s3cret",
+  "ssn": "AAAAA1234A",
+  "accessToken": "00Dxx...",
+  "city": "Pune"
+}
+```
+
+**Expected:**
+
+```json
+{ "name": "Asha Rao", "city": "Pune" }
+```
+
+**Solution:**
+
+```dataweave
+%dw 2.0
+output application/json
+var deny = ["password", "ssn", "accesstoken"]
+---
+payload filterObject ((v, k) -> !(deny contains lower(k as String)))
+```
+
+---
+
+### 25. Merge config overlay (right wins)
+
+**Problem:** Shallow-merge `base` with `overlay`. Right-hand keys win. Both objects live on **payload** so this runs in the Playground (no Mule `vars` required).
+
+**Input:**
+
+```json
+{
+  "base": { "timeout": 30, "retries": 2, "region": "us-east-1" },
+  "overlay": { "retries": 5, "region": "ap-south-1" }
+}
+```
+
+**Expected:**
+
+```json
+{ "timeout": 30, "retries": 5, "region": "ap-south-1" }
+```
 
 **Solution:**
 
@@ -513,35 +781,22 @@ payload flatMap ((order) ->
 %dw 2.0
 output application/json
 ---
-payload filterObject ((v, k) -> !(["password", "ssn"] contains (k as String)))
+payload.base ++ payload.overlay
 ```
 
 ---
 
-### 25. Merge two objects (right wins)
+### 26. Update nested city to uppercase (Mule 4.3+)
 
-**Problem:** Merge `vars.base` with `payload`.
+**Problem:** Uppercase `customer.address.city` without rebuilding the whole tree by hand.
 
-Assume `vars.base = { "a": 1, "b": 2 }` and payload `{ "b": 9, "c": 3 }`.
+**Input:**
 
-**Expected:** `{ "a": 1, "b": 9, "c": 3 }`
-
-**Solution:**
-
-```dataweave
-%dw 2.0
-output application/json
----
-vars.base ++ payload
+```json
+{ "customer": { "id": "C-9", "address": { "city": "pune", "postalCode": "411001" } } }
 ```
 
----
-
-### 26. Update nested city to uppercase
-
-**Input:** `{ "customer": { "address": { "city": "pune" } } }`
-
-**Expected:** city `"PUNE"`.
+**Expected:** city `"PUNE"`, other fields unchanged.
 
 **Solution:**
 
@@ -556,9 +811,21 @@ payload update {
 
 ---
 
-### 27. Parse mixed date formats
+### 27. Parse mixed date formats (ISO or dd/MM/yyyy)
 
-**Problem:** Accept `yyyy-MM-dd` or `dd/MM/yyyy`. Invalid → `null`.
+**Problem:** Accept `yyyy-MM-dd` or `dd/MM/yyyy`. Invalid → `null`. Do **not** use `default` for failed `as Date` (that is `try`).
+
+**Input:**
+
+```json
+[
+  { "id": "E-1", "date": "2026-08-20" },
+  { "id": "E-2", "date": "21/08/2026" },
+  { "id": "E-3", "date": "not-a-date" }
+]
+```
+
+**Expected:** first two parse to dates; third `date` is `null`.
 
 **Solution:**
 
@@ -576,7 +843,17 @@ payload map { id: $.id, date: parseDate($.date as String) }
 
 ---
 
-### 28. Format `now()` as `dd-MMM-yyyy`
+### 28. Format an event timestamp as `dd-MMM-yyyy`
+
+**Problem:** Format `occurredAt` (ISO-8601 DateTime) as `dd-MMM-yyyy`. Do **not** use `now()` in the lab — interviews want deterministic transforms (inject time).
+
+**Input:**
+
+```json
+{ "occurredAt": "2026-08-20T14:05:00Z" }
+```
+
+**Expected:** `"20-Aug-2026"`
 
 **Solution:**
 
@@ -584,14 +861,31 @@ payload map { id: $.id, date: parseDate($.date as String) }
 %dw 2.0
 output application/json
 ---
-now() as String {format: "dd-MMM-yyyy"}
+(payload.occurredAt as DateTime) as String {format: "dd-MMM-yyyy"}
 ```
 
 ---
 
 ### 29. CSV to JSON with number coercion
 
-**Problem:** Incoming CSV (header row): `Name,Amount` / `Asha,10.5`
+**Problem:** Incoming CSV with header. Coerce `Amount` to Number. MIME `application/csv`.
+
+**Input:**
+
+```csv
+Name,Amount,City
+Asha,10.5,Pune
+Ben,3,Mumbai
+```
+
+**Expected:**
+
+```json
+[
+  { "name": "Asha", "amount": 10.5, "city": "Pune" },
+  { "name": "Ben", "amount": 3, "city": "Mumbai" }
+]
+```
 
 **Solution:**
 
@@ -601,15 +895,27 @@ output application/json
 ---
 payload map {
   name: $.Name,
-  amount: $.Amount as Number
+  amount: $.Amount as Number,
+  city: $.City
 }
 ```
 
 ---
 
-### 30. JSON to CSV
+### 30. JSON to CSV for finance export
 
-**Problem:** Write `id,name` CSV with header.
+**Problem:** Write `orderId,customerId,amount` CSV with header. MIME `application/csv`.
+
+**Input:**
+
+```json
+[
+  { "orderId": "O-1", "customerId": "C1", "amount": 100.5 },
+  { "orderId": "O-2", "customerId": "C2", "amount": 40 }
+]
+```
+
+**Expected:** CSV with header row `orderId,customerId,amount`.
 
 **Solution:**
 
@@ -618,8 +924,9 @@ payload map {
 output application/csv header=true
 ---
 payload map {
-  id: $.id,
-  name: $.name
+  orderId: $.orderId,
+  customerId: $.customerId,
+  amount: $.amount
 }
 ```
 
@@ -627,16 +934,21 @@ payload map {
 
 ### 31. Left join orders to customers
 
-**Problem:** `payload.orders` left-join `payload.customers` on `customerId` / `id`. Output `orderId`, `customerName` (`null` if missing).
+**Problem:** `payload.orders` left-join `payload.customers` on `customerId` / `id`. Output `orderId`, `customerName` (`null` if missing). Include the unmatched order.
 
 **Input:**
 
 ```json
 {
-  "orders": [{ "id": "O1", "customerId": "C1" }],
-  "customers": [{ "id": "C1", "name": "Asha" }]
+  "orders": [
+    { "id": "O1", "customerId": "C1" },
+    { "id": "O2", "customerId": "C9" }
+  ],
+  "customers": [{ "id": "C1", "name": "Asha Rao" }]
 }
 ```
+
+**Expected:** O1 named, O2 `customerName` null.
 
 **Solution:**
 
@@ -654,9 +966,23 @@ leftJoin(payload.orders, payload.customers, (o) -> o.customerId, (c) -> c.id)
 
 ---
 
-### 32. Join without `leftJoin` (groupBy lookup)
+### 32. Join without leftJoin (groupBy lookup)
 
-**Same problem as 31**, using an index:
+**Problem:** Same result as 31, **without** `leftJoin`. Index customers once. This is the interview answer for “avoid O(n²) and N+1 lookup”.
+
+**Input:**
+
+```json
+{
+  "orders": [
+    { "id": "O1", "customerId": "C1" },
+    { "id": "O2", "customerId": "C9" }
+  ],
+  "customers": [{ "id": "C1", "name": "Asha Rao" }]
+}
+```
+
+**Expected:** same as Lab 31.
 
 **Solution:**
 
@@ -673,9 +999,17 @@ payload.orders map (o) -> {
 
 ---
 
-### 33. Pattern match status codes
+### 33. Pattern match HTTP status class
 
-**Problem:** Map HTTP-like `code`: 2xx → `ok`, 4xx → `client`, 5xx → `server`, else `other`.
+**Problem:** Map `code`: 2xx → `ok`, 4xx → `client`, 5xx → `server`, else `other`. Prefer `match` over a pile of ifs in interviews.
+
+**Input:**
+
+```json
+{ "code": 404 }
+```
+
+**Expected:** `"client"`
 
 **Solution:**
 
@@ -693,9 +1027,17 @@ payload.code match {
 
 ---
 
-### 34. Window / paginate an array
+### 34. Window / paginate a bulk array
 
-**Problem:** Page 2, size 2 of `[1,2,3,4,5]` → `[3,4]`
+**Problem:** Page 2, size 2 of a 5-item work queue → items 3 and 4. Import `dw::core::Arrays`.
+
+**Input:**
+
+```json
+[10, 20, 30, 40, 50]
+```
+
+**Expected:** `[30, 40]`
 
 **Solution:**
 
@@ -711,18 +1053,21 @@ payload drop ((page - 1) * size) take size
 
 ---
 
-### 35. Deduplicate by email, keep last record
+### 35. Deduplicate by email, keep last record (CDC)
+
+**Problem:** `distinctBy` keeps **first**. For last-wins upsert, reduce into an object keyed by email, then `valuesOf`.
 
 **Input:**
 
 ```json
 [
-  { "email": "a@x.com", "name": "Old" },
-  { "email": "a@x.com", "name": "New" }
+  { "email": "a@acme.com", "name": "Old" },
+  { "email": "b@acme.com", "name": "Bee" },
+  { "email": "a@acme.com", "name": "New" }
 ]
 ```
 
-**Expected:** `[{ "email": "a@x.com", "name": "New" }]`
+**Expected:** New Asha-row for `a@acme.com`, plus Bee.
 
 **Solution:**
 
@@ -737,11 +1082,24 @@ valuesOf(
 
 ---
 
-### 36. Dynamic object keys from an array of pairs
+### 36. Dynamic object keys from header pairs
 
-**Input:** `[{ "k": "env", "v": "prod" }, { "k": "region", "v": "in" }]`
+**Problem:** HTTP/query pairs `[{ "k": "X-Request-Id", "v": "abc" }]` → object. Parentheses around the key expression.
 
-**Expected:** `{ "env": "prod", "region": "in" }`
+**Input:**
+
+```json
+[
+  { "k": "X-Request-Id", "v": "abc-123" },
+  { "k": "X-Correlation-Id", "v": "corr-9" }
+]
+```
+
+**Expected:**
+
+```json
+{ "X-Request-Id": "abc-123", "X-Correlation-Id": "corr-9" }
+```
 
 **Solution:**
 
@@ -754,11 +1112,17 @@ payload reduce ((p, acc = {}) -> acc ++ { (p.k): p.v })
 
 ---
 
-## Hard (37–54)
+## Hard (37–54) — interview whiteboard
 
 ### 37. Recursively flatten nested arrays
 
-**Input:** `[1, [2, [3, 4], 5], 6]`
+**Problem:** Deep-flatten mixed arrays to a single list of leaves. One `flatten` is **not** enough.
+
+**Input:**
+
+```json
+[1, [2, [3, 4], 5], 6]
+```
 
 **Expected:** `[1, 2, 3, 4, 5, 6]`
 
@@ -780,6 +1144,8 @@ deepFlatten(payload)
 
 ### 38. Collect all `id` fields at any depth
 
+**Problem:** Return every `id` in a nested integration payload. Descendant `payload..id` is acceptable; be ready to recurse if the interviewer forbids `..`.
+
 **Input:**
 
 ```json
@@ -789,7 +1155,7 @@ deepFlatten(payload)
 }
 ```
 
-**Expected:** `["root", "c1", "i1"]` (order may follow tree walk)
+**Expected:** `["root", "c1", "i1"]` (walk order may vary)
 
 **Solution:**
 
@@ -800,20 +1166,31 @@ output application/json
 payload..id
 ```
 
-(Descendant selector. For a custom walk, recurse with `match` on Array/Object.)
-
 ---
 
-### 39. Deep mask PII keys (`ssn`, `password`, `email`)
+### 39. Deep mask PII keys (`ssn`, `password`, `email`, `accessToken`)
 
-**Problem:** Replace those keys with `"****"` at any nesting level.
+**Problem:** Replace those keys with `"****"` at **any** nesting level before logging. Production follow-up: do not log the pre-mask payload.
+
+**Input:**
+
+```json
+{
+  "name": "Asha Rao",
+  "email": "asha@acme.com",
+  "address": { "ssn": "AAAAA1234A", "city": "Pune" },
+  "auth": { "accessToken": "00Dxx...", "password": "x" }
+}
+```
+
+**Expected:** secret fields `"****"`, `name` and `city` unchanged.
 
 **Solution:**
 
 ```dataweave
 %dw 2.0
 output application/json
-var hidden = ["ssn", "password", "email"]
+var hidden = ["ssn", "password", "email", "accesstoken"]
 fun mask(x) =
   x match {
     case o is Object -> o mapObject ((v, k) -> {
@@ -830,7 +1207,15 @@ mask(payload)
 
 ### 40. Recursively sum all numbers in a mixed tree
 
-**Input:** `{ "a": 1, "b": [2, { "c": 3 }], "d": "skip" }` → `6`
+**Problem:** Sum numeric leaves in a mixed JSON document; ignore strings.
+
+**Input:**
+
+```json
+{ "a": 1, "b": [2, { "c": 3.5 }], "d": "skip" }
+```
+
+**Expected:** `6.5`
 
 **Solution:**
 
@@ -850,59 +1235,112 @@ sumNums(payload)
 
 ---
 
-### 41. XML namespaced order to canonical JSON
+### 41. SOAP namespaced purchase order to canonical JSON
 
-**Problem:** Map `ns0:order` with repeating `ns0:line` and attribute `id`.
+**Problem:** Strip SOAP envelope, read `ord:PurchaseOrder` attributes and repeating `ord:Line` attributes. Two prefixes. This is a standard hard XML interview.
+
+**Input:**
+
+```xml
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ord="http://acme.com/order">
+  <soap:Body>
+    <ord:PurchaseOrder id="PO-1001" currency="INR">
+      <ord:Line sku="SKU-A" qty="2" unitPrice="50.00"/>
+      <ord:Line sku="SKU-B" qty="1" unitPrice="100.00"/>
+    </ord:PurchaseOrder>
+  </soap:Body>
+</soap:Envelope>
+```
+
+**Expected:**
+
+```json
+{
+  "orderId": "PO-1001",
+  "currency": "INR",
+  "lines": [
+    { "sku": "SKU-A", "qty": 2, "unitPrice": 50.00 },
+    { "sku": "SKU-B", "qty": 1, "unitPrice": 100.00 }
+  ]
+}
+```
 
 **Solution:**
 
 ```dataweave
 %dw 2.0
-ns ns0 http://acme.com/order
+ns soap http://schemas.xmlsoap.org/soap/envelope/
+ns ord http://acme.com/order
 output application/json
 ---
 {
-  orderId: payload.ns0#order.@id,
-  lines: payload.ns0#order.*ns0#line map {
+  orderId: payload.soap#Envelope.soap#Body.ord#PurchaseOrder.@id,
+  currency: payload.soap#Envelope.soap#Body.ord#PurchaseOrder.@currency,
+  lines: payload.soap#Envelope.soap#Body.ord#PurchaseOrder.*ord#Line map {
     sku: $.@sku,
-    qty: $.@qty as Number
+    qty: $.@qty as Number,
+    unitPrice: $.@unitPrice as Number
   }
 }
 ```
 
 ---
 
-### 42. Write XML with attributes and namespace
+### 42. Write namespaced XML from canonical JSON
 
-**Problem:** Inverse of 41: JSON → namespaced XML.
+**Problem:** Inverse of 41: JSON → `ord:PurchaseOrder` with line attributes. One root. MIME `application/xml`.
+
+**Input:**
+
+```json
+{
+  "orderId": "PO-1001",
+  "currency": "INR",
+  "lines": [
+    { "sku": "SKU-A", "qty": 2, "unitPrice": 50.00 },
+    { "sku": "SKU-B", "qty": 1, "unitPrice": 100.00 }
+  ]
+}
+```
 
 **Solution:**
 
 ```dataweave
 %dw 2.0
-ns ns0 http://acme.com/order
+ns ord http://acme.com/order
 output application/xml
 ---
-ns0#order @(id: payload.orderId): {
+ord#PurchaseOrder @(id: payload.orderId, currency: payload.currency): {
   (payload.lines map (li) -> {
-    ns0#line @(sku: li.sku, qty: li.qty): {}
+    ord#Line @(sku: li.sku, qty: li.qty, unitPrice: li.unitPrice): {}
   })
 }
 ```
 
 ---
 
-### 43. Diff two flat objects (changed keys)
+### 43. CDC flat diff (before vs after)
 
-**Problem:** `vars.old` vs `payload`. List `{ field, from, to }` for keys whose values changed (and keys only in one side).
+**Problem:** Compare `before` and `after` on the same payload. List `{ field, from, to }` for changed or missing keys. Platform event / Salesforce CDC style.
+
+**Input:**
+
+```json
+{
+  "before": { "status": "NEW", "amount": 10, "owner": "Asha" },
+  "after": { "status": "PAID", "amount": 10, "paidAt": "2026-08-20" }
+}
+```
+
+**Expected:** `status` and `owner`/`paidAt` appear as diffs; `amount` omitted.
 
 **Solution:**
 
 ```dataweave
 %dw 2.0
 output application/json
-var old = vars.old
-var newp = payload
+var old = payload.before
+var newp = payload.after
 var allKeys = (namesOf(old) ++ namesOf(newp)) distinctBy $
 ---
 allKeys
@@ -914,7 +1352,18 @@ allKeys
 
 ### 44. Recursive nested diff
 
-**Problem:** Return a nested object of only differences. Unchanged subtrees omitted.
+**Problem:** Return a nested object of **only** differences. Unchanged subtrees omitted. Use `payload.before` / `payload.after`.
+
+**Input:**
+
+```json
+{
+  "before": { "a": 1, "nested": { "x": 1, "y": 2 } },
+  "after": { "a": 1, "nested": { "x": 1, "y": 9 } }
+}
+```
+
+**Expected:** `{ "nested": { "y": { "from": 2, "to": 9 } } }` (shape may wrap `from`/`to`).
 
 **Solution:**
 
@@ -937,14 +1386,22 @@ fun diff(a, b) =
     else -> { from: a, to: b }
   })
 ---
-diff(vars.old, payload)
+diff(payload.before, payload.after)
 ```
 
 ---
 
-### 45. Chunk array into batches of N (for bulk APIs)
+### 45. Chunk array into batches of N (Salesforce Composite / bulk)
 
-**Input:** `[1,2,3,4,5]`, size `2` → `[[1,2],[3,4],[5]]`
+**Problem:** Split work into batches of 2 for a bulk API that caps records per call.
+
+**Input:**
+
+```json
+[1, 2, 3, 4, 5]
+```
+
+**Expected:** `[[1, 2], [3, 4], [5]]`
 
 **Solution:**
 
@@ -958,9 +1415,17 @@ payload divideBy 2
 
 ---
 
-### 46. Running totals
+### 46. Running totals (ledger)
 
-**Input:** `[10, 20, 30]` → `[10, 30, 60]`
+**Problem:** `[10, 20, 30]` → `[10, 30, 60]` (cumulative sum). Interview: immutable reduce, not a mutable Java total.
+
+**Input:**
+
+```json
+[10, 20, 30]
+```
+
+**Expected:** `[10, 30, 60]`
 
 **Solution:**
 
@@ -968,16 +1433,22 @@ payload divideBy 2
 %dw 2.0
 output application/json
 ---
-payload reduce ((n, acc = []) -> acc ++ [ (acc[-1] default 0) + n ])
+payload reduce ((n, acc = []) -> acc ++ [(acc[-1] default 0) + n])
 ```
 
 ---
 
-### 47. Word frequency (case-insensitive)
+### 47. Error-code frequency from log lines
 
-**Input:** `"DataWeave dataweave mule Data"`
+**Problem:** Count case-insensitive tokens in an ops log string (same skill as word frequency). Ignore empty pieces.
 
-**Expected:** `{ "dataweave": 2, "mule": 1, "data": 1 }` (key order may vary)
+**Input:**
+
+```text
+TIMEOUT timeout 429 TIMEOUT mule
+```
+
+**Expected:** `{ "timeout": 3, "429": 1, "mule": 1 }` (key order may vary)
 
 **Solution:**
 
@@ -995,7 +1466,19 @@ var words = lower(payload) splitBy /[^a-z0-9]+/
 
 ### 48. Validate and partition good vs bad rows
 
-**Problem:** A row is valid if `email` contains `"@"` and `age` is a Number `>= 18`. Return `{ valid, invalid }`.
+**Problem:** Valid if `email` contains `"@"` and `age` as Number `>= 18`. Return `{ valid, invalid }`. Coercion failures are invalid (`try`).
+
+**Input:**
+
+```json
+[
+  { "email": "a@acme.com", "age": 20 },
+  { "email": "bad", "age": 17 },
+  { "email": "b@acme.com", "age": "x" }
+]
+```
+
+**Expected:** one valid, two invalid.
 
 **Solution:**
 
@@ -1019,7 +1502,18 @@ fun isValid(r) = do {
 
 ### 49. Outer-join style merge of two lists by `id`
 
-**Problem:** Union by `id`; fields from left and right, right overwrites on conflict.
+**Problem:** Union by `id`; fields from left and right, **right overwrites** on conflict (master-data merge).
+
+**Input:**
+
+```json
+{
+  "left": [{ "id": "1", "a": 1, "name": "old" }],
+  "right": [{ "id": "1", "b": 2, "name": "new" }, { "id": "2", "b": 3 }]
+}
+```
+
+**Expected:** id `1` has `a`, `b`, `name=new`; id `2` from right only.
 
 **Solution:**
 
@@ -1037,7 +1531,15 @@ ids map (id) -> (left[id][0] default {}) ++ (right[id][0] default {})
 
 ### 50. Tree map: apply `f` to every leaf string
 
-**Problem:** Uppercase every string leaf; leave numbers as-is.
+**Problem:** Uppercase every string leaf; leave numbers as-is. Same recursion skeleton as PII mask.
+
+**Input:**
+
+```json
+{ "a": "ok", "b": 2, "c": ["wait", 3] }
+```
+
+**Expected:** `{ "a": "OK", "b": 2, "c": ["WAIT", 3] }`
 
 **Solution:**
 
@@ -1057,11 +1559,17 @@ mapLeaves(payload)
 
 ---
 
-### 51. Combinations: cartesian product of two arrays
+### 51. Cartesian product of SKU options
 
-**Input:** `{ "colors": ["R","G"], "sizes": ["S","M"] }`
+**Problem:** Product configurator: every color × every size.
 
-**Expected:** `[{ "color": "R", "size": "S" }, { "color": "R", "size": "M" }, ...]` (4 objects)
+**Input:**
+
+```json
+{ "colors": ["R", "G"], "sizes": ["S", "M"] }
+```
+
+**Expected:** four objects `{ color, size }`.
 
 **Solution:**
 
@@ -1076,9 +1584,21 @@ payload.colors flatMap ((c) ->
 
 ---
 
-### 52. Safe divide with `try`
+### 52. Safe unit price with `try`
 
-**Problem:** `amount / qty`; if `qty` is 0 or not numeric, return `null`.
+**Problem:** `amount / qty`; if `qty` is 0 or not numeric, return `null`. Contrast with `default` (nulls only).
+
+**Input:**
+
+```json
+[
+  { "id": "L-1", "amount": "10", "qty": "2" },
+  { "id": "L-2", "amount": 10, "qty": 0 },
+  { "id": "L-3", "amount": 10, "qty": "n/a" }
+]
+```
+
+**Expected:** unit `5`, then `null`, then `null`.
 
 **Solution:**
 
@@ -1095,7 +1615,9 @@ payload map {
 
 ---
 
-### 53. Build a nested org chart from a flat list
+### 53. Build a nested org chart from a flat HR list
+
+**Problem:** Flat employees + `managerId` → nested `children`. Index by manager. Roots have `managerId: null`.
 
 **Input:**
 
@@ -1126,36 +1648,191 @@ fun node(e) = {
 
 ---
 
-### 54. Invoice: compute line totals, tax, and grand total
+### 54. Production invoice: discounts, tax, skip zero qty
+
+**Problem:** Drop lines with `qty` ≤ 0. `lineTotal = qty * price * (1 - discountPct)` rounded to 2 decimals. `subtotal` = sum of line totals. `tax` = subtotal × `taxRate`. `grandTotal` = subtotal + tax. Header `var` / `fun money`.
 
 **Input:**
 
 ```json
 {
   "taxRate": 0.18,
+  "currency": "INR",
   "lines": [
-    { "sku": "A", "qty": 2, "price": 50 },
-    { "sku": "B", "qty": 1, "price": 100 }
+    { "sku": "SKU-A", "qty": 2, "price": 50, "discountPct": 0.10 },
+    { "sku": "SKU-B", "qty": 1, "price": 100, "discountPct": 0 },
+    { "sku": "SKU-Z", "qty": 0, "price": 999, "discountPct": 0 }
   ]
 }
 ```
 
-**Expected:** each line has `lineTotal`; document has `subtotal` `200`, `tax` `36`, `grandTotal` `236`.
+**Expected:** SKU-Z omitted; SKU-A `lineTotal` 90.00; SKU-B 100.00; `subtotal` 190.00; `tax` 34.20; `grandTotal` 224.20.
 
 **Solution:**
 
 ```dataweave
 %dw 2.0
 output application/json
-var lines = payload.lines map (l) -> l ++ { lineTotal: l.qty * l.price }
-var subtotal = sum(lines.lineTotal)
-var tax = subtotal * payload.taxRate
+fun money(n: Number) = n as String {format: "0.00"} as Number
+var lines = payload.lines
+  filter ((l) -> (l.qty as Number) > 0)
+  map (l) -> do {
+    var qty = l.qty as Number
+    var price = l.price as Number
+    var disc = (l.discountPct default 0) as Number
+    ---
+    l ++ { lineTotal: money(qty * price * (1 - disc)) }
+  }
+var subtotal = money(sum(lines.lineTotal))
+var tax = money(subtotal * payload.taxRate)
 ---
 {
+  currency: payload.currency,
   lines: lines,
   subtotal: subtotal,
   tax: tax,
-  grandTotal: subtotal + tax
+  grandTotal: money(subtotal + tax)
+}
+```
+
+---
+
+## Industry extras (55–58)
+
+### 55. maxBy and firstWith on a work queue
+
+**Problem:** From a list of orders, return `{ richest, firstPaid }`. `richest` is the item with max `amount` (coerce Number). `firstPaid` is the first item whose status is `PAID` (any case). Import `dw::core::Arrays`.
+
+**Input:**
+
+```json
+[
+  { "id": "O1", "status": "NEW", "amount": "40" },
+  { "id": "O2", "status": "paid", "amount": "15" },
+  { "id": "O3", "status": "PAID", "amount": 90 }
+]
+```
+
+**Expected:**
+
+```json
+{
+  "richest": { "id": "O3", "status": "PAID", "amount": 90 },
+  "firstPaid": { "id": "O2", "status": "paid", "amount": "15" }
+}
+```
+
+**Solution:**
+
+```dataweave
+%dw 2.0
+import * from dw::core::Arrays
+output application/json
+---
+{
+  richest: payload maxBy ((o) -> o.amount as Number),
+  firstPaid: payload firstWith ((o) -> lower(o.status as String) == "paid")
+}
+```
+
+---
+
+### 56. Shift DateTime to IST for display
+
+**Problem:** Canonical APIs store UTC. Output `occurredAtIst` as `dd-MMM-yyyy HH:mm` in `Asia/Kolkata`. Do not use `now()`.
+
+**Input:**
+
+```json
+{ "occurredAt": "2026-08-20T14:05:00Z" }
+```
+
+**Expected:** IST is UTC+5:30 → `20-Aug-2026 19:35`
+
+**Solution:**
+
+```dataweave
+%dw 2.0
+output application/json
+---
+{
+  occurredAtIst: ((payload.occurredAt as DateTime) >> "Asia/Kolkata")
+    as String {format: "dd-MMM-yyyy HH:mm"}
+}
+```
+
+---
+
+### 57. Zip headers with values into an object
+
+**Problem:** Dynamic columns: `headers` + `values` (same length). Build `{ Name: "Asha", Amount: "10.5" }` using `zip` and dynamic keys.
+
+**Input:**
+
+```json
+{
+  "headers": ["Name", "Amount", "City"],
+  "values": ["Asha", "10.5", "Pune"]
+}
+```
+
+**Expected:**
+
+```json
+{ "Name": "Asha", "Amount": "10.5", "City": "Pune" }
+```
+
+**Solution:**
+
+```dataweave
+%dw 2.0
+import zip from dw::core::Arrays
+output application/json
+---
+zip(payload.headers, payload.values)
+  reduce ((pair, acc = {}) -> acc ++ { (pair[0]): pair[1] })
+```
+
+---
+
+### 58. Simulate Transform Message payload + vars
+
+**Problem:** One script returns **two targets** as an object (Playground cannot set Mule vars). `payload` = `{ orderId, amount }` with amount as Number. `vars` = `{ correlationId, recordCount }`. `correlationId` from `payload.headers.xCorrelationId` default `"missing"`.
+
+**Input:**
+
+```json
+{
+  "headers": { "xCorrelationId": "corr-9" },
+  "order": { "id": "O-1", "amount": "42.00" }
+}
+```
+
+**Expected:**
+
+```json
+{
+  "payload": { "orderId": "O-1", "amount": 42.00 },
+  "vars": { "correlationId": "corr-9", "recordCount": 1 }
+}
+```
+
+**Solution:**
+
+```dataweave
+%dw 2.0
+output application/json
+var canonical = {
+  orderId: payload.order.id,
+  amount: payload.order.amount as Number
+}
+---
+{
+  payload: canonical,
+  vars: {
+    correlationId: payload.headers.xCorrelationId default "missing",
+    recordCount: 1
+  }
 }
 ```
 
@@ -1163,22 +1840,23 @@ var tax = subtotal * payload.taxRate
 
 ## How to practice
 
-1. Cover the **Input** with a note and write the script first.
+1. Cover the **Input** and write the script first (interview rules).
 2. Check **Expected**, then compare with **Solution**.
-3. In Anypoint Studio / DataWeave Playground, set MIME type to `application/json` (or XML/CSV as stated).
-4. Stretch: change keys, add `skipNullOn`, or switch output to CSV.
+3. Set MIME to `application/json` (or XML/CSV as stated).
+4. Stretch: `skipNullOn="everywhere"`, switch JSON → CSV, or inject `attributes.queryParams.page` instead of hard-coded page.
 
 ## Interview whiteboard set (pick 5)
 
-| # | Problem | Tests |
+| # | Problem | What they score |
 | --- | --- | --- |
-| 23 | `flatMap` line items | nested arrays |
-| 20 | totals per customer | `groupBy` + `sum` |
-| 32 | join via `groupBy` | no nested loops |
-| 39 | recursive mask | tree walk |
+| 23 | `flatMap` line items | nested arrays, named lambdas |
+| 20 | totals per customer | `groupBy` + coerce + `sum` |
+| 32 | join via `groupBy` | no nested loops, no N+1 `lookup` |
+| 39 | recursive PII mask | `match` on types, logging story |
+| 41 | SOAP → canonical JSON | two `ns`, attributes, repeating lines |
 | 53 | org chart | recursion + `groupBy` |
-| 54 | invoice totals | `do` / `var` in header |
+| 54 | invoice | `fun money`, `do`, filter zero qty |
 
 ---
 
-*DataWeave 2.x / Mule 4. `update` and some `dw::core::Arrays` helpers need Mule 4.3+.*
+*Aligned with Mule 4 / DataWeave 2.x. `update`, `leftJoin`, `divideBy`, `drop`/`take` need **Mule 4.3+** / current `dw::core::Arrays`.*

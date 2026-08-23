@@ -1,0 +1,4 @@
+{
+  "before": { "status": "NEW", "amount": 10, "owner": "Asha" },
+  "after": { "status": "PAID", "amount": 10, "paidAt": "2026-08-20" }
+}

@@ -16,4 +16,4 @@ fun diff(a, b) =
     else -> { from: a, to: b }
   })
 ---
-diff(vars.old, payload)
+diff(payload.before, payload.after)

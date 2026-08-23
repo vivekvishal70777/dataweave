@@ -1,4 +1,4 @@
-# Lab 32 — Join without `leftJoin` (groupBy lookup)
+# Lab 32 — Join without leftJoin (groupBy lookup)
 
 **Level:** moderate  
 **Section folder:** `02-intermediate`
@@ -12,7 +12,21 @@
 
 ## Problem
 
-**Same problem as 31**, using an index:
+**Problem:** Same result as 31, **without** `leftJoin`. Index customers once. This is the interview answer for “avoid O(n²) and N+1 lookup”.
+
+**Input:**
+
+```json
+{
+  "orders": [
+    { "id": "O1", "customerId": "C1" },
+    { "id": "O2", "customerId": "C9" }
+  ],
+  "customers": [{ "id": "C1", "name": "Asha Rao" }]
+}
+```
+
+**Expected:** same as Lab 31.
 
 **Solution:** Hidden until you try it. See `instructor/solutions`.
 

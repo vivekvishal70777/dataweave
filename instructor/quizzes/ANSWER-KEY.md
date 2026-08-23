@@ -73,13 +73,20 @@ Do not ship this file in the student zip.
 3. B  
 4. B  
 5. B  
-
-## Quiz 10 — Production
+6. B
 
 1. B  
 2. B  
 3. B  
 4. A  
+5. B  
+
+## Quiz 12 — Industry operators / MIME
+
+1. B  
+2. A  
+3. B  
+4. B  
 5. B  
 
 ## Final practice test

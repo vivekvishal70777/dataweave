@@ -1,0 +1,4 @@
+{
+  "headers": ["Name", "Amount", "City"],
+  "values": ["Asha", "10.5", "Pune"]
+}

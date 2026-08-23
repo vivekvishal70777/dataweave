@@ -11,7 +11,7 @@ Use this file as the **article lecture** and recording outline on Udemy.
 ## Suggested video breakdown
 
 - Trap: `+` on strings. Demo the error, then fix with `++`.
-- Lab 13 grades as the if/else pattern students will reuse.
+- Lab 13 HTTP retry class is the if/else pattern. Mention `write`/`read` (Q19) as a production follow-up.
 
 ## Labs in this section
 
@@ -69,20 +69,24 @@ output application/json
 }
 ```
 
-`splitBy` returns an array; `joinBy` builds a string.
+`splitBy` returns an array; `joinBy` builds a string. Industry follow-ups from `dw::core::Strings`: `trim`, `replace`, `substringAfter` / `substringBefore`, `pad`, `repeat`, and regex `find` / `scan` (see Q68).
 
 ---
 
-### Q19. How do you add comments in DataWeave?
+### Q19. How do you `write` and `read` data inside a script?
 
-**Answer:**
+**Answer:** Use `write(value, mimeType, properties)` to serialize a value to String/Binary without changing the Transform **output** MIME, and `read(binaryOrString, mimeType)` to parse. Typical interview case: log a JSON snapshot, or parse a JSON **string field** inside XML/CSV.
 
 ```dataweave
-// single line
-/* multi
-   line */
+%dw 2.0
+output application/json
+---
+{
+  asText: write(payload.order, "application/json", { indent: false }),
+  nested: read(payload.jsonBlob, "application/json")
+}
 ```
 
-Comments can appear in header and body.
+This is **not** the same as `output application/json` on the script (that sets the Mule payload writer). Follow-up: huge `write(payload)` can break streaming.
 
 ---

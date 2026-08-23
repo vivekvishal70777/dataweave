@@ -2,6 +2,10 @@
 
 Validate and partition good vs bad rows
 
+## Expected (note)
+
+one valid, two invalid.
+
 ## Teaching tip
 
 Demo the failing starter (`payload` passthrough) first, then build the script live.

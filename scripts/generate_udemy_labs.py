@@ -13,6 +13,7 @@ LAB_MAP = {
     range(1, 19): ("01-fundamentals", "easy"),
     range(19, 37): ("02-intermediate", "moderate"),
     range(37, 55): ("03-advanced", "hard"),
+    range(55, 59): ("04-industry", "industry"),
 }
 
 
@@ -44,14 +45,19 @@ def parse_labs(text: str) -> list[dict]:
         body = body.strip().strip("-").strip()
         sol = re.search(r"\*\*Solution:\*\*\s*```dataweave\n(.*?)```", body, re.S)
         solution = sol.group(1).strip() if sol else ""
-        inp = re.search(r"\*\*Input:\*\*\s*```json\n(.*?)```", body, re.S)
-        if not inp:
+        inp = re.search(r"\*\*Input:\*\*\s*```(json|xml|csv|text)\n(.*?)```", body, re.S)
+        input_lang = "json"
+        if inp:
+            input_lang = inp.group(1)
+            input_json = inp.group(2).strip()
+            input_is_raw = input_lang in ("csv", "text", "xml")
+        else:
             inp = re.search(r"\*\*Input:\*\*\s*`([^`]+)`", body)
             input_json = inp.group(1).strip() if inp else None
             input_is_raw = bool(inp) and not str(input_json).startswith("{") and not str(input_json).startswith("[")
-        else:
-            input_json = inp.group(1).strip()
-            input_is_raw = False
+            if input_json and str(input_json).startswith("<"):
+                input_lang = "xml"
+                input_is_raw = True
         exp = re.search(r"\*\*Expected[^*]*:\*\*\s*```(?:json|xml)\n(.*?)```", body, re.S)
         if not exp:
             exp_line = re.search(r"\*\*Expected[^*]*:\*\*\s*(.+)", body)
@@ -79,6 +85,7 @@ def parse_labs(text: str) -> list[dict]:
                 "solution": solution,
                 "input_json": input_json,
                 "input_is_raw": input_is_raw,
+                "input_lang": input_lang,
                 "expected_block": expected_block,
                 "expected_note": expected_note,
                 "problem": problem_text,
@@ -148,10 +155,11 @@ def write_lab(lab: dict, student_root: Path, instructor_root: Path) -> None:
     (sdir / "transform.dwl").write_text(starter_script(lab["solution"]) + "\n", encoding="utf-8")
 
     if lab["input_json"]:
-        if lab["input_is_raw"]:
-            (sdir / "input.txt").write_text(lab["input_json"] + "\n", encoding="utf-8")
-        else:
-            (sdir / "input.json").write_text(lab["input_json"] + "\n", encoding="utf-8")
+        lang = lab.get("input_lang") or ("text" if lab["input_is_raw"] else "json")
+        name = {"json": "input.json", "xml": "input.xml", "csv": "input.csv", "text": "input.txt"}.get(
+            lang, "input.txt" if lab["input_is_raw"] else "input.json"
+        )
+        (sdir / name).write_text(lab["input_json"] + "\n", encoding="utf-8")
 
     (idir / "solution.dwl").write_text(lab["solution"] + "\n", encoding="utf-8")
     notes = [f"# Instructor solution — Lab {lab['num']:02d}", "", lab["title"], ""]
@@ -167,10 +175,12 @@ def write_lab(lab: dict, student_root: Path, instructor_root: Path) -> None:
         "",
     ]
     (idir / "NOTES.md").write_text("\n".join(notes), encoding="utf-8")
-    if lab["input_json"] and not lab["input_is_raw"]:
-        (idir / "input.json").write_text(lab["input_json"] + "\n", encoding="utf-8")
-    elif lab["input_json"]:
-        (idir / "input.txt").write_text(lab["input_json"] + "\n", encoding="utf-8")
+    if lab["input_json"]:
+        lang = lab.get("input_lang") or ("text" if lab["input_is_raw"] else "json")
+        name = {"json": "input.json", "xml": "input.xml", "csv": "input.csv", "text": "input.txt"}.get(
+            lang, "input.txt" if lab["input_is_raw"] else "input.json"
+        )
+        (idir / name).write_text(lab["input_json"] + "\n", encoding="utf-8")
 
 
 def write_index(labs: list[dict], path: Path) -> None:
@@ -202,8 +212,8 @@ def write_index(labs: list[dict], path: Path) -> None:
 def main() -> None:
     text = SRC.read_text(encoding="utf-8")
     labs = parse_labs(text)
-    if len(labs) != 54:
-        raise SystemExit(f"Expected 54 labs, parsed {len(labs)}")
+    if len(labs) != 58:
+        raise SystemExit(f"Expected 58 labs, parsed {len(labs)}")
     student = ROOT / "student" / "labs"
     instructor = ROOT / "instructor" / "solutions"
     if student.exists():
