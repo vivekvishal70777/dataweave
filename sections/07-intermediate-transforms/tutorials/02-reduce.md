@@ -26,4 +26,4 @@ payload reduce ((item, acc = {}) -> acc ++ {
 
 Give the accumulator a starting value (acc = 0 or acc = {}) or the first item becomes the seed.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q23). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

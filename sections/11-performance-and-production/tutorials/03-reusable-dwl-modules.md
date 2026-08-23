@@ -23,4 +23,4 @@ fun withTax(amount: Number, rate: Number = 0.18) = amount * (1 + rate)
 
 import withTax from modules::Pricing. Inject time as a parameter.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q46). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

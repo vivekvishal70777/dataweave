@@ -25,4 +25,4 @@ root: payload
 
 JSON streaming, XML writeDeclaration, CSV header=true.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q53). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

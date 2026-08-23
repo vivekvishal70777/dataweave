@@ -27,4 +27,4 @@ payload.fields reduce ((f, acc = {}) -> acc ++ {
 
 Without ( ), the key is the literal text. This is a top interview trap.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q48). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

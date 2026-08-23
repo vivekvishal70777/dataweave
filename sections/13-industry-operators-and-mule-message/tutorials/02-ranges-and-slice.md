@@ -30,4 +30,4 @@ output application/json
 
 Prefer slice / take / drop in production code.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q62). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

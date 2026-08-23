@@ -28,4 +28,4 @@ output application/json
 
 In Mule 4 you write DataWeave in Transform Message, and also as #[...] in other steps. It is not Java.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q1). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

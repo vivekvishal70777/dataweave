@@ -29,4 +29,4 @@ output application/json
 
 groupBy is not an array. You pluck or namesOf to walk groups.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q22). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

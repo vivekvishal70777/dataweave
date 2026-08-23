@@ -28,4 +28,4 @@ output application/json
 
 Java can hurt streaming and tests. Use it for libraries DW cannot replace.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q38). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

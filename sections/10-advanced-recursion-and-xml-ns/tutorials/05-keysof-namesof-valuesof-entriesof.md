@@ -31,4 +31,4 @@ var obj = { a: 1, b: 2 }
 
 For JSON dynamic keys, namesOf is what you usually want.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q47). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

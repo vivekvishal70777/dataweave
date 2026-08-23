@@ -28,4 +28,4 @@ payload drop ((page - 1) * size) take size
 
 import dw::core::Arrays. Huge drop/take may still load the array.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q54). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

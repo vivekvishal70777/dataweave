@@ -24,4 +24,4 @@ payload.address.?city          // null-safe selector; returns null if address is
 
 default does not catch as Number failures. That is try.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q11). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

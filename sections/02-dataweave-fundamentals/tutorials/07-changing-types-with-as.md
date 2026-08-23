@@ -24,4 +24,4 @@ payload as String {encoding: "UTF-8"}
 
 Failed as is an error. Use try, not default, when conversion can fail. Dates need a format.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q7). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

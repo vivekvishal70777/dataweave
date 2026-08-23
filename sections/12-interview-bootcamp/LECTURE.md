@@ -30,13 +30,13 @@ Student starters live under `student/labs/`.
 ## This is not a second teaching pass
 
 Q1–80 already appear in **topic sections** (easy tutorial → concept video → demo → lab → quiz).
-Do **not** record another 80 videos here. Students use the question bank as a **flashcard deck**.
+Do **not** record another 80 videos here. Students drill from **prompts only** (no answer key in the zip).
 
-Full answers: [`../../reference/MuleSoft-DataWeave-Interview-Questions.md`](../../reference/MuleSoft-DataWeave-Interview-Questions.md).
+Students use `student/resources/interview-prompts.md` (questions only). Never attach the full Q&A zip here.
 
 ### What to publish in this section
 
-1. **Article** — how to drill: cover the answer, speak 45–90s, uncover. (`student/tutorials/12-interview-bootcamp/`)
+1. **Article** — how to drill. Attach **`student/resources/interview-prompts.md` only** (80 questions, no answers).
 2. **Video: verbal mock** — you ask 8 mixed questions (easy + hard). Pause card after each prompt. Then you give a model 60-second answer. Do not open Studio.
 3. **Video: whiteboard** — timebox 8 minutes each on Labs 23, 20, 32, 39, 41, 53/54 (pick 3 on camera; assign the rest).
 4. **Video: Q60 design talk** — eight beats only (reader, types, money, join, shape, writer, try, scale). They already coded Lab 41 + 54.

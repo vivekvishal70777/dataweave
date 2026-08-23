@@ -23,4 +23,4 @@ Read this slowly. Header first, then the body.
 
 Named arguments (item, index) -> are clearer in interviews.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q35). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

@@ -28,4 +28,4 @@ payload
 
 Playground cannot set Mule vars. Lab 58 simulates both in one JSON.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q69). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

@@ -22,4 +22,4 @@ flatten([[1, 2], [3], [4, 5]])     // [1, 2, 3, 4, 5]
 
 One flatten is not a deep flatten.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q24). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

@@ -23,4 +23,4 @@ isEmpty(payload.items)    // true for [], {}, "", or null in many cases
 
 sizeOf works on arrays, objects (keys), and strings.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q15). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

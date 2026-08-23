@@ -4,7 +4,7 @@
 
 ## In one sentence
 
-Cover the answer, say it out loud in 60–90 seconds, then uncover. Do not binge-read.
+Cover the prompt, say it out loud in 60–90 seconds, then play the model answer on the video. Do not binge-read an answer key.
 
 ## Like this in real life
 
@@ -12,8 +12,9 @@ Flashcards. If you only reread the book, you feel fluent and fail the whiteboard
 
 ## Remember
 
-- Eighty questions live in `reference/MuleSoft-DataWeave-Interview-Questions.md`.
-- Easy tutorials (this folder’s parent sections) are for learning. The Q&A is for speaking.
+- Eighty **prompts** (no answers) live in `student/resources/interview-prompts.md`.
+- Easy tutorials (earlier sections) are for learning. This file is for speaking.
 - Timebox: easy 45s, moderate 90s, hard 3 minutes plus a tiny script.
+- Model answers are on the mock-interview **video** after you pause — not in the student zip.
 
 Then run the whiteboard set with a timer.

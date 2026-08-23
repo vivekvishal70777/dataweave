@@ -25,4 +25,4 @@ fun describe(x: Any) = "other"
 
 Pair with match { case x is Date -> } for trees.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q50). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

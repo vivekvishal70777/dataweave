@@ -30,4 +30,4 @@ payload.orders
 
 Name the item (order) -> in interviews. $ is shorter but harder to read.
 
-Full interview answer: `reference/MuleSoft-DataWeave-Interview-Questions.md` (Q8). Then try the lab listed for this section.
+After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.

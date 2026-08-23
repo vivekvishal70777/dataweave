@@ -11,7 +11,7 @@ Teach **Mule 4 / DataWeave 2.x** as a linear online course: concept videos, then
 | `sections/` | You + optional article lectures | One `LECTURE.md` per Udemy section (objectives, talking points, full Q&A to teach) |
 | `reference/` | Archive | Original 80 interview Q&A, 58 programming drills |
 
-**Do not zip `instructor/` into the student resource pack on Udemy.** Publish `student/` (and optionally `sections/` as reading). Keep solutions for after-try videos or a separate “solutions” lecture at the end of each section.
+**Do not zip `instructor/` or `reference/` into the student resource pack on Udemy.** `reference/MuleSoft-DataWeave-Interview-Questions.md` is the **answer key**. Students get `student/resources/interview-prompts.md` (questions only). Publish `student/` labs, quizzes, tutorials, and prompts. Keep full Q&A and solutions for after-try videos or a last optional “answer key” lecture.
 
 ## Suggested Udemy path
 

@@ -260,13 +260,13 @@ def write_section(sec: dict, questions: dict[int, tuple[str, str]]) -> None:
             "## This is not a second teaching pass",
             "",
             "Q1–80 already appear in **topic sections** (easy tutorial → concept video → demo → lab → quiz).",
-            "Do **not** record another 80 videos here. Students use the question bank as a **flashcard deck**.",
+            "Do **not** record another 80 videos here. Students drill from **prompts only** (no answer key in the zip).",
             "",
-            "Full answers: [`../../reference/MuleSoft-DataWeave-Interview-Questions.md`](../../reference/MuleSoft-DataWeave-Interview-Questions.md).",
+            "Students use `student/resources/interview-prompts.md` (questions only). Never attach the full Q&A zip here.",
             "",
             "### What to publish in this section",
             "",
-            "1. **Article** — how to drill: cover the answer, speak 45–90s, uncover. (`student/tutorials/12-interview-bootcamp/`)",
+            "1. **Article** — how to drill. Attach **`student/resources/interview-prompts.md` only** (80 questions, no answers).",
             "2. **Video: verbal mock** — you ask 8 mixed questions (easy + hard). Pause card after each prompt. Then you give a model 60-second answer. Do not open Studio.",
             "3. **Video: whiteboard** — timebox 8 minutes each on Labs 23, 20, 32, 39, 41, 53/54 (pick 3 on camera; assign the rest).",
             "4. **Video: Q60 design talk** — eight beats only (reader, types, money, join, shape, writer, try, scale). They already coded Lab 41 + 54.",
@@ -309,6 +309,43 @@ def write_section(sec: dict, questions: dict[int, tuple[str, str]]) -> None:
             "",
         ]
     (d / "LECTURE.md").write_text("\n".join(lines), encoding="utf-8")
+
+
+def write_student_prompts(questions: dict[int, tuple[str, str]]) -> None:
+    """Questions only — safe to zip into the Udemy student pack."""
+    bands: list[tuple[str, range]] = [
+        ("Easy (Q1–20)", range(1, 21)),
+        ("Moderate (Q21–40)", range(21, 41)),
+        ("Hard (Q41–60)", range(41, 61)),
+        ("Industry / Mule message (Q61–80)", range(61, 81)),
+    ]
+    lines = [
+        "# Interview prompts (no answers)",
+        "",
+        "These are the **same 80 questions** you already learned in the course. This file is a **prompt list only**.",
+        "",
+        "**Answers are not here.** Speak first, then resume the mock-interview video for a model answer.",
+        "",
+        "How to drill:",
+        "",
+        "1. Read one prompt.",
+        "2. Pause the video (or close this file and look away).",
+        "3. Speak for 45–90 seconds (hard questions: up to 3 minutes, plus a tiny script).",
+        "4. Resume the video or replay the original concept lecture.",
+        "",
+        "If you download an “answer key” pack, that is only for **after** you attempt — same rule as lab solutions.",
+        "",
+    ]
+    for heading, nums in bands:
+        lines += [f"## {heading}", ""]
+        for n in nums:
+            if n not in questions:
+                continue
+            title, _body = questions[n]
+            lines += [f"### {n}. {title}", "", "_Speak, then check the video._", ""]
+    path = ROOT / "student" / "resources" / "interview-prompts.md"
+    path.write_text("\n".join(lines), encoding="utf-8")
+    print(f"Wrote {path.relative_to(ROOT)} ({len(questions)} prompts, no answers)")
 
 
 def write_curriculum(questions: dict[int, tuple[str, str]]) -> None:
@@ -354,7 +391,7 @@ def write_curriculum(questions: dict[int, tuple[str, str]]) -> None:
         "",
         "Each topic section **teaches** its questions (concept + demo + lab + quiz).",
         "The last section is **practice only**: timed verbal answers and whiteboard labs.",
-        "Do not re-record Q1–80 in the bootcamp. Details: [`TEACHING-GUIDE.md`](TEACHING-GUIDE.md).",
+        "Attach `student/resources/interview-prompts.md` (questions only). Do not attach the full Q&A file.",
         "",
         "## After each section",
         "",
@@ -374,6 +411,7 @@ def main() -> None:
     for sec in SECTIONS:
         write_section(sec, questions)
     write_curriculum(questions)
+    write_student_prompts(questions)
     print(f"Wrote {len(SECTIONS)} section lectures from {len(questions)} questions")
 
 
