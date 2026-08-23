@@ -11,6 +11,8 @@
 
 Do not paste full solutions on screen before the pause. Udemy students binge; the pause card is the course.
 
+Before you hit publish: you do **not** need a license from MuleSoft or a book author for **your** DataWeave labs and Q&A. You **must not** upload anyone else’s book or PDF. Details: [`PUBLISHING-RIGHTS.md`](PUBLISHING-RIGHTS.md).
+
 ## What to upload on Udemy
 
 | Udemy field | File |

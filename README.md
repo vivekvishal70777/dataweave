@@ -31,6 +31,8 @@ Marketplace title, outcomes, and section list for the Udemy form: [`instructor/U
 
 How to record, pause for practice, and package resources: [`instructor/TEACHING-GUIDE.md`](instructor/TEACHING-GUIDE.md).
 
+Copyright / Udemy rights (original labs vs third-party books): [`instructor/PUBLISHING-RIGHTS.md`](instructor/PUBLISHING-RIGHTS.md).
+
 ## Student quick start
 
 1. Read [`student/00-getting-started.md`](student/00-getting-started.md).
