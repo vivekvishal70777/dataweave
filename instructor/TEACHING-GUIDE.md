@@ -20,7 +20,7 @@ Before you hit publish: you do **not** need a license from MuleSoft or a book au
 | Curriculum sections / lectures | `instructor/CURRICULUM.md` |
 | Landing page copy | `instructor/UDEMY-LISTING.md` |
 | Resources per section | Zip of `student/labs/<that-section>/` + `student/quizzes/` (no answers) |
-| Interview bootcamp resource | **`student/resources/interview-prompts.md` only** (80 questions, no answers) |
+| Interview bootcamp resource | **`student/resources/bootcamp-prompts.md` only** (Set B, 80 questions, no answers) |
 | Article lectures | Easy tutorials: `student/tutorials/<section>/`. Do **not** attach `sections/*/LECTURE.md` or `reference/*Interview-Questions*` — those contain full answers. |
 | Captions / slides | Optional; cheat sheet `student/resources/cheat-sheet.md` |
 
@@ -56,7 +56,7 @@ The same 80 questions show up in **topic `LECTURE.md` files** and again as the *
 | Sections 2–12 (and industry) | Learn the idea, then code a lab | Concept → demo → pause → lab solution → quiz. Mention the interview phrasing in 20–40 seconds (“If they ask how `map` differs from `filter`…”). |
 | Easy tutorials | Read before the video | Optional Udemy **Articles**. Not a second video. |
 | Section quizzes | Check memory | Udemy practice tests. |
-| Interview bootcamp (last section) | Speak and whiteboard under time | **Do not teach Q1–80 again.** Attach **prompts only**. Model answers on camera after pause. |
+| Interview bootcamp (last section) | Speak **Set B** prompts under time | Do not attach course Q&A. Model answers after pause from `instructor/bootcamp/BOOTCAMP-QA.md`. |
 
 If you filmed every Q as its own bootcamp lecture you would duplicate ~80 videos and students would skip the real labs.
 
@@ -66,7 +66,7 @@ If you filmed every Q as its own bootcamp lecture you would duplicate ~80 videos
 
 ### Bootcamp recording order
 
-1. Article: how to drill. Attach `student/resources/interview-prompts.md` (**no answers**). Never attach the full Q&A file.
+1. Article: how to drill. Attach `student/resources/bootcamp-prompts.md` (**Set B, no answers**). Never attach `BOOTCAMP-QA.md` or the course Q&A file.
 2. Video: you ask ~8 mixed questions; pause; model 60-second answers. No Playground.
 3. Video: 3 timed whiteboard labs (from `student/resources/whiteboard.md`). Pause before each solution.
 4. Video: Q60 as an 8-beat **design** talk (they already built Labs 41 and 54).
@@ -81,6 +81,8 @@ Edit `reference/*.md`, then:
 ```bash
 python3 scripts/generate_udemy_labs.py
 python3 scripts/generate_udemy_lectures.py
+python3 scripts/generate_easy_tutorials.py
+python3 scripts/generate_bootcamp_set_b.py
 ```
 
 Re-zip student resources after regenerate. Section quizzes in `student/quizzes/` are hand-written — update those if you change a concept.

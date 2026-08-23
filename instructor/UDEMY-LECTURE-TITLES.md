@@ -128,7 +128,7 @@ This section is **practice**, not a replay of Q1–80. Those questions were alre
 
 Easy tutorials: `student/tutorials/12-interview-bootcamp/` (drill, whiteboard, Q60).
 
-54. How to drill the 80-question bank — Article. Resource: `student/resources/interview-prompts.md` (**questions only — do not attach the full Q&A**)  
+54. How to drill Set B (80 new prompts) — Article. Resource: `student/resources/bootcamp-prompts.md` (**questions only**)  
 55. Verbal mock interview (8 mixed questions, 60-second answers) — Video  
 56. Whiteboard mock interview (3 of the 6 signature labs) — Video  
 57. Nested XML to canonical JSON (Q60 design talk only) — Video  

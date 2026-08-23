@@ -45,7 +45,7 @@ Plain-language concept pages (one file per topic): [`student/tutorials/README.md
 
 Each topic section **teaches** its questions (concept + demo + lab + quiz).
 The last section is **practice only**: timed verbal answers and whiteboard labs.
-Attach `student/resources/interview-prompts.md` (questions only). Do not attach the full Q&A file.
+Attach `student/resources/bootcamp-prompts.md` (Set B, questions only). Instructor answers: `instructor/bootcamp/BOOTCAMP-QA.md`.
 
 ## After each section
 

@@ -32,95 +32,98 @@ Student starters live under `student/labs/`.
 Q1–80 already appear in **topic sections** (easy tutorial → concept video → demo → lab → quiz).
 Do **not** record another 80 videos here. Students drill from **prompts only** (no answer key in the zip).
 
-Students use `student/resources/interview-prompts.md` (questions only). Never attach the full Q&A zip here.
+Students drill **Set B**: `student/resources/bootcamp-prompts.md` (questions only).
+Your answers while recording: `instructor/bootcamp/BOOTCAMP-QA.md`. Never zip that file.
+
+The course bank (`reference/MuleSoft-DataWeave-Interview-Questions.md`) was already taught in sections 2–12.
 
 ### What to publish in this section
 
-1. **Article** — how to drill. Attach **`student/resources/interview-prompts.md` only** (80 questions, no answers).
+1. **Article** — how to drill. Attach **`student/resources/bootcamp-prompts.md` only** (Set B, no answers).
 2. **Video: verbal mock** — you ask 8 mixed questions (easy + hard). Pause card after each prompt. Then you give a model 60-second answer. Do not open Studio.
 3. **Video: whiteboard** — timebox 8 minutes each on Labs 23, 20, 32, 39, 41, 53/54 (pick 3 on camera; assign the rest).
 4. **Video: Q60 design talk** — eight beats only (reader, types, money, join, shape, writer, try, scale). They already coded Lab 41 + 54.
 5. **Practice test** — final quiz, not a lecture.
 
-### Question checklist (titles only — do not read answers on camera)
+### Set B checklist (titles only — answers in instructor/bootcamp/BOOTCAMP-QA.md)
 
-- Q1. What is DataWeave?
-- Q2. What is the difference between DataWeave 1.0 and DataWeave 2.0?
-- Q3. What is the basic structure of a DataWeave script?
-- Q4. How do you declare a variable in DataWeave?
-- Q5. How do you define a custom function?
-- Q6. What are the main DataWeave data types?
-- Q7. How do you convert types (`as`)?
-- Q8. How do `map` and `filter` work on arrays?
-- Q9. What is `pluck`?
-- Q10. How do you concatenate strings and arrays?
-- Q11. How do you handle missing fields and nulls?
-- Q12. How do you write if/else in DataWeave?
-- Q13. What is the difference between `.` and `[]` selectors?
-- Q14. How do you transform JSON to XML (and vice versa)?
-- Q15. What does `sizeOf` and `isEmpty` do?
-- Q16. How do you split, join, and change case of strings?
-- Q17. How do you read Mule variables, attributes, and properties in DataWeave?
-- Q18. What is the difference between Transform Message and a DataWeave expression in a Set Payload?
-- Q19. How do you `write` and `read` data inside a script?
-- Q20. What does `output application/json skipNullOn="everywhere"` do?
-- Q21. Explain `mapObject`. When do you use it instead of `map`?
-- Q22. How do `groupBy`, `orderBy`, and `distinctBy` work?
-- Q23. Explain `reduce`. Give an example of a sum and of building an object.
-- Q24. How do you flatten nested arrays?
-- Q25. How do you merge two objects? What happens with duplicate keys?
-- Q26. How do you update a nested field without rebuilding the whole object?
-- Q27. What is a `do` block and why is it useful?
-- Q28. How does pattern matching (`match`) work?
-- Q29. How do you handle errors in DataWeave (`try`)?
-- Q30. How do you work with dates and periods?
-- Q31. How do you transform CSV to JSON?
-- Q32. How do you generate CSV from JSON?
-- Q33. How do you read XML attributes vs elements?
-- Q34. What are DataWeave modules? How do you import them?
-- Q35. Explain `$`, `$$`, and `$$$` in lambdas.
-- Q36. How do you filter object keys dynamically?
-- Q37. How do you join two arrays like a SQL join?
-- Q38. How do you call Java from DataWeave? When should you not?
-- Q39. What is the difference between `startsWith`, `contains`, and `matches`?
-- Q40. How do you use `lookup` (Mule 4) vs DataWeave-only alternatives?
-- Q41. How does DataWeave streaming work? When does it break?
-- Q42. Write a recursive function to flatten a nested tree of objects/arrays.
-- Q43. How do you implement `flatMap` / why does it matter?
-- Q44. How do you preserve XML namespaces and generate namespaced output?
-- Q45. Explain `dw::Crypto` hashing vs HMAC. When is each used?
-- Q46. How do you write a reusable `.dwl` module and unit-test it?
-- Q47. What is the difference between `valuesOf`, `keysOf`, `namesOf`, and `entriesOf`?
-- Q48. How do you dynamically construct object keys?
-- Q49. How do you compare two payloads and produce a diff of changed fields?
-- Q50. Explain function overloading and type patterns in DataWeave.
-- Q51. How do you parse a non-standard date or mixed-format field robustly?
-- Q52. How do you process multipart / binary / Base64 in DataWeave?
-- Q53. What are reader/writer properties you should mention for XML, JSON, and CSV?
-- Q54. How do you implement pagination-style `take` / `drop` / windows on arrays?
-- Q55. How would you de-duplicate while keeping the last occurrence?
-- Q56. Explain `then`, `also`, and chaining vs nested calls.
-- Q57. How do you mask PII in a payload of unknown shape?
-- Q58. What performance pitfalls do interviewers expect you to name?
-- Q59. How do you write an infix-friendly custom function and use lambdas as arguments (higher-order functions)?
-- Q60. End-to-end: map a nested order XML to a canonical JSON API model (talk through the design).
-- Q61. What `dw::core::Arrays` helpers do interviewers expect besides map/filter?
-- Q62. How do ranges and `slice` work?
-- Q63. How do you `zip` two arrays?
-- Q64. How do you test types (`is`, `typeOf`)?
-- Q65. Which number helpers should you name?
-- Q66. How do you handle timezones?
-- Q67. What is in `dw::core::Dates` / `Periods`?
-- Q68. How do you `replace`, `find`, and split SKUs with Strings helpers?
-- Q69. How does Transform Message set payload **and** variables?
-- Q70. When is `application/java` the payload type?
-- Q71. What is `readUrl` vs `read`?
-- Q72. How do you debug DataWeave (`log`, `application/dw`)?
-- Q73. DataWeave `try` vs Mule On Error?
-- Q74. Which HTTP `attributes` should you memorize?
-- Q75. Default XML namespaces, CDATA, mixed content?
-- Q76. YAML, Excel, and flat file — does DataWeave do them?
-- Q77. `dw::util::Values::mask` vs recursive mask?
-- Q78. Boolean operators and precedence?
-- Q79. How do you sort by two fields (region, then amount desc)?
-- Q80. DataWeave vs For Each vs Batch Job vs Java?
+- B1. In one sentence, what problem does DataWeave solve in a Mule 4 API?
+- B2. A teammate still writes `%dw 1.0` and `%output`. What do you change for Mule 4, and why would an interviewer care?
+- B3. Walk me through a hello-world script that greets `payload.customerName`. Name the three parts.
+- B4. You need a GST rate of 18% used in several fields. How do you store it, and can you change it later in the same script?
+- B5. Write a small `fun` that builds `sku + "-" + plant` with types on the arguments.
+- B6. Name at least eight DataWeave types you would list on a whiteboard.
+- B7. The ERP sends `"qty": "12"`. How do you make it a number, and what if the text is garbage?
+- B8. You have a list of shipments. Keep only `IN_TRANSIT`, then output `{ awb, dest }`. Which operator runs first?
+- B9. A config object `{ host, port, tls }` must become an array of `{ name, value }`. Which function, and why not `map`?
+- B10. What is wrong with `payload.first ++ payload.last` vs `payload.qty + payload.bonus`? When do you use `++` on objects?
+- B11. `payload.account.iban` is sometimes missing. How do you avoid a crash, and when is `default` the wrong tool?
+- B12. Classify `payload.score` as `"gold"` / `"silver"` / `"bronze"` with a DataWeave `if`. Why is `score > 90 ? "gold" : "silver"` wrong?
+- B13. When do you write `payload."item-code"`, `payload[2]`, `payload.*Line`, and `payload..gstin`?
+- B14. Turn a JSON array of plants into XML. What breaks if you forget a single root?
+- B15. You need to know if `payload.batches` has rows. Compare `sizeOf` and `isEmpty`. Which phrase do you use in an interview?
+- B16. Split a pipe-separated plant list, join SKUs with commas, and uppercase a material name. Which module?
+- B17. In Transform Message, where do you read a flow variable `plant`, a query param `page`, and a property `sap.host`?
+- B18. When is a Set Payload `#[payload.awb]` enough, and when must you open Transform Message?
+- B19. A CSV column holds a JSON **string**. How do you parse it without changing the script’s `output` MIME? How do you log a compact JSON snapshot?
+- B20. You do not want `null` IBAN fields in the JSON response. Which writer property, and name two others (CSV / compact JSON)?
+- B21. Uppercase every **key** on `{ plant: "P001", qty: 2 }` and keep object shape. Why is `map` the wrong first choice?
+- B22. From a list of invoices, group by `plant`, sort by `docDate`, and unique by `vendorGstin`. What type does `groupBy` return?
+- B23. Sum `payload.lines.amount` with `reduce`, then also build `{ sku: qty }` with `reduce`. What if you omit the seed?
+- B24. `[["A"], ["B","C"]]` should become `["A","B","C"]`. Is `flatten` enough for a 3-level tree?
+- B25. `{ tax: { cgst: 9 } } ++ { tax: { sgst: 9 } }` — what is in `tax` after the merge? How do you deep-merge?
+- B26. Uppercase `payload.vendor.address.city` without rewriting the whole vendor object. Which operator and which Mule version?
+- B27. Inside `map` over invoices you need a local `var tds`. Why put it in a `do` block instead of the header?
+- B28. Map SAP status `A` / `B` / anything starting with `E` / a Number / else. Show a `match`.
+- B29. `payload.rate` is the string `"N/A"`. How do you coerce to Number without failing the whole script? Is this a Mule HTTP error handler?
+- B30. Format today as `dd-MMM-yyyy`, parse `20-08-2026`, add seven days. Why is `now()` risky inside a pricing module?
+- B31. Finance sends CSV with header `Vendor,Amount` and semicolon separators. How do you get JSON numbers?
+- B32. Export invoices to CSV with columns `Doc` and `Gross`. How do headers appear?
+- B33. XML `<Delivery id="D1"><Item>X</Item><Item>Y</Item></Delivery>`. How do you read `id` vs items vs write an attribute?
+- B34. Show three `import` styles (star from Strings, one function from your module, Arrays as a prefix).
+- B35. In `payload map { n: $$ + 1, v: $ }`, what are `$` and `$$`? When do you use `$$$`? What do you say if the interviewer hates dollars?
+- B36. Drop keys `iban`, `pan`, `password` from an unknown object of secrets. Which function?
+- B37. Join `payload.deliveries` to `payload.plants` on `plantCode` / `code` like SQL LEFT JOIN. What does each result row look like?
+- B38. You need a UUID. Show a Java call. When do you refuse to call Java from DataWeave?
+- B39. `"INV-4401"` — contrast `startsWith "INV"`, `contains "440"`, and `matches /INV-[0-9]+/`.
+- B40. Why is `lookup("get-plant", { id: $.plant })` inside `map` a red flag? What do you do instead?
+- B41. A 2 GB CSV must become JSON lines. Which DW operations destroy streaming?
+- B42. Write `fun leaves(x)` that returns every primitive in a mixed JSON tree (objects + arrays).
+- B43. Each delivery has `packages[]`. You need one output row per package with `awb` copied down. Name the operator.
+- B44. SOAP body uses `xmlns:del="http://logistics.example/del"`. How do you **write** `del:Shipment` with an `id` attribute?
+- B45. Webhook vs file checksum: when `hashWith` vs `HMACBinary`? What type is the payload?
+- B46. Sketch `modules/Money.dwl` with `fun rupees(n)` and how you import it. What must stay out of a pure module?
+- B47. For `{ gstin: "...", pan: "..." }`, contrast `keysOf`, `namesOf`, `valuesOf`, `entriesOf`.
+- B48. `payload.pairs` is `[{ code: "P1", qty: 2 }]`. Build `{ P1: 2 }` with a **dynamic** key. What happens without parentheses?
+- B49. `vars.before` and `payload` are two flat invoice objects. List fields that changed (`field`, `from`, `to`).
+- B50. Overload `fun label` for String, Number, Array, and Any. Who wins?
+- B51. Invoice dates arrive as `yyyy-MM-dd` **or** `dd/MM/yyyy`. Write a robust `fun parseInv`.
+- B52. You receive a Base64 PDF in `vars.pdfB64`. How do you get Binary, and how do you encode Binary to Base64? Multipart?
+- B53. Name two reader/writer knobs each for JSON, XML, and CSV.
+- B54. `vars.page` and `vars.size` paginate `payload`. Write `drop` / `take`. Name `divideBy`.
+- B55. CDC list has duplicate `gstin`; **last** row should win. Why is `distinctBy` alone wrong?
+- B56. After `filter`, you want `{ count, rows }` without a header `var`. Show `then`. What does `also` return?
+- B57. Mask any key named `pan`, `aadhaar`, or `iban` at unknown depth. Sketch `fun redact`.
+- B58. List six performance answers an interviewer wants, including money and I/O.
+- B59. Write `fun twice(x, f)` that applies `f` two times. Call it with `upper` and with a lambda. What is a higher-order function?
+- B60. Talk through SAP IDoc XML → canonical invoice JSON in eight beats (no long script).
+- B61. Besides `map`/`filter`, name `maxBy`, `firstWith`, `some`, `every`, `countBy`. What does `maxBy` return?
+- B62. What is `payload[0 to 2]` vs `slice(payload, 1, 4)` vs `1 to 5`?
+- B63. `payload.cols` and `payload.cells` are same-length arrays. Zip them into `{ name, value }` objects, then into one object.
+- B64. How do you ask “is this an Array?” without Java `instanceof`?
+- B65. Name number helpers plus how you round INR to 2 decimals without `BigDecimal`.
+- B66. `payload.postedAt` is ISO-8601. Show UTC and IST display. What do you store in the canonical API?
+- B67. Invoice due date is start + 1 month. Days between two dates? Start of that day?
+- B68. Redact `INV-\d+` in notes, extract those ids, and take the SKU family before `-`.
+- B69. One Transform Message must set JSON payload **and** variable `docCount`. How?
+- B70. After a Salesforce connector the MIME is `application/java`. Do you `read` it as JSON? When do you **output** Java?
+- B71. Plant codes live in `classpath://modules/plants.json`. `read` or `readUrl`? When is File connector better?
+- B72. How do you log `payload.docId` inline, dump DW preview, and still not leak PAN?
+- B73. Dirty `qty` vs HTTP 504 from SAP — which is DataWeave `try`, which is On Error?
+- B74. Memorize five HTTP `attributes` fields and say Listener vs Request.
+- B75. Default `xmlns="http://sap.example/idoc"` with no prefix on the XML. How do you select the root in DW? CDATA? Mixed content?
+- B76. Can DW read YAML, Excel, and EDI flat file in the Playground?
+- B77. When is `Values::mask` enough, and when must you recurse like Lab 39?
+- B78. Rewrite Java `status.equals("OPEN") && qty > 0` in DataWeave. Precedence of `not` / `and` / `or`?
+- B79. Sort plants by `region` A–Z, then `amount` descending. Why is `orderBy` then `orderBy` a trap?
+- B80. A 50k-line invoice file needs mapping, and some rows call SAP. DW, For Each, Batch, or Java — pick and say why.

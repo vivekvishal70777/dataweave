@@ -3,9 +3,13 @@
 from __future__ import annotations
 
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from bootcamp_set_b import ITEMS as SET_B
+
 SRC = ROOT / "reference" / "MuleSoft-DataWeave-Interview-Questions.md"
 
 # Udemy section -> inclusive question numbers + student lab numbers
@@ -262,26 +266,24 @@ def write_section(sec: dict, questions: dict[int, tuple[str, str]]) -> None:
             "Q1–80 already appear in **topic sections** (easy tutorial → concept video → demo → lab → quiz).",
             "Do **not** record another 80 videos here. Students drill from **prompts only** (no answer key in the zip).",
             "",
-            "Students use `student/resources/interview-prompts.md` (questions only). Never attach the full Q&A zip here.",
+            "Students drill **Set B**: `student/resources/bootcamp-prompts.md` (questions only).",
+            "Your answers while recording: `instructor/bootcamp/BOOTCAMP-QA.md`. Never zip that file.",
+            "",
+            "The course bank (`reference/MuleSoft-DataWeave-Interview-Questions.md`) was already taught in sections 2–12.",
             "",
             "### What to publish in this section",
             "",
-            "1. **Article** — how to drill. Attach **`student/resources/interview-prompts.md` only** (80 questions, no answers).",
+            "1. **Article** — how to drill. Attach **`student/resources/bootcamp-prompts.md` only** (Set B, no answers).",
             "2. **Video: verbal mock** — you ask 8 mixed questions (easy + hard). Pause card after each prompt. Then you give a model 60-second answer. Do not open Studio.",
             "3. **Video: whiteboard** — timebox 8 minutes each on Labs 23, 20, 32, 39, 41, 53/54 (pick 3 on camera; assign the rest).",
             "4. **Video: Q60 design talk** — eight beats only (reader, types, money, join, shape, writer, try, scale). They already coded Lab 41 + 54.",
             "5. **Practice test** — final quiz, not a lecture.",
             "",
-            "### Question checklist (titles only — do not read answers on camera)",
+            "### Set B checklist (titles only — answers in instructor/bootcamp/BOOTCAMP-QA.md)",
             "",
         ]
-        seen = set()
-        for n in sec["qs"]:
-            if n in seen or n not in questions:
-                continue
-            seen.add(n)
-            title, _body = questions[n]
-            lines.append(f"- Q{n}. {title}")
+        for n, title, _ans in SET_B:
+            lines.append(f"- B{n}. {title}")
         lines.append("")
     elif sec["qs"]:
         lines += [
@@ -391,7 +393,7 @@ def write_curriculum(questions: dict[int, tuple[str, str]]) -> None:
         "",
         "Each topic section **teaches** its questions (concept + demo + lab + quiz).",
         "The last section is **practice only**: timed verbal answers and whiteboard labs.",
-        "Attach `student/resources/interview-prompts.md` (questions only). Do not attach the full Q&A file.",
+        "Attach `student/resources/bootcamp-prompts.md` (Set B, questions only). Instructor answers: `instructor/bootcamp/BOOTCAMP-QA.md`.",
         "",
         "## After each section",
         "",

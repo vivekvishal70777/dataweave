@@ -12,8 +12,8 @@ Flashcards. If you only reread the book, you feel fluent and fail the whiteboard
 
 ## Remember
 
-- Eighty **prompts** (no answers) live in `student/resources/interview-prompts.md`.
-- Easy tutorials (earlier sections) are for learning. This file is for speaking.
+- Eighty **Set B prompts** (no answers) live in `student/resources/bootcamp-prompts.md`. Same skills as the course, new wording.
+- Easy tutorials (earlier sections) are for learning. Set B is for speaking under time.
 - Timebox: easy 45s, moderate 90s, hard 3 minutes plus a tiny script.
 - Model answers are on the mock-interview **video** after you pause — not in the student zip.
 

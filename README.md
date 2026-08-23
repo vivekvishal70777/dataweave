@@ -11,7 +11,7 @@ Teach **Mule 4 / DataWeave 2.x** as a linear online course: concept videos, then
 | `sections/` | You + optional article lectures | One `LECTURE.md` per Udemy section (objectives, talking points, full Q&A to teach) |
 | `reference/` | Archive | Original 80 interview Q&A, 58 programming drills |
 
-**Do not zip `instructor/` or `reference/` into the student resource pack on Udemy.** `reference/MuleSoft-DataWeave-Interview-Questions.md` is the **answer key**. Students get `student/resources/interview-prompts.md` (questions only). Publish `student/` labs, quizzes, tutorials, and prompts. Keep full Q&A and solutions for after-try videos or a last optional “answer key” lecture.
+**Do not zip `instructor/` or `reference/` into the student resource pack on Udemy.** The course Q&A and `instructor/bootcamp/BOOTCAMP-QA.md` are answer keys. Last section: students get `student/resources/bootcamp-prompts.md` (Set B, questions only).
 
 ## Suggested Udemy path
 
@@ -53,6 +53,7 @@ If you edit the files in `reference/`, rebuild:
 python3 scripts/generate_udemy_labs.py
 python3 scripts/generate_udemy_lectures.py
 python3 scripts/generate_easy_tutorials.py
+python3 scripts/generate_bootcamp_set_b.py
 ```
 
 ## Source material
