@@ -176,12 +176,27 @@ SECTIONS = [
         ],
     },
     {
+        "id": "13-industry-operators-and-mule-message",
+        "title": "Industry operators, message, and MIME",
+        "qs": list(range(61, 81)),
+        "labs": [55, 56, 57, 58],
+        "objectives": [
+            "Use Arrays helpers: maxBy, firstWith, zip, ranges.",
+            "Shift timezones; replace/find; Transform Message multiple targets.",
+            "Distinguish try vs Mule On Error, Java MIME, and DW vs Batch vs For Each.",
+        ],
+        "talking": [
+            "These are the production topics the first 60 questions only hinted at.",
+            "Demo Lab 55 (maxBy) and Lab 56 (IST). Assign zip and TM dual-target as homework.",
+        ],
+    },
+    {
         "id": "12-interview-bootcamp",
         "title": "Interview bootcamp",
-        "qs": list(range(1, 61)),
+        "qs": list(range(1, 81)),
         "labs": [20, 23, 32, 39, 41, 53, 54],
         "objectives": [
-            "Answer the 60-question bank out loud.",
+            "Answer the 80-question bank out loud.",
             "Whiteboard the six signature programs.",
             "Talk through the nested XML → JSON design (Q60).",
         ],
@@ -288,9 +303,10 @@ def write_curriculum(questions: dict[int, tuple[str, str]]) -> None:
         "| Joins / Mule | 4 | 1 | 1 |",
         "| Advanced | 6 | 1 | 1 |",
         "| Production | 3 | 1 | 1 |",
+        "| Industry operators / MIME | 4 | 1 | 1 |",
         "| Interview bootcamp | 4 | 1 | 1 (practice test) |",
         "",
-        "Target: **~46 published lectures** plus **54 downloadable labs** and **section quizzes**.",
+        "Target: **~50 published lectures** plus **58 downloadable labs** and **section quizzes**.",
         "",
         "## After each section",
         "",
@@ -305,8 +321,8 @@ def write_curriculum(questions: dict[int, tuple[str, str]]) -> None:
 def main() -> None:
     text = SRC.read_text(encoding="utf-8")
     questions = parse_questions(text)
-    if len(questions) != 60:
-        raise SystemExit(f"Expected 60 questions, parsed {len(questions)}")
+    if len(questions) != 80:
+        raise SystemExit(f"Expected 80 questions, parsed {len(questions)}")
     for sec in SECTIONS:
         write_section(sec, questions)
     write_curriculum(questions)

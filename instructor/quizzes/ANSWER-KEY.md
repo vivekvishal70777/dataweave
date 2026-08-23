@@ -81,6 +81,14 @@ Do not ship this file in the student zip.
 4. A  
 5. B  
 
+## Quiz 12 — Industry operators / MIME
+
+1. B  
+2. A  
+3. B  
+4. B  
+5. B  
+
 ## Final practice test
 
 Score the spoken/written answers against `sections/12-interview-bootcamp/LECTURE.md` and labs 20, 23, 32, 39, 53, 54.

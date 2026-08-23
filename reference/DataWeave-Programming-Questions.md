@@ -2,7 +2,7 @@
 
 Hands-on **DataWeave 2.0** problems shaped like **Mule 4 production mappings**: Salesforce-style records, commerce orders, SOAP/XML, dirty CSV, CDC diffs, and bulk APIs. Each item has a problem, sample payload, expected output, and a solution.
 
-Levels: **Easy (1–18)** still teach one operator each, but on **real-shaped JSON**. **Moderate (19–36)** are integration patterns. **Hard (37–54)** are **interview-hard** whiteboard programs.
+Levels: **Easy (1–18)** still teach one operator each, but on **real-shaped JSON**. **Moderate (19–36)** are integration patterns. **Hard (37–54)** are **interview-hard** whiteboard programs. **Industry extras (55–58)** cover Arrays helpers, timezones, `zip`, and Transform-style multi-target output.
 
 Try the problem before reading the answer. Playground MIME type must match the sample (`application/json`, `application/xml`, or `application/csv`).
 
@@ -1692,6 +1692,147 @@ var tax = money(subtotal * payload.taxRate)
   subtotal: subtotal,
   tax: tax,
   grandTotal: money(subtotal + tax)
+}
+```
+
+---
+
+## Industry extras (55–58)
+
+### 55. maxBy and firstWith on a work queue
+
+**Problem:** From a list of orders, return `{ richest, firstPaid }`. `richest` is the item with max `amount` (coerce Number). `firstPaid` is the first item whose status is `PAID` (any case). Import `dw::core::Arrays`.
+
+**Input:**
+
+```json
+[
+  { "id": "O1", "status": "NEW", "amount": "40" },
+  { "id": "O2", "status": "paid", "amount": "15" },
+  { "id": "O3", "status": "PAID", "amount": 90 }
+]
+```
+
+**Expected:**
+
+```json
+{
+  "richest": { "id": "O3", "status": "PAID", "amount": 90 },
+  "firstPaid": { "id": "O2", "status": "paid", "amount": "15" }
+}
+```
+
+**Solution:**
+
+```dataweave
+%dw 2.0
+import * from dw::core::Arrays
+output application/json
+---
+{
+  richest: payload maxBy ((o) -> o.amount as Number),
+  firstPaid: payload firstWith ((o) -> lower(o.status as String) == "paid")
+}
+```
+
+---
+
+### 56. Shift DateTime to IST for display
+
+**Problem:** Canonical APIs store UTC. Output `occurredAtIst` as `dd-MMM-yyyy HH:mm` in `Asia/Kolkata`. Do not use `now()`.
+
+**Input:**
+
+```json
+{ "occurredAt": "2026-08-20T14:05:00Z" }
+```
+
+**Expected:** IST is UTC+5:30 → `20-Aug-2026 19:35`
+
+**Solution:**
+
+```dataweave
+%dw 2.0
+output application/json
+---
+{
+  occurredAtIst: ((payload.occurredAt as DateTime) >> "Asia/Kolkata")
+    as String {format: "dd-MMM-yyyy HH:mm"}
+}
+```
+
+---
+
+### 57. Zip headers with values into an object
+
+**Problem:** Dynamic columns: `headers` + `values` (same length). Build `{ Name: "Asha", Amount: "10.5" }` using `zip` and dynamic keys.
+
+**Input:**
+
+```json
+{
+  "headers": ["Name", "Amount", "City"],
+  "values": ["Asha", "10.5", "Pune"]
+}
+```
+
+**Expected:**
+
+```json
+{ "Name": "Asha", "Amount": "10.5", "City": "Pune" }
+```
+
+**Solution:**
+
+```dataweave
+%dw 2.0
+import zip from dw::core::Arrays
+output application/json
+---
+zip(payload.headers, payload.values)
+  reduce ((pair, acc = {}) -> acc ++ { (pair[0]): pair[1] })
+```
+
+---
+
+### 58. Simulate Transform Message payload + vars
+
+**Problem:** One script returns **two targets** as an object (Playground cannot set Mule vars). `payload` = `{ orderId, amount }` with amount as Number. `vars` = `{ correlationId, recordCount }`. `correlationId` from `payload.headers.xCorrelationId` default `"missing"`.
+
+**Input:**
+
+```json
+{
+  "headers": { "xCorrelationId": "corr-9" },
+  "order": { "id": "O-1", "amount": "42.00" }
+}
+```
+
+**Expected:**
+
+```json
+{
+  "payload": { "orderId": "O-1", "amount": 42.00 },
+  "vars": { "correlationId": "corr-9", "recordCount": 1 }
+}
+```
+
+**Solution:**
+
+```dataweave
+%dw 2.0
+output application/json
+var canonical = {
+  orderId: payload.order.id,
+  amount: payload.order.amount as Number
+}
+---
+{
+  payload: canonical,
+  vars: {
+    correlationId: payload.headers.xCorrelationId default "missing",
+    recordCount: 1
+  }
 }
 ```
 

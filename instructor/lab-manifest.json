@@ -376,5 +376,33 @@
     "slug": "production-invoice-discounts-tax-skip-zero-qty",
     "section": "03-advanced",
     "level": "hard"
+  },
+  {
+    "num": 55,
+    "title": "maxBy and firstWith on a work queue",
+    "slug": "maxby-and-firstwith-on-a-work-queue",
+    "section": "04-industry",
+    "level": "industry"
+  },
+  {
+    "num": 56,
+    "title": "Shift DateTime to IST for display",
+    "slug": "shift-datetime-to-ist-for-display",
+    "section": "04-industry",
+    "level": "industry"
+  },
+  {
+    "num": 57,
+    "title": "Zip headers with values into an object",
+    "slug": "zip-headers-with-values-into-an-object",
+    "section": "04-industry",
+    "level": "industry"
+  },
+  {
+    "num": 58,
+    "title": "Simulate Transform Message payload + vars",
+    "slug": "simulate-transform-message-payload-vars",
+    "section": "04-industry",
+    "level": "industry"
   }
 ]

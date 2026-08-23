@@ -78,6 +78,6 @@ output application/json
 }
 ```
 
-Date literals use pipes: `|2026-08-20|`, `|P7D|` (ISO-8601 periods). Rounding and timezone functions live in `dw::core::Dates`.
+Date literals use pipes: `|2026-08-20|`, `|P7D|` (ISO-8601 periods). Prefer injecting time as a field (Lab 28) over `now()` in reusable modules. Timezones: `DateTime` has an offset; `LocalDateTime` does not. Shift with `payload.ts as DateTime >> "Asia/Kolkata"`. More helpers: `dw::core::Dates` (`daysBetween`, `atBeginningOfDay`) — Q66–Q67.
 
 ---

@@ -13,6 +13,7 @@ LAB_MAP = {
     range(1, 19): ("01-fundamentals", "easy"),
     range(19, 37): ("02-intermediate", "moderate"),
     range(37, 55): ("03-advanced", "hard"),
+    range(55, 59): ("04-industry", "industry"),
 }
 
 
@@ -211,8 +212,8 @@ def write_index(labs: list[dict], path: Path) -> None:
 def main() -> None:
     text = SRC.read_text(encoding="utf-8")
     labs = parse_labs(text)
-    if len(labs) != 54:
-        raise SystemExit(f"Expected 54 labs, parsed {len(labs)}")
+    if len(labs) != 58:
+        raise SystemExit(f"Expected 58 labs, parsed {len(labs)}")
     student = ROOT / "student" / "labs"
     instructor = ROOT / "instructor" / "solutions"
     if student.exists():

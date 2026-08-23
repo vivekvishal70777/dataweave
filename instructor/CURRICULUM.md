@@ -16,7 +16,8 @@ Keep coding videos under ~12 minutes; split if a demo runs longer.
 | 09 | Joins, modules, and Mule context | [sections/09-joins-modules-mule-context/LECTURE.md](../sections/09-joins-modules-mule-context/LECTURE.md) | 31, 32, 34, 45 |
 | 10 | Advanced: recursion, namespaces, diffs | [sections/10-advanced-recursion-and-xml-ns/LECTURE.md](../sections/10-advanced-recursion-and-xml-ns/LECTURE.md) | 37, 38, 39, 40, 41, 42, 43, 44, 46, 47, 48, 49, 50, 51, 53, 54 |
 | 11 | Streaming, crypto, modules, and pitfalls | [sections/11-performance-and-production/LECTURE.md](../sections/11-performance-and-production/LECTURE.md) | 45 |
-| 12 | Interview bootcamp | [sections/12-interview-bootcamp/LECTURE.md](../sections/12-interview-bootcamp/LECTURE.md) | 20, 23, 32, 39, 53, 54 |
+| 12 | Industry operators, message, and MIME | [sections/13-industry-operators-and-mule-message/LECTURE.md](../sections/13-industry-operators-and-mule-message/LECTURE.md) | 55, 56, 57, 58 |
+| 13 | Interview bootcamp | [sections/12-interview-bootcamp/LECTURE.md](../sections/12-interview-bootcamp/LECTURE.md) | 20, 23, 32, 39, 41, 53, 54 |
 
 ## Lecture count (suggested)
 
@@ -33,9 +34,10 @@ Keep coding videos under ~12 minutes; split if a demo runs longer.
 | Joins / Mule | 4 | 1 | 1 |
 | Advanced | 6 | 1 | 1 |
 | Production | 3 | 1 | 1 |
+| Industry operators / MIME | 4 | 1 | 1 |
 | Interview bootcamp | 4 | 1 | 1 (practice test) |
 
-Target: **~46 published lectures** plus **54 downloadable labs** and **section quizzes**.
+Target: **~50 published lectures** plus **58 downloadable labs** and **section quizzes**.
 
 ## After each section
 

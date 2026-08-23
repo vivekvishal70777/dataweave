@@ -8,16 +8,16 @@ Paste and adapt in the Udemy course form. Confirm runtime details against curren
 
 ## Subtitle
 
-`Mule 4 mappings — Salesforce-shaped JSON, SOAP/XML, CSV, CDC diffs, 54 labs and 60 interview questions.`
+`Mule 4 mappings — Salesforce JSON, SOAP/XML, CSV, CDC, timezones, 58 labs and 80 interview questions.`
 
 ## Course image text (optional)
 
-`DataWeave 2.0` / `Mule 4` / `54 labs`
+`DataWeave 2.0` / `Mule 4` / `58 labs`
 
 ## Promotional video outline (60–90 seconds)
 
 1. Show SOAP/namespaced XML becoming a canonical invoice JSON (Lab 41 + Lab 54).
-2. “You will write 54 scripts and answer 60 interview questions.”
+2. “You will write 58 scripts and answer 80 interview questions.”
 3. Flash the student lab folder (starter vs later solution).
 4. Who it is for: MuleSoft developers, integration engineers, interview candidates.
 5. CTA: start with Lab 01 in the Playground today.
@@ -42,8 +42,9 @@ Paste and adapt in the Udemy course form. Confirm runtime details against curren
 - Coerce dirty money strings, round with `fun money`, and skip zero-qty lines.
 - Join with `leftJoin` or a `groupBy` lookup (and say why not `lookup` inside `map`).
 - Recursively mask PII, diff CDC payloads, walk SOAP namespaces, and build an org chart.
-- Explain streaming, performance pitfalls, and when not to use `lookup` inside `map`.
-- Answer 60 interview questions with short scripts on a whiteboard.
+- Use `maxBy` / `firstWith` / `zip`, shift timezones, and set payload **and** vars in Transform Message.
+- Explain streaming, `try` vs On Error, Java MIME, and when to use Batch vs DataWeave vs For Each.
+- Answer 80 interview questions with short scripts on a whiteboard.
 
 ## Requirements
 
@@ -52,8 +53,8 @@ Paste and adapt in the Udemy course form. Confirm runtime details against curren
 
 ## Course includes (about box)
 
-- 12 Udemy sections, ~46 lectures (videos + articles).
-- 54 starter labs with instructor solutions.
+- 13 Udemy sections, ~50 lectures (videos + articles).
+- 58 starter labs with instructor solutions.
 - Section quizzes + final interview practice test.
 - Cheat sheet and whiteboard problem list.
 
@@ -70,11 +71,12 @@ Paste and adapt in the Udemy course form. Confirm runtime details against curren
 9. Joins, modules, and Mule context  
 10. Advanced: recursion, namespaces, diffs  
 11. Streaming, crypto, modules, and pitfalls  
-12. Interview bootcamp  
+12. Industry operators, message, and MIME  
+13. Interview bootcamp  
 
 ## Welcome message (first lecture script, ~90s)
 
-Welcome. This course is built like a gym, not a slideshow. Each idea is a short video, then a lab where the solution is hidden on purpose. Use the Playground or Transform Message, finish the starter `transform.dwl`, then watch the recap. By the last section you will have 54 programs and a 60-question interview bank you can answer out loud. Start with the getting-started article, then Lab 01.
+Welcome. This course is built like a gym, not a slideshow. Each idea is a short video, then a lab where the solution is hidden on purpose. Use the Playground or Transform Message, finish the starter `transform.dwl`, then watch the recap. By the last section you will have 58 programs and an 80-question interview bank you can answer out loud. Start with the getting-started article, then Lab 01.
 
 ## Completion message
 

@@ -92,7 +92,7 @@ output application/json
 }
 ```
 
-`++` is a shallow merge (right key overwrites).
+`++` is a **shallow** merge (right key overwrites the whole nested object). `mergeWith` is the interview follow-up for **deep** merge of nested objects. Minus on objects (`payload - "password"`) drops keys. For arrays of objects, merge by `id` is Lab 49, not `++`.
 
 ---
 

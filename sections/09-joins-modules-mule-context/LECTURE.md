@@ -36,7 +36,7 @@ p("http.host")               // from configuration properties
 Mule::p("api.version")       // same idea in some contexts
 ```
 
-In Transform Message you can also map from the **input graph** (`payload`, `vars`, `attributes`).
+In Transform Message you can also map from the **input graph** (`payload`, `vars`, `attributes`). HTTP Listener extras interviewers want: `attributes.method`, `attributes.requestPath` / `rawRequestUri`, `attributes.uriParams.orderId`, `attributes.queryParams.page`, `attributes.headers['authorization']` (often lower-cased). `error.errorType` / `error.errorMessage.payload` belong in **On Error** scopes, not in a happy-path script (see Q73).
 
 ---
 

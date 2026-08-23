@@ -69,7 +69,7 @@ output application/json
 }
 ```
 
-`splitBy` returns an array; `joinBy` builds a string.
+`splitBy` returns an array; `joinBy` builds a string. Industry follow-ups from `dw::core::Strings`: `trim`, `replace`, `substringAfter` / `substringBefore`, `pad`, `repeat`, and regex `find` / `scan` (see Q68).
 
 ---
 

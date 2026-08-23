@@ -1,6 +1,6 @@
 # Recording transcripts
 
-Spoken scripts for Vivek. **One video per concept lecture** and **one video per lab (01–54)**.
+Spoken scripts for Vivek. **One video per concept lecture** and **one video per lab (01–58)**.
 
 How to use: open the markdown, read **SAY**, follow **PAUSE CARD**, type the **TYPE** blocks. Target 6–10 minutes; cap 12. Split Lab 23, 39, 53, 54, and the whiteboard set if needed.
 
@@ -63,12 +63,16 @@ For each Udemy section: record the concept videos, then every lab video listed i
 | L50 | Streaming: what breaks it | 6–9 min | [lectures/L50.md](lectures/L50.md) |
 | L51 | Crypto, binary, reader/writer properties | 8–12 min | [lectures/L51.md](lectures/L51.md) |
 | L52 | Reusable modules and performance pitfalls | 8–12 min | [lectures/L52.md](lectures/L52.md) |
-| L54a | How to run the 60-question bank | 4–6 min | [lectures/L54a.md](lectures/L54a.md) |
+| L70 | Arrays helpers: maxBy, firstWith, zip, ranges | 8–12 min | [lectures/L70.md](lectures/L70.md) |
+| L71 | Types, money, timezones, Dates module | 8–12 min | [lectures/L71.md](lectures/L71.md) |
+| L72 | TM targets, Java MIME, readUrl, log, HTTP attributes | 8–12 min | [lectures/L72.md](lectures/L72.md) |
+| L73 | XML ns extras, Excel/YAML, DW vs Batch | 8–12 min | [lectures/L73.md](lectures/L73.md) |
+| L54a | How to run the 80-question bank | 4–6 min | [lectures/L54a.md](lectures/L54a.md) |
 | L55 | Whiteboard mock interview (set of 6) | split into 6×~10 min or one section | [lectures/L55.md](lectures/L55.md) |
 | L56 | Nested XML to canonical JSON (Q60) | 8–12 min | [lectures/L56.md](lectures/L56.md) |
 | L58 | Next steps and solutions pack | 2–3 min | [lectures/L58.md](lectures/L58.md) |
 
-## Lab videos (54)
+## Lab videos (58)
 
 All files: [`labs/`](labs/).
 
@@ -128,6 +132,10 @@ All files: [`labs/`](labs/).
 | 52 Safe unit price with `try` | [labs/52-safe-unit-price-with-try.md](labs/52-safe-unit-price-with-try.md) |
 | 53 Build a nested org chart from a flat HR list | [labs/53-build-a-nested-org-chart-from-a-flat-hr-list.md](labs/53-build-a-nested-org-chart-from-a-flat-hr-list.md) |
 | 54 Production invoice: discounts, tax, skip zero qty | [labs/54-production-invoice-discounts-tax-skip-zero-qty.md](labs/54-production-invoice-discounts-tax-skip-zero-qty.md) |
+| 55 maxBy and firstWith on a work queue | [labs/55-maxby-and-firstwith-on-a-work-queue.md](labs/55-maxby-and-firstwith-on-a-work-queue.md) |
+| 56 Shift DateTime to IST for display | [labs/56-shift-datetime-to-ist-for-display.md](labs/56-shift-datetime-to-ist-for-display.md) |
+| 57 Zip headers with values into an object | [labs/57-zip-headers-with-values-into-an-object.md](labs/57-zip-headers-with-values-into-an-object.md) |
+| 58 Simulate Transform Message payload + vars | [labs/58-simulate-transform-message-payload-vars.md](labs/58-simulate-transform-message-payload-vars.md) |
 
 ## Udemy mapping
 

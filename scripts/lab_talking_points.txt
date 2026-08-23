@@ -52,3 +52,7 @@
 52|try divide, orElse null. default only helps null, not divide by zero.
 53|Index by managerId. Recurse children. Watch cycles if they ask.
 54|Filter qty greater than zero. Discount then tax. fun money on every currency field.
+55|maxBy returns the item. firstWith is the first PAID. Import Arrays. Coerce amount.
+56|Shift UTC DateTime with >> Asia/Kolkata. Inject occurredAt. Do not call now.
+57|zip headers with values. Reduce into an object. Parentheses around the key.
+58|One script, two targets: canonical payload plus vars.correlationId. Playground cannot set Mule vars.

@@ -26,6 +26,9 @@ fun money(n: Number) = n as String {format: "0.00"} as Number
 | Length / empty | `sizeOf` / `isEmpty` |
 | Page | `drop` / `take` (import Arrays) |
 | Chunk | `divideBy` |
+| Best item / first match | `maxBy` / `minBy` / `firstWith` |
+| Pair two arrays | `zip` |
+| Range | `payload[0 to 2]`, `1 to n` |
 
 `$` = item, `$$` = index. Prefer `(item, index) ->`.
 
@@ -96,6 +99,7 @@ No Java `? :` ternary.
 now() as String {format: "dd-MMM-yyyy"}
 "2026-08-20" as Date {format: "yyyy-MM-dd"}
 (now() as Date) + |P7D|
+(payload.ts as DateTime) >> "Asia/Kolkata"
 ```
 
 ## Joins and Mule
@@ -107,7 +111,7 @@ p("http.host")
 import leftJoin from dw::core::Arrays
 ```
 
-Interview default: index once with `groupBy`, then `map`. Avoid `lookup` inside `map`.
+Interview default: index once with `groupBy`, then `map`. Avoid `lookup` inside `map`. For Each = per-item I/O. Batch = big files. DataWeave = CPU mapping only.
 
 Money: `fun money(n) = n as String {format: "0.00"} as Number`. Coerce CSV/ERP strings with `as Number` first.
 

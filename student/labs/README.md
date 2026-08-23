@@ -58,6 +58,10 @@ Work **in order**. Each lab is one Udemy practice lecture or homework item.
 | 52 | hard | `03-advanced` | [Safe unit price with `try`](03-advanced/52-safe-unit-price-with-try/README.md) |
 | 53 | hard | `03-advanced` | [Build a nested org chart from a flat HR list](03-advanced/53-build-a-nested-org-chart-from-a-flat-hr-list/README.md) |
 | 54 | hard | `03-advanced` | [Production invoice: discounts, tax, skip zero qty](03-advanced/54-production-invoice-discounts-tax-skip-zero-qty/README.md) |
+| 55 | industry | `04-industry` | [maxBy and firstWith on a work queue](04-industry/55-maxby-and-firstwith-on-a-work-queue/README.md) |
+| 56 | industry | `04-industry` | [Shift DateTime to IST for display](04-industry/56-shift-datetime-to-ist-for-display/README.md) |
+| 57 | industry | `04-industry` | [Zip headers with values into an object](04-industry/57-zip-headers-with-values-into-an-object/README.md) |
+| 58 | industry | `04-industry` | [Simulate Transform Message payload + vars](04-industry/58-simulate-transform-message-payload-vars/README.md) |
 
 ## How labs map to videos
 

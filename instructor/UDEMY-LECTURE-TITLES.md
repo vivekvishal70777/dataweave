@@ -88,12 +88,21 @@ Create **sections** first (names match `UDEMY-LISTING.md`). Then add these lectu
 52. Reusable `.dwl` modules and performance pitfalls — Video  
 53. Quiz: Production — Practice test  
 
-## Section 12 — Interview bootcamp
+## Section 12 — Industry operators, message, and MIME
 
-54. How to run the 60-question bank — Article  
+59. Arrays helpers: `maxBy`, `firstWith`, `zip`, ranges — Video  
+60. Types, money, timezones, `dw::core::Dates` — Video  
+61. Transform Message targets, Java MIME, `readUrl`, HTTP attributes — Video  
+62. XML ns extras, Excel/YAML/flat file, DW vs Batch — Video  
+63. Labs 55–58 — Video (or four lab videos)  
+64. Quiz: Industry message / MIME — Practice test  
+
+## Section 13 — Interview bootcamp
+
+54. How to run the 80-question bank — Article  
 55. Whiteboard mock interview (set of 6) — Video  
 56. Nested XML to canonical JSON (Q60 talk-through) — Video  
 57. Final practice test — Practice test  
 58. Next steps and solutions pack (optional download) — Video  
 
-Attach `student/` zips on lab lectures. Attach solutions only on lecture 58 (or omit and keep solutions off Udemy).
+Attach `student/` zips on lab lectures. Attach solutions only on the last lecture (or omit and keep solutions off Udemy).
