@@ -19,6 +19,8 @@ Keep coding videos under ~12 minutes; split if a demo runs longer.
 | 12 | Industry operators, message, and MIME | [sections/13-industry-operators-and-mule-message/LECTURE.md](../sections/13-industry-operators-and-mule-message/LECTURE.md) | 55, 56, 57, 58 |
 | 13 | Interview bootcamp | [sections/12-interview-bootcamp/LECTURE.md](../sections/12-interview-bootcamp/LECTURE.md) | 20, 23, 32, 39, 41, 53, 54 |
 
+Plain-language concept pages (one file per topic): [`student/tutorials/README.md`](../student/tutorials/README.md). Same files are copied under `sections/<id>/tutorials/`.
+
 ## Lecture count (suggested)
 
 | Section | Videos | Articles | Practice tests |
