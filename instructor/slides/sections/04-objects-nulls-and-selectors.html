@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Objects, nulls, and selectors</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">04-objects-nulls-and-selectors</div><h1>Objects, nulls, and selectors</h1><p class="sub">Section opener. Then jump into the concept videos and labs.</p></section>
+<section class="slide" data-notes=""><div class="kicker">04-objects-nulls-and-selectors</div><h1>Learning objectives</h1><ul><li>Choose <code>.</code> vs <code>[]</code> vs <code>.*</code> vs <code>..</code>.</li><li>Handle missing data with <code>default</code> and <code>?</code>.</li><li>Transform objects with <code>mapObject</code> and <code>pluck</code>.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">04-objects-nulls-and-selectors</div><h1>Suggested video breakdown</h1><ul><li>Whiteboard the selector table from Q13.</li><li>Show <code>skipNullOn</code> from Q20 as a writer-property demo.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">04-objects-nulls-and-selectors</div><h1>Labs in this section</h1><ul><li>Lab 04</li><li>Lab 05</li><li>Lab 16</li><li>Lab 18</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">04-objects-nulls-and-selectors</div><h1>Interview talking points for this section</h1><ul><li><code>payload.customer.name</code> — named key selector.</li><li><code>payload[0]</code> — array index.</li><li><code>payload[&quot;first-name&quot;]</code> — key that is not a valid identifier.</li><li><code>payload.*item</code> — multi-value selector (all <code>item</code> children, useful in XML).</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">04-objects-nulls-and-selectors</div><h1>Interview talking points for this section (cont.)</h1><ul><li><code>payload..id</code> — descendants selector (all <code>id</code> fields at any depth).</li><li><code>indent=false</code> — compact JSON</li><li><code>duplicateKeyAsArray=true</code> — XML</li><li><code>header=true</code> / <code>separator=&quot;,&quot;</code> — CSV</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">04-objects-nulls-and-selectors</div><h1>Interview talking points for this section</h1><pre><code>{ a: <span class="num">1</span>, b: <span class="num">2</span> } pluck ((value, key, index) -&gt; { k: key, v: value })
+<span class="cm">// [{k: <span class="str">&quot;a&quot;</span>, v: <span class="num">1</span>}, {k: <span class="str">&quot;b&quot;</span>, v: <span class="num">2</span>}]</span>
+</code></pre></section>
+<section class="slide" data-notes="Hit this slide on section openers so students remember the gym loop."><div class="kicker">04-objects-nulls-and-selectors</div><h1>The loop</h1><div class="grid-4">
+        <div class="box"><strong>Concept</strong><span>One idea. Three to seven minutes.</span></div>
+        <div class="box"><strong>Pause</strong><span>Hold the card. Students try.</span></div>
+        <div class="box"><strong>Lab</strong><span>Type from the starter, not the solution.</span></div>
+        <div class="box"><strong>Quiz</strong><span>Udemy practice test. No video.</span></div>
+        </div></section>
+<div class="chrome"><span>04-objects-nulls-and-selectors</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 8</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

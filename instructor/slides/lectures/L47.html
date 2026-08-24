@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Dynamic keys, diffs, last-wins, pagination</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L47</div><h1>Dynamic keys, diffs, last-wins, pagination</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">8–12 min</span><span class="chip">S10-L47-dynamic-keys.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="Dynamic keys need parentheses. Diff of two objects. Last-wins dedupe. Pagination take drop."><div class="kicker">L47</div><h1>Open</h1><ul><li>Dynamic keys need parentheses. Diff of two objects. Last-wins dedupe. Pagination take drop.</li></ul></section>
+<section class="slide" data-notes="Wrap the expression in parentheses: Without `( )`, `f.name` would be a literal key. This is a very common gotcha. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L47</div><h1>Q48. How do you dynamically construct object keys?</h1><ul><li>Wrap the expression in parentheses:</li><li>Without <code>( )</code>, <code>f.name</code> would be a literal key. This is a very common gotcha.</li></ul></section>
+<section class="slide" data-notes="Wrap the expression in parentheses: Without `( )`, `f.name` would be a literal key. This is a very common gotcha. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L47</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+payload.fields reduce ((f, acc = {}) -&gt; acc ++ {
+  (f.name): f.value
+})
+</code></pre></section>
+<section class="slide" data-notes="Example approach: Harder variant: recursive diff for nested objects/arrays (walk both trees with `match` on types). Mention `dw::util::Diff::diff` if the runtime version includes it. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L47</div><h1>Q49. How do you compare two payloads and produce a diff of changed fields?</h1><ul><li>Example approach:</li><li>Harder variant: recursive diff for nested objects/arrays (walk both trees with <code>match</code> on types).</li><li>Mention <code>dw::util::Diff::diff</code> if the runtime version includes it.</li></ul></section>
+<section class="slide" data-notes="Example approach: Harder variant: recursive diff for nested objects/arrays (walk both trees with `match` on types). Mention `dw::util::Diff::diff` if the runtime version includes it. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L47</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+<span class="kw">var</span> old = vars.oldPayload
+<span class="kw">var</span> newp = payload
+---
+namesOf(newp) filter ((k) -&gt; old[k] != newp[k]) map (k) -&gt; {
+  field: k,
+  from: old[k],
+  to: newp[k]
+}
+</code></pre></section>
+<section class="slide" data-notes="Also: `slice(array, from, until)`, `divideBy(array, n)` for chunking (e.g. batch API calls). Mention memory: `drop`/`take` on a streamed payload may still force materialization. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L47</div><h1>Q54. How do you implement pagination-style <code>take</code> / <code>drop</code> / windows on arrays?</h1><ul><li>Also: <code>slice(array, from, until)</code>, <code>divideBy(array, n)</code> for chunking (e.g. batch API calls).</li><li>Mention memory: <code>drop</code>/<code>take</code> on a streamed payload may still force materialization.</li></ul></section>
+<section class="slide" data-notes="Also: `slice(array, from, until)`, `divideBy(array, n)` for chunking (e.g. batch API calls). Mention memory: `drop`/`take` on a streamed payload may still force materialization. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L47</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> * from dw::core::Arrays
+<span class="kw">output</span> application/json
+<span class="kw">var</span> page = vars.page <span class="kw">default</span> <span class="num">1</span>
+<span class="kw">var</span> size = vars.pageSize <span class="kw">default</span> <span class="num">20</span>
+---
+payload drop ((page - <span class="num">1</span>) * size) take size
+</code></pre></section>
+<section class="slide" data-notes="`distinctBy` keeps the **first** match. For last-wins: Or reverse, `distinctBy`, reverse again. The `reduce` into an object keyed by id is O(n) and interview-friendly. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L47</div><h1>Q55. How would you de-duplicate while keeping the last occurrence?</h1><ul><li><code>distinctBy</code> keeps the <strong>first</strong> match. For last-wins:</li><li>Or reverse, <code>distinctBy</code>, reverse again. The <code>reduce</code> into an object keyed by id is O(n) and interview-friendly.</li></ul></section>
+<section class="slide" data-notes="`distinctBy` keeps the **first** match. For last-wins: Or reverse, `distinctBy`, reverse again. The `reduce` into an object keyed by id is O(n) and interview-friendly. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L47</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+payload
+  reduce ((item, acc = {}) -&gt; acc ++ { (item.id): item })
+  then valuesOf($)
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L47</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L47</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 11</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

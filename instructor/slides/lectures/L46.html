@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>XML namespaces read and write</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L46</div><h1>XML namespaces read and write</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">8–12 min</span><span class="chip">S10-L46-xml-namespaces.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="ns prefix, hash names, attributes, writing namespaced XML. Labs 41 and 42 are the typing."><div class="kicker">L46</div><h1>Open</h1><ul><li>ns prefix, hash names, attributes, writing namespaced XML. Labs 41 and 42 are the typing.</li></ul></section>
+<section class="slide" data-notes="Incoming XML: declare `ns` and use `payload.ns0#Orders`. Hard interviews ask about default vs prefixed namespaces and `@(xmlns: ...)`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L46</div><h1>Q44. How do you preserve XML namespaces and generate namespaced output?</h1><ul><li>Incoming XML: declare <code>ns</code> and use <code>payload.ns0#Orders</code>. Hard interviews ask about default vs prefixed namespaces and <code>@(xmlns: ...)</code>.</li></ul></section>
+<section class="slide" data-notes="Incoming XML: declare `ns` and use `payload.ns0#Orders`. Hard interviews ask about default vs prefixed namespaces and `@(xmlns: ...)`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L46</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">ns</span> ns0 http:<span class="cm">//example.com/order</span>
+<span class="kw">output</span> application/xml
+---
+ns0#Orders: {
+  ns0#Order @(id: payload.id): {
+    ns0#Amount: payload.amount
+  }
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L46</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L46</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 5</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

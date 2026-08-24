@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>How to run the 80-question bank</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L54a</div><h1>How to run the 80-question bank</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">4–6 min</span><span class="chip">S12-L54-question-bank.mp4</span><span class="chip">Article or voiceover</span></div></section>
+<section class="slide" data-notes="Article voiceover optional. How to drill the eighty-question bank: cover answers, speak out loud, then uncover."><div class="kicker">L54a</div><h1>Open</h1><ul><li>Article voiceover optional. How to drill the eighty-question bank: cover answers, speak out loud, then uncover.</li></ul></section>
+<section class="slide" data-notes="Recursive walk: Mention `dw::util::Values::mask` / `update` with cases for known paths. Hard follow-up: do not log payloads before masking. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L54a</div><h1>Q57. How do you mask PII in a payload of unknown shape?</h1><ul><li>Recursive walk:</li><li>Mention <code>dw::util::Values::mask</code> / <code>update</code> with cases for known paths. Hard follow-up: do not log payloads before masking.</li></ul></section>
+<section class="slide" data-notes="Recursive walk: Mention `dw::util::Values::mask` / `update` with cases for known paths. Hard follow-up: do not log payloads before masking. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L54a</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+<span class="kw">var</span> secretKeys = [<span class="str">&quot;ssn&quot;</span>, <span class="str">&quot;password&quot;</span>, <span class="str">&quot;email&quot;</span>]
+<span class="kw">fun</span> mask(x) =
+  x <span class="kw">match</span> {
+    <span class="kw">case</span> o <span class="kw">is</span> Object -&gt; o mapObject ((v, k) -&gt; {
+      (k): <span class="kw">if</span> (secretKeys contains lower(k <span class="kw">as</span> String)) <span class="str">&quot;****&quot;</span> <span class="kw">else</span> mask(v)
+    })
+    <span class="kw">case</span> a <span class="kw">is</span> Array -&gt; a map mask($)
+    <span class="kw">else</span> -&gt; x
+  }
+---
+mask(payload)
+</code></pre></section>
+<section class="slide" data-notes="Point students at sections-slash-12 lecture markdown and the reference file. Do not read all eighty on camera."><div class="kicker">L54a</div><h1>Close</h1><ul><li>Point students at sections-slash-12 lecture markdown and the reference file. Do not read all eighty on camera.</li></ul></section>
+<section class="slide" data-notes="`then` passes the left value as `$` to the right expression: Useful to name an intermediate without a `do`/`var`. `also` returns the **original** left value after a side-effect-style expression (rare in pure transforms). Prefer readable `do` blocks if chaining becomes clever rather than clear. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L54a</div><h1>Q56. Explain <code>then</code>, <code>also</code>, and chaining vs nested calls.</h1><ul><li><code>then</code> passes the left value as <code>$</code> to the right expression:</li><li>Useful to name an intermediate without a <code>do</code>/<code>var</code>. <code>also</code> returns the <strong>original</strong> left value after a side-effect-style expression (rare in pure transforms).</li><li>Prefer readable <code>do</code> blocks if chaining becomes clever rather than clear.</li></ul></section>
+<section class="slide" data-notes="`then` passes the left value as `$` to the right expression: Useful to name an intermediate without a `do`/`var`. `also` returns the **original** left value after a side-effect-style expression (rare in pure transforms). Prefer readable `do` blocks if chaining becomes clever rather than clear. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L54a</div><h1>Type this</h1><pre><code>payload.orders
+  filter ($.active)
+  then (orders) -&gt; { count: sizeOf(orders), orders: orders }
+</code></pre></section>
+<div class="chrome"><span>L54a</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 7</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

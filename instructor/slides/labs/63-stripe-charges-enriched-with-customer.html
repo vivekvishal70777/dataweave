@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Stripe charges enriched with customer</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 63</div><h1>Stripe charges enriched with customer</h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">mapping</span><span class="chip">8–12 min</span><span class="chip">LAB-63-stripe-charges-enriched-with-customer.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 63. Stripe charges enriched with customer. Join charges to customers. Amount cents/100. Missing email unknown. Stripe cents divide 100. groupBy customer. Missing email unknown."><div class="kicker">Lab 63</div><h1>The job</h1><ul><li>This is Lab 63. Stripe charges enriched with customer. Join charges to customers. Amount cents/100. Missing email unknown.</li><li>Stripe cents divide 100. groupBy customer. Missing email unknown.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 63</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 63</div><h1>Input</h1><pre><code>{
+  <span class="str">&quot;customers&quot;</span>: [
+    { <span class="str">&quot;id&quot;</span>: <span class="str">&quot;cus_1&quot;</span>, <span class="str">&quot;email&quot;</span>: <span class="str">&quot;a@x.com&quot;</span> }
+  ],
+  <span class="str">&quot;charges&quot;</span>: {
+    <span class="str">&quot;data&quot;</span>: [
+      { <span class="str">&quot;id&quot;</span>: <span class="str">&quot;ch_1&quot;</span>, <span class="str">&quot;customer&quot;</span>: <span class="str">&quot;cus_1&quot;</span>, <span class="str">&quot;amount&quot;</span>: <span class="num">1999</span>, <span class="str">&quot;paid&quot;</span>: true },
+      { <span class="str">&quot;id&quot;</span>: <span class="str">&quot;ch_2&quot;</span>, <span class="str">&quot;customer&quot;</span>: <span class="str">&quot;cus_missing&quot;</span>, <span class="str">&quot;amount&quot;</span>: <span class="num">500</span>, <span class="str">&quot;paid&quot;</span>: false }
+    ]
+  }
+}
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 63</h1><ul><li>Pause the video</li><li>Open student/labs/05-mapping/63-stripe-charges-enriched-with-customer/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 63</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 63</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+<span class="kw">fun</span> money(n: Number) = n <span class="kw">as</span> String {format: <span class="str">&quot;<span class="num">0.00</span>&quot;</span>} <span class="kw">as</span> Number
+<span class="kw">var</span> byId = payload.customers groupBy $.id
+---
+payload.charges.data map (c) -&gt; {
+  chargeId: c.id,
+  email: (byId[c.customer][<span class="num">0</span>].email) <span class="kw">default</span> <span class="str">&quot;unknown&quot;</span>,
+  amount: money((c.amount <span class="kw">as</span> Number) / <span class="num">100</span>),
+  paid: c.paid
+}
+</code></pre></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 63</div><h1>Expected</h1><pre><code>[
+  { &quot;chargeId&quot;: &quot;ch_1&quot;, &quot;email&quot;: &quot;a@x.com&quot;, &quot;amount&quot;: 19.99, &quot;paid&quot;: true },
+  { &quot;chargeId&quot;: &quot;ch_2&quot;, &quot;email&quot;: &quot;unknown&quot;, &quot;amount&quot;: 5.00, &quot;paid&quot;: false }
+]
+</code></pre></section>
+<section class="slide" data-notes="Stripe cents divide 100. groupBy customer. Missing email unknown. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 64 in this file."><div class="kicker">Lab 63</div><h1>Interview phrase</h1><ul><li>Stripe cents divide 100. groupBy customer. Missing email unknown.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 64 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 63</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 9</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

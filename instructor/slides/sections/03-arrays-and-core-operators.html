@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Arrays: map, filter, and indexes</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">03-arrays-and-core-operators</div><h1>Arrays: map, filter, and indexes</h1><p class="sub">Section opener. Then jump into the concept videos and labs.</p></section>
+<section class="slide" data-notes=""><div class="kicker">03-arrays-and-core-operators</div><h1>Learning objectives</h1><ul><li>Use <code>map</code>, <code>filter</code>, <code>$</code> / <code>$$</code>, <code>sizeOf</code>, <code>isEmpty</code>, and <code>flatten</code>.</li><li>Explain when named lambda parameters are clearer than <code>$</code>.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">03-arrays-and-core-operators</div><h1>Suggested video breakdown</h1><ul><li>Demo Lab 01 (map shape) and Lab 02 (filter) on camera.</li><li>Assign Labs 09–10, 14–15 as homework.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">03-arrays-and-core-operators</div><h1>Labs in this section</h1><ul><li>Lab 01</li><li>Lab 02</li><li>Lab 09</li><li>Lab 10</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">03-arrays-and-core-operators</div><h1>Labs in this section (cont.)</h1><ul><li>Lab 14</li><li>Lab 15</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">03-arrays-and-core-operators</div><h1>Interview talking points for this section</h1><ul><li><code>$</code> is the current item, <code>$$</code> is the index: <code>payload map { index: $$, value: $ }</code>.</li><li><code>filter</code> keeps elements where the predicate is <code>true</code>.</li><li><code>$</code> — first argument (item / value)</li><li><code>$$</code> — second (index / key depending on function)</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">03-arrays-and-core-operators</div><h1>Interview talking points for this section (cont.)</h1><ul><li><code>$$$</code> — third (index in <code>mapObject</code> / <code>pluck</code>)</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">03-arrays-and-core-operators</div><h1>Interview talking points for this section</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+payload.orders
+  filter ((order) -&gt; order.status == <span class="str">&quot;PAID&quot;</span>)
+  map ((order) -&gt; {
+    id: order.id,
+    total: order.amount
+  })
+</code></pre></section>
+<section class="slide" data-notes="Hit this slide on section openers so students remember the gym loop."><div class="kicker">03-arrays-and-core-operators</div><h1>The loop</h1><div class="grid-4">
+        <div class="box"><strong>Concept</strong><span>One idea. Three to seven minutes.</span></div>
+        <div class="box"><strong>Pause</strong><span>Hold the card. Students try.</span></div>
+        <div class="box"><strong>Lab</strong><span>Type from the starter, not the solution.</span></div>
+        <div class="box"><strong>Quiz</strong><span>Udemy practice test. No video.</span></div>
+        </div></section>
+<div class="chrome"><span>03-arrays-and-core-operators</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 9</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Industry operators, message, and MIME</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">13-industry-operators-and-mule-message</div><h1>Industry operators, message, and MIME</h1><p class="sub">Section opener. Then jump into the concept videos and labs.</p></section>
+<section class="slide" data-notes=""><div class="kicker">13-industry-operators-and-mule-message</div><h1>Learning objectives</h1><ul><li>Use Arrays helpers: maxBy, firstWith, zip, ranges.</li><li>Shift timezones; replace/find; Transform Message multiple targets.</li><li>Distinguish try vs Mule On Error, Java MIME, and DW vs Batch vs For Each.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">13-industry-operators-and-mule-message</div><h1>Suggested video breakdown</h1><ul><li>These are the production topics the first 60 questions only hinted at.</li><li>Demo Lab 55 (maxBy) and Lab 56 (IST). Assign zip and TM dual-target as homework.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">13-industry-operators-and-mule-message</div><h1>Labs in this section</h1><ul><li>Lab 55</li><li>Lab 56</li><li>Lab 57</li><li>Lab 58</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">13-industry-operators-and-mule-message</div><h1>Interview talking points for this section</h1><ul><li>Teach the <strong>concept</strong>, then demo, then lab. Use these Q&amp;A as the phrases to say on camera — not as a second lecture series.</li><li>One 20–40s “if they ask this in an interview…” close per video is enough.</li><li><strong>Answer:</strong> Import <code>dw::core::Arrays</code> (Mule 4.3+ / current core):</li><li><code>maxBy</code> / <code>minBy</code> return the <strong>item</strong>, not the number. Empty arrays: guard with <code>isEmpty</code> or <code>default</code>.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">13-industry-operators-and-mule-message</div><h1>Interview talking points for this section (cont.)</h1><ul><li>---</li><li><strong>Answer:</strong></li><li><code>[0 to 2]</code> is inclusive.</li><li>Out-of-range indexes are safer than Java (often empty, not an exception) — still do not assume that in every runtime; prefer <code>slice</code> / <code>take</code> / <code>drop</code> in production.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">13-industry-operators-and-mule-message</div><h1>Interview talking points for this section</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> * from dw::core::Arrays
+<span class="kw">output</span> application/json
+---
+{
+  richest: payload maxBy $.amount,
+  cheapest: payload minBy $.amount,
+  firstPaid: payload firstWith ((o) -&gt; o.status == <span class="str">&quot;PAID&quot;</span>),
+  anyOver: payload some ((o) -&gt; (o.amount <span class="kw">as</span> Number) &gt; <span class="num">1000</span>),
+  allPositive: payload every ((o) -&gt; (o.amount <span class="kw">as</span> Number) &gt; <span class="num">0</span>),
+  idx: indexOf(payload, ((o) -&gt; o.id == <span class="str">&quot;O1&quot;</span>)),
+  countPaid: payload countBy ((o) -&gt; o.status == <span class="str">&quot;PAID&quot;</span>)
+}
+</code></pre></section>
+<section class="slide" data-notes="Hit this slide on section openers so students remember the gym loop."><div class="kicker">13-industry-operators-and-mule-message</div><h1>The loop</h1><div class="grid-4">
+        <div class="box"><strong>Concept</strong><span>One idea. Three to seven minutes.</span></div>
+        <div class="box"><strong>Pause</strong><span>Hold the card. Students try.</span></div>
+        <div class="box"><strong>Lab</strong><span>Type from the starter, not the solution.</span></div>
+        <div class="box"><strong>Quiz</strong><span>Udemy practice test. No video.</span></div>
+        </div></section>
+<div class="chrome"><span>13-industry-operators-and-mule-message</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 8</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Left join orders to customers</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 31</div><h1>Left join orders to customers</h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">moderate</span><span class="chip">6–10 min</span><span class="chip">LAB-31-left-join-orders-to-customers.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 31. Left join orders to customers. `payload.orders` left-join `payload.customers` on `customerId` / `id`. Output `orderId`, `customerName` (`null` if missing). Include the unmatched order. leftJoin result has l and r. Null r is the unmatched order — include it."><div class="kicker">Lab 31</div><h1>The job</h1><ul><li>This is Lab 31. Left join orders to customers. <code>payload.orders</code> left-join <code>payload.customers</code> on <code>customerId</code> / <code>id</code>.</li><li>Output <code>orderId</code>, <code>customerName</code> (<code>null</code> if missing). Include the unmatched order.</li><li>leftJoin result has l and r. Null r is the unmatched order — include it.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 31</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 31</div><h1>Input</h1><pre><code>{
+  <span class="str">&quot;orders&quot;</span>: [
+    { <span class="str">&quot;id&quot;</span>: <span class="str">&quot;O1&quot;</span>, <span class="str">&quot;customerId&quot;</span>: <span class="str">&quot;C1&quot;</span> },
+    { <span class="str">&quot;id&quot;</span>: <span class="str">&quot;O2&quot;</span>, <span class="str">&quot;customerId&quot;</span>: <span class="str">&quot;C9&quot;</span> }
+  ],
+  <span class="str">&quot;customers&quot;</span>: [{ <span class="str">&quot;id&quot;</span>: <span class="str">&quot;C1&quot;</span>, <span class="str">&quot;name&quot;</span>: <span class="str">&quot;Asha Rao&quot;</span> }]
+}
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 31</h1><ul><li>Pause the video</li><li>Open student/labs/02-intermediate/31-left-join-orders-to-customers/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 31</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li><li>O1 named, O2 <code>customerName</code> null.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 31</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> leftJoin from dw::core::Arrays
+<span class="kw">output</span> application/json
+---
+leftJoin(payload.orders, payload.customers, (o) -&gt; o.customerId, (c) -&gt; c.id)
+  map {
+    orderId: $.l.id,
+    customerName: $.r.name <span class="kw">default</span> <span class="kw">null</span>
+  }
+</code></pre></section>
+<section class="slide" data-notes="leftJoin result has l and r. Null r is the unmatched order — include it. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 32 in this file."><div class="kicker">Lab 31</div><h1>Interview phrase</h1><ul><li>leftJoin result has l and r. Null r is the unmatched order — include it.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 32 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 31</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 8</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

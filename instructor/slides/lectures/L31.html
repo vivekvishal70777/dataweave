@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>flatMap line items (concept)</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L31</div><h1>flatMap line items (concept)</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">5–8 min</span><span class="chip">S07-L31-flatmap-concept.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="Hero idea: one order, many lines. This concept video; the full typing is the Lab 23 video."><div class="kicker">L31</div><h1>Open</h1><ul><li>Hero idea: one order, many lines. This concept video; the full typing is the Lab 23 video.</li></ul></section>
+<section class="slide" data-notes="`++` and `dw::core::Objects::mergeWith`: `++` is a **shallow** merge (right key overwrites the whole nested object). `mergeWith` is the interview follow-up for **deep** merge of nested objects. Minus on objects (`payload - &quot;password&quot;`) drops keys. For arrays of objects, merge by `id` is Lab 49, not `++`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L31</div><h1>Q25. How do you merge two objects? What happens with duplicate keys?</h1><ul><li><code>++</code> and <code>dw::core::Objects::mergeWith</code>:</li><li><code>++</code> is a <strong>shallow</strong> merge (right key overwrites the whole nested object). <code>mergeWith</code> is the interview follow-up for <strong>deep</strong> merge of nested objects.</li><li>Minus on objects (<code>payload - &quot;password&quot;</code>) drops keys. For arrays of objects, merge by <code>id</code> is Lab 49, not <code>++</code>.</li></ul></section>
+<section class="slide" data-notes="`++` and `dw::core::Objects::mergeWith`: `++` is a **shallow** merge (right key overwrites the whole nested object). `mergeWith` is the interview follow-up for **deep** merge of nested objects. Minus on objects (`payload - &quot;password&quot;`) drops keys. For arrays of objects, merge by `id` is Lab 49, not `++`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L31</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> mergeWith from dw::core::Objects
+<span class="kw">output</span> application/json
+---
+{
+  concat: { a: <span class="num">1</span>, b: <span class="num">2</span> } ++ { b: <span class="num">9</span>, c: <span class="num">3</span> },     <span class="cm">// {a:<span class="num">1</span>, b:<span class="num">9</span>, c:<span class="num">3</span>} — right wins</span>
+  merged: { a: {x: <span class="num">1</span>} } mergeWith { a: {y: <span class="num">2</span>} } <span class="cm">// deep merge depending on values</span>
+}
+</code></pre></section>
+<section class="slide" data-notes="`flatMap` maps then flattens one level—ideal for 1-to-many expansions: This “explodes” nested line items without nested arrays in the output. Writing it as `flatten(payload.orders map ...)` is equivalent. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L31</div><h1>Q43. How do you implement <code>flatMap</code> / why does it matter?</h1><ul><li><code>flatMap</code> maps then flattens one level—ideal for 1-to-many expansions:</li><li>This “explodes” nested line items without nested arrays in the output. Writing it as <code>flatten(payload.orders map ...)</code> is equivalent.</li></ul></section>
+<section class="slide" data-notes="`flatMap` maps then flattens one level—ideal for 1-to-many expansions: This “explodes” nested line items without nested arrays in the output. Writing it as `flatten(payload.orders map ...)` is equivalent. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L31</div><h1>Type this</h1><pre><code>payload.orders flatMap ((order) -&gt;
+  order.items map (item) -&gt; {
+    orderId: order.id,
+    sku: item.sku
+  }
+)
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L31</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L31</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 7</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

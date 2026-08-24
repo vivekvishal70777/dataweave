@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Event-sourced account balance</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 86</div><h1>Event-sourced account balance</h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">mapping</span><span class="chip">8–12 min</span><span class="chip">LAB-86-event-sourced-account-balance.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 86. Event-sourced account balance. Apply events in order: credit add, debit subtract, hold subtract. Start 0. fun money. Final balance only plus last event id. reduce events credit add debit and hold subtract. Last event id."><div class="kicker">Lab 86</div><h1>The job</h1><ul><li>This is Lab 86. Event-sourced account balance. Apply events in order: credit add, debit subtract, hold subtract. Start 0. fun money.</li><li>Final balance only plus last event id.</li><li>reduce events credit add debit and hold subtract. Last event id.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 86</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 86</div><h1>Input</h1><pre><code>{
+  <span class="str">&quot;events&quot;</span>: [
+    { <span class="str">&quot;id&quot;</span>: <span class="str">&quot;e1&quot;</span>, <span class="str">&quot;type&quot;</span>: <span class="str">&quot;credit&quot;</span>, <span class="str">&quot;amt&quot;</span>: <span class="str">&quot;<span class="num">100</span>&quot;</span> },
+    { <span class="str">&quot;id&quot;</span>: <span class="str">&quot;e2&quot;</span>, <span class="str">&quot;type&quot;</span>: <span class="str">&quot;debit&quot;</span>, <span class="str">&quot;amt&quot;</span>: <span class="str">&quot;<span class="num">30</span>&quot;</span> },
+    { <span class="str">&quot;id&quot;</span>: <span class="str">&quot;e3&quot;</span>, <span class="str">&quot;type&quot;</span>: <span class="str">&quot;hold&quot;</span>, <span class="str">&quot;amt&quot;</span>: <span class="str">&quot;<span class="num">10.5</span>&quot;</span> }
+  ]
+}
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 86</h1><ul><li>Pause the video</li><li>Open student/labs/05-mapping/86-event-sourced-account-balance/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 86</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 86</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+<span class="kw">fun</span> money(n: Number) = n <span class="kw">as</span> String {format: <span class="str">&quot;<span class="num">0.00</span>&quot;</span>} <span class="kw">as</span> Number
+<span class="kw">fun</span> apply(bal, e) =
+  e.<span class="kw">type</span> <span class="kw">match</span> {
+    <span class="kw">case</span> <span class="str">&quot;credit&quot;</span> -&gt; bal + (e.amt <span class="kw">as</span> Number)
+    <span class="kw">case</span> <span class="str">&quot;debit&quot;</span> -&gt; bal - (e.amt <span class="kw">as</span> Number)
+    <span class="kw">case</span> <span class="str">&quot;hold&quot;</span> -&gt; bal - (e.amt <span class="kw">as</span> Number)
+    <span class="kw">else</span> -&gt; bal
+  }
+---
+{
+  lastEvent: payload.events[-<span class="num">1</span>].id,
+  balance: money(payload.events reduce ((e, acc = <span class="num">0</span>) -&gt; apply(acc, e)))
+}
+</code></pre></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 86</div><h1>Expected</h1><pre><code>{
+  &quot;lastEvent&quot;: &quot;e3&quot;,
+  &quot;balance&quot;: 59.50
+}
+</code></pre></section>
+<section class="slide" data-notes="reduce events credit add debit and hold subtract. Last event id. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 87 in this file."><div class="kicker">Lab 86</div><h1>Interview phrase</h1><ul><li>reduce events credit add debit and hold subtract. Last event id.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 87 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 86</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 9</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>plus-plus vs plus; split, join, case</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L20</div><h1>plus-plus vs plus; split, join, case</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">6–9 min</span><span class="chip">S05-L20-strings.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="Trap: plus on two strings. Show the error, then fix with plus-plus. Also split, join, case."><div class="kicker">L20</div><h1>Open</h1><ul><li>Trap: plus on two strings. Show the error, then fix with plus-plus. Also split, join, case.</li></ul></section>
+<section class="slide" data-notes="- Strings: `++` (`&quot;Hello&quot; ++ &quot; &quot; ++ &quot;World&quot;`) - Arrays: `++` (`[1, 2] ++ [3]`) - Objects: `++` merges keys (right side wins on conflict) `+` is numeric addition, not concatenation. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L20</div><h1>Q10. How do you concatenate strings and arrays?</h1><ul><li>Strings: <code>++</code> (<code>&quot;Hello&quot; ++ &quot; &quot; ++ &quot;World&quot;</code>)</li><li>Arrays: <code>++</code> (<code>[1, 2] ++ [3]</code>)</li><li>Objects: <code>++</code> merges keys (right side wins on conflict)</li></ul></section>
+<section class="slide" data-notes="`splitBy` returns an array; `joinBy` builds a string. Industry follow-ups from `dw::core::Strings`: `trim`, `replace`, `substringAfter` / `substringBefore`, `pad`, `repeat`, and regex `find` / `scan` (see Q68). Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L20</div><h1>Q16. How do you split, join, and change case of strings?</h1><ul><li><code>splitBy</code> returns an array; <code>joinBy</code> builds a string.</li><li>Industry follow-ups from <code>dw::core::Strings</code>: <code>trim</code>, <code>replace</code>, <code>substringAfter</code> / <code>substringBefore</code>, <code>pad</code>, <code>repeat</code>, and regex <code>find</code> / <code>scan</code> (see Q68).</li></ul></section>
+<section class="slide" data-notes="`splitBy` returns an array; `joinBy` builds a string. Industry follow-ups from `dw::core::Strings`: `trim`, `replace`, `substringAfter` / `substringBefore`, `pad`, `repeat`, and regex `find` / `scan` (see Q68). Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L20</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> * from dw::core::Strings
+<span class="kw">output</span> application/json
+---
+{
+  parts: payload.csvLine splitBy <span class="str">&quot;,&quot;</span>,
+  csv: [<span class="str">&quot;a&quot;</span>, <span class="str">&quot;b&quot;</span>] joinBy <span class="str">&quot;,&quot;</span>,
+  upper: upper(payload.name),
+  lower: lower(payload.name),
+  cap: capitalize(payload.name)
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L20</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L20</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>sizeOf, isEmpty, flatten</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L12</div><h1>sizeOf, isEmpty, flatten</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">5–7 min</span><span class="chip">S03-L12-sizeof-isempty.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="sizeOf versus isEmpty. Prefer isEmpty in interviews when you only check empty."><div class="kicker">L12</div><h1>Open</h1><ul><li>sizeOf versus isEmpty. Prefer isEmpty in interviews when you only check empty.</li></ul></section>
+<section class="slide" data-notes="Prefer `isEmpty` over `sizeOf(x) == 0` in interviews. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L12</div><h1>Q15. What does <code>sizeOf</code> and <code>isEmpty</code> do?</h1><ul><li>Prefer <code>isEmpty</code> over <code>sizeOf(x) == 0</code> in interviews.</li></ul></section>
+<section class="slide" data-notes="Prefer `isEmpty` over `sizeOf(x) == 0` in interviews. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L12</div><h1>Type this</h1><pre><code>sizeOf(payload.items)     <span class="cm">// array length, object key count, or string length</span>
+isEmpty(payload.items)    <span class="cm">// <span class="kw">true</span> for [], {}, <span class="str">&quot;&quot;</span>, or <span class="kw">null</span> in many cases</span>
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L12</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L12</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 5</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

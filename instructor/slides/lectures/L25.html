@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>XML attributes and repeating elements</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L25</div><h1>XML attributes and repeating elements</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">6–9 min</span><span class="chip">S06-L25-xml-attributes.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="Attributes versus elements versus repeating children. Write an attribute with at-paren syntax."><div class="kicker">L25</div><h1>Open</h1><ul><li>Attributes versus elements versus repeating children. Write an attribute with at-paren syntax.</li></ul></section>
+<section class="slide" data-notes="To **write** attributes: Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L25</div><h1>Q33. How do you read XML attributes vs elements?</h1><ul><li>To <strong>write</strong> attributes:</li></ul></section>
+<section class="slide" data-notes="To **write** attributes: Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L25</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+{
+  id: payload.order.@id,           <span class="cm">// attribute</span>
+  name: payload.order.customer,    <span class="cm">// element text / child</span>
+  items: payload.order.*item       <span class="cm">// repeating child elements</span>
+}
+</code></pre></section>
+<section class="slide" data-notes="To **write** attributes: Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L25</div><h1>Type this</h1><pre><code>order @(id: payload.id): {
+  customer: payload.name
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L25</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L25</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>replace, find, substring</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Industry operators, message, and MIME</div><h1>replace, find, substring</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Industry operators, message, and MIME</div><h1>In one sentence</h1><ul><li>replace can use regex. find extracts matches. substringBefore(&quot;-&quot;) takes the SKU family.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Industry operators, message, and MIME</div><h1>Like this in real life</h1><ul><li>Black out invoice numbers in a comment. Pull INV-123 out of a sentence.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Industry operators, message, and MIME</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Industry operators, message, and MIME</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> * from dw::core::Strings
+<span class="kw">output</span> application/json
+---
+{
+  redacted: replace(payload.notes, /INV-\d+/, <span class="str">&quot;REDACTED&quot;</span>),
+  ids: payload.notes find /INV-\d+/,
+  family: substringBefore(payload.sku, <span class="str">&quot;-&quot;</span>),
+  trimmed: trim(payload.name)
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Industry operators, message, and MIME</div><h1>Remember</h1><ul><li>matches = whole string. find = pieces inside.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Industry operators, message, and MIME</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

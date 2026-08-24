@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>update</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Group, reduce, merge, and update</div><h1>update</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Group, reduce, merge, and update</div><h1>In one sentence</h1><ul><li>update changes a nested field without rewriting the whole tree. Needs Mule 4.3+.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Group, reduce, merge, and update</div><h1>Like this in real life</h1><ul><li>Changing only the city on an address label, not reprinting the whole shipping box.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Group, reduce, merge, and update</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Group, reduce, merge, and update</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+payload update {
+  <span class="kw">case</span> .customer.address.city -&gt; upper($)
+  <span class="kw">case</span> .items[<span class="num">0</span>].qty -&gt; $ + <span class="num">1</span>
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Group, reduce, merge, and update</div><h1>Remember</h1><ul><li>case .customer.address.city -&gt; upper($)</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Group, reduce, merge, and update</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

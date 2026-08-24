@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>What a canonical mapping is</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">DataWeave Mapping</div><h1>What a canonical mapping is</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave Mapping</div><h1>In one sentence</h1><ul><li>You copy the vendor’s ugly payload into <strong>your</strong> shop’s JSON names — <code>orderId</code>, <code>lines</code>, <code>money</code> — not SAP <code>vbeln</code>.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave Mapping</div><h1>Like this in real life</h1><ul><li>A warehouse relabels every box in the store language. The truck label can stay in German; the shelf cannot.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave Mapping</div><h1>Remember</h1><ul><li>Header: <code>%dw 2.0</code>, <code>output application/json</code>, <code>---</code>.</li><li>Drop fields you do not own.</li><li>Lookups already on the payload — never <code>lookup</code> inside <code>map</code>.</li></ul></section>
+<div class="chrome"><span>DataWeave Mapping</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 4</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

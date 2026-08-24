@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Index each batch row (1-based)</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 14</div><h1>Index each batch row (1-based)</h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">easy</span><span class="chip">6–10 min</span><span class="chip">LAB-14-index-each-batch-row-1-based.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 14. Index each batch row (1-based). Add a 1-based `rowNum` for error reports. `$` is value, `$$` is 0-based index. Dollar-dollar is the 0-based index. Add one for rowNum in error reports."><div class="kicker">Lab 14</div><h1>The job</h1><ul><li>This is Lab 14. Index each batch row (1-based). Add a 1-based <code>rowNum</code> for error reports. <code>$</code> is value, <code>$$</code> is 0-based index.</li><li>Dollar-dollar is the 0-based index. Add one for rowNum in error reports.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 14</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 14</div><h1>Input</h1><pre><code>[<span class="str">&quot;alpha&quot;</span>, <span class="str">&quot;beta&quot;</span>]
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 14</h1><ul><li>Pause the video</li><li>Open student/labs/01-fundamentals/14-index-each-batch-row-1-based/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 14</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 14</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+payload map {
+  rowNum: $$ + <span class="num">1</span>,
+  value: $
+}
+</code></pre></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 14</div><h1>Expected</h1><pre><code>[{ &quot;rowNum&quot;: 1, &quot;value&quot;: &quot;alpha&quot; }, { &quot;rowNum&quot;: 2, &quot;value&quot;: &quot;beta&quot; }]
+</code></pre></section>
+<section class="slide" data-notes="Dollar-dollar is the 0-based index. Add one for rowNum in error reports. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 15 in this file."><div class="kicker">Lab 14</div><h1>Interview phrase</h1><ul><li>Dollar-dollar is the 0-based index. Add one for rowNum in error reports.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 15 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 14</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 9</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

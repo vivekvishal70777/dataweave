@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>if/else expressions (no Java ternary)</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L21</div><h1>if/else expressions (no Java ternary)</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">5–8 min</span><span class="chip">S05-L21-if-else.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="If/else is an expression. No ternary. Mention comments so they do not look lost in a header."><div class="kicker">L21</div><h1>Open</h1><ul><li>If/else is an expression. No ternary. Mention comments so they do not look lost in a header.</li></ul></section>
+<section class="slide" data-notes="DataWeave uses expressions, not statements: There is no ternary `? :` operator like Java. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L21</div><h1>Q12. How do you write if/else in DataWeave?</h1><ul><li>DataWeave uses expressions, not statements:</li><li>There is no ternary <code>? :</code> operator like Java.</li></ul></section>
+<section class="slide" data-notes="DataWeave uses expressions, not statements: There is no ternary `? :` operator like Java. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L21</div><h1>Type this</h1><pre><code><span class="kw">if</span> (payload.age &gt;= <span class="num">18</span>) <span class="str">&quot;adult&quot;</span>
+<span class="kw">else</span> <span class="kw">if</span> (payload.age &gt;= <span class="num">13</span>) <span class="str">&quot;teen&quot;</span>
+<span class="kw">else</span> <span class="str">&quot;child&quot;</span>
+</code></pre></section>
+<section class="slide" data-notes="Use `write(value, mimeType, properties)` to serialize a value to String/Binary without changing the Transform **output** MIME, and `read(binaryOrString, mimeType)` to parse. Typical interview case: log a JSON snapshot, or parse a JSON **string field** inside XML/CSV. This is **not** the same as `output application/json` on the script (that sets the Mule payload writer). Follow-up: huge `write(payload)` can break streaming. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L21</div><h1>Q19. How do you <code>write</code> and <code>read</code> data inside a script?</h1><ul><li>Use <code>write(value, mimeType, properties)</code> to serialize a value to String/Binary without changing the Transform <strong>output</strong> MIME, and <code>read(binaryOrString, mimeType)</code> to parse.</li><li>Typical interview case: log a JSON snapshot, or parse a JSON <strong>string field</strong> inside XML/CSV.</li><li>This is <strong>not</strong> the same as <code>output application/json</code> on the script (that sets the Mule payload writer). Follow-up: huge <code>write(payload)</code> can break streaming.</li></ul></section>
+<section class="slide" data-notes="Use `write(value, mimeType, properties)` to serialize a value to String/Binary without changing the Transform **output** MIME, and `read(binaryOrString, mimeType)` to parse. Typical interview case: log a JSON snapshot, or parse a JSON **string field** inside XML/CSV. This is **not** the same as `output application/json` on the script (that sets the Mule payload writer). Follow-up: huge `write(payload)` can break streaming. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L21</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+{
+  asText: write(payload.order, <span class="str">&quot;application/json&quot;</span>, { indent: <span class="kw">false</span> }),
+  nested: read(payload.jsonBlob, <span class="str">&quot;application/json&quot;</span>)
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L21</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L21</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 7</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

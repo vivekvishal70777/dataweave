@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>XML namespaces</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Advanced: recursion, namespaces, diffs</div><h1>XML namespaces</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Advanced: recursion, namespaces, diffs</div><h1>In one sentence</h1><ul><li>ns prefix URI then prefix#Element. The prefix is yours. The URI must match the XML.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Advanced: recursion, namespaces, diffs</div><h1>Like this in real life</h1><ul><li>Two families both named “Order.” The URI is the family address so you do not mix them.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Advanced: recursion, namespaces, diffs</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Advanced: recursion, namespaces, diffs</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">ns</span> ns0 http:<span class="cm">//example.com/order</span>
+<span class="kw">output</span> application/xml
+---
+ns0#Orders: {
+  ns0#Order @(id: payload.id): {
+    ns0#Amount: payload.amount
+  }
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Advanced: recursion, namespaces, diffs</div><h1>Remember</h1><ul><li>SOAP: Envelope, Body, then your element. Repeating lines use *prefix#Line.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Advanced: recursion, namespaces, diffs</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Changing types with as</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">DataWeave 2.0 fundamentals</div><h1>Changing types with as</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave 2.0 fundamentals</div><h1>In one sentence</h1><ul><li>as tries to convert a value, like &quot;10&quot; as Number → 10.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave 2.0 fundamentals</div><h1>Like this in real life</h1><ul><li>Like pouring juice into a measuring cup. If the cup is for millilitres and you pour sand, it fails.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave 2.0 fundamentals</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">DataWeave 2.0 fundamentals</div><h1>Tiny example</h1><pre><code>payload.age <span class="kw">as</span> Number
+payload.createdAt <span class="kw">as</span> Date {format: <span class="str">&quot;yyyy-MM-dd&quot;</span>}
+payload <span class="kw">as</span> String {encoding: <span class="str">&quot;UTF-<span class="num">8</span>&quot;</span>}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave 2.0 fundamentals</div><h1>Remember</h1><ul><li>Failed as is an error. Use try, not default, when conversion can fail. Dates need a format.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>DataWeave 2.0 fundamentals</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

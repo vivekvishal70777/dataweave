@@ -22,7 +22,7 @@ Before you hit publish: you do **not** need a license from MuleSoft or a book au
 | Resources per section | Zip of `student/labs/<that-section>/` + `student/quizzes/` (no answers) |
 | Interview bootcamp resource | **`student/resources/bootcamp-prompts.md` only** (Set B, 80 questions, no answers) |
 | Article lectures | Easy tutorials: `student/tutorials/<section>/`. Do **not** attach `sections/*/LECTURE.md` or `reference/*Interview-Questions*` — those contain full answers. |
-| Captions / slides | Optional; cheat sheet `student/resources/cheat-sheet.md` |
+| Captions / slides | Recording decks in `instructor/slides/` (open `index.html`). Optional student cheat sheet `student/resources/cheat-sheet.md` |
 
 **Never** attach `instructor/`, `reference/MuleSoft-DataWeave-Interview-Questions.md`, or quiz `ANSWER-KEY.md` as early-section resources.
 
@@ -31,7 +31,7 @@ Answers for the 80 questions: **your voice after the pause card**, or an optiona
 ## Recording setup
 
 - Editor font ≥ 16px; hide `instructor/` in the file tree while recording student view.
-- Dual monitor: Playground on the right, `LECTURE.md` talking points on the left.
+- Dual monitor: Playground on the right, recording slides (`instructor/slides/index.html`) on the left. Press **N** for speaker notes.
 - Name videos: `S02-L03-script-structure.mp4` matching curriculum order.
 - Coding videos: aim **under 12 minutes**. Split Lab 54 / Q60 if needed.
 - Read the spoken script from [`transcripts/README.md`](transcripts/README.md) — one file per concept lecture and one file per lab.
@@ -83,6 +83,7 @@ python3 scripts/generate_mapping_questions.py
 python3 scripts/generate_udemy_labs.py
 python3 scripts/generate_udemy_lectures.py
 python3 scripts/generate_easy_tutorials.py
+python3 scripts/generate_slides.py
 ```
 
 Re-zip student resources after regenerate. Section quizzes in `student/quizzes/` are hand-written — update those if you change a concept.

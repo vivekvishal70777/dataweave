@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Group, reduce, merge, and update</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">07-intermediate-transforms</div><h1>Group, reduce, merge, and update</h1><p class="sub">Section opener. Then jump into the concept videos and labs.</p></section>
+<section class="slide" data-notes=""><div class="kicker">07-intermediate-transforms</div><h1>Learning objectives</h1><ul><li>Use <code>groupBy</code>, <code>orderBy</code>, <code>distinctBy</code>, <code>reduce</code>, and <code>flatMap</code>.</li><li>Merge objects and update nested fields.</li><li>Scope locals with <code>do</code>.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">07-intermediate-transforms</div><h1>Suggested video breakdown</h1><ul><li>Hero demo: Lab 20 totals per customer (coerce string amounts), then Lab 23 flatMap lines.</li><li>Show <code>update</code> and mention Mule 4.3+ (Q26).</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">07-intermediate-transforms</div><h1>Labs in this section</h1><ul><li>Lab 19</li><li>Lab 20</li><li>Lab 21</li><li>Lab 22</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">07-intermediate-transforms</div><h1>Labs in this section (cont.)</h1><ul><li>Lab 23</li><li>Lab 24</li><li>Lab 25</li><li>Lab 26</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">07-intermediate-transforms</div><h1>Interview talking points for this section</h1><ul><li>Teach the <strong>concept</strong>, then demo, then lab. Use these Q&amp;A as the phrases to say on camera — not as a second lecture series.</li><li>One 20–40s “if they ask this in an interview…” close per video is enough.</li><li><strong>Answer:</strong></li><li><code>groupBy</code> returns an <strong>object</strong> whose keys are group names and values are arrays.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">07-intermediate-transforms</div><h1>Interview talking points for this section (cont.)</h1><ul><li>---</li><li><strong>Answer:</strong> <code>reduce</code> folds an array into a single value.</li><li>If you omit the accumulator initializer, the first element is the seed and iteration starts at the second element.</li><li>---</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">07-intermediate-transforms</div><h1>Interview talking points for this section</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+{
+  byCity: payload groupBy ((c) -&gt; c.city),
+  sorted: payload orderBy ((c) -&gt; c.name),
+  unique: payload distinctBy ((c) -&gt; c.email)
+}
+</code></pre></section>
+<section class="slide" data-notes="Hit this slide on section openers so students remember the gym loop."><div class="kicker">07-intermediate-transforms</div><h1>The loop</h1><div class="grid-4">
+        <div class="box"><strong>Concept</strong><span>One idea. Three to seven minutes.</span></div>
+        <div class="box"><strong>Pause</strong><span>Hold the card. Students try.</span></div>
+        <div class="box"><strong>Lab</strong><span>Type from the starter, not the solution.</span></div>
+        <div class="box"><strong>Quiz</strong><span>Udemy practice test. No video.</span></div>
+        </div></section>
+<div class="chrome"><span>07-intermediate-transforms</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 9</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

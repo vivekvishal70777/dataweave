@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Count line items in a composite payload</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 10</div><h1>Count line items in a composite payload</h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">easy</span><span class="chip">6–10 min</span><span class="chip">LAB-10-count-line-items-in-a-composite-payload.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 10. Count line items in a composite payload. Return how many records are in `payload.records` (Salesforce Composite / bulk query shape). sizeOf on payload.records, not the wrapper object."><div class="kicker">Lab 10</div><h1>The job</h1><ul><li>This is Lab 10. Count line items in a composite payload. Return how many records are in <code>payload.records</code> (Salesforce Composite / bulk query shape).</li><li>sizeOf on payload.records, not the wrapper object.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 10</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 10</div><h1>Input</h1><pre><code>{
+  <span class="str">&quot;done&quot;</span>: true,
+  <span class="str">&quot;records&quot;</span>: [
+    { <span class="str">&quot;Id&quot;</span>: <span class="str">&quot;a1&quot;</span> },
+    { <span class="str">&quot;Id&quot;</span>: <span class="str">&quot;a2&quot;</span> },
+    { <span class="str">&quot;Id&quot;</span>: <span class="str">&quot;a3&quot;</span> }
+  ]
+}
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 10</h1><ul><li>Pause the video</li><li>Open student/labs/01-fundamentals/10-count-line-items-in-a-composite-payload/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 10</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li><li><code>3</code></li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 10</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+sizeOf(payload.records)
+</code></pre></section>
+<section class="slide" data-notes="sizeOf on payload.records, not the wrapper object. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 11 in this file."><div class="kicker">Lab 10</div><h1>Interview phrase</h1><ul><li>sizeOf on payload.records, not the wrapper object.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 11 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 10</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 8</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

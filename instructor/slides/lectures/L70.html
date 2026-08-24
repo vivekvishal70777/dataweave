@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Arrays helpers: maxBy, firstWith, zip, ranges</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L70</div><h1>Arrays helpers: maxBy, firstWith, zip, ranges</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">8–12 min</span><span class="chip">S13-L70-arrays-helpers.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="Industry Arrays helpers. maxBy returns the item. firstWith is first match. zip pairs columns."><div class="kicker">L70</div><h1>Open</h1><ul><li>Industry Arrays helpers. maxBy returns the item. firstWith is first match. zip pairs columns.</li></ul></section>
+<section class="slide" data-notes="Import `dw::core::Arrays` (Mule 4.3+ / current core): `maxBy` / `minBy` return the **item**, not the number. Empty arrays: guard with `isEmpty` or `default`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L70</div><h1>Q61. What <code>dw::core::Arrays</code> helpers do interviewers expect besides map/filter?</h1><ul><li>Import <code>dw::core::Arrays</code> (Mule 4.3+ / current core):</li><li><code>maxBy</code> / <code>minBy</code> return the <strong>item</strong>, not the number. Empty arrays: guard with <code>isEmpty</code> or <code>default</code>.</li></ul></section>
+<section class="slide" data-notes="Import `dw::core::Arrays` (Mule 4.3+ / current core): `maxBy` / `minBy` return the **item**, not the number. Empty arrays: guard with `isEmpty` or `default`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L70</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> * from dw::core::Arrays
+<span class="kw">output</span> application/json
+---
+{
+  richest: payload maxBy $.amount,
+  cheapest: payload minBy $.amount,
+  firstPaid: payload firstWith ((o) -&gt; o.status == <span class="str">&quot;PAID&quot;</span>),
+  anyOver: payload some ((o) -&gt; (o.amount <span class="kw">as</span> Number) &gt; <span class="num">1000</span>),
+  allPositive: payload every ((o) -&gt; (o.amount <span class="kw">as</span> Number) &gt; <span class="num">0</span>),
+  idx: indexOf(payload, ((o) -&gt; o.id == <span class="str">&quot;O1&quot;</span>)),
+  countPaid: payload countBy ((o) -&gt; o.status == <span class="str">&quot;PAID&quot;</span>)
+}
+</code></pre></section>
+<section class="slide" data-notes="`[0 to 2]` is inclusive. Out-of-range indexes are safer than Java (often empty, not an exception) — still do not assume that in every runtime; prefer `slice` / `take` / `drop` in production. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L70</div><h1>Q62. How do ranges and <code>slice</code> work?</h1><ul><li><code>[0 to 2]</code> is inclusive.</li><li>Out-of-range indexes are safer than Java (often empty, not an exception) — still do not assume that in every runtime; prefer <code>slice</code> / <code>take</code> / <code>drop</code> in production.</li></ul></section>
+<section class="slide" data-notes="`[0 to 2]` is inclusive. Out-of-range indexes are safer than Java (often empty, not an exception) — still do not assume that in every runtime; prefer `slice` / `take` / `drop` in production. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L70</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> slice from dw::core::Arrays
+<span class="kw">output</span> application/json
+---
+{
+  firstThree: payload[<span class="num">0</span> to <span class="num">2</span>],
+  nums: <span class="num">1</span> to <span class="num">5</span>,
+  mid: slice(payload, <span class="num">1</span>, <span class="num">4</span>)
+}
+</code></pre></section>
+<section class="slide" data-notes="Pair headers with values (dynamic CSV / Excel columns): Length is the shorter array. Interview follow-up: building an object with `(pair[0]): pair[1]` (dynamic keys). Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L70</div><h1>Q63. How do you <code>zip</code> two arrays?</h1><ul><li>Pair headers with values (dynamic CSV / Excel columns):</li><li>Length is the shorter array. Interview follow-up: building an object with <code>(pair[0]): pair[1]</code> (dynamic keys).</li></ul></section>
+<section class="slide" data-notes="Pair headers with values (dynamic CSV / Excel columns): Length is the shorter array. Interview follow-up: building an object with `(pair[0]): pair[1]` (dynamic keys). Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L70</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> zip from dw::core::Arrays
+<span class="kw">output</span> application/json
+---
+zip(payload.headers, payload.values)
+  map { name: $[<span class="num">0</span>], value: $[<span class="num">1</span>] }
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L70</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L70</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 9</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

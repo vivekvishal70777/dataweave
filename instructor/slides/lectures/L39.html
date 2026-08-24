@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>vars, attributes, and properties</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L39</div><h1>vars, attributes, and properties</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">6–9 min</span><span class="chip">S09-L39-mule-context.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="Transform Message input graph: payload, vars, attributes, p for properties."><div class="kicker">L39</div><h1>Open</h1><ul><li>Transform Message input graph: payload, vars, attributes, p for properties.</li></ul></section>
+<section class="slide" data-notes="In Transform Message you can also map from the **input graph** (`payload`, `vars`, `attributes`). HTTP Listener extras interviewers want: `attributes.method`, `attributes.requestPath` / `rawRequestUri`, `attributes.uriParams.orderId`, `attributes.queryParams.page`, `attributes.headers[&#x27;authorization&#x27;]` (often lower-cased). `error.errorType` / `error.errorMessage.payload` belong in **On Error** scopes, not in a happy-path script (see Q73). Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L39</div><h1>Q17. How do you read Mule variables, attributes, and properties in DataWeave?</h1><ul><li>In Transform Message you can also map from the <strong>input graph</strong> (<code>payload</code>, <code>vars</code>, <code>attributes</code>).</li><li>HTTP Listener extras interviewers want: <code>attributes.method</code>, <code>attributes.requestPath</code> / <code>rawRequestUri</code>, <code>attributes.uriParams.orderId</code>, <code>attributes.queryParams.page</code>, <code>attributes.headers[&#x27;authorization&#x27;]</code> (often lower-cased). <code>error.errorType</code> / <code>error.errorMessage.payload</code> belong in <strong>On Error</strong> scopes, not in a happy-path script (see Q73).</li></ul></section>
+<section class="slide" data-notes="In Transform Message you can also map from the **input graph** (`payload`, `vars`, `attributes`). HTTP Listener extras interviewers want: `attributes.method`, `attributes.requestPath` / `rawRequestUri`, `attributes.uriParams.orderId`, `attributes.queryParams.page`, `attributes.headers[&#x27;authorization&#x27;]` (often lower-cased). `error.errorType` / `error.errorMessage.payload` belong in **On Error** scopes, not in a happy-path script (see Q73). Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L39</div><h1>Type this</h1><pre><code>vars.customerId
+attributes.headers[<span class="str">&quot;content-<span class="kw">type</span>&quot;</span>]
+attributes.queryParams.page
+p(<span class="str">&quot;http.host&quot;</span>)               <span class="cm">// from configuration properties</span>
+Mule::p(<span class="str">&quot;api.version&quot;</span>)       <span class="cm">// same idea in some contexts</span>
+</code></pre></section>
+<section class="slide" data-notes="- **Transform Message**: full script with header, preview, metadata, multiple outputs (`payload`, `variables`). - **`#[...]` expression**: a DataWeave expression (often without a full header) used inline, e.g. `#[payload.orderId]`. Both use DataWeave 2 in Mule 4. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L39</div><h1>Q18. What is the difference between Transform Message and a DataWeave expression in a Set Payload?</h1><ul><li><strong>Transform Message</strong>: full script with header, preview, metadata, multiple outputs (<code>payload</code>, <code>variables</code>).</li><li><strong><code>#[...]</code> expression</strong>: a DataWeave expression (often without a full header) used inline, e.g. <code>#[payload.orderId]</code>.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">L39</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L39</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

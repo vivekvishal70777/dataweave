@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Join tables that arrived together</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">DataWeave Mapping</div><h1>Join tables that arrived together</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave Mapping</div><h1>In one sentence</h1><ul><li><code>groupBy</code> the small table by id, then <code>map</code> the big table. That is a hash join.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave Mapping</div><h1>Like this in real life</h1><ul><li>Index the customer list once. For each order, pick the card from the index. Do not phone HQ per order.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">DataWeave Mapping</div><h1>Tiny example</h1><pre><code><span class="kw">var</span> byId = payload.customers groupBy $.id
+---
+payload.orders map (o) -&gt; o ++ { email: (byId[o.customerId][<span class="num">0</span>].email) <span class="kw">default</span> <span class="str">&quot;unknown&quot;</span> }
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave Mapping</div><h1>Remember</h1><ul><li>Missing match → <code>default</code>. Outer merge is Lab 84 / Lab 49.</li><li>Lab 59, 63, 64.</li></ul></section>
+<div class="chrome"><span>DataWeave Mapping</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 5</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>
