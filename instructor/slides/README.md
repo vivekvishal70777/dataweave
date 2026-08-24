@@ -2,10 +2,13 @@
 
 HTML decks for every concept lecture, lab video, section opener, mapping cluster, and easy tutorial.
 
-Open [`index.html`](index.html) in a browser, go full screen (**F**), and walk the deck while you record. Rebuild after transcript or tutorial edits:
+**For screen share, use the PowerPoint files** in [`pptx/`](pptx/README.md) — open, press F5, share the window.
+
+Browser decks: open [`index.html`](index.html) full screen (**F**). Rebuild:
 
 ```bash
 python3 scripts/generate_slides.py
+python3 scripts/generate_pptx.py
 ```
 
 ## How to present

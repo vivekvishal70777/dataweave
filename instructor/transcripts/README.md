@@ -2,7 +2,7 @@
 
 Spoken scripts for Vivek. **One video per concept lecture** and **one video per lab (01–88)**.
 
-How to use: open the matching HTML deck in [`../slides/index.html`](../slides/index.html) full screen, read **SAY** from the transcript (or press **N** for notes), follow **PAUSE CARD**, type the **TYPE** blocks. Target 6–10 minutes; cap 12. Split Lab 23, 39, 53, 54, and the whiteboard set if needed.
+How to use: open the matching **PowerPoint** in [`../slides/pptx/`](../slides/pptx/README.md), press **F5**, share the window. Read **SAY** from this transcript (also in PPT notes). Follow **PAUSE CARD**, type the **TYPE** blocks. Target 6–10 minutes; cap 12. Split Lab 23, 39, 53, 54, and the whiteboard set if needed.
 
 Quizzes on Udemy are practice tests — no transcript, no video.
 
@@ -11,6 +11,7 @@ Regenerate after lab or Q&A edits:
 ```bash
 python3 scripts/generate_transcripts.py
 python3 scripts/generate_slides.py
+python3 scripts/generate_pptx.py
 ```
 
 ## Suggested recording order

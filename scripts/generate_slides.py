@@ -193,6 +193,7 @@ class Deck:
         self.title = title
         self.assets = assets
         self.slides: list[str] = []
+        self.items: list[dict] = []
 
     def add(
         self,
@@ -201,10 +202,28 @@ class Deck:
         body_html: str = "",
         notes: str = "",
         kicker: str | None = None,
+        bullets: list[str] | None = None,
+        code: str | None = None,
+        lang: str = "",
+        subtitle: str = "",
+        chips: list[str] | None = None,
     ) -> None:
         cls = "slide" + ((" " + kind) if kind else "")
         kick = kicker if kicker is not None else self.kicker
         note = re.sub(r"\s+", " ", notes)[:800]
+        self.items.append(
+            {
+                "kind": kind or "content",
+                "heading": heading,
+                "kicker": kick,
+                "notes": note,
+                "bullets": bullets or [],
+                "code": code or "",
+                "lang": lang,
+                "subtitle": subtitle,
+                "chips": [c for c in (chips or []) if c],
+            }
+        )
         self.slides.append(
             f'<section class="{cls}" data-notes="{esc(note)}">'
             f'<div class="kicker">{esc(kick)}</div>'
@@ -223,7 +242,9 @@ class Deck:
             "title",
             self.title,
             f'<p class="sub">{inline_md(subtitle)}</p>{chips_html}',
-            notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides.",
+            notes="Open PowerPoint Slide Show (F5). Share this window. Switch to Playground on code slides.",
+            subtitle=subtitle,
+            chips=chips,
         )
 
     def add_bullets(
@@ -240,17 +261,19 @@ class Deck:
             chunk = clean[i : i + 4]
             ul = "<ul>" + "".join(f"<li>{inline_md(b)}</li>" for b in chunk) + "</ul>"
             label = heading if i == 0 else f"{heading} (cont.)"
-            self.add("", label, ul, notes=notes, kicker=kicker)
+            self.add("content", label, ul, notes=notes, kicker=kicker, bullets=chunk)
 
     def add_code(self, heading: str, lang: str, code: str, notes: str = "") -> None:
         if not code.strip():
             return
         self.add(
-            "",
+            "code",
             heading,
             f"<pre><code>{highlight(code, lang)}</code></pre>",
             notes=notes
             or "Type this. Read the header: percent dw two point oh, output, dash dash dash.",
+            code=code,
+            lang=lang,
         )
 
     def add_pause(self, heading: str, bullets: list[str], notes: str = "") -> None:
@@ -261,6 +284,7 @@ class Deck:
             ul,
             notes=notes or "Hold 3–5 seconds. Do not show the solution yet.",
             kicker="Pause card",
+            bullets=bullets,
         )
 
     def render(self) -> str:
