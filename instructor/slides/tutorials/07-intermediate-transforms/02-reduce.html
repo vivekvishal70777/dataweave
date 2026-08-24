@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>reduce</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Group, reduce, merge, and update</div><h1>reduce</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Group, reduce, merge, and update</div><h1>In one sentence</h1><ul><li>reduce folds a list into one value: a sum, or a growing object.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Group, reduce, merge, and update</div><h1>Like this in real life</h1><ul><li>A running total on a till. Each item updates the drawer. The drawer is the accumulator.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Group, reduce, merge, and update</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Group, reduce, merge, and update</div><h1>Tiny example</h1><pre><code>[<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>] reduce ((item, acc = <span class="num">0</span>) -&gt; acc + item)   <span class="cm">// <span class="num">6</span></span>
+
+payload reduce ((item, acc = {}) -&gt; acc ++ {
+  (item.id): item.name
+})
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Group, reduce, merge, and update</div><h1>Remember</h1><ul><li>Give the accumulator a starting value (acc = 0 or acc = {}) or the first item becomes the seed.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Group, reduce, merge, and update</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>map, filter, dollar and dollar-dollar</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L11</div><h1>map, filter, dollar and dollar-dollar</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">7–10 min</span><span class="chip">S03-L11-map-filter.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="Show an orders array. Filter PAID, then map to id and total. Then explain dollar and dollar-dollar."><div class="kicker">L11</div><h1>Open</h1><ul><li>Show an orders array. Filter PAID, then map to id and total. Then explain dollar and dollar-dollar.</li></ul></section>
+<section class="slide" data-notes="- `$` is the current item, `$$` is the index: `payload map { index: $$, value: $ }`. - `filter` keeps elements where the predicate is `true`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L11</div><h1>Q8. How do <code>map</code> and <code>filter</code> work on arrays?</h1><ul><li><code>$</code> is the current item, <code>$$</code> is the index: <code>payload map { index: $$, value: $ }</code>.</li><li><code>filter</code> keeps elements where the predicate is <code>true</code>.</li></ul></section>
+<section class="slide" data-notes="- `$` is the current item, `$$` is the index: `payload map { index: $$, value: $ }`. - `filter` keeps elements where the predicate is `true`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L11</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+payload.orders
+  filter ((order) -&gt; order.status == <span class="str">&quot;PAID&quot;</span>)
+  map ((order) -&gt; {
+    id: order.id,
+    total: order.amount
+  })
+</code></pre></section>
+<section class="slide" data-notes="Implicit parameters in function literals: - `$` — first argument (item / value) - `$$` — second (index / key depending on function) - `$$$` — third (index in `mapObject` / `pluck`) Interview tip: named parameters (`(item, index) -&gt;`) are clearer than `$`/`$$`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L11</div><h1>Q35. Explain <code>$</code>, <code>$$</code>, and <code>$$$</code> in lambdas.</h1><ul><li><code>$</code> — first argument (item / value)</li><li><code>$$</code> — second (index / key depending on function)</li><li><code>$$$</code> — third (index in <code>mapObject</code> / <code>pluck</code>)</li></ul></section>
+<section class="slide" data-notes="Implicit parameters in function literals: - `$` — first argument (item / value) - `$$` — second (index / key depending on function) - `$$$` — third (index in `mapObject` / `pluck`) Interview tip: named parameters (`(item, index) -&gt;`) are clearer than `$`/`$$`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L11</div><h1>Type this</h1><pre><code>[<span class="str">&quot;a&quot;</span>, <span class="str">&quot;b&quot;</span>] map upper($)
+{ a: <span class="num">1</span> } mapObject ((v, k) -&gt; { (k): v })
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L11</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L11</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 7</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

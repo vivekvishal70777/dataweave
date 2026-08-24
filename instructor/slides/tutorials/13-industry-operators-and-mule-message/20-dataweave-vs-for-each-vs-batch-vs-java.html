@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DataWeave vs For Each vs Batch vs Java</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Industry operators, message, and MIME</div><h1>DataWeave vs For Each vs Batch vs Java</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Industry operators, message, and MIME</div><h1>In one sentence</h1><ul><li>DataWeave maps CPU-only. For Each calls connectors per item. Batch is huge files and retries. Java is special libraries.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Industry operators, message, and MIME</div><h1>Like this in real life</h1><ul><li>DW = folding letters. For Each = posting each letter. Batch = the industrial mail warehouse. Java = a custom stamp machine.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Industry operators, message, and MIME</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Industry operators, message, and MIME</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+<span class="cm">// DataWeave = CPU mapping (this script).</span>
+<span class="cm">// For Each = connector per item.</span>
+<span class="cm">// Batch = huge file + retries.</span>
+payload map {
+  id: $.Id
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Industry operators, message, and MIME</div><h1>Remember</h1><ul><li>No lookup/HTTP inside map.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Industry operators, message, and MIME</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

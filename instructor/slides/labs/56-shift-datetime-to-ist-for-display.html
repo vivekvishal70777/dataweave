@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Shift DateTime to IST for display</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 56</div><h1>Shift DateTime to IST for display</h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">industry</span><span class="chip">8–12 min</span><span class="chip">LAB-56-shift-datetime-to-ist-for-display.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 56. Shift DateTime to IST for display. Canonical APIs store UTC. Output `occurredAtIst` as `dd-MMM-yyyy HH:mm` in `Asia/Kolkata`. Do not use `now()`. Shift UTC DateTime with &gt;&gt; Asia/Kolkata. Inject occurredAt. Do not call now."><div class="kicker">Lab 56</div><h1>The job</h1><ul><li>This is Lab 56. Shift DateTime to IST for display. Canonical APIs store UTC. Output <code>occurredAtIst</code> as <code>dd-MMM-yyyy HH:mm</code> in <code>Asia/Kolkata</code>. Do not use <code>now()</code>.</li><li>Shift UTC DateTime with &gt;&gt; Asia/Kolkata. Inject occurredAt. Do not call now.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 56</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 56</div><h1>Input</h1><pre><code>{ <span class="str">&quot;occurredAt&quot;</span>: <span class="str">&quot;<span class="num">2026</span>-<span class="num">08</span>-20T14:<span class="num">05</span>:00Z&quot;</span> }
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 56</h1><ul><li>Pause the video</li><li>Open student/labs/04-industry/56-shift-datetime-to-ist-for-display/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 56</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li><li>IST is UTC+5:30 → <code>20-Aug-2026 19:35</code></li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 56</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+{
+  occurredAtIst: ((payload.occurredAt <span class="kw">as</span> DateTime) &gt;&gt; <span class="str">&quot;Asia/Kolkata&quot;</span>)
+    <span class="kw">as</span> String {format: <span class="str">&quot;dd-MMM-yyyy HH:mm&quot;</span>}
+}
+</code></pre></section>
+<section class="slide" data-notes="Shift UTC DateTime with &gt;&gt; Asia/Kolkata. Inject occurredAt. Do not call now. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 57 in this file."><div class="kicker">Lab 56</div><h1>Interview phrase</h1><ul><li>Shift UTC DateTime with &gt;&gt; Asia/Kolkata. Inject occurredAt. Do not call now.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 57 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 56</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 8</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

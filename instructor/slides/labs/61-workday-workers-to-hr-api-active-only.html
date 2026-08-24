@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Workday workers to HR API (active only)</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 61</div><h1>Workday workers to HR API (active only)</h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">mapping</span><span class="chip">8–12 min</span><span class="chip">LAB-61-workday-workers-to-hr-api-active-only.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 61. Workday workers to HR API (active only). Keep Active workers (any case). `fullName` from legal names. `managerId` from `manager.wid` (null-safe). Coerce `fte`. Filter Active any case. manager.wid default null. FTE as Number."><div class="kicker">Lab 61</div><h1>The job</h1><ul><li>This is Lab 61. Workday workers to HR API (active only). Keep Active workers (any case). <code>fullName</code> from legal names. <code>managerId</code> from <code>manager.wid</code> (null-safe).</li><li>Coerce <code>fte</code>.</li><li>Filter Active any case. manager.wid default null. FTE as Number.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 61</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 61</div><h1>Input</h1><pre><code>{
+  <span class="str">&quot;Report_Entry&quot;</span>: [
+    { <span class="str">&quot;wid&quot;</span>: <span class="str">&quot;W1&quot;</span>, <span class="str">&quot;Legal_First&quot;</span>: <span class="str">&quot;Ira&quot;</span>, <span class="str">&quot;Legal_Last&quot;</span>: <span class="str">&quot;Shah&quot;</span>, <span class="str">&quot;Status&quot;</span>: <span class="str">&quot;Active&quot;</span>, <span class="str">&quot;FTE&quot;</span>: <span class="str">&quot;<span class="num">1.0</span>&quot;</span>, <span class="str">&quot;manager&quot;</span>: { <span class="str">&quot;wid&quot;</span>: <span class="str">&quot;W9&quot;</span> } },
+    { <span class="str">&quot;wid&quot;</span>: <span class="str">&quot;W2&quot;</span>, <span class="str">&quot;Legal_First&quot;</span>: <span class="str">&quot;Jon&quot;</span>, <span class="str">&quot;Legal_Last&quot;</span>: <span class="str">&quot;Lee&quot;</span>, <span class="str">&quot;Status&quot;</span>: <span class="str">&quot;Terminated&quot;</span>, <span class="str">&quot;FTE&quot;</span>: <span class="str">&quot;<span class="num">1</span>&quot;</span>, <span class="str">&quot;manager&quot;</span>: {} },
+    { <span class="str">&quot;wid&quot;</span>: <span class="str">&quot;W3&quot;</span>, <span class="str">&quot;Legal_First&quot;</span>: <span class="str">&quot;Mia&quot;</span>, <span class="str">&quot;Legal_Last&quot;</span>: <span class="str">&quot;Das&quot;</span>, <span class="str">&quot;Status&quot;</span>: <span class="str">&quot;active&quot;</span>, <span class="str">&quot;FTE&quot;</span>: <span class="num">0.5</span> }
+  ]
+}
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 61</h1><ul><li>Pause the video</li><li>Open student/labs/05-mapping/61-workday-workers-to-hr-api-active-only/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 61</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 61</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+payload.Report_Entry
+  filter ((w) -&gt; lower(w.Status) == <span class="str">&quot;active&quot;</span>)
+  map {
+    id: $.wid,
+    fullName: ($.Legal_First <span class="kw">default</span> <span class="str">&quot;&quot;</span>) ++ <span class="str">&quot; &quot;</span> ++ ($.Legal_Last <span class="kw">default</span> <span class="str">&quot;&quot;</span>),
+    fte: $.FTE <span class="kw">as</span> Number,
+    managerId: $.manager.wid <span class="kw">default</span> <span class="kw">null</span>
+  }
+</code></pre></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 61</div><h1>Expected</h1><pre><code>[
+  { &quot;id&quot;: &quot;W1&quot;, &quot;fullName&quot;: &quot;Ira Shah&quot;, &quot;fte&quot;: 1.0, &quot;managerId&quot;: &quot;W9&quot; },
+  { &quot;id&quot;: &quot;W3&quot;, &quot;fullName&quot;: &quot;Mia Das&quot;, &quot;fte&quot;: 0.5, &quot;managerId&quot;: null }
+]
+</code></pre></section>
+<section class="slide" data-notes="Filter Active any case. manager.wid default null. FTE as Number. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 62 in this file."><div class="kicker">Lab 61</div><h1>Interview phrase</h1><ul><li>Filter Active any case. manager.wid default null. FTE as Number.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 62 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 61</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 9</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

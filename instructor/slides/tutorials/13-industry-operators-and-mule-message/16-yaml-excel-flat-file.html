@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>YAML, Excel, flat file</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Industry operators, message, and MIME</div><h1>YAML, Excel, flat file</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Industry operators, message, and MIME</div><h1>In one sentence</h1><ul><li>DataWeave follows MIME. YAML may work. Excel often needs the Excel module. EDI uses flat-file schemas, not splitBy.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Industry operators, message, and MIME</div><h1>Like this in real life</h1><ul><li>Do not open an .xlsx by splitting commas. That is the wrong tool.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Industry operators, message, and MIME</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Industry operators, message, and MIME</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+<span class="cm">// YAML: set reader MIME application/yaml, then map like JSON.</span>
+<span class="cm">// Excel / EDI: connector or flat-file schema first, then this script.</span>
+payload.rows map {
+  sku: $.sku
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Industry operators, message, and MIME</div><h1>Remember</h1><ul><li>Playground may lack some MIME types. Say that in interviews.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Industry operators, message, and MIME</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

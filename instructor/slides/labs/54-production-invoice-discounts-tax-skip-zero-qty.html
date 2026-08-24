@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Production invoice: discounts, tax, skip zero qty</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 54</div><h1>Production invoice: discounts, tax, skip zero qty</h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">hard</span><span class="chip">8–12 min</span><span class="chip">LAB-54-production-invoice-discounts-tax-skip-zero-qty.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 54. Production invoice: discounts, tax, skip zero qty. Drop lines with `qty` ≤ 0. `lineTotal = qty * price * (1 - discountPct)` rounded to 2 decimals. `subtotal` = sum of line totals. `tax` = subtotal × `taxRate`. `grandTotal` = subtotal + tax. Header `var` / `fun money`. Filter qty greater than zero. Discount then tax. fun money on every currency field."><div class="kicker">Lab 54</div><h1>The job</h1><ul><li>This is Lab 54. Production invoice: discounts, tax, skip zero qty.</li><li>Drop lines with <code>qty</code> ≤ 0. <code>lineTotal = qty * price * (1 - discountPct)</code> rounded to 2 decimals. <code>subtotal</code> = sum of line totals. <code>tax</code> = subtotal × <code>taxRate</code>. <code>grandTotal</code> = subtotal + tax.</li><li>Header <code>var</code> / <code>fun money</code>.</li><li>Filter qty greater than zero. Discount then tax. fun money on every currency field.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 54</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 54</div><h1>Input</h1><pre><code>{
+  <span class="str">&quot;taxRate&quot;</span>: <span class="num">0.18</span>,
+  <span class="str">&quot;currency&quot;</span>: <span class="str">&quot;INR&quot;</span>,
+  <span class="str">&quot;lines&quot;</span>: [
+    { <span class="str">&quot;sku&quot;</span>: <span class="str">&quot;SKU-A&quot;</span>, <span class="str">&quot;qty&quot;</span>: <span class="num">2</span>, <span class="str">&quot;price&quot;</span>: <span class="num">50</span>, <span class="str">&quot;discountPct&quot;</span>: <span class="num">0.10</span> },
+    { <span class="str">&quot;sku&quot;</span>: <span class="str">&quot;SKU-B&quot;</span>, <span class="str">&quot;qty&quot;</span>: <span class="num">1</span>, <span class="str">&quot;price&quot;</span>: <span class="num">100</span>, <span class="str">&quot;discountPct&quot;</span>: <span class="num">0</span> },
+    { <span class="str">&quot;sku&quot;</span>: <span class="str">&quot;SKU-Z&quot;</span>, <span class="str">&quot;qty&quot;</span>: <span class="num">0</span>, <span class="str">&quot;price&quot;</span>: <span class="num">999</span>, <span class="str">&quot;discountPct&quot;</span>: <span class="num">0</span> }
+  ]
+}
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 54</h1><ul><li>Pause the video</li><li>Open student/labs/03-advanced/54-production-invoice-discounts-tax-skip-zero-qty/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 54</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li><li>SKU-Z omitted; SKU-A <code>lineTotal</code> 90.00; SKU-B 100.00; <code>subtotal</code> 190.00; <code>tax</code> 34.20; <code>grandTotal</code> 224.20.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 54</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+<span class="kw">fun</span> money(n: Number) = n <span class="kw">as</span> String {format: <span class="str">&quot;<span class="num">0.00</span>&quot;</span>} <span class="kw">as</span> Number
+<span class="kw">var</span> lines = payload.lines
+  filter ((l) -&gt; (l.qty <span class="kw">as</span> Number) &gt; <span class="num">0</span>)
+  map (l) -&gt; <span class="kw">do</span> {
+    <span class="kw">var</span> qty = l.qty <span class="kw">as</span> Number
+    <span class="kw">var</span> price = l.price <span class="kw">as</span> Number
+    <span class="kw">var</span> disc = (l.discountPct <span class="kw">default</span> <span class="num">0</span>) <span class="kw">as</span> Number
+    ---
+    l ++ { lineTotal: money(qty * price * (<span class="num">1</span> - disc)) }
+  }
+<span class="kw">var</span> subtotal = money(sum(lines.lineTotal))
+<span class="kw">var</span> tax = money(subtotal * payload.taxRate)
+---
+{
+  currency: payload.currency,
+  lines: lines,
+  subtotal: subtotal,
+  tax: tax,
+  grandTotal: money(subtotal + tax)
+}
+</code></pre></section>
+<section class="slide" data-notes="Filter qty greater than zero. Discount then tax. fun money on every currency field. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 55 in this file."><div class="kicker">Lab 54</div><h1>Interview phrase</h1><ul><li>Filter qty greater than zero. Discount then tax. fun money on every currency field.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 55 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 54</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 8</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

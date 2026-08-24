@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>JSON to XML and back</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">JSON, XML, and CSV mappings</div><h1>JSON to XML and back</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">JSON, XML, and CSV mappings</div><h1>In one sentence</h1><ul><li>Change the output MIME type and shape a tree. XML must have exactly one root.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">JSON, XML, and CSV mappings</div><h1>Like this in real life</h1><ul><li>JSON is Lego bricks in a bag. XML is the same bricks snapped under one lid. No lid, or two lids, and XML is invalid.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">JSON, XML, and CSV mappings</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">JSON, XML, and CSV mappings</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/xml
+---
+orders: {
+  order: payload map {
+    id: $.id,
+    amount: $.amount
+  }
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">JSON, XML, and CSV mappings</div><h1>Remember</h1><ul><li>JSON → XML = output application/xml plus a root key. XML → JSON = output application/json and pick elements.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>JSON, XML, and CSV mappings</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

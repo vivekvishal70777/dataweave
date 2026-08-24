@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Variables, functions, types, and as</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L08</div><h1>Variables, functions, types, and as</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">7–10 min</span><span class="chip">S02-L08-var-fun-types.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="One video for vars, functions, types, and as. Keep each beat under two minutes."><div class="kicker">L08</div><h1>Open</h1><ul><li>One video for vars, functions, types, and as. Keep each beat under two minutes.</li></ul></section>
+<section class="slide" data-notes="Use `var` in the header (script-scoped) or inside a `do` block. Variables are immutable. Comments: `//` and `/* */` in header or body. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L08</div><h1>Q4. How do you declare a variable in DataWeave?</h1><ul><li>Use <code>var</code> in the header (script-scoped) or inside a <code>do</code> block.</li><li>Variables are immutable. Comments: <code>//</code> and <code>/* */</code> in header or body.</li></ul></section>
+<section class="slide" data-notes="Use `var` in the header (script-scoped) or inside a `do` block. Variables are immutable. Comments: `//` and `/* */` in header or body. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L08</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+<span class="kw">var</span> taxRate = <span class="num">0.18</span>
+---
+{
+  total: payload.amount * (<span class="num">1</span> + taxRate)
+}
+</code></pre></section>
+<section class="slide" data-notes="Functions can be overloaded by argument types and arity. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L08</div><h1>Q5. How do you define a custom function?</h1><ul><li>Functions can be overloaded by argument types and arity.</li></ul></section>
+<section class="slide" data-notes="Functions can be overloaded by argument types and arity. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L08</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+<span class="kw">fun</span> fullName(first: String, last: String) = first ++ <span class="str">&quot; &quot;</span> ++ last
+---
+fullName(payload.firstName, payload.lastName)
+</code></pre></section>
+<section class="slide" data-notes="`String`, `Boolean`, `Number`, `Date`, `DateTime`, `LocalDateTime`, `Time`, `Period`, `Regex`, `Array`, `Object`, `Null`, `Binary`, `Type`, and `Any`. Type annotations are optional but useful in interviews and modules: Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L08</div><h1>Q6. What are the main DataWeave data types?</h1><ul><li><code>String</code>, <code>Boolean</code>, <code>Number</code>, <code>Date</code>, <code>DateTime</code>, <code>LocalDateTime</code>, <code>Time</code>, <code>Period</code>, <code>Regex</code>, <code>Array</code>, <code>Object</code>, <code>Null</code>, <code>Binary</code>, <code>Type</code>, and <code>Any</code>.</li><li>Type annotations are optional but useful in interviews and modules:</li></ul></section>
+<section class="slide" data-notes="`String`, `Boolean`, `Number`, `Date`, `DateTime`, `LocalDateTime`, `Time`, `Period`, `Regex`, `Array`, `Object`, `Null`, `Binary`, `Type`, and `Any`. Type annotations are optional but useful in interviews and modules: Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L08</div><h1>Type this</h1><pre><code><span class="kw">fun</span> add(a: Number, b: Number): Number = a + b
+</code></pre></section>
+<section class="slide" data-notes="Use `as` for coercion: If coercion fails, the script errors unless you use `try` / `default`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L08</div><h1>Q7. How do you convert types (<code>as</code>)?</h1><ul><li>Use <code>as</code> for coercion:</li><li>If coercion fails, the script errors unless you use <code>try</code> / <code>default</code>.</li></ul></section>
+<section class="slide" data-notes="Use `as` for coercion: If coercion fails, the script errors unless you use `try` / `default`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L08</div><h1>Type this</h1><pre><code>payload.age <span class="kw">as</span> Number
+payload.createdAt <span class="kw">as</span> Date {format: <span class="str">&quot;yyyy-MM-dd&quot;</span>}
+payload <span class="kw">as</span> String {encoding: <span class="str">&quot;UTF-<span class="num">8</span>&quot;</span>}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L08</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L08</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 11</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

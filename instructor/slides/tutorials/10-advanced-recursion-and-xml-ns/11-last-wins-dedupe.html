@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Last-wins dedupe</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Advanced: recursion, namespaces, diffs</div><h1>Last-wins dedupe</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Advanced: recursion, namespaces, diffs</div><h1>In one sentence</h1><ul><li>distinctBy keeps the first. For last-wins, reduce into an object keyed by id, then valuesOf.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Advanced: recursion, namespaces, diffs</div><h1>Like this in real life</h1><ul><li>Two profile updates with the same email. You want the latest row, not the first.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Advanced: recursion, namespaces, diffs</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Advanced: recursion, namespaces, diffs</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+payload
+  reduce ((item, acc = {}) -&gt; acc ++ { (item.id): item })
+  then valuesOf($)
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Advanced: recursion, namespaces, diffs</div><h1>Remember</h1><ul><li>This is the CDC upsert story.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Advanced: recursion, namespaces, diffs</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

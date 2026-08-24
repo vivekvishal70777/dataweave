@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Merge, update, and do</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L32</div><h1>Merge, update, and do</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">7–10 min</span><span class="chip">S07-L32-merge-update-do.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="Merge plus-plus, update on Mule 4.3, and do blocks for local vars."><div class="kicker">L32</div><h1>Open</h1><ul><li>Merge plus-plus, update on Mule 4.3, and do blocks for local vars.</li></ul></section>
+<section class="slide" data-notes="Use the `update` operator (DataWeave 2.3+ / Mule 4.3+): This is preferred in interviews over copying every field by hand. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L32</div><h1>Q26. How do you update a nested field without rebuilding the whole object?</h1><ul><li>Use the <code>update</code> operator (DataWeave 2.3+ / Mule 4.3+):</li><li>This is preferred in interviews over copying every field by hand.</li></ul></section>
+<section class="slide" data-notes="Use the `update` operator (DataWeave 2.3+ / Mule 4.3+): This is preferred in interviews over copying every field by hand. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L32</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+payload update {
+  <span class="kw">case</span> .customer.address.city -&gt; upper($)
+  <span class="kw">case</span> .items[<span class="num">0</span>].qty -&gt; $ + <span class="num">1</span>
+}
+</code></pre></section>
+<section class="slide" data-notes="`do` creates a local scope for `var` / `fun` so the header stays clean. Use it for intermediate values inside `map`/`filter`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L32</div><h1>Q27. What is a <code>do</code> block and why is it useful?</h1><ul><li><code>do</code> creates a local scope for <code>var</code> / <code>fun</code> so the header stays clean.</li><li>Use it for intermediate values inside <code>map</code>/<code>filter</code>.</li></ul></section>
+<section class="slide" data-notes="`do` creates a local scope for `var` / `fun` so the header stays clean. Use it for intermediate values inside `map`/`filter`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L32</div><h1>Type this</h1><pre><code>payload.orders map (order) -&gt; <span class="kw">do</span> {
+  <span class="kw">var</span> tax = order.amount * <span class="num">0.18</span>
+  ---
+  { id: order.id, total: order.amount + tax }
+}
+</code></pre></section>
+<section class="slide" data-notes="`filterObject` keeps entries where the predicate is true. `dw::util::Values::mask` is another option for hiding fields. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L32</div><h1>Q36. How do you filter object keys dynamically?</h1><ul><li><code>filterObject</code> keeps entries where the predicate is true. <code>dw::util::Values::mask</code> is another option for hiding fields.</li></ul></section>
+<section class="slide" data-notes="`filterObject` keeps entries where the predicate is true. `dw::util::Values::mask` is another option for hiding fields. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L32</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> * from dw::core::Objects
+<span class="kw">output</span> application/json
+---
+payload filterObject ((value, key) -&gt; !([<span class="str">&quot;password&quot;</span>, <span class="str">&quot;ssn&quot;</span>] contains (key <span class="kw">as</span> String)))
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L32</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L32</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 9</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Split, join, and case</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Strings, numbers, and conditionals</div><h1>Split, join, and case</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Strings, numbers, and conditionals</div><h1>In one sentence</h1><ul><li>splitBy cuts a string into an array. joinBy glues an array into a string. upper / lower / capitalize change case.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Strings, numbers, and conditionals</div><h1>Like this in real life</h1><ul><li>CSV line &quot;Asha,IT,Pune&quot; splitBy comma is three boxes. joinBy comma packs them again.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Strings, numbers, and conditionals</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Strings, numbers, and conditionals</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> * from dw::core::Strings
+<span class="kw">output</span> application/json
+---
+{
+  parts: payload.csvLine splitBy <span class="str">&quot;,&quot;</span>,
+  csv: [<span class="str">&quot;a&quot;</span>, <span class="str">&quot;b&quot;</span>] joinBy <span class="str">&quot;,&quot;</span>,
+  upper: upper(payload.name),
+  lower: lower(payload.name),
+  cap: capitalize(payload.name)
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Strings, numbers, and conditionals</div><h1>Remember</h1><ul><li>Import dw::core::Strings for trim, replace, substringAfter.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Strings, numbers, and conditionals</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

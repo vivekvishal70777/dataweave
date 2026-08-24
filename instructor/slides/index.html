@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Recording slides — DataWeave 2.0</title>
+  <link rel="stylesheet" href="assets/deck.css"/>
+  <style>
+    body { overflow: auto; padding: 4vh 6vw 8vh; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { max-width: none; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 3rem; font-size: 16px; }
+    th, td { text-align: left; padding: 0.55rem 0.4rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; }
+    .kind { color: var(--warn); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+  <div class="kicker">Instructor</div>
+  <h1>Recording slides</h1>
+  <p class="sub">Open a deck full screen. Arrow keys or click to advance. Press F for fullscreen, N for speaker notes. Rebuild with <code>python3 scripts/generate_slides.py</code>.</p>
+
+<h2>Welcome and setup</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/01-welcome-and-setup.html">Welcome and setup</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L01.html">L01 — Welcome and what you will build</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L02.html">L02 — How this course works (concept, pause, lab, quiz)</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L03.html">L03 — Getting started: Playground vs Transform Message</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L04.html">L04 — Tour of the student lab folder</a></td></tr>
+</table>
+<h2>DataWeave 2.0 fundamentals</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/02-dataweave-fundamentals.html">DataWeave 2.0 fundamentals</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L05.html">L05 — What is DataWeave in Mule 4?</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L06.html">L06 — DataWeave 1.0 vs 2.0</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L07.html">L07 — Script structure: header, output, body</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L08.html">L08 — Variables, functions, types, and as</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L09.html">L09 — Section bridge: fundamentals labs</a></td></tr>
+</table>
+<h2>Arrays: map, filter, and indexes</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/03-arrays-and-core-operators.html">Arrays: map, filter, and indexes</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L11.html">L11 — map, filter, dollar and dollar-dollar</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L12.html">L12 — sizeOf, isEmpty, flatten</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L13.html">L13 — Section bridge: array labs</a></td></tr>
+</table>
+<h2>Objects, nulls, and selectors</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/04-objects-nulls-and-selectors.html">Objects, nulls, and selectors</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L15.html">L15 — Selectors: dot, brackets, star, descendant</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L16.html">L16 — default, safe selector, skipNullOn</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L17.html">L17 — mapObject and pluck</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L18.html">L18 — Section bridge: object labs</a></td></tr>
+</table>
+<h2>Strings, numbers, and conditionals</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/05-strings-numbers-conditionals.html">Strings, numbers, and conditionals</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L20.html">L20 — plus-plus vs plus; split, join, case</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L21.html">L21 — if/else expressions (no Java ternary)</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L22.html">L22 — Section bridge: string labs</a></td></tr>
+</table>
+<h2>JSON, XML, and CSV mappings</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/06-json-xml-csv.html">JSON, XML, and CSV mappings</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L24.html">L24 — JSON to XML (single root)</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L25.html">L25 — XML attributes and repeating elements</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L26.html">L26 — CSV to JSON and JSON to CSV</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L27.html">L27 — Section bridge: format labs</a></td></tr>
+</table>
+<h2>Group, reduce, merge, and update</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/07-intermediate-transforms.html">Group, reduce, merge, and update</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L29.html">L29 — groupBy, orderBy, distinctBy</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L30.html">L30 — reduce and flatten</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L31.html">L31 — flatMap line items (concept)</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L32.html">L32 — Merge, update, and do</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L33.html">L33 — Homework recap pointer (Lab 20)</a></td></tr>
+</table>
+<h2>Dates, pattern matching, and try</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/08-dates-match-and-errors.html">Dates, pattern matching, and try</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L35.html">L35 — Dates, formats, and periods</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L36.html">L36 — match and try / orElse</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L37.html">L37 — Section bridge: date labs</a></td></tr>
+</table>
+<h2>Joins, modules, and Mule context</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/09-joins-modules-mule-context.html">Joins, modules, and Mule context</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L39.html">L39 — vars, attributes, and properties</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L40.html">L40 — Modules and Transform Message vs hash-bracket</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L41.html">L41 — Section bridge: join labs 31–32</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L42.html">L42 — Why not lookup or Java inside every map</a></td></tr>
+</table>
+<h2>Advanced: recursion, namespaces, diffs</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/10-advanced-recursion-and-xml-ns.html">Advanced: recursion, namespaces, diffs</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L44.html">L44 — Recursion and match on types</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L45.html">L45 — Deep PII mask (concept)</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L46.html">L46 — XML namespaces read and write</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L47.html">L47 — Dynamic keys, diffs, last-wins, pagination</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L48.html">L48 — Section bridge: capstone labs 53–54</a></td></tr>
+</table>
+<h2>Streaming, crypto, modules, and pitfalls</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/11-performance-and-production.html">Streaming, crypto, modules, and pitfalls</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L50.html">L50 — Streaming: what breaks it</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L51.html">L51 — Crypto, binary, reader/writer properties</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L52.html">L52 — Reusable modules and performance pitfalls</a></td></tr>
+</table>
+<h2>Industry operators, message, and MIME</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/13-industry-operators-and-mule-message.html">Industry operators, message, and MIME</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L70.html">L70 — Arrays helpers: maxBy, firstWith, zip, ranges</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L71.html">L71 — Types, money, timezones, Dates module</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L72.html">L72 — TM targets, Java MIME, readUrl, log, HTTP attributes</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L73.html">L73 — XML ns extras, Excel/YAML, DW vs Batch</a></td></tr>
+</table>
+<h2>DataWeave Mapping</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/14-dataweave-mapping.html">DataWeave Mapping</a></td></tr>
+<tr><td class="kind">Cluster video</td><td><a href="lectures/S14-A-crm-commerce-payments.html">Mapping cluster A — CRM, commerce, payments</a></td></tr>
+<tr><td class="kind">Cluster video</td><td><a href="lectures/S14-B-itsm-cdc-fx.html">Mapping cluster B — ITSM, CDC, FX, EDI</a></td></tr>
+<tr><td class="kind">Cluster video</td><td><a href="lectures/S14-C-iam-gst-claims.html">Mapping cluster C — IAM, stock, GST, claims</a></td></tr>
+<tr><td class="kind">Cluster video</td><td><a href="lectures/S14-D-telco-recon-events.html">Mapping cluster D — telco, recon, events</a></td></tr>
+</table>
+<h2>Interview bootcamp</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Section opener</td><td><a href="sections/12-interview-bootcamp.html">Interview bootcamp</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L54a.html">L54a — How to run the 80-question bank</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L55.html">L55 — Whiteboard mock interview (set of 6)</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L56.html">L56 — Nested XML to canonical JSON (Q60)</a></td></tr>
+<tr><td class="kind">Concept video</td><td><a href="lectures/L58.html">L58 — Next steps and solutions pack</a></td></tr>
+</table>
+<h2>Labs 01–88</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/01-map-salesforce-contact-to-a-shorter-api-shape.html">Lab 01 — Map Salesforce Contact to a shorter API shape</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/02-filter-settled-commerce-orders.html">Lab 02 — Filter settled commerce orders</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/03-sum-invoice-line-amounts-string-money.html">Lab 03 — Sum invoice line amounts (string money)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/04-uppercase-string-fields-on-an-address-object.html">Lab 04 — Uppercase string fields on an address object</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/05-default-missing-email-on-an-account.html">Lab 05 — Default missing email on an Account</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/06-split-a-csv-line-into-fields.html">Lab 06 — Split a CSV line into fields</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/07-join-skus-into-a-comma-separated-string.html">Lab 07 — Join SKUs into a comma-separated string</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/08-add-gst-to-a-unit-price-2-decimal-money.html">Lab 08 — Add GST to a unit price (2 decimal money)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/09-extract-unique-billing-cities-sorted.html">Lab 09 — Extract unique billing cities, sorted</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/10-count-line-items-in-a-composite-payload.html">Lab 10 — Count line items in a composite payload</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/11-convert-json-array-to-xml-with-a-single-root.html">Lab 11 — Convert JSON array to XML with a single root</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/12-read-xml-attributes-vs-element-text.html">Lab 12 — Read XML attributes vs element text</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/13-classify-an-http-integration-status.html">Lab 13 — Classify an HTTP/integration status</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/14-index-each-batch-row-1-based.html">Lab 14 — Index each batch row (1-based)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/15-flatten-one-level-of-nested-arrays.html">Lab 15 — Flatten one level of nested arrays</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/16-object-keys-to-array-of-key-value.html">Lab 16 — Object keys to array of `{ key, value }`</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/17-boolean-flag-from-dirty-string.html">Lab 17 — Boolean flag from dirty string</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/18-sku-prefix-before-hyphen.html">Lab 18 — SKU prefix before hyphen</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/19-group-orders-by-customerid.html">Lab 19 — Group orders by customerId</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/20-total-amount-per-customer-groupby-sum.html">Lab 20 — Total amount per customer (groupBy + sum)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/21-sort-products-by-unitprice-descending.html">Lab 21 — Sort products by unitPrice descending</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/22-pivot-array-to-object-keyed-by-id.html">Lab 22 — Pivot array to object keyed by Id</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/23-expand-order-lines-flatmap.html">Lab 23 — Expand order lines (flatMap)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/24-strip-password-ssn-and-accesstoken-keys.html">Lab 24 — Strip password, ssn, and accessToken keys</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/25-merge-config-overlay-right-wins.html">Lab 25 — Merge config overlay (right wins)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/26-update-nested-city-to-uppercase-mule-4-3.html">Lab 26 — Update nested city to uppercase (Mule 4.3+)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/27-parse-mixed-date-formats-iso-or-dd-mm-yyyy.html">Lab 27 — Parse mixed date formats (ISO or dd/MM/yyyy)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/28-format-an-event-timestamp-as-dd-mmm-yyyy.html">Lab 28 — Format an event timestamp as `dd-MMM-yyyy`</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/29-csv-to-json-with-number-coercion.html">Lab 29 — CSV to JSON with number coercion</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/30-json-to-csv-for-finance-export.html">Lab 30 — JSON to CSV for finance export</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/31-left-join-orders-to-customers.html">Lab 31 — Left join orders to customers</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/32-join-without-leftjoin-groupby-lookup.html">Lab 32 — Join without leftJoin (groupBy lookup)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/33-pattern-match-http-status-class.html">Lab 33 — Pattern match HTTP status class</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/34-window-paginate-a-bulk-array.html">Lab 34 — Window / paginate a bulk array</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/35-deduplicate-by-email-keep-last-record-cdc.html">Lab 35 — Deduplicate by email, keep last record (CDC)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/36-dynamic-object-keys-from-header-pairs.html">Lab 36 — Dynamic object keys from header pairs</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/37-recursively-flatten-nested-arrays.html">Lab 37 — Recursively flatten nested arrays</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/38-collect-all-id-fields-at-any-depth.html">Lab 38 — Collect all `id` fields at any depth</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/39-deep-mask-pii-keys-ssn-password-email-accesstoken.html">Lab 39 — Deep mask PII keys (`ssn`, `password`, `email`, `accessToken`)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/40-recursively-sum-all-numbers-in-a-mixed-tree.html">Lab 40 — Recursively sum all numbers in a mixed tree</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/41-soap-namespaced-purchase-order-to-canonical-json.html">Lab 41 — SOAP namespaced purchase order to canonical JSON</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/42-write-namespaced-xml-from-canonical-json.html">Lab 42 — Write namespaced XML from canonical JSON</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/43-cdc-flat-diff-before-vs-after.html">Lab 43 — CDC flat diff (before vs after)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/44-recursive-nested-diff.html">Lab 44 — Recursive nested diff</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/45-chunk-array-into-batches-of-n-salesforce-composite-bulk.html">Lab 45 — Chunk array into batches of N (Salesforce Composite / bulk)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/46-running-totals-ledger.html">Lab 46 — Running totals (ledger)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/47-error-code-frequency-from-log-lines.html">Lab 47 — Error-code frequency from log lines</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/48-validate-and-partition-good-vs-bad-rows.html">Lab 48 — Validate and partition good vs bad rows</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/49-outer-join-style-merge-of-two-lists-by-id.html">Lab 49 — Outer-join style merge of two lists by `id`</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/50-tree-map-apply-f-to-every-leaf-string.html">Lab 50 — Tree map: apply `f` to every leaf string</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/51-cartesian-product-of-sku-options.html">Lab 51 — Cartesian product of SKU options</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/52-safe-unit-price-with-try.html">Lab 52 — Safe unit price with `try`</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/53-build-a-nested-org-chart-from-a-flat-hr-list.html">Lab 53 — Build a nested org chart from a flat HR list</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/54-production-invoice-discounts-tax-skip-zero-qty.html">Lab 54 — Production invoice: discounts, tax, skip zero qty</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/55-maxby-and-firstwith-on-a-work-queue.html">Lab 55 — maxBy and firstWith on a work queue</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/56-shift-datetime-to-ist-for-display.html">Lab 56 — Shift DateTime to IST for display</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/57-zip-headers-with-values-into-an-object.html">Lab 57 — Zip headers with values into an object</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/58-simulate-transform-message-payload-vars.html">Lab 58 — Simulate Transform Message payload + vars</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/59-salesforce-account-composite-to-nested-customer-api.html">Lab 59 — Salesforce Account composite to nested customer API</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/60-sap-style-order-json-to-canonical-invoice-with-gst.html">Lab 60 — SAP-style order JSON to canonical invoice with GST</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/61-workday-workers-to-hr-api-active-only.html">Lab 61 — Workday workers to HR API (active only)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/62-shopify-order-to-erp-sales-order.html">Lab 62 — Shopify order to ERP sales order</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/63-stripe-charges-enriched-with-customer.html">Lab 63 — Stripe charges enriched with customer</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/64-servicenow-incident-plus-cmdb-lookup.html">Lab 64 — ServiceNow incident plus CMDB lookup</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/65-debezium-cdc-envelope-to-flat-upsert-rows.html">Lab 65 — Debezium CDC envelope to flat upsert rows</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/66-product-variants-color-times-size-skus.html">Lab 66 — Product variants color times size SKUs</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/67-multi-currency-lines-to-usd-using-fx-table.html">Lab 67 — Multi-currency lines to USD using FX table</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/68-normalize-in-vs-us-postal-addresses.html">Lab 68 — Normalize IN vs US postal addresses</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/69-edi-like-po-json-to-procurement-canonical.html">Lab 69 — EDI-like PO JSON to procurement canonical</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/70-bank-statement-lines-to-signed-running-ledger.html">Lab 70 — Bank statement lines to signed running ledger</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/71-idp-userinfo-plus-groups-to-application-roles.html">Lab 71 — IdP userinfo plus groups to application roles</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/72-allocate-warehouse-stock-to-order-lines-fifo.html">Lab 72 — Allocate warehouse stock to order lines FIFO</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/73-india-gst-split-cgst-sgst-vs-igst-by-state.html">Lab 73 — India GST split CGST SGST vs IGST by state</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/74-loyalty-points-from-paid-orders.html">Lab 74 — Loyalty points from paid orders</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/75-appointment-slots-to-ist-display-with-duration.html">Lab 75 — Appointment slots to IST display with duration</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/76-bom-explode-one-level-to-pick-list.html">Lab 76 — BOM explode one level to pick list</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/77-rma-restock-vs-refund-split.html">Lab 77 — RMA restock vs refund split</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/78-catalog-pick-locale-with-english-fallback.html">Lab 78 — Catalog pick locale with English fallback</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/79-partner-catalog-xml-to-json-products.html">Lab 79 — Partner catalog XML to JSON products</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/80-health-claims-flatten-icd-diagnosis-codes.html">Lab 80 — Health claims flatten ICD diagnosis codes</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/81-telecom-cdr-aggregate-minutes-by-msisdn.html">Lab 81 — Telecom CDR aggregate minutes by MSISDN</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/82-listings-filter-amenities-and-map-geo.html">Lab 82 — Listings filter amenities and map geo</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/83-scim-style-patch-merge-on-user.html">Lab 83 — SCIM-style patch merge on user</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/84-payment-recon-bank-utr-vs-gateway-charges.html">Lab 84 — Payment recon: bank UTR vs gateway charges</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/85-manufacturing-routing-duration-by-work-order.html">Lab 85 — Manufacturing routing duration by work order</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/86-event-sourced-account-balance.html">Lab 86 — Event-sourced account balance</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/87-multi-tenant-config-overlay-deep-ish-merge.html">Lab 87 — Multi-tenant config overlay (deep-ish merge)</a></td></tr>
+<tr><td class="kind">Lab video</td><td><a href="labs/88-canonical-product-gtin-and-uom-conversion.html">Lab 88 — Canonical product GTIN and UoM conversion</a></td></tr>
+</table>
+<h2>Tutorials — Welcome and setup</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/01-welcome-and-setup/01-01-how-this-course-works.html">How this course works</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/01-welcome-and-setup/02-02-playground-vs-transform-message.html">Playground vs Transform Message</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/01-welcome-and-setup/03-03-folders-you-will-use.html">Folders you will use</a></td></tr>
+</table>
+<h2>Tutorials — DataWeave 2.0 fundamentals</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/02-dataweave-fundamentals/01-what-is-dataweave.html">What is DataWeave?</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/02-dataweave-fundamentals/02-dataweave-1-0-vs-2-0.html">DataWeave 1.0 vs 2.0</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/02-dataweave-fundamentals/03-the-three-parts-of-a-script.html">The three parts of a script</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/02-dataweave-fundamentals/04-variables-var.html">Variables (var)</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/02-dataweave-fundamentals/05-functions-fun.html">Functions (fun)</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/02-dataweave-fundamentals/06-data-types.html">Data types</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/02-dataweave-fundamentals/07-changing-types-with-as.html">Changing types with as</a></td></tr>
+</table>
+<h2>Tutorials — Arrays: map, filter, and indexes</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/03-arrays-and-core-operators/01-map-and-filter.html">map and filter</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/03-arrays-and-core-operators/02-sizeof-and-isempty.html">sizeOf and isEmpty</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/03-arrays-and-core-operators/03-dollar-signs-in-lambdas.html">Dollar signs in lambdas</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/03-arrays-and-core-operators/04-flatten.html">flatten</a></td></tr>
+</table>
+<h2>Tutorials — Objects, nulls, and selectors</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/04-objects-nulls-and-selectors/01-pluck.html">pluck</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/04-objects-nulls-and-selectors/02-missing-fields-and-null.html">Missing fields and null</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/04-objects-nulls-and-selectors/03-selectors-dot-brackets-star-dots.html">Selectors (dot, brackets, star, dots)</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/04-objects-nulls-and-selectors/04-skipnullon-and-writer-properties.html">skipNullOn and writer properties</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/04-objects-nulls-and-selectors/05-mapobject.html">mapObject</a></td></tr>
+</table>
+<h2>Tutorials — Strings, numbers, and conditionals</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/05-strings-numbers-conditionals/01-plus-plus-vs-plus.html">plus-plus vs plus</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/05-strings-numbers-conditionals/02-if-else.html">if / else</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/05-strings-numbers-conditionals/03-split-join-and-case.html">Split, join, and case</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/05-strings-numbers-conditionals/04-write-and-read.html">write and read</a></td></tr>
+</table>
+<h2>Tutorials — JSON, XML, and CSV mappings</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/06-json-xml-csv/01-json-to-xml-and-back.html">JSON to XML and back</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/06-json-xml-csv/02-csv-to-json.html">CSV to JSON</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/06-json-xml-csv/03-json-to-csv.html">JSON to CSV</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/06-json-xml-csv/04-xml-attributes-vs-elements.html">XML attributes vs elements</a></td></tr>
+</table>
+<h2>Tutorials — Group, reduce, merge, and update</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/07-intermediate-transforms/01-groupby-orderby-distinctby.html">groupBy, orderBy, distinctBy</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/07-intermediate-transforms/02-reduce.html">reduce</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/07-intermediate-transforms/03-flatten.html">flatten</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/07-intermediate-transforms/04-merging-objects.html">Merging objects</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/07-intermediate-transforms/05-update.html">update</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/07-intermediate-transforms/06-do-blocks.html">do blocks</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/07-intermediate-transforms/07-filterobject.html">filterObject</a></td></tr>
+</table>
+<h2>Tutorials — Dates, pattern matching, and try</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/08-dates-match-and-errors/01-match.html">match</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/08-dates-match-and-errors/02-try.html">try</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/08-dates-match-and-errors/03-dates-and-periods.html">Dates and periods</a></td></tr>
+</table>
+<h2>Tutorials — Joins, modules, and Mule context</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/09-joins-modules-mule-context/01-vars-attributes-properties.html">vars, attributes, properties</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/09-joins-modules-mule-context/02-transform-message-vs.html">Transform Message vs #[...]</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/09-joins-modules-mule-context/03-modules-and-import.html">Modules and import</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/09-joins-modules-mule-context/04-sql-style-joins.html">SQL-style joins</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/09-joins-modules-mule-context/05-calling-java.html">Calling Java</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/09-joins-modules-mule-context/06-startswith-contains-matches.html">startsWith, contains, matches</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/09-joins-modules-mule-context/07-lookup-vs-doing-it-in-dataweave.html">lookup vs doing it in DataWeave</a></td></tr>
+</table>
+<h2>Tutorials — Advanced: recursion, namespaces, diffs</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/01-streaming.html">Streaming</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/02-recursion.html">Recursion</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/03-flatmap.html">flatMap</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/04-xml-namespaces.html">XML namespaces</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/05-keysof-namesof-valuesof-entriesof.html">keysOf, namesOf, valuesOf, entriesOf</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/06-dynamic-keys.html">Dynamic keys</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/07-diff-two-payloads.html">Diff two payloads</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/08-function-overloading.html">Function overloading</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/09-mixed-date-formats.html">Mixed date formats</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/10-pagination-drop-take.html">Pagination (drop / take)</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/11-last-wins-dedupe.html">Last-wins dedupe</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/12-then-and-also.html">then and also</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/10-advanced-recursion-and-xml-ns/13-mask-pii-in-an-unknown-tree.html">Mask PII in an unknown tree</a></td></tr>
+</table>
+<h2>Tutorials — Streaming, crypto, modules, and pitfalls</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/11-performance-and-production/01-streaming.html">Streaming</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/11-performance-and-production/02-hash-vs-hmac.html">Hash vs HMAC</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/11-performance-and-production/03-reusable-dwl-modules.html">Reusable .dwl modules</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/11-performance-and-production/04-binary-base64-multipart.html">Binary, Base64, multipart</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/11-performance-and-production/05-reader-and-writer-properties.html">Reader and writer properties</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/11-performance-and-production/06-performance-pitfalls.html">Performance pitfalls</a></td></tr>
+</table>
+<h2>Tutorials — Industry operators, message, and MIME</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/01-maxby-firstwith-and-friends.html">maxBy, firstWith, and friends</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/02-ranges-and-slice.html">Ranges and slice</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/03-zip.html">zip</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/04-is-and-typeof.html">is and typeOf</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/05-number-helpers-and-money.html">Number helpers and money</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/06-timezones.html">Timezones</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/07-dates-module-helpers.html">Dates module helpers</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/08-replace-find-substring.html">replace, find, substring</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/09-several-outputs-in-transform-message.html">Several outputs in Transform Message</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/10-application-java.html">application/java</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/11-readurl.html">readUrl</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/12-log-and-application-dw.html">log and application/dw</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/13-try-vs-on-error.html">try vs On Error</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/14-http-attributes-in-detail.html">HTTP attributes in detail</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/15-default-xml-namespace-and-cdata.html">Default XML namespace and CDATA</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/16-yaml-excel-flat-file.html">YAML, Excel, flat file</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/17-values-mask-vs-recursive-mask.html">Values::mask vs recursive mask</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/18-and-or-not.html">and, or, not</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/19-sort-by-two-fields.html">Sort by two fields</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/13-industry-operators-and-mule-message/20-dataweave-vs-for-each-vs-batch-vs-java.html">DataWeave vs For Each vs Batch vs Java</a></td></tr>
+</table>
+<h2>Tutorials — DataWeave Mapping</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/14-dataweave-mapping/01-01-canonical-model.html">What a canonical mapping is</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/14-dataweave-mapping/02-02-join-tables-on-the-payload.html">Join tables that arrived together</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/14-dataweave-mapping/03-03-money-qty-tax.html">Money, zero qty, tax</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/14-dataweave-mapping/04-04-xml-and-cdc.html">XML namespaces and CDC envelopes</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/14-dataweave-mapping/05-05-how-to-drill-mapping-labs.html">How to drill the 30 mapping labs</a></td></tr>
+</table>
+<h2>Tutorials — Interview bootcamp</h2><table><tr><th>Type</th><th>Deck</th></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/12-interview-bootcamp/01-01-how-to-drill-the-question-bank.html">How to drill the question bank</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/12-interview-bootcamp/02-02-whiteboard-method.html">Whiteboard method</a></td></tr>
+<tr><td class="kind">Article walkthrough</td><td><a href="tutorials/12-interview-bootcamp/03-03-q60-in-easy-words.html">Q60 in easy words</a></td></tr>
+</table>
+</body></html>

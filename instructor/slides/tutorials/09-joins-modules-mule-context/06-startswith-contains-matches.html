@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>startsWith, contains, matches</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Joins, modules, and Mule context</div><h1>startsWith, contains, matches</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Joins, modules, and Mule context</div><h1>In one sentence</h1><ul><li>startsWith and contains are simple text tests. matches is a full-string regular expression.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Joins, modules, and Mule context</div><h1>Like this in real life</h1><ul><li>&quot;MuleSoft&quot; startsWith &quot;Mule&quot; is true. matches /[a-z]+/ is “the whole string is letters,” not “letters somewhere.”</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Joins, modules, and Mule context</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Joins, modules, and Mule context</div><h1>Tiny example</h1><pre><code><span class="str">&quot;MuleSoft&quot;</span> startsWith <span class="str">&quot;Mule&quot;</span>     <span class="cm">// <span class="kw">true</span></span>
+[<span class="str">&quot;a&quot;</span>, <span class="str">&quot;b&quot;</span>] contains <span class="str">&quot;a&quot;</span>          <span class="cm">// <span class="kw">true</span></span>
+<span class="str">&quot;abc123&quot;</span> matches /[a-z]+[<span class="num">0</span>-<span class="num">9</span>]+/  <span class="cm">// <span class="kw">true</span> (full <span class="kw">match</span> vs regex)</span>
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Joins, modules, and Mule context</div><h1>Remember</h1><ul><li>For a piece inside a string, use find or contains, not matches.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Joins, modules, and Mule context</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

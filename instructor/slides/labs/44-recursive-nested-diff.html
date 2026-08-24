@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Recursive nested diff</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 44</div><h1>Recursive nested diff</h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">hard</span><span class="chip">8–12 min</span><span class="chip">LAB-44-recursive-nested-diff.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 44. Recursive nested diff. Return a nested object of Recursive diff: omit unchanged subtrees. skipNullOn everywhere."><div class="kicker">Lab 44</div><h1>The job</h1><ul><li>This is Lab 44. Recursive nested diff. Return a nested object of</li><li>Recursive diff: omit unchanged subtrees. skipNullOn everywhere.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 44</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 44</div><h1>Input</h1><pre><code>{
+  <span class="str">&quot;before&quot;</span>: { <span class="str">&quot;a&quot;</span>: <span class="num">1</span>, <span class="str">&quot;nested&quot;</span>: { <span class="str">&quot;x&quot;</span>: <span class="num">1</span>, <span class="str">&quot;y&quot;</span>: <span class="num">2</span> } },
+  <span class="str">&quot;after&quot;</span>: { <span class="str">&quot;a&quot;</span>: <span class="num">1</span>, <span class="str">&quot;nested&quot;</span>: { <span class="str">&quot;x&quot;</span>: <span class="num">1</span>, <span class="str">&quot;y&quot;</span>: <span class="num">9</span> } }
+}
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 44</h1><ul><li>Pause the video</li><li>Open student/labs/03-advanced/44-recursive-nested-diff/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 44</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li><li><code>{ &quot;nested&quot;: { &quot;y&quot;: { &quot;from&quot;: 2, &quot;to&quot;: 9 } } }</code> (shape may wrap <code>from</code>/<code>to</code>).</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 44</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json skipNullOn=<span class="str">&quot;everywhere&quot;</span>
+<span class="kw">fun</span> diff(a, b) =
+  <span class="kw">if</span> (a == b) <span class="kw">null</span>
+  <span class="kw">else</span> (a <span class="kw">match</span> {
+    <span class="kw">case</span> ao <span class="kw">is</span> Object <span class="kw">if</span> b <span class="kw">is</span> Object -&gt; <span class="kw">do</span> {
+      <span class="kw">var</span> keys = (namesOf(ao) ++ namesOf(b)) distinctBy $
+      <span class="kw">var</span> kids = keys reduce ((k, acc = {}) -&gt; <span class="kw">do</span> {
+        <span class="kw">var</span> d = diff(ao[k], b[k])
+        ---
+        <span class="kw">if</span> (d == <span class="kw">null</span>) acc <span class="kw">else</span> acc ++ { (k): d }
+      })
+      ---
+      <span class="kw">if</span> (isEmpty(kids)) <span class="kw">null</span> <span class="kw">else</span> kids
+    }
+    <span class="kw">else</span> -&gt; { from: a, to: b }
+  })
+---
+diff(payload.before, payload.after)
+</code></pre></section>
+<section class="slide" data-notes="Recursive diff: omit unchanged subtrees. skipNullOn everywhere. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 45 in this file."><div class="kicker">Lab 44</div><h1>Interview phrase</h1><ul><li>Recursive diff: omit unchanged subtrees. skipNullOn everywhere.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 45 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 44</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 8</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

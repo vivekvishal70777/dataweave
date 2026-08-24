@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>skipNullOn and writer properties</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Objects, nulls, and selectors</div><h1>skipNullOn and writer properties</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Objects, nulls, and selectors</div><h1>In one sentence</h1><ul><li>Writer properties sit on the output line. skipNullOn=&quot;everywhere&quot; hides null fields in JSON or XML.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Objects, nulls, and selectors</div><h1>Like this in real life</h1><ul><li>If a field is empty, do not print a blank line on the invoice.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Objects, nulls, and selectors</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Objects, nulls, and selectors</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json skipNullOn=<span class="str">&quot;everywhere&quot;</span>, indent=<span class="kw">false</span>
+---
+{ a: <span class="num">1</span>, b: <span class="kw">null</span> }   <span class="cm">// { <span class="str">&quot;a&quot;</span>: <span class="num">1</span> }</span>
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Objects, nulls, and selectors</div><h1>Remember</h1><ul><li>indent=false makes compact JSON. CSV uses header=true and separator.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Objects, nulls, and selectors</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Why not lookup or Java inside every map</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L42</div><h1>Why not lookup or Java inside every map</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">6–9 min</span><span class="chip">S09-L42-no-n-plus-one.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="Java from DataWeave is possible. lookup inside map is the anti-pattern. Name N-plus-one."><div class="kicker">L42</div><h1>Open</h1><ul><li>Java from DataWeave is possible. lookup inside map is the anti-pattern. Name N-plus-one.</li></ul></section>
+<section class="slide" data-notes="You can invoke static methods and, with care, instance methods. Prefer pure DataWeave for transformations. Use Java for libraries you cannot reproduce (special crypto, proprietary parsers). Java calls add coupling and can hurt streaming/performance. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L42</div><h1>Q38. How do you call Java from DataWeave? When should you not?</h1><ul><li>You can invoke static methods and, with care, instance methods. Prefer pure DataWeave for transformations.</li><li>Use Java for libraries you cannot reproduce (special crypto, proprietary parsers). Java calls add coupling and can hurt streaming/performance.</li></ul></section>
+<section class="slide" data-notes="You can invoke static methods and, with care, instance methods. Prefer pure DataWeave for transformations. Use Java for libraries you cannot reproduce (special crypto, proprietary parsers). Java calls add coupling and can hurt streaming/performance. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L42</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> java!java::util::UUID
+<span class="kw">output</span> application/json
+---
+{
+  id: UUID::randomUUID() <span class="kw">as</span> String
+}
+</code></pre></section>
+<section class="slide" data-notes="Flow `lookup` (from `dw::Runtime` / Mule functions) invokes **another flow** and returns its payload—useful for enrichment, but it is synchronous and expensive. Prefer **lookup tables as objects**, `groupBy`, database/HTTP connectors **outside** Transform Message, or `Mule::p()` for config. Mention in interviews: do not hide heavy I/O inside every `map` iteration if you can batch it. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L42</div><h1>Q40. How do you use <code>lookup</code> (Mule 4) vs DataWeave-only alternatives?</h1><ul><li>Flow <code>lookup</code> (from <code>dw::Runtime</code> / Mule functions) invokes <strong>another flow</strong> and returns its payload—useful for enrichment, but it is synchronous and expensive.</li><li>Prefer <strong>lookup tables as objects</strong>, <code>groupBy</code>, database/HTTP connectors <strong>outside</strong> Transform Message, or <code>Mule::p()</code> for config.</li><li>Mention in interviews: do not hide heavy I/O inside every <code>map</code> iteration if you can batch it.</li></ul></section>
+<section class="slide" data-notes="Flow `lookup` (from `dw::Runtime` / Mule functions) invokes **another flow** and returns its payload—useful for enrichment, but it is synchronous and expensive. Prefer **lookup tables as objects**, `groupBy`, database/HTTP connectors **outside** Transform Message, or `Mule::p()` for config. Mention in interviews: do not hide heavy I/O inside every `map` iteration if you can batch it. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L42</div><h1>Type this</h1><pre><code>lookup(<span class="str">&quot;get-customer-flow&quot;</span>, { id: payload.customerId })
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L42</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L42</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 7</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

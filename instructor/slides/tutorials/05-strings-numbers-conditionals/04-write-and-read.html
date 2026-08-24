@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>write and read</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Strings, numbers, and conditionals</div><h1>write and read</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Strings, numbers, and conditionals</div><h1>In one sentence</h1><ul><li>write turns a value into text or bytes. read parses text or bytes back into data. They do not change the script’s output MIME by themselves.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Strings, numbers, and conditionals</div><h1>Like this in real life</h1><ul><li>write is photocopying a form to PDF in your hand. output application/json is the stamp on the envelope you actually mail.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Strings, numbers, and conditionals</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Strings, numbers, and conditionals</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+{
+  asText: write(payload.order, <span class="str">&quot;application/json&quot;</span>, { indent: <span class="kw">false</span> }),
+  nested: read(payload.jsonBlob, <span class="str">&quot;application/json&quot;</span>)
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Strings, numbers, and conditionals</div><h1>Remember</h1><ul><li>write(payload) on a huge file can break streaming.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Strings, numbers, and conditionals</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

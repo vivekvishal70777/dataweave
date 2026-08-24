@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Types, money, timezones, Dates module</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L71</div><h1>Types, money, timezones, Dates module</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">8–12 min</span><span class="chip">S13-L71-timezones-numbers.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="Types, money helpers, timezones. Inject time. Shift with &gt;&gt; Asia/Kolkata."><div class="kicker">L71</div><h1>Open</h1><ul><li>Types, money helpers, timezones. Inject time. Shift with &gt;&gt; Asia/Kolkata.</li></ul></section>
+<section class="slide" data-notes="There is no Java `===`. Use `is` and `typeOf`: `match { case x is Array -&gt; ... }` is the same idea for trees (Q42, Q57). Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L71</div><h1>Q64. How do you test types (<code>is</code>, <code>typeOf</code>)?</h1><ul><li>There is no Java <code>===</code>. Use <code>is</code> and <code>typeOf</code>:</li><li><code>match { case x is Array -&gt; ... }</code> is the same idea for trees (Q42, Q57).</li></ul></section>
+<section class="slide" data-notes="There is no Java `===`. Use `is` and `typeOf`: `match { case x is Array -&gt; ... }` is the same idea for trees (Q42, Q57). Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L71</div><h1>Type this</h1><pre><code>payload <span class="kw">is</span> Object
+payload.amount <span class="kw">is</span> Number
+typeOf(payload)     <span class="cm">// <span class="str">&quot;Object&quot;</span> | <span class="str">&quot;Array&quot;</span> | <span class="str">&quot;String&quot;</span> | ...</span>
+</code></pre></section>
+<section class="slide" data-notes="`sum`, `avg`, `min`, `max`, `mod`, `abs`, `ceil`, `floor`, `round`, plus **money** via `as String {format: &quot;0.00&quot;} as Number`. Coerce ERP strings **before** arithmetic. `sum([])` is a common trap — skip empty or `default 0`. Do not use Java `BigDecimal` unless the interviewer asks; `fun money` is the DW answer. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L71</div><h1>Q65. Which number helpers should you name?</h1><ul><li><code>sum</code>, <code>avg</code>, <code>min</code>, <code>max</code>, <code>mod</code>, <code>abs</code>, <code>ceil</code>, <code>floor</code>, <code>round</code>, plus <strong>money</strong> via <code>as String {format: &quot;0.00&quot;} as Number</code>.</li><li>Coerce ERP strings <strong>before</strong> arithmetic. <code>sum([])</code> is a common trap — skip empty or <code>default 0</code>.</li><li>Do not use Java <code>BigDecimal</code> unless the interviewer asks; <code>fun money</code> is the DW answer.</li></ul></section>
+<section class="slide" data-notes="`DateTime` includes an offset; `LocalDateTime` / `Date` do not. Parse ISO-8601, then shift: Store UTC in canonical APIs; convert only at the edge. Do not call `now()` inside a pricing module (inject `asOf`). Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L71</div><h1>Q66. How do you handle timezones?</h1><ul><li><code>DateTime</code> includes an offset; <code>LocalDateTime</code> / <code>Date</code> do not. Parse ISO-8601, then shift:</li><li>Store UTC in canonical APIs; convert only at the edge. Do not call <code>now()</code> inside a pricing module (inject <code>asOf</code>).</li></ul></section>
+<section class="slide" data-notes="`DateTime` includes an offset; `LocalDateTime` / `Date` do not. Parse ISO-8601, then shift: Store UTC in canonical APIs; convert only at the edge. Do not call `now()` inside a pricing module (inject `asOf`). Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L71</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+<span class="kw">var</span> ts = payload.occurredAt <span class="kw">as</span> DateTime
+---
+{
+  utc: ts &gt;&gt; <span class="str">&quot;UTC&quot;</span>,
+  ist: ts &gt;&gt; <span class="str">&quot;Asia/Kolkata&quot;</span>,
+  display: (ts &gt;&gt; <span class="str">&quot;Asia/Kolkata&quot;</span>) <span class="kw">as</span> String {format: <span class="str">&quot;dd-MMM-yyyy HH:mm&quot;</span>}
+}
+</code></pre></section>
+<section class="slide" data-notes="Period literals: `|P7D|`, `|PT2H|`. Interview: SLA clocks and invoice due dates, not “print today”. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L71</div><h1>Q67. What is in <code>dw::core::Dates</code> / <code>Periods</code>?</h1><ul><li>Period literals: <code>|P7D|</code>, <code>|PT2H|</code>. Interview: SLA clocks and invoice due dates, not “print today”.</li></ul></section>
+<section class="slide" data-notes="Period literals: `|P7D|`, `|PT2H|`. Interview: SLA clocks and invoice due dates, not “print today”. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L71</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> * from dw::core::Dates
+<span class="kw">output</span> application/json
+---
+{
+  days: daysBetween(payload.start <span class="kw">as</span> Date, payload.end <span class="kw">as</span> Date),
+  startOfDay: atBeginningOfDay(payload.occurredAt <span class="kw">as</span> DateTime),
+  nextMonth: (payload.start <span class="kw">as</span> Date) + |P1M|
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L71</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L71</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 10</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>plus-plus vs plus</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Strings, numbers, and conditionals</div><h1>plus-plus vs plus</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Strings, numbers, and conditionals</div><h1>In one sentence</h1><ul><li>++ joins strings, arrays, or objects. + adds numbers. Do not mix them up.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Strings, numbers, and conditionals</div><h1>Like this in real life</h1><ul><li>&quot;Hello&quot; ++ &quot; &quot; ++ &quot;World&quot; is gluing paper. 1 + 2 is maths. Glue on numbers, or maths on words, and Mule shouts.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Strings, numbers, and conditionals</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Strings, numbers, and conditionals</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+{
+  hello: <span class="str">&quot;Hi &quot;</span> ++ payload.firstName,
+  ids: [<span class="num">1</span>, <span class="num">2</span>] ++ [<span class="num">3</span>],
+  sum: <span class="num">10</span> + <span class="num">5</span>
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Strings, numbers, and conditionals</div><h1>Remember</h1><ul><li>Object ++ is a shallow merge. The right-hand key wins.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Strings, numbers, and conditionals</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

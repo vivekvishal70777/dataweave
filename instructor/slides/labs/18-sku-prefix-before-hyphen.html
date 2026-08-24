@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SKU prefix before hyphen</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 18</div><h1>SKU prefix before hyphen</h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">easy</span><span class="chip">6–10 min</span><span class="chip">LAB-18-sku-prefix-before-hyphen.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 18. SKU prefix before hyphen. From `&quot;MULE-12345&quot;` take the product family `&quot;MULE&quot;` (split on `-`, first segment). Split SKU on hyphen and take the family prefix."><div class="kicker">Lab 18</div><h1>The job</h1><ul><li>This is Lab 18. SKU prefix before hyphen. From <code>&quot;MULE-12345&quot;</code> take the product family <code>&quot;MULE&quot;</code> (split on <code>-</code>, first segment).</li><li>Split SKU on hyphen and take the family prefix.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 18</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 18</div><h1>Input</h1><pre><code>MULE-12345
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 18</h1><ul><li>Pause the video</li><li>Open student/labs/01-fundamentals/18-sku-prefix-before-hyphen/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 18</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li><li><code>&quot;MULE&quot;</code></li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 18</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+(payload splitBy <span class="str">&quot;-&quot;</span>)[<span class="num">0</span>]
+</code></pre></section>
+<section class="slide" data-notes="Split SKU on hyphen and take the family prefix. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 19 in this file."><div class="kicker">Lab 18</div><h1>Interview phrase</h1><ul><li>Split SKU on hyphen and take the family prefix.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 19 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 18</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 8</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

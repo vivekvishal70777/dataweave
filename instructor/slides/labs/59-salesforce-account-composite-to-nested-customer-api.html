@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Salesforce Account composite to nested customer API</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 59</div><h1>Salesforce Account composite to nested customer API</h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">mapping</span><span class="chip">8–12 min</span><span class="chip">LAB-59-salesforce-account-composite-to-nested-customer-api.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 59. Salesforce Account composite to nested customer API. Join `contacts` onto `accounts` by AccountId. Output `accountId`, `name`, `city`, and `contacts[]` with `fullName` and `email`. Empty contact list if none. Do not call lookup. groupBy contacts by AccountId. Map accounts. Empty array if no contacts. No lookup."><div class="kicker">Lab 59</div><h1>The job</h1><ul><li>This is Lab 59. Salesforce Account composite to nested customer API. Join <code>contacts</code> onto <code>accounts</code> by AccountId.</li><li>Output <code>accountId</code>, <code>name</code>, <code>city</code>, and <code>contacts[]</code> with <code>fullName</code> and <code>email</code>. Empty contact list if none. Do not call lookup.</li><li>groupBy contacts by AccountId. Map accounts. Empty array if no contacts. No lookup.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 59</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 59</div><h1>Input</h1><pre><code>{
+  <span class="str">&quot;accounts&quot;</span>: [
+    { <span class="str">&quot;Id&quot;</span>: <span class="str">&quot;001xxA&quot;</span>, <span class="str">&quot;Name&quot;</span>: <span class="str">&quot;Acme Pvt&quot;</span>, <span class="str">&quot;BillingCity&quot;</span>: <span class="str">&quot;Pune&quot;</span> },
+    { <span class="str">&quot;Id&quot;</span>: <span class="str">&quot;001xxB&quot;</span>, <span class="str">&quot;Name&quot;</span>: <span class="str">&quot;Globex&quot;</span>, <span class="str">&quot;BillingCity&quot;</span>: <span class="str">&quot;Mumbai&quot;</span> }
+  ],
+  <span class="str">&quot;contacts&quot;</span>: [
+    { <span class="str">&quot;AccountId&quot;</span>: <span class="str">&quot;001xxA&quot;</span>, <span class="str">&quot;FirstName&quot;</span>: <span class="str">&quot;Asha&quot;</span>, <span class="str">&quot;LastName&quot;</span>: <span class="str">&quot;Rao&quot;</span>, <span class="str">&quot;Email&quot;</span>: <span class="str">&quot;asha@acme.com&quot;</span> },
+    { <span class="str">&quot;AccountId&quot;</span>: <span class="str">&quot;001xxA&quot;</span>, <span class="str">&quot;FirstName&quot;</span>: <span class="str">&quot;Ben&quot;</span>, <span class="str">&quot;LastName&quot;</span>: <span class="str">&quot;Cole&quot;</span>, <span class="str">&quot;Email&quot;</span>: <span class="str">&quot;ben@acme.com&quot;</span> }
+  ]
+}
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 59</h1><ul><li>Pause the video</li><li>Open student/labs/05-mapping/59-salesforce-account-composite-to-nested-customer-api/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 59</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 59</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+<span class="kw">var</span> byAcct = payload.contacts groupBy $.AccountId
+---
+payload.accounts map (a) -&gt; {
+  accountId: a.Id,
+  name: a.Name,
+  city: a.BillingCity,
+  contacts: (byAcct[a.Id] <span class="kw">default</span> []) map {
+    fullName: ($.FirstName <span class="kw">default</span> <span class="str">&quot;&quot;</span>) ++ <span class="str">&quot; &quot;</span> ++ ($.LastName <span class="kw">default</span> <span class="str">&quot;&quot;</span>),
+    email: $.Email
+  }
+}
+</code></pre></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 59</div><h1>Expected</h1><pre><code>[
+  {
+    &quot;accountId&quot;: &quot;001xxA&quot;,
+    &quot;name&quot;: &quot;Acme Pvt&quot;,
+    &quot;city&quot;: &quot;Pune&quot;,
+    &quot;contacts&quot;: [
+      { &quot;fullName&quot;: &quot;Asha Rao&quot;, &quot;email&quot;: &quot;asha@acme.com&quot; },
+      { &quot;fullName&quot;: &quot;Ben Cole&quot;, &quot;email&quot;: &quot;ben@acme.com&quot; }
+    ]
+  },
+  {
+    &quot;accountId&quot;: &quot;001xxB&quot;,
+    &quot;name&quot;: &quot;Globex&quot;,
+    &quot;city&quot;: &quot;Mumbai&quot;,
+    &quot;contacts&quot;: []
+  }
+]
+</code></pre></section>
+<section class="slide" data-notes="groupBy contacts by AccountId. Map accounts. Empty array if no contacts. No lookup. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 60 in this file."><div class="kicker">Lab 59</div><h1>Interview phrase</h1><ul><li>groupBy contacts by AccountId. Map accounts. Empty array if no contacts. No lookup.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 60 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 59</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 9</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

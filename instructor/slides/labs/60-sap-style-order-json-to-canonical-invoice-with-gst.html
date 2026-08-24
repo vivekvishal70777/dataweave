@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SAP-style order JSON to canonical invoice with GST</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 60</div><h1>SAP-style order JSON to canonical invoice with GST</h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">mapping</span><span class="chip">8–12 min</span><span class="chip">LAB-60-sap-style-order-json-to-canonical-invoice-with-gst.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 60. SAP-style order JSON to canonical invoice with GST. Skip lines with qty 0. `fun money`. Line net = qty * price * (1 - discount). CGST+SGST vs IGST 18% by comparing ship-from and ship-to state. Grand total = subtotal + tax. Filter qty greater than zero. Discount then GST 18. fun money. Intra-state CGST_SGST vs IGST."><div class="kicker">Lab 60</div><h1>The job</h1><ul><li>This is Lab 60. SAP-style order JSON to canonical invoice with GST. Skip lines with qty 0. <code>fun money</code>. Line net = qty * price * (1 - discount).</li><li>CGST+SGST vs IGST 18% by comparing ship-from and ship-to state. Grand total = subtotal + tax.</li><li>Filter qty greater than zero. Discount then GST 18. fun money. Intra-state CGST_SGST vs IGST.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 60</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 60</div><h1>Input</h1><pre><code>{
+  <span class="str">&quot;vbeln&quot;</span>: <span class="str">&quot;<span class="num">80001234</span>&quot;</span>,
+  <span class="str">&quot;waerk&quot;</span>: <span class="str">&quot;INR&quot;</span>,
+  <span class="str">&quot;shipFromState&quot;</span>: <span class="str">&quot;MH&quot;</span>,
+  <span class="str">&quot;shipToState&quot;</span>: <span class="str">&quot;MH&quot;</span>,
+  <span class="str">&quot;lines&quot;</span>: [
+    { <span class="str">&quot;matnr&quot;</span>: <span class="str">&quot;MAT-<span class="num">1</span>&quot;</span>, <span class="str">&quot;qty&quot;</span>: <span class="str">&quot;<span class="num">2</span>&quot;</span>, <span class="str">&quot;netpr&quot;</span>: <span class="str">&quot;<span class="num">100.00</span>&quot;</span>, <span class="str">&quot;disc&quot;</span>: <span class="str">&quot;<span class="num">0.10</span>&quot;</span> },
+    { <span class="str">&quot;matnr&quot;</span>: <span class="str">&quot;MAT-<span class="num">2</span>&quot;</span>, <span class="str">&quot;qty&quot;</span>: <span class="str">&quot;<span class="num">0</span>&quot;</span>, <span class="str">&quot;netpr&quot;</span>: <span class="str">&quot;<span class="num">50</span>&quot;</span>, <span class="str">&quot;disc&quot;</span>: <span class="str">&quot;<span class="num">0</span>&quot;</span> },
+    { <span class="str">&quot;matnr&quot;</span>: <span class="str">&quot;MAT-<span class="num">3</span>&quot;</span>, <span class="str">&quot;qty&quot;</span>: <span class="num">1</span>, <span class="str">&quot;netpr&quot;</span>: <span class="str">&quot;<span class="num">40.5</span>&quot;</span>, <span class="str">&quot;disc&quot;</span>: <span class="num">0</span> }
+  ]
+}
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 60</h1><ul><li>Pause the video</li><li>Open student/labs/05-mapping/60-sap-style-order-json-to-canonical-invoice-with-gst/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 60</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 60</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+<span class="kw">fun</span> money(n: Number) = n <span class="kw">as</span> String {format: <span class="str">&quot;<span class="num">0.00</span>&quot;</span>} <span class="kw">as</span> Number
+<span class="kw">var</span> intra = payload.shipFromState == payload.shipToState
+<span class="kw">var</span> raw = payload.lines filter ((l) -&gt; (l.qty <span class="kw">as</span> Number) &gt; <span class="num">0</span>) map (l) -&gt; <span class="kw">do</span> {
+  <span class="kw">var</span> qty = l.qty <span class="kw">as</span> Number
+  <span class="kw">var</span> price = l.netpr <span class="kw">as</span> Number
+  <span class="kw">var</span> disc = (l.disc <span class="kw">default</span> <span class="num">0</span>) <span class="kw">as</span> Number
+  ---
+  { sku: l.matnr, qty: qty, net: money(qty * price * (<span class="num">1</span> - disc)) }
+}
+<span class="kw">var</span> sub = money(sum(raw.net))
+<span class="kw">var</span> tax = money(sub * <span class="num">0.18</span>)
+---
+{
+  invoiceId: payload.vbeln,
+  currency: payload.waerk,
+  taxCode: <span class="kw">if</span> (intra) <span class="str">&quot;CGST_SGST&quot;</span> <span class="kw">else</span> <span class="str">&quot;IGST&quot;</span>,
+  lines: raw,
+  subtotal: sub,
+  tax: tax,
+  grandTotal: money(sub + tax)
+}
+</code></pre></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 60</div><h1>Expected</h1><pre><code>{
+  &quot;invoiceId&quot;: &quot;80001234&quot;,
+  &quot;currency&quot;: &quot;INR&quot;,
+  &quot;taxCode&quot;: &quot;CGST_SGST&quot;,
+  &quot;lines&quot;: [
+    { &quot;sku&quot;: &quot;MAT-1&quot;, &quot;qty&quot;: 2, &quot;net&quot;: 180.00 },
+    { &quot;sku&quot;: &quot;MAT-3&quot;, &quot;qty&quot;: 1, &quot;net&quot;: 40.50 }
+  ],
+  &quot;subtotal&quot;: 220.50,
+  &quot;tax&quot;: 39.69,
+  &quot;grandTotal&quot;: 260.19
+}
+</code></pre></section>
+<section class="slide" data-notes="Filter qty greater than zero. Discount then GST 18. fun money. Intra-state CGST_SGST vs IGST. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 61 in this file."><div class="kicker">Lab 60</div><h1>Interview phrase</h1><ul><li>Filter qty greater than zero. Discount then GST 18. fun money. Intra-state CGST_SGST vs IGST.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 61 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 60</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 9</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

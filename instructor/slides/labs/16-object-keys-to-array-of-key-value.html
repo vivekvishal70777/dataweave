@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Object keys to array of `{ key, value }`</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Lab 16</div><h1>Object keys to array of <code>{ key, value }</code></h1><p class="sub">Show the failing starter first. Hold the pause card before any solution.</p><div class="chips"><span class="chip">easy</span><span class="chip">6–10 min</span><span class="chip">LAB-16-object-keys-to-array-of-key-value.mp4</span></div></section>
+<section class="slide" data-notes="This is Lab 16. Object keys to array of `{ key, value }`. Convert a config object `{ &quot;timeout&quot;: 30, &quot;retries&quot;: 3 }` to entries for logging or CSV. pluck turns a config object into loggable key-value rows."><div class="kicker">Lab 16</div><h1>The job</h1><ul><li>This is Lab 16. Object keys to array of <code>{ key, value }</code>. Convert a config object <code>{ &quot;timeout&quot;: 30, &quot;retries&quot;: 3 }</code> to entries for logging or CSV.</li><li>pluck turns a config object into loggable key-value rows.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 16</div><h1>Paste the payload</h1><ul><li>Set the MIME type to match the sample.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 16</div><h1>Input</h1><pre><code>{ <span class="str">&quot;timeout&quot;</span>: <span class="num">30</span>, <span class="str">&quot;retries&quot;</span>: <span class="num">3</span> }
+</code></pre></section>
+<section class="slide pause" data-notes="Hold 3–5 seconds. Do not show the solution yet."><div class="kicker">Pause card</div><h1>Pause — try Lab 16</h1><ul><li>Pause the video</li><li>Open student/labs/01-fundamentals/16-object-keys-to-array-of-key-value/</li><li>Finish transform.dwl — wrong is fine</li><li>Resume when you have an attempt</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Lab 16</div><h1>Welcome back</h1><ul><li>Welcome back. I will type the reference script. Follow along; do not paste blindly. Header first: percent dw two point oh, output, dash dash dash.</li><li>That should match Expected:</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 16</div><h1>Solution</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+payload pluck ((v, k) -&gt; { key: k <span class="kw">as</span> String, value: v })
+</code></pre></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Lab 16</div><h1>Expected</h1><pre><code>[{ &quot;key&quot;: &quot;timeout&quot;, &quot;value&quot;: 30 }, { &quot;key&quot;: &quot;retries&quot;, &quot;value&quot;: 3 }]
+</code></pre></section>
+<section class="slide" data-notes="pluck turns a config object into loggable key-value rows. If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder. Stop. Do not start Lab 17 in this file."><div class="kicker">Lab 16</div><h1>Interview phrase</h1><ul><li>pluck turns a config object into loggable key-value rows.</li><li>If your output differs, check plus versus plus-plus, as Number, and nulls with default. Next lab is the next numbered folder.</li><li>Stop. Do not start Lab 17 in this file.</li></ul></section>
+<div class="chrome"><span>Lab 16</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 9</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Selectors (dot, brackets, star, dots)</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">Objects, nulls, and selectors</div><h1>Selectors (dot, brackets, star, dots)</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">Objects, nulls, and selectors</div><h1>In one sentence</h1><ul><li>Dot is a field. Brackets are index or odd names. Star is repeating children. Two dots means “search descendants.”</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Objects, nulls, and selectors</div><h1>Like this in real life</h1><ul><li>A filing cabinet. customer.name is a labelled drawer. [0] is the first folder. .*item is every “item” tab. ..id is “find every id sticker in the whole cabinet.”</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">Objects, nulls, and selectors</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">Objects, nulls, and selectors</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+{
+  name: payload.customer.name,
+  first: payload[<span class="num">0</span>],
+  hyphen: payload[<span class="str">&quot;first-name&quot;</span>],
+  items: payload.*item,
+  anyId: payload..id
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">Objects, nulls, and selectors</div><h1>Remember</h1><ul><li>XML attributes use at-sign: order.@id.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>Objects, nulls, and selectors</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

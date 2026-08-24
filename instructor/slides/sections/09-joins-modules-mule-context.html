@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Joins, modules, and Mule context</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">09-joins-modules-mule-context</div><h1>Joins, modules, and Mule context</h1><p class="sub">Section opener. Then jump into the concept videos and labs.</p></section>
+<section class="slide" data-notes=""><div class="kicker">09-joins-modules-mule-context</div><h1>Learning objectives</h1><ul><li>Read <code>vars</code>, <code>attributes</code>, and properties.</li><li>Import modules and join arrays (or index with <code>groupBy</code>).</li><li>Know when not to call Java or <code>lookup</code> inside <code>map</code>.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">09-joins-modules-mule-context</div><h1>Suggested video breakdown</h1><ul><li>Lab 32 (join via groupBy) after Lab 31 (leftJoin) — same result, better interview story.</li><li>Warn about N+1 <code>lookup</code> (Q40).</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">09-joins-modules-mule-context</div><h1>Labs in this section</h1><ul><li>Lab 31</li><li>Lab 32</li><li>Lab 34</li><li>Lab 45</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">09-joins-modules-mule-context</div><h1>Interview talking points for this section</h1><ul><li><strong>Transform Message</strong>: full script with header, preview, metadata, multiple outputs (<code>payload</code>, <code>variables</code>).</li><li><strong><code>#[...]</code> expression</strong>: a DataWeave expression (often without a full header) used inline, e.g. <code>#[payload.orderId]</code>.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">09-joins-modules-mule-context</div><h1>Interview talking points for this section</h1><pre><code>vars.customerId
+attributes.headers[<span class="str">&quot;content-<span class="kw">type</span>&quot;</span>]
+attributes.queryParams.page
+p(<span class="str">&quot;http.host&quot;</span>)               <span class="cm">// from configuration properties</span>
+Mule::p(<span class="str">&quot;api.version&quot;</span>)       <span class="cm">// same idea in some contexts</span>
+</code></pre></section>
+<section class="slide" data-notes="Hit this slide on section openers so students remember the gym loop."><div class="kicker">09-joins-modules-mule-context</div><h1>The loop</h1><div class="grid-4">
+        <div class="box"><strong>Concept</strong><span>One idea. Three to seven minutes.</span></div>
+        <div class="box"><strong>Pause</strong><span>Hold the card. Students try.</span></div>
+        <div class="box"><strong>Lab</strong><span>Type from the starter, not the solution.</span></div>
+        <div class="box"><strong>Quiz</strong><span>Udemy practice test. No video.</span></div>
+        </div></section>
+<div class="chrome"><span>09-joins-modules-mule-context</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 7</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

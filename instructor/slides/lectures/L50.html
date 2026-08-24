@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Streaming: what breaks it</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L50</div><h1>Streaming: what breaks it</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">6–9 min</span><span class="chip">S11-L50-streaming.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="Streaming works for one-pass map and filter. List what breaks it. Do not only say it streams."><div class="kicker">L50</div><h1>Open</h1><ul><li>Streaming works for one-pass map and filter. List what breaks it. Do not only say it streams.</li></ul></section>
+<section class="slide" data-notes="For large JSON/XML/CSV, DataWeave can stream if the script is **incremental** (e.g. `payload map ...` without needing the whole document). Streaming **breaks** when you: - Use `sizeOf(payload)`, `orderBy`, `groupBy`, `distinctBy`, `reduce` on the whole payload - Access the same payload twice - Use random index access on the full array - Convert the entire payload to String Interview talking point: design maps as **one-pass** `map`/`filter` when files are large; set streaming in the MIME type / reader config. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L50</div><h1>Q41. How does DataWeave streaming work? When does it break?</h1><ul><li>Use <code>sizeOf(payload)</code>, <code>orderBy</code>, <code>groupBy</code>, <code>distinctBy</code>, <code>reduce</code> on the whole payload</li><li>Access the same payload twice</li><li>Use random index access on the full array</li><li>Convert the entire payload to String</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">L50</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L50</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 4</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

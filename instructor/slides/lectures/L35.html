@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Dates, formats, and periods</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L35</div><h1>Dates, formats, and periods</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">6–9 min</span><span class="chip">S08-L35-dates.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="now, format, parse, period literals with pipes. Lab 28 is the format drill."><div class="kicker">L35</div><h1>Open</h1><ul><li>now, format, parse, period literals with pipes. Lab 28 is the format drill.</li></ul></section>
+<section class="slide" data-notes="Date literals use pipes: `|2026-08-20|`, `|P7D|` (ISO-8601 periods). Prefer injecting time as a field (Lab 28) over `now()` in reusable modules. Timezones: `DateTime` has an offset; `LocalDateTime` does not. Shift with `payload.ts as DateTime &gt;&gt; &quot;Asia/Kolkata&quot;`. More helpers: `dw::core::Dates` (`daysBetween`, `atBeginningOfDay`) — Q66–Q67. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L35</div><h1>Q30. How do you work with dates and periods?</h1><ul><li>Date literals use pipes: <code>|2026-08-20|</code>, <code>|P7D|</code> (ISO-8601 periods). Prefer injecting time as a field (Lab 28) over <code>now()</code> in reusable modules.</li><li>Timezones: <code>DateTime</code> has an offset; <code>LocalDateTime</code> does not. Shift with <code>payload.ts as DateTime &gt;&gt; &quot;Asia/Kolkata&quot;</code>.</li><li>More helpers: <code>dw::core::Dates</code> (<code>daysBetween</code>, <code>atBeginningOfDay</code>) — Q66–Q67.</li></ul></section>
+<section class="slide" data-notes="Date literals use pipes: `|2026-08-20|`, `|P7D|` (ISO-8601 periods). Prefer injecting time as a field (Lab 28) over `now()` in reusable modules. Timezones: `DateTime` has an offset; `LocalDateTime` does not. Shift with `payload.ts as DateTime &gt;&gt; &quot;Asia/Kolkata&quot;`. More helpers: `dw::core::Dates` (`daysBetween`, `atBeginningOfDay`) — Q66–Q67. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L35</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+---
+{
+  today: now(),
+  formatted: now() <span class="kw">as</span> String {format: <span class="str">&quot;dd-MMM-yyyy&quot;</span>},
+  parsed: <span class="str">&quot;<span class="num">2026</span>-<span class="num">08</span>-<span class="num">20</span>&quot;</span> <span class="kw">as</span> Date {format: <span class="str">&quot;yyyy-MM-dd&quot;</span>},
+  nextWeek: (now() <span class="kw">as</span> Date) + |P7D|,
+  ageDays: |P1Y2M| 
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L35</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L35</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 5</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

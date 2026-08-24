@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>JSON, XML, and CSV mappings</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">06-json-xml-csv</div><h1>JSON, XML, and CSV mappings</h1><p class="sub">Section opener. Then jump into the concept videos and labs.</p></section>
+<section class="slide" data-notes=""><div class="kicker">06-json-xml-csv</div><h1>Learning objectives</h1><ul><li>Change <code>output</code> MIME type and produce a single XML root.</li><li>Read and write XML attributes.</li><li>Round-trip CSV with headers and number coercion.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">06-json-xml-csv</div><h1>Suggested video breakdown</h1><ul><li>JSON to XML (single root). SOAP/namespaces wait until the advanced section.</li><li>Stress: XML needs one root; CSV keys become headers.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">06-json-xml-csv</div><h1>Labs in this section</h1><ul><li>Lab 11</li><li>Lab 12</li><li>Lab 29</li><li>Lab 30</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">06-json-xml-csv</div><h1>Interview talking points for this section</h1><ul><li>Teach the <strong>concept</strong>, then demo, then lab. Use these Q&amp;A as the phrases to say on camera — not as a second lecture series.</li><li>One 20–40s “if they ask this in an interview…” close per video is enough.</li><li><strong>Answer:</strong> Change the <code>output</code> MIME type and shape the tree:</li><li>JSON to XML needs a <strong>single root</strong>.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">06-json-xml-csv</div><h1>Interview talking points for this section (cont.)</h1><ul><li>XML to JSON is the reverse: <code>output application/json</code> and select elements/attributes (<code>payload.orders.order.@id</code> for attributes).</li><li>---</li><li><strong>Answer:</strong></li><li>CSV is typically read as an <strong>array of objects</strong> (header row = keys). Reader properties: <code>header=true</code>, <code>separator=&quot;;&quot;</code>, <code>quoteValues=true</code>.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">06-json-xml-csv</div><h1>Interview talking points for this section</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/xml
+---
+orders: {
+  order: payload map {
+    id: $.id,
+    amount: $.amount
+  }
+}
+</code></pre></section>
+<section class="slide" data-notes="Hit this slide on section openers so students remember the gym loop."><div class="kicker">06-json-xml-csv</div><h1>The loop</h1><div class="grid-4">
+        <div class="box"><strong>Concept</strong><span>One idea. Three to seven minutes.</span></div>
+        <div class="box"><strong>Pause</strong><span>Hold the card. Students try.</span></div>
+        <div class="box"><strong>Lab</strong><span>Type from the starter, not the solution.</span></div>
+        <div class="box"><strong>Quiz</strong><span>Udemy practice test. No video.</span></div>
+        </div></section>
+<div class="chrome"><span>06-json-xml-csv</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 8</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Functions (fun)</title>
+  <link rel="stylesheet" href="../../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">DataWeave 2.0 fundamentals</div><h1>Functions (fun)</h1><p class="sub">Plain-language walkthrough. Then jump to the matching concept or lab video.</p></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave 2.0 fundamentals</div><h1>In one sentence</h1><ul><li>fun is a named recipe: give inputs, get an output. No side effects if you keep it pure.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave 2.0 fundamentals</div><h1>Like this in real life</h1><ul><li>Like a kitchen function fullName(first, last) that always returns the same plate for the same ingredients.</li></ul></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave 2.0 fundamentals</div><h1>Tiny example</h1><ul><li>Read this slowly. Header first, then the body.</li></ul></section>
+<section class="slide" data-notes="Type this. Read the header: percent dw two point oh, output, dash dash dash."><div class="kicker">DataWeave 2.0 fundamentals</div><h1>Tiny example</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/json
+<span class="kw">fun</span> fullName(first: String, last: String) = first ++ <span class="str">&quot; &quot;</span> ++ last
+---
+fullName(payload.firstName, payload.lastName)
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">DataWeave 2.0 fundamentals</div><h1>Remember</h1><ul><li>You can overload by types. Prefer type annotations in modules.</li><li>After you try the lab for this section, replay the concept video. Spoken model answers are on the bootcamp mock video — not in a downloadable answer key.</li></ul></section>
+<div class="chrome"><span>DataWeave 2.0 fundamentals</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 6</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

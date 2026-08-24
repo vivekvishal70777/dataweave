@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>match and try / orElse</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L36</div><h1>match and try / orElse</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">7–10 min</span><span class="chip">S08-L36-match-try.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="match for statuses. try for errors. default is nulls, try is failures."><div class="kicker">L36</div><h1>Open</h1><ul><li>match for statuses. try for errors. default is nulls, try is failures.</li></ul></section>
+<section class="slide" data-notes="`match` is exhaustive-style pattern matching: literals, types (`is`), conditions, and `else`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L36</div><h1>Q28. How does pattern matching (<code>match</code>) work?</h1><ul><li><code>match</code> is exhaustive-style pattern matching: literals, types (<code>is</code>), conditions, and <code>else</code>.</li></ul></section>
+<section class="slide" data-notes="`match` is exhaustive-style pattern matching: literals, types (`is`), conditions, and `else`. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L36</div><h1>Type this</h1><pre><code>payload.status <span class="kw">match</span> {
+  <span class="kw">case</span> <span class="str">&quot;NEW&quot;</span> -&gt; <span class="str">&quot;created&quot;</span>
+  <span class="kw">case</span> <span class="str">&quot;PAID&quot;</span> -&gt; <span class="str">&quot;completed&quot;</span>
+  <span class="kw">case</span> s <span class="kw">if</span> s startsWith <span class="str">&quot;ERR&quot;</span> -&gt; <span class="str">&quot;failed&quot;</span>
+  <span class="kw">case</span> n <span class="kw">is</span> Number -&gt; <span class="str">&quot;numeric-status&quot;</span>
+  <span class="kw">else</span> -&gt; <span class="str">&quot;unknown&quot;</span>
+}
+</code></pre></section>
+<section class="slide" data-notes="`try` returns `{ success: true, result: ... }` or `{ success: false, error: ... }`. Combine with `orElse` for fallbacks. This is **not** a Mule error handler; it only catches failures **inside** the script. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L36</div><h1>Q29. How do you handle errors in DataWeave (<code>try</code>)?</h1><ul><li><code>try</code> returns <code>{ success: true, result: ... }</code> or <code>{ success: false, error: ... }</code>. Combine with <code>orElse</code> for fallbacks.</li><li>This is <strong>not</strong> a Mule error handler; it only catches failures <strong>inside</strong> the script.</li></ul></section>
+<section class="slide" data-notes="`try` returns `{ success: true, result: ... }` or `{ success: false, error: ... }`. Combine with `orElse` for fallbacks. This is **not** a Mule error handler; it only catches failures **inside** the script. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L36</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> try, orElse, orElseTry from dw::Runtime
+<span class="kw">output</span> application/json
+---
+{
+  n: try(() -&gt; payload.age <span class="kw">as</span> Number) orElse <span class="num">0</span>,
+  safe: try(() -&gt; <span class="num">1</span> / payload.divisor)
+}
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L36</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L36</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 7</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>

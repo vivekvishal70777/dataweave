@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Crypto, binary, reader/writer properties</title>
+  <link rel="stylesheet" href="../assets/deck.css"/>
+</head>
+<body class="deck">
+<section class="slide title" data-notes="Full screen (F). Notes (N). Click or arrows to advance. Switch to Playground on code slides."><div class="kicker">L51</div><h1>Crypto, binary, reader/writer properties</h1><p class="sub">Record from this deck. Switch to the Playground when a code slide appears.</p><div class="chips"><span class="chip">8–12 min</span><span class="chip">S11-L51-crypto-binary.mp4</span><span class="chip">Video</span></div></section>
+<section class="slide" data-notes="Hash versus HMAC. Binary and Base64. Reader and writer properties for JSON XML CSV."><div class="kicker">L51</div><h1>Open</h1><ul><li>Hash versus HMAC. Binary and Base64. Reader and writer properties for JSON XML CSV.</li></ul></section>
+<section class="slide" data-notes="Hashing is one-way checksums (file integrity). HMAC signs with a secret (webhook verification). Never roll your own encoding; watch Binary vs String and Base64 wrapping (`dw::core::Binaries::toBase64`). Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L51</div><h1>Q45. Explain <code>dw::Crypto</code> hashing vs HMAC. When is each used?</h1><ul><li>Hashing is one-way checksums (file integrity). HMAC signs with a secret (webhook verification).</li><li>Never roll your own encoding; watch Binary vs String and Base64 wrapping (<code>dw::core::Binaries::toBase64</code>).</li></ul></section>
+<section class="slide" data-notes="Hashing is one-way checksums (file integrity). HMAC signs with a secret (webhook verification). Never roll your own encoding; watch Binary vs String and Base64 wrapping (`dw::core::Binaries::toBase64`). Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L51</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> dw::Crypto
+<span class="kw">output</span> application/json
+---
+{
+  sha: Crypto::hashWith(payload <span class="kw">as</span> Binary, <span class="str">&quot;SHA-<span class="num">256</span>&quot;</span>),
+  hmac: Crypto::HMACBinary(payload <span class="kw">as</span> Binary, <span class="str">&quot;secret&quot;</span> <span class="kw">as</span> Binary, <span class="str">&quot;HmacSHA256&quot;</span>)
+}
+</code></pre></section>
+<section class="slide" data-notes="For multipart, Mule gives `parts` (e.g. `payload.parts.file.content`). Avoid loading huge binaries as String. Set `output application/octet-stream` when the result must stay binary. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L51</div><h1>Q52. How do you process multipart / binary / Base64 in DataWeave?</h1><ul><li>For multipart, Mule gives <code>parts</code> (e.g. <code>payload.parts.file.content</code>). Avoid loading huge binaries as String.</li><li>Set <code>output application/octet-stream</code> when the result must stay binary.</li></ul></section>
+<section class="slide" data-notes="For multipart, Mule gives `parts` (e.g. `payload.parts.file.content`). Avoid loading huge binaries as String. Set `output application/octet-stream` when the result must stay binary. Type every DataWeave sample on screen. Read the header out loud: percent dw two point oh, output, dash dash dash."><div class="kicker">L51</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">import</span> * from dw::core::Binaries
+<span class="kw">output</span> application/json
+---
+{
+  b64: toBase64(payload <span class="kw">as</span> Binary),
+  bytes: fromBase64(vars.fileBase64),
+  asText: (payload <span class="kw">as</span> Binary) <span class="kw">as</span> String {encoding: <span class="str">&quot;UTF-<span class="num">8</span>&quot;</span>}
+}
+</code></pre></section>
+<section class="slide" data-notes="**JSON:** `streaming`, `indexed`, `duplicateKeyAsArray`"><div class="kicker">L51</div><h1>Q53. What are reader/writer properties you should mention for XML, JSON, and CSV?</h1><ul><li><code>streaming</code>, <code>indexed</code>, <code>duplicateKeyAsArray</code></li></ul></section>
+<section class="slide" data-notes="**JSON:** `streaming`, `indexed`, `duplicateKeyAsArray`"><div class="kicker">L51</div><h1>Type this</h1><pre><code>%dw <span class="num">2.0</span>
+<span class="kw">output</span> application/xml writeDeclaration=<span class="kw">true</span>, encoding=<span class="str">&quot;UTF-<span class="num">8</span>&quot;</span>
+---
+root: payload
+</code></pre></section>
+<section class="slide" data-notes=""><div class="kicker">L51</div><h1>Next</h1><ul><li>Stop. Do not start a new topic.</li></ul></section>
+<div class="chrome"><span>L51</span><span>← → space · F fullscreen · N notes</span><span id="counter">1 / 9</span></div>
+<div class="progress" id="progress"></div>
+<aside class="notes" id="notes"><h3>Speaker notes</h3><p></p></aside>
+<script src="../assets/deck.js"></script>
+</body>
+</html>
