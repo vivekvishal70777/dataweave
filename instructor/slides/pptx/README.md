@@ -20,6 +20,6 @@ Needs `python-pptx` (`pip install python-pptx`).
 | Lab 01–88 | `pptx/labs/` |
 | Article voiceover | `pptx/tutorials/` |
 
-Pause cards are amber. Do not click past them until students have had a beat. On code slides, keep PowerPoint shared or switch to the Playground — do not paste the solution before the pause card.
+Pause cards are amber and show a pause illustration. Title and concept slides carry a topic picture on the right. Code slides stay text-only so the script stays readable.
 
 HTML versions (browser) live in the parent `slides/` folder.
