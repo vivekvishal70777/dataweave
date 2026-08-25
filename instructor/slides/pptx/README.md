@@ -14,6 +14,7 @@ Needs `python-pptx` (`pip install python-pptx`).
 
 | You are recording | Open |
 | --- | --- |
+| Full course index | `pptx/index.pptx` or `../index.pptx` |
 | Section intro | `pptx/sections/` |
 | Concept video | `pptx/lectures/Lxx.pptx` |
 | Mapping cluster A–D | `pptx/lectures/S14-*.pptx` |
