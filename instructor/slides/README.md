@@ -4,7 +4,7 @@ HTML decks for every concept lecture, lab video, section opener, mapping cluster
 
 **For screen share, use the PowerPoint files** in [`pptx/`](pptx/README.md) — open, press F5, share the window. Topic illustrations sit on the right of title and concept slides; pause cards use an amber pause graphic.
 
-Browser decks: open [`index.html`](index.html) full screen (**F**). Rebuild:
+Browser catalog: [`index.html`](index.html). Same catalog as PowerPoint: [`index.pptx`](index.pptx) (also `pptx/index.pptx`). Rebuild:
 
 ```bash
 python3 scripts/generate_slides.py

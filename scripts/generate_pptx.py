@@ -33,6 +33,7 @@ H = Inches(7.5)
 # First matching keyword wins.
 ART_RULES: list[tuple[tuple[str, ...], str]] = [
     (("pause",), "dw-pause.jpg"),
+    (("index.pptx", "recording index"), "dw-hero-transform.jpg"),
     (("s14", "mapping", "canonical", "cluster", "14-dataweave"), "dw-mapping.jpg"),
     (("interview", "whiteboard", "bootcamp", "l54", "l55", "l56", "l58", "question-bank"), "dw-interview.jpg"),
     (("stream", "crypto", "hash", "hmac", "performance", "l50", "l51", "l52"), "dw-streaming.jpg"),
@@ -241,8 +242,70 @@ def write_pptx(path: Path, deck: gs.Deck) -> None:
     prs.save(str(path))
 
 
+def parse_index_html(html: str) -> list[tuple[str, list[tuple[str, str]]]]:
+    import html as html_lib
+
+    groups: list[tuple[str, list[tuple[str, str]]]] = []
+    for heading, table in re.findall(r"<h2>(.*?)</h2>\s*<table>(.*?)</table>", html, flags=re.S):
+        items = [
+            (html_lib.unescape(kind.strip()), html_lib.unescape(title.strip()))
+            for kind, title in re.findall(
+                r'class="kind">(.*?)</td>\s*<td><a href="[^"]+">(.*?)</a>',
+                table,
+                flags=re.S,
+            )
+        ]
+        if items:
+            groups.append((html_lib.unescape(heading.strip()), items))
+    return groups
+
+
+def index_deck() -> gs.Deck:
+    src = gs.OUT / "index.html"
+    html = src.read_text(encoding="utf-8") if src.exists() else ""
+    deck = gs.Deck("Index", "Recording slides", "../assets")
+    deck.add_title(
+        "Course catalog as a shareable deck. F5, then open the matching lecture or lab PPTX.",
+        ["Converted from instructor/slides/index.html", "16:9 screen share"],
+    )
+    deck.add_bullets(
+        "How to use this file",
+        [
+            "Share this window for a course walkthrough or recording plan.",
+            "Each later slide is one section from the HTML index.",
+            "When you record a video, switch to that file under pptx/lectures or pptx/labs.",
+            "Pause cards stay in the lab decks — not in this index.",
+        ],
+    )
+    groups = parse_index_html(html)
+    if not groups:
+        deck.add_bullets("Missing index", ["Run python3 scripts/generate_slides.py first."])
+        return deck
+    agenda = [
+        f"{i + 1}. {name} ({len(items)})"
+        for i, (name, items) in enumerate(groups)
+        if not name.startswith("Tutorials")
+    ]
+    deck.add_bullets("In this index", agenda)
+    for name, items in groups:
+        bullets = [f"{kind} — {title}" for kind, title in items]
+        deck.add_bullets(name, bullets)
+    deck.add_bullets(
+        "Next",
+        [
+            "Open pptx/lectures/L01.pptx and press F5 to start recording.",
+            "Rebuild this file with python3 scripts/generate_pptx.py.",
+        ],
+    )
+    return deck
+
+
 def main() -> None:
     n = 0
+    write_pptx(OUT / "index.pptx", index_deck())
+    n += 1
+    write_pptx(ROOT / "instructor" / "slides" / "index.pptx", index_deck())
+    n += 1
     for sid, title in gs.SECTION_FOLDERS:
         lec = gs.SECTIONS / sid / "LECTURE.md"
         if lec.exists():
