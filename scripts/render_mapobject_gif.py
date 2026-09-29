@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Render an animation of mapObject walking an object and returning a new one."""
+"""Render a DataWeave mapObject walkthrough as an animated GIF."""
 
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-W, H = 960, 540
+W, H = 980, 560
 OUT = Path(__file__).resolve().parents[1] / "assets" / "mapObject.gif"
 
 BG = (15, 23, 42)
@@ -45,90 +45,84 @@ def frame(step, phase):
     image = Image.new("RGB", (W, H), BG)
     draw = ImageDraw.Draw(image)
 
-    title = font(FONT_BOLD, 34)
-    subtitle = font(FONT, 18)
+    title = font(FONT_BOLD, 32)
+    subtitle = font(FONT, 17)
     label = font(FONT_MED, 15)
-    mono = font(MONO, 20)
+    mono = font(MONO, 18)
     row_font = font(MONO, 22)
     small = font(FONT, 16)
     badge = font(FONT_MED, 14)
 
-    text(draw, (48, 28), "mapObject", title, INK)
+    text(draw, (40, 24), "mapObject", title, INK)
     text(
         draw,
-        (48, 74),
-        "Walk each entry, run an operation, return a new object.",
+        (40, 66),
+        "DataWeave walks each entry, runs the mapper, and returns an object.",
         subtitle,
         MUTED,
     )
 
-    rounded(draw, (48, 118, 912, 176), 12, CARD, CARD_EDGE, 2)
-    text(draw, (68, 134), "mapObject(cart, (price) => price * 2)", mono, CYAN)
+    rounded(draw, (40, 108, 940, 164), 12, CARD, CARD_EDGE, 2)
+    text(draw, (56, 124), "cart mapObject (value, key) -> { (key): value * 2 }", mono, CYAN)
 
-    # Columns
-    left = (48, 200, 468, 430)
-    right = (492, 200, 912, 430)
+    left = (40, 186, 470, 448)
+    right = (510, 186, 940, 448)
     rounded(draw, left, 16, CARD, CARD_EDGE, 2)
     rounded(draw, right, 16, CARD, CARD_EDGE, 2)
-    text(draw, (72, 214), "cart", label, MUTED)
-    text(draw, (516, 214), "result", label, MUTED)
+    text(draw, (60, 200), "cart", label, MUTED)
+    text(draw, (530, 200), "result", label, MUTED)
 
     active_index = step if 0 <= step <= 2 else None
     finished = step >= 3
-    written = ITEMS[: step + 1] if 0 <= step <= 2 else (ITEMS if finished else [])
-    # During the approach phase, the result row is not written yet.
     if step in (0, 1, 2) and phase < 0.55:
         written = ITEMS[:step]
+    elif 0 <= step <= 2:
+        written = ITEMS[: step + 1]
+    elif finished:
+        written = ITEMS
+    else:
+        written = []
 
-    def draw_rows(origin_x, values, side):
-        for index, (key, src, out) in enumerate(ITEMS):
-            y = 252 + index * 52
-            box = (origin_x, y, origin_x + 372, y + 44)
-            is_active = side == "in" and index == active_index and not finished
-            is_written = side == "out" and any(item[0] == key for item in written)
-            is_focus_out = side == "out" and index == active_index and phase >= 0.55 and not finished
-            if finished and side == "out":
-                fill, edge, color = DONE, GREEN, GREEN
-            elif is_active or is_focus_out:
-                fill, edge, color = ACTIVE, AMBER, AMBER
-            elif is_written:
-                fill, edge, color = DONE, GREEN, GREEN
-            else:
-                fill, edge, color = (15, 23, 42), CARD_EDGE, DIM if side == "out" else INK
-            rounded(draw, box, 10, fill, edge, 2)
-            shown = out if side == "out" and (is_written or is_focus_out or finished) else src
-            if side == "out" and not (is_written or is_focus_out or finished):
-                label_text = "·"
-                color = DIM
-            else:
-                label_text = f"{key}: {shown}"
-            text(draw, (origin_x + 16, y + 9), label_text, row_font, color)
+    for index, (key, src, _out) in enumerate(ITEMS):
+        y = 238 + index * 64
+        box = (60, y, 450, y + 52)
+        is_active = index == active_index and not finished
+        fill, edge, color = (ACTIVE, AMBER, AMBER) if is_active else ((15, 23, 42), CARD_EDGE, INK)
+        rounded(draw, box, 10, fill, edge, 2)
+        text(draw, (76, y + 12), f"{key}: {src}", row_font, color)
 
-    draw_rows(72, ITEMS, "in")
-    draw_rows(516, ITEMS, "out")
+    result_edge = GREEN if finished else (AMBER if written else CARD_EDGE)
+    result_fill = DONE if finished else CARD
+    rounded(draw, (530, 238, 920, 430), 10, result_fill, result_edge, 2)
+    if not written:
+        text(draw, (548, 318), "{ }", row_font, DIM)
+    else:
+        lines = ["{"] + [f"  {key}: {out}" + ("," if i < len(written) - 1 else "") for i, (key, _src, out) in enumerate(written)] + ["}"]
+        for i, line in enumerate(lines):
+            line_color = GREEN if finished else (AMBER if i == len(lines) - 2 else INK)
+            text(draw, (548, 252 + i * 32), line, row_font, line_color)
 
-    # Footer status
-    rounded(draw, (48, 452, 912, 508), 12, CARD, CARD_EDGE, 2)
+    rounded(draw, (40, 468, 940, 528), 12, CARD, CARD_EDGE, 2)
     if step < 0:
-        status = "Input stays unchanged. Result starts empty."
+        status = "Each mapper call must return an object. Those objects are merged."
         color = MUTED
     elif step < 3:
         key, src, out = ITEMS[step]
         if phase < 0.55:
-            status = f"Visit {key}. operation({src}) is next."
+            status = f"Entry {step}: value = {src}, key = {key}"
             color = AMBER
         else:
-            status = f"operation({src}) → {out}. Store {key}: {out}."
+            status = f"Mapper returns {{ {key}: {out} }}. Merge it into the result."
             color = GREEN
     else:
-        status = "Returns { apple: 4, bread: 6, milk: 8 }."
+        status = "Returns { apple: 4, bread: 6, milk: 8 }. cart is unchanged."
         color = GREEN
-    text(draw, (68, 468), status, small, color)
+    text(draw, (56, 486), status, small, color)
 
     count = 0 if step < 0 else (3 if finished else step + (1 if phase >= 0.55 else 0))
-    pill = f"{count}/3"
-    rounded(draw, (820, 32, 912, 70), 12, CARD, CYAN if not finished else GREEN, 2)
-    text(draw, (842, 42), pill, badge, CYAN if not finished else GREEN)
+    pill_color = GREEN if finished else CYAN
+    rounded(draw, (844, 26, 940, 64), 12, CARD, pill_color, 2)
+    text(draw, (866, 36), f"{count}/3", badge, pill_color)
 
     return image
 
