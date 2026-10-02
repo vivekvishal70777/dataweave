@@ -2,219 +2,45 @@
 
 Five practice questions on DataWeave objects (`%dw 2.0`).
 
-Each solution uses one or more of these core functions:
+Every solution uses all three functions in one script:
 
 | Function | Input | Output | Lambda arguments |
 | --- | --- | --- | --- |
+| `map` | Array | Array | `(item, index)` |
 | `mapObject` | Object | Object | `(value, key, index)` |
 | `pluck` | Object | Array | `(value, key, index)` |
-| `map` | Array | Array | `(item, index)` |
 
-`mapObject` rebuilds an object. `pluck` turns each key/value pair into an array element. `map` transforms each element of an array (including an array of objects, or the array `pluck` just produced).
-
-Object keys in DataWeave are type `Key`. Cast with `as String` when you concatenate a key or store it in a field. A dynamic key is wrapped in parentheses: `{(key): value}`.
-
-Paste any script into the [DataWeave Playground](https://dataweave.mulesoft.com/) or a Transform Message in Anypoint Studio. Set the sample input as the payload (`application/json`).
-
----
-
-## Question 1 — Rebuild an object with `mapObject`
-
-A catalog service returns each SKU as a key. The integration needs every key uppercased, a 10% list-price markup, and the original price kept beside the new price.
-
-**Input**
-
-```json
-{
-  "pen": { "price": 100, "currency": "USD" },
-  "notebook": { "price": 250, "currency": "USD" },
-  "eraser": { "price": 50, "currency": "USD" }
-}
-```
-
-**Expected output**
-
-```json
-{
-  "PEN": { "price": 100, "listPrice": 110, "currency": "USD" },
-  "NOTEBOOK": { "price": 250, "listPrice": 275, "currency": "USD" },
-  "ERASER": { "price": 50, "listPrice": 55, "currency": "USD" }
-}
-```
-
-**Solution**
+They share the same precedence and are left-associative, so this groups as `((obj mapObject f) pluck g) map h`:
 
 ```dataweave
-%dw 2.0
-output application/json
----
-payload mapObject ((item, sku) -> {
-  (upper(sku as String)): {
-    price: item.price,
-    listPrice: item.price * 11 / 10,
-    currency: item.currency
-  }
-})
+obj mapObject ((value, key) -> { (key): value }) pluck ((value, key) -> value) map ((item) -> item)
 ```
 
-**Why this works**
+Object keys are type `Key`. Cast with `as String` before concatenating a key or storing it. A dynamic key is wrapped in parentheses: `{(key): value}`. Returning `{}` from `mapObject` drops that pair.
 
-`mapObject` visits every pair. `item` is the value (`{ price, currency }`) and `sku` is the key. `(upper(sku as String))` builds a new key. The value is a new object, so the original payload is left unchanged. `price * 11 / 10` is the 10% markup (`100 → 110`, `250 → 275`, `50 → 55`).
+Paste any script into the [DataWeave Playground](https://dataweave.mulesoft.com/) with the sample payload as `application/json`.
 
 ---
 
-## Question 2 — Turn an object into an array with `pluck`
+## Question 1 — Flat invoice lines
 
-An employee directory is keyed by employee id. A downstream API wants a JSON array, with the id copied into each record as `empId`.
-
-**Input**
-
-```json
-{
-  "E01": { "name": "Asha", "dept": "IT" },
-  "E02": { "name": "Ravi", "dept": "HR" },
-  "E03": { "name": "Mei", "dept": "IT" }
-}
-```
-
-**Expected output**
-
-```json
-[
-  { "empId": "E01", "name": "Asha", "dept": "IT" },
-  { "empId": "E02", "name": "Ravi", "dept": "HR" },
-  { "empId": "E03", "name": "Mei", "dept": "IT" }
-]
-```
-
-**Solution**
-
-```dataweave
-%dw 2.0
-output application/json
----
-payload pluck ((employee, id) -> {
-  empId: id as String,
-  name: employee.name,
-  dept: employee.dept
-})
-```
-
-**Why this works**
-
-`pluck` walks the object the same way `mapObject` does, but collects the lambda results into an array. Promoting `id` into the body is the usual way to flatten a map-style object into records. Order follows the object’s key order.
-
----
-
-## Question 3 — Transform an array of objects with `map`
-
-Order lines arrive as an array. Produce a customer summary: uppercase the item name and add `lineTotal` (`qty * price`). Drop `qty` and `price` from the output.
-
-**Input**
-
-```json
-[
-  { "orderId": "O100", "item": "pen", "qty": 3, "price": 10 },
-  { "orderId": "O101", "item": "notebook", "qty": 2, "price": 25 },
-  { "orderId": "O102", "item": "eraser", "qty": 4, "price": 5 }
-]
-```
-
-**Expected output**
-
-```json
-[
-  { "orderId": "O100", "item": "PEN", "lineTotal": 30 },
-  { "orderId": "O101", "item": "NOTEBOOK", "lineTotal": 50 },
-  { "orderId": "O102", "item": "ERASER", "lineTotal": 20 }
-]
-```
-
-**Solution**
-
-```dataweave
-%dw 2.0
-output application/json
----
-payload map ((order) -> {
-  orderId: order.orderId,
-  item: upper(order.item),
-  lineTotal: order.qty * order.price
-})
-```
-
-**Why this works**
-
-`map` is the array counterpart of `mapObject`. Each `order` is one object. Returning a fresh object selects and computes fields; fields you omit (`qty`, `price`) disappear from that element.
-
----
-
-## Question 4 — Filter with `mapObject`, then list with `pluck`
-
-User accounts are stored as an object. Inactive accounts must be removed, and the remaining accounts must be returned as an array of `{ userId, name, role }`.
-
-**Input**
-
-```json
-{
-  "u1": { "name": "Asha", "active": true, "role": "admin" },
-  "u2": { "name": "Ravi", "active": false, "role": "viewer" },
-  "u3": { "name": "Mei", "active": true, "role": "editor" }
-}
-```
-
-**Expected output**
-
-```json
-[
-  { "userId": "u1", "name": "Asha", "role": "admin" },
-  { "userId": "u3", "name": "Mei", "role": "editor" }
-]
-```
-
-**Solution**
-
-```dataweave
-%dw 2.0
-output application/json
----
-payload mapObject ((user, id) ->
-  if (user.active)
-    { (id): user }
-  else
-    {}
-) pluck ((user, id) -> {
-  userId: id as String,
-  name: user.name,
-  role: user.role
-})
-```
-
-**Why this works**
-
-`mapObject` merges whatever object the lambda returns. Returning `{}` for Ravi adds no key, so that account is dropped. Returning `{ (id): user }` keeps the original key. `mapObject` and `pluck` are left-associative, so the filtered object is what `pluck` receives. `pluck` then promotes each surviving key to `userId`.
-
----
-
-## Question 5 — `map`, `mapObject`, and `pluck` together
-
-Each department is one element of an array. Staff inside a department is an object keyed by employee id. Return one flat array of people. Uppercase each name, add `bonus` as 10% of `salary`, and include the department name on every row.
+Each order is an array element. Its `items` field is an object keyed by SKU. Build one flat array of lines. Uppercase the SKU and set `lineTotal` to `qty * price`.
 
 **Input**
 
 ```json
 [
   {
-    "department": "IT",
-    "staff": {
-      "E01": { "name": "Asha", "salary": 100 },
-      "E02": { "name": "Ravi", "salary": 80 }
+    "orderId": "O100",
+    "items": {
+      "pen": { "qty": 2, "price": 10 },
+      "notebook": { "qty": 1, "price": 25 }
     }
   },
   {
-    "department": "HR",
-    "staff": {
-      "E03": { "name": "Mei", "salary": 90 }
+    "orderId": "O101",
+    "items": {
+      "eraser": { "qty": 4, "price": 5 }
     }
   }
 ]
@@ -224,9 +50,9 @@ Each department is one element of an array. Staff inside a department is an obje
 
 ```json
 [
-  { "empId": "E01", "name": "ASHA", "department": "IT", "salary": 100, "bonus": 10 },
-  { "empId": "E02", "name": "RAVI", "department": "IT", "salary": 80, "bonus": 8 },
-  { "empId": "E03", "name": "MEI", "department": "HR", "salary": 90, "bonus": 9 }
+  { "orderId": "O100", "sku": "PEN", "qty": 2, "lineTotal": 20 },
+  { "orderId": "O100", "sku": "NOTEBOOK", "qty": 1, "lineTotal": 25 },
+  { "orderId": "O101", "sku": "ERASER", "qty": 4, "lineTotal": 20 }
 ]
 ```
 
@@ -237,68 +63,330 @@ Each department is one element of an array. Staff inside a department is an obje
 output application/json
 ---
 flatten(
-  payload map ((dept) ->
-    dept.staff mapObject ((person, id) -> {
-      (id): {
-        name: upper(person.name),
-        salary: person.salary,
-        bonus: person.salary * 10 / 100
+  payload map ((order) ->
+    order.items mapObject ((item, sku) -> {
+      (sku): {
+        qty: item.qty,
+        lineTotal: item.qty * item.price
       }
-    }) pluck ((person, id) -> {
-      empId: id as String,
-      name: person.name,
-      department: dept.department,
-      salary: person.salary,
-      bonus: person.bonus
+    }) pluck ((item, sku) -> {
+      orderId: order.orderId,
+      sku: upper(sku as String),
+      qty: item.qty,
+      lineTotal: item.lineTotal
     })
   )
 )
 ```
 
-**Why this works**
+**How the three functions combine**
 
-1. `map` walks the department array. The lambda closes over `dept`, so `dept.department` is still in scope while staff is rewritten.
-2. `mapObject` rebuilds that department’s `staff` object: the key stays the employee id, the name is uppercased, and `bonus` is `salary * 10 / 100`.
-3. `pluck` turns the rebuilt staff object into an array of flat records.
-4. `map` therefore returns an array of arrays (`[[E01, E02], [E03]]`). `flatten` joins them into one array.
+- `map` walks the order array. `order.orderId` stays in scope for every line of that order.
+- `mapObject` rebuilds `items`: the SKU key is unchanged, and the value gains `lineTotal`.
+- `pluck` turns that object into an array of flat line records.
+- `map` therefore yields an array of arrays. `flatten` joins them into one list.
 
 ---
 
-## Quick reference
+## Question 2 — Passed subjects for each student
+
+Each student has a `scores` object keyed by subject. Keep subjects with a score of at least 40. Grade `A` when the score is at least 75, otherwise grade `B`. Return one object per student, with `passed` as an array.
+
+**Input**
+
+```json
+[
+  {
+    "name": "Asha",
+    "scores": { "math": 80, "science": 35, "english": 70 }
+  },
+  {
+    "name": "Ravi",
+    "scores": { "math": 40, "science": 90, "english": 30 }
+  }
+]
+```
+
+**Expected output**
+
+```json
+[
+  {
+    "student": "Asha",
+    "passed": [
+      { "subject": "MATH", "score": 80, "grade": "A" },
+      { "subject": "ENGLISH", "score": 70, "grade": "B" }
+    ]
+  },
+  {
+    "student": "Ravi",
+    "passed": [
+      { "subject": "MATH", "score": 40, "grade": "B" },
+      { "subject": "SCIENCE", "score": 90, "grade": "A" }
+    ]
+  }
+]
+```
+
+**Solution**
 
 ```dataweave
 %dw 2.0
 output application/json
 ---
-{
-  // Object -> Object. Rename a key and change its value.
-  mapped: { a: 1, b: 2 } mapObject ((value, key) -> {
-    (upper(key as String)): value * 10
-  }),
-  // Object -> Array. One element per pair.
-  plucked: { a: 1, b: 2 } pluck ((value, key) -> {
-    key: key as String,
-    value: value
-  }),
-  // Array of objects -> Array of objects.
-  mappedArray: [{ n: "ada" }, { n: "grace" }] map ((row) -> {
-    name: upper(row.n)
+payload map ((student) -> {
+  student: student.name,
+  passed: student.scores mapObject ((score, subject) ->
+    if (score >= 40)
+      {
+        (subject): {
+          score: score,
+          grade: if (score >= 75) "A" else "B"
+        }
+      }
+    else
+      {}
+  ) pluck ((row, subject) -> {
+    subject: subject as String,
+    score: row.score,
+    grade: row.grade
+  }) map ((row) -> {
+    subject: upper(row.subject),
+    score: row.score,
+    grade: row.grade
   })
-}
+})
 ```
 
-That script evaluates to:
+**How the three functions combine**
+
+- The outer `map` builds one result object per student.
+- `mapObject` keeps passing scores and attaches `grade`. A failing subject returns `{}`, so that key is removed.
+- `pluck` turns the remaining subject object into an array.
+- The inner `map` uppercases each subject name on that array.
+
+---
+
+## Question 3 — Reorder list per warehouse
+
+Each warehouse has an `inventory` object of SKU to quantity on hand. A SKU needs a reorder when quantity is below 10. `reorderQty` is `10 - onHand`. Keep one object per warehouse. `reorders` is the array of SKUs that need a reorder.
+
+**Input**
+
+```json
+[
+  {
+    "warehouse": "BLR",
+    "inventory": { "pen": 4, "notebook": 20, "eraser": 8 }
+  },
+  {
+    "warehouse": "DEL",
+    "inventory": { "pen": 15, "notebook": 3 }
+  }
+]
+```
+
+**Expected output**
+
+```json
+[
+  {
+    "warehouse": "BLR",
+    "reorders": [
+      { "sku": "PEN", "onHand": 4, "reorderQty": 6 },
+      { "sku": "ERASER", "onHand": 8, "reorderQty": 2 }
+    ]
+  },
+  {
+    "warehouse": "DEL",
+    "reorders": [
+      { "sku": "NOTEBOOK", "onHand": 3, "reorderQty": 7 }
+    ]
+  }
+]
+```
+
+**Solution**
+
+```dataweave
+%dw 2.0
+output application/json
+---
+payload map ((warehouse) -> {
+  warehouse: warehouse.warehouse,
+  reorders: warehouse.inventory mapObject ((qty, sku) ->
+    if (qty < 10)
+      { (sku): qty }
+    else
+      {}
+  ) pluck ((qty, sku) -> {
+    sku: sku as String,
+    onHand: qty
+  }) map ((row) -> {
+    sku: upper(row.sku),
+    onHand: row.onHand,
+    reorderQty: 10 - row.onHand
+  })
+})
+```
+
+**How the three functions combine**
+
+- `map` walks warehouses and wraps each result.
+- `mapObject` drops SKUs with quantity 10 or more. Survivors stay as `sku -> qty`.
+- `pluck` copies each surviving key and quantity into a row.
+- The inner `map` uppercases the SKU and computes `reorderQty`.
+
+---
+
+## Question 4 — Customer contact channels
+
+Each customer has a `channels` object keyed by channel type (`email`, `sms`). Normalize the address to lowercase, then publish an array of contacts. `kind` is the channel name in uppercase. `preferred` is true when `priority` is 1.
+
+**Input**
+
+```json
+[
+  {
+    "customerId": "C1",
+    "name": "Asha",
+    "channels": {
+      "email": { "address": "Asha@Example.com", "priority": 1 },
+      "sms": { "address": "+91-999", "priority": 2 }
+    }
+  },
+  {
+    "customerId": "C2",
+    "name": "Ravi",
+    "channels": {
+      "email": { "address": "Ravi@Example.com", "priority": 2 }
+    }
+  }
+]
+```
+
+**Expected output**
+
+```json
+[
+  {
+    "customerId": "C1",
+    "name": "Asha",
+    "contacts": [
+      { "kind": "EMAIL", "address": "asha@example.com", "preferred": true },
+      { "kind": "SMS", "address": "+91-999", "preferred": false }
+    ]
+  },
+  {
+    "customerId": "C2",
+    "name": "Ravi",
+    "contacts": [
+      { "kind": "EMAIL", "address": "ravi@example.com", "preferred": false }
+    ]
+  }
+]
+```
+
+**Solution**
+
+```dataweave
+%dw 2.0
+output application/json
+---
+payload map ((customer) -> {
+  customerId: customer.customerId,
+  name: customer.name,
+  contacts: customer.channels mapObject ((channel, kind) -> {
+    (kind): {
+      address: lower(channel.address),
+      priority: channel.priority
+    }
+  }) pluck ((channel, kind) -> {
+    kind: kind as String,
+    address: channel.address,
+    priority: channel.priority
+  }) map ((contact) -> {
+    kind: upper(contact.kind),
+    address: contact.address,
+    preferred: contact.priority == 1
+  })
+})
+```
+
+**How the three functions combine**
+
+- `map` walks the customer array.
+- `mapObject` rebuilds `channels` with a lowercased address and the original priority.
+- `pluck` turns each channel into a record and keeps the channel name as `kind`.
+- The inner `map` uppercases `kind` and replaces `priority` with the boolean `preferred`.
+
+---
+
+## Question 5 — Skill rows from an employee object
+
+The payload is an object keyed by employee id, so the root value is an object. Each employee has a `skills` object of skill name to level (1 through 5). Keep skills at level 3 or higher. `label` is `"expert"` when the level is at least 5, otherwise `"skilled"`. Return one flat array.
+
+**Input**
 
 ```json
 {
-  "mapped": { "A": 10, "B": 20 },
-  "plucked": [
-    { "key": "a", "value": 1 },
-    { "key": "b", "value": 2 }
-  ],
-  "mappedArray": [
-    { "name": "ADA" },
-    { "name": "GRACE" }
-  ]
+  "E01": {
+    "name": "Asha",
+    "skills": { "java": 5, "sql": 2, "dataweave": 4 }
+  },
+  "E02": {
+    "name": "Mei",
+    "skills": { "java": 3, "python": 1 }
+  }
 }
 ```
+
+**Expected output**
+
+```json
+[
+  { "empId": "E01", "name": "Asha", "skill": "JAVA", "level": 5, "label": "expert" },
+  { "empId": "E01", "name": "Asha", "skill": "DATAWEAVE", "level": 4, "label": "skilled" },
+  { "empId": "E02", "name": "Mei", "skill": "JAVA", "level": 3, "label": "skilled" }
+]
+```
+
+**Solution**
+
+```dataweave
+%dw 2.0
+output application/json
+---
+flatten(
+  payload pluck ((employee, id) -> {
+    empId: id as String,
+    name: employee.name,
+    skills: employee.skills
+  }) map ((employee) ->
+    employee.skills mapObject ((level, skill) ->
+      if (level >= 3)
+        {
+          (skill): {
+            level: level,
+            label: if (level >= 5) "expert" else "skilled"
+          }
+        }
+      else
+        {}
+    ) pluck ((row, skill) -> {
+      empId: employee.empId,
+      name: employee.name,
+      skill: upper(skill as String),
+      level: row.level,
+      label: row.label
+    })
+  )
+)
+```
+
+**How the three functions combine**
+
+- The outer `pluck` turns the employee object into an array and promotes each employee id to `empId`.
+- `map` walks that array. Inside it, `mapObject` drops skills below level 3 and adds `label`.
+- The inner `pluck` turns the remaining skills into rows, with the employee fields copied onto each row.
+- `flatten` joins each employee’s skill arrays into one list. SQL (level 2) and Python (level 1) are absent.
